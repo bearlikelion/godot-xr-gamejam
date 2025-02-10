@@ -1,0 +1,50 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://ceufhxefk40dq"]
+
+[ext_resource type="Shader" uid="uid://de61eng24g4m8" path="res://Shaders/3d_disolve.gdshader" id="1_qiui0"]
+[ext_resource type="Shader" uid="uid://clc7etbprjed3" path="res://Materials/StainedGlass.gdshader" id="2_12pfv"]
+[ext_resource type="Texture2D" uid="uid://jiq3lsccyaja" path="res://Assets/Textures/stained_Glass_a/StainedGlassColorVar1.png" id="3_1nc2t"]
+[ext_resource type="Texture2D" uid="uid://bvah55cu17i2n" path="res://Assets/Textures/stained_Glass_a/StainedGlass_A_ORM_1k.png" id="4_gwo2k"]
+[ext_resource type="Texture2D" uid="uid://r732cvpceo82" path="res://Assets/Textures/stained_Glass_a/StainedGlass_A_Normal_1K.png" id="5_sp3ea"]
+[ext_resource type="Texture2D" uid="uid://caanirn17nlpl" path="res://Assets/Textures/FloorBricks_A/ColorVar.png" id="6_e1rem"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2qwyr"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rcvig"]
+noise = SubResource("FastNoiseLite_2qwyr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jfrt3"]
+render_priority = 0
+shader = ExtResource("1_qiui0")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/emission_amount = 0.0
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_rcvig")
+shader_parameter/burn_size = 0.0
+shader_parameter/dissolve_amount = 1.0
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jfrt3")
+shader = ExtResource("2_12pfv")
+shader_parameter/albedo = Color(0, 0.827451, 1, 1)
+shader_parameter/texture_albedo = ExtResource("3_1nc2t")
+shader_parameter/point_size = 0.0
+shader_parameter/texture_ORM = ExtResource("4_gwo2k")
+shader_parameter/roughness = 1.25
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/texture_refraction = ExtResource("6_e1rem")
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_normal = ExtResource("5_sp3ea")
+shader_parameter/normal_scale = 1.0
+shader_parameter/ao_light_affect = 1.0
+shader_parameter/texture_ColorVar = ExtResource("3_1nc2t")
+shader_parameter/colorvar = 2.0
+shader_parameter/refract_blurry = 0.75
+shader_parameter/color_intesity = 10.0
+shader_parameter/uv1_scale = Vector3(1, 1, 0)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 0)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
