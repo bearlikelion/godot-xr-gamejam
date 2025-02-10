@@ -1,7 +1,7 @@
 extends StaticBody3D
 
-const RUNE_ICONS = preload("res://Resources/rune_icons.tres")
-const PICKABLE_RUNES = preload("res://Resources/pickable_runes.tres")
+const RUNE_ICONS = preload("res://Resources/Level1/rune_icons.tres")
+const PICKABLE_RUNES = preload("res://Resources/Level1/pickable_runes.tres")
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D

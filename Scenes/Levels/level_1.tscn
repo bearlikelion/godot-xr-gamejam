@@ -436,7 +436,6 @@ _data = {
 
 [node name="Level1" type="StaticBody3D"]
 script = ExtResource("1_3mqfk")
-metadata/_edit_group_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")

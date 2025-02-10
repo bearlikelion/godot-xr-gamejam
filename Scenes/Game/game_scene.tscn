@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dkhx0yihd1d4d" path="res://Scenes/Game/Podium/podium.tscn" id="17_cid5o"]
 [ext_resource type="PackedScene" uid="uid://bjifh3r7yrwku" path="res://Scenes/Levels/level_2.tscn" id="17_p3bnw"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
-[ext_resource type="PackedScene" uid="uid://8wpuh0rmhc5j" path="res://Scenes/Levels/level_3.tscn" id="18_p3bnw"]
+[ext_resource type="PackedScene" uid="uid://8wpuh0rmhc5j" path="res://Scenes/Levels/level_4.tscn" id="18_p3bnw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
 size = Vector3(0.1, 0.1, 0.1)
