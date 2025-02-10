@@ -1,5 +1,6 @@
+@tool
 extends XRToolsPickable
 
 
-func _on_dropped(pickable: Variant) -> void:
+func _on_dropped(_pickable: Variant) -> void:
 	freeze = false

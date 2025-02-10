@@ -1,7 +1,8 @@
 extends StaticBody3D
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var rune_positions: Array[Node] = get_node("Runes").get_children()
-"res://Scenes/Game/Runes/Pickable/"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 
 func _on_start_game() -> void:
 	show()
-
+	animation_player.play("appear")
 
 func generate_runes() -> void:
 	pass

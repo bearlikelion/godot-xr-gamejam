@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
 [ext_resource type="PackedScene" uid="uid://clfryumit1k63" path="res://Scenes/Player/belt_snap_zone.tscn" id="7_fqdje"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="8_3hq7a"]
+[ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
 [ext_resource type="PackedScene" uid="uid://d0jltq36ybsle" path="res://Scenes/Game/Podium/waypoint.tscn" id="10_jevh0"]
 [ext_resource type="AudioStream" uid="uid://i7br773fgtp0" path="res://Assets/Audio/Music/522992__christislord__celtic.ogg" id="12_w6h2q"]
 [ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="13_3hq7a"]
@@ -19,10 +20,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
 size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi1st"]
-transparency = 1
-albedo_color = Color(0.0234379, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_cid5o")
@@ -56,10 +53,10 @@ ranged_distance = 25.0
 ranged_collision_mask = 65540
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHandController" instance=ExtResource("6_p3bnw")]
+script = ExtResource("8_cid5o")
+show_laser = 0
 laser_length = 1
-laser_material = SubResource("StandardMaterial3D_yi1st")
 show_target = true
-target_material = SubResource("StandardMaterial3D_yi1st")
 collision_mask = 5308416
 
 [node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
@@ -80,11 +77,10 @@ ranged_distance = 25.0
 ranged_collision_mask = 65540
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHandController" instance=ExtResource("6_p3bnw")]
-show_laser = 2
+script = ExtResource("8_cid5o")
+show_laser = 0
 laser_length = 1
-laser_material = SubResource("StandardMaterial3D_yi1st")
 show_target = true
-target_material = SubResource("StandardMaterial3D_yi1st")
 collision_mask = 5308416
 
 [node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"]]
@@ -117,9 +113,9 @@ visible = false
 [node name="waypoint" parent="Base" instance=ExtResource("10_jevh0")]
 
 [node name="podium_holder" type="Node3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.25, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.75, 0.25, 0)
 
-[node name="podium2" parent="Base/podium_holder" instance=ExtResource("17_cid5o")]
+[node name="podium" parent="Base/podium_holder" instance=ExtResource("17_cid5o")]
 
 [node name="Instructions" type="Label3D" parent="Base"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 2, 0)

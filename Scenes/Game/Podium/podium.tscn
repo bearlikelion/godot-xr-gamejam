@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://rgu61f3s55pm" path="res://Assets/Audio/SFX/489606__falcospizaetus__cuttingpaper02.ogg" id="4_vuqxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lc6ux"]
-size = Vector3(70, 23.7719, 49.5599)
+size = Vector3(0.672241, 0.105698, 0.451599)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32016"]
 resource_name = "Material"
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.7, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_e5iid"]
@@ -87,18 +87,17 @@ _data = {
 }
 
 [node name="podium" type="Node3D"]
-transform = Transform3D(7.54979e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, 7.54979e-10, 0, -1.7, 0)
 script = ExtResource("1_vuqxv")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 140, 0)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.625, -19.3967, -2.81232)
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.0714722, -0.00348759, -0.012116)
 shape = SubResource("BoxShape3D_lc6ux")
 
 [node name="Podium" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, -0.0691359, 0, 0)
 mesh = SubResource("ArrayMesh_1m8im")
 skeleton = NodePath("")
 
@@ -111,7 +110,7 @@ shape = SubResource("ConcavePolygonShape3D_tgwla")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66667, 127.533, -4.8667)
 
 [node name="PodiumSnapZone2" parent="." instance=ExtResource("3_t7g23")]
-transform = Transform3D(-66.6667, 0, -5.82819e-06, 0, 66.6667, 0, 5.82819e-06, 0, -66.6667, 8.333, 166.667, 0)
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 1.5, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
