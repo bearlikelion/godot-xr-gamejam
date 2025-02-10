@@ -1,0 +1,242 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://clt2fh648u6fp"
+path="res://.godot/imported/runes.gltf-a89d76486f8d33d220a3633bc7fcd143.scn"
+
+[deps]
+
+source_file="res://Assets/Models/Runes/Rocks/runes.gltf"
+dest_files=["res://.godot/imported/runes.gltf-a89d76486f8d33d220a3633bc7fcd143.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Glow": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Runes/Rocks/Materials/Glow.tres"
+},
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "uid://c4dposxnov2c0"
+}
+},
+"meshes": {
+"runes_Algiz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res"
+},
+"runes_Ansuz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Ansuz.res"
+},
+"runes_Berkana": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Berkana.res"
+},
+"runes_Dagaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Dagaz.res"
+},
+"runes_Ehwaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Ehwaz.res"
+},
+"runes_Eihwaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Eihwaz.res"
+},
+"runes_Fehu": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Fehu.res"
+},
+"runes_Gebo": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Gebo.res"
+},
+"runes_Hagalaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Hagalaz.res"
+},
+"runes_Inguz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Inguz.res"
+},
+"runes_Isa": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Isa.res"
+},
+"runes_Jera": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Jera.res"
+},
+"runes_Kaunan": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Kaunan.res"
+},
+"runes_Laguz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Laguz.res"
+},
+"runes_Mannaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Mannaz.res"
+},
+"runes_Nauthiz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Nauthiz.res"
+},
+"runes_Othilla": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Othilla.res"
+},
+"runes_Pertho": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Pertho.res"
+},
+"runes_Raido": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Raido.res"
+},
+"runes_Sowulo": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Sowulo.res"
+},
+"runes_Teiwaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Teiwaz.res"
+},
+"runes_Thurisaz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Thurisaz.res"
+},
+"runes_Uruz": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Uruz.res"
+},
+"runes_Wunjo": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Runes/Rocks/Mesh/runes_Wunjo.res"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

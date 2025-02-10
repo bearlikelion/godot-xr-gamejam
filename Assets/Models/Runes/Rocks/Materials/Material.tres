@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c4dposxnov2c0"]
+
+[ext_resource type="Texture2D" uid="uid://8c83acqjvo8p" path="res://Assets/Textures/Runes/Palette_Algiz.png" id="1_5r303"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0.68666, 0.68666, 0.68666, 1)
+albedo_texture = ExtResource("1_5r303")
+roughness = 0.5
+emission_enabled = true

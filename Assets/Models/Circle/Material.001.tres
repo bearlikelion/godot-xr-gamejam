@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://satta6tkdd3h"]
+
+[ext_resource type="Texture2D" uid="uid://dx5badk2yi4rf" path="res://Assets/Models/Circle/waypoint_circle_001_waypoint_circle_001_d.png" id="1_owwib"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_owwib")
+roughness = 0.5
