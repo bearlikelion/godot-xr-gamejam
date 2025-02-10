@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PickableRunes" load_steps=5 format=3 uid="uid://b8ksxce6ipnxk"]
+
+[ext_resource type="Script" uid="uid://bxwbvbgapp5u2" path="res://Resources/pickable_runes.gd" id="1_bhlmu"]
+[ext_resource type="PackedScene" uid="uid://bi033sfhl7vpg" path="res://Scenes/Game/Runes/Pickable/rune_algiz.tscn" id="2_kk1no"]
+[ext_resource type="PackedScene" uid="uid://bswnf2fq44m0r" path="res://Scenes/Game/Runes/Pickable/rune_ansuz.tscn" id="3_qqtdu"]
+[ext_resource type="PackedScene" uid="uid://ccbsy3kdfkq6h" path="res://Scenes/Game/Runes/Pickable/rune_berkana.tscn" id="4_r4bhb"]
+
+[resource]
+script = ExtResource("1_bhlmu")
+pickable_runes = Array[PackedScene]([ExtResource("2_kk1no"), ExtResource("3_qqtdu"), ExtResource("4_r4bhb")])
+metadata/_custom_type_script = ExtResource("1_bhlmu")

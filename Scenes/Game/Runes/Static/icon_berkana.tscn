@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg1ptl0co61yu"]
+
+[ext_resource type="ArrayMesh" uid="uid://bvuqwu6yj0gle" path="res://Assets/Models/Runes/Static/Mesh/runes icons_Berkana.res" id="1_s4dvn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8ata"]
+size = Vector3(0.4, 0.2, 0.6)
+
+[node name="RuneAlgiz" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_s4dvn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050354, -0.00900269, 0.0502319)
+shape = SubResource("BoxShape3D_f8ata")
