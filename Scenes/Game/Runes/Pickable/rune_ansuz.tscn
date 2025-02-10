@@ -46,12 +46,13 @@ _data = {
 &"bob": SubResource("Animation_tqk3w")
 }
 
-[node name="RunesAlgiz" type="RigidBody3D"]
+[node name="RunesAnsuz" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 196615
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_la12e")
+rune_name = "ansuz"
 ranged_grab_method = 2
 second_hand_grab = 1
 ranged_grab_speed = 10.0

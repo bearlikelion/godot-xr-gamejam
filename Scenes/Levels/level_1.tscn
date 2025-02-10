@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3he2s4qmuysp"]
+[gd_scene load_steps=12 format=3 uid="uid://c3he2s4qmuysp"]
 
 [ext_resource type="Script" uid="uid://bogiyld65p6ks" path="res://Scenes/Levels/level_1.gd" id="1_3mqfk"]
 [ext_resource type="ArrayMesh" uid="uid://dr28l86xagvfe" path="res://Assets/Models/Structure/GothicLikeStructures_Structure_D.res" id="2_iixi8"]
+[ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="3_3mqfk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -31,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -43,7 +44,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -55,7 +56,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -67,7 +68,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -79,7 +80,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -91,7 +92,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -103,7 +104,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -115,7 +116,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -127,7 +128,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2.0]
+"values": [0.0]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -139,12 +140,24 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OmniLight3D:omni_range")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
 }
 
 [sub_resource type="Animation" id="Animation_3mqfk"]
 resource_name = "appear"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,7 +165,7 @@ tracks/0/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_2/material
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -164,7 +177,7 @@ tracks/1/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_2/material
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -176,7 +189,7 @@ tracks/2/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_3/material
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -188,7 +201,7 @@ tracks/3/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_3/material
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -200,7 +213,7 @@ tracks/4/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_1/material
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -212,7 +225,7 @@ tracks/5/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_1/material
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -224,7 +237,7 @@ tracks/6/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_4/material
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -236,7 +249,7 @@ tracks/7/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_4/material
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -248,7 +261,7 @@ tracks/8/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_5/material
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 0.0]
@@ -260,15 +273,27 @@ tracks/9/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_5/material
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OmniLight3D:omni_range")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 20.0]
+}
 
-[sub_resource type="Animation" id="Animation_cyadu"]
+[sub_resource type="Animation" id="Animation_4dpyx"]
 resource_name = "fade"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -276,7 +301,7 @@ tracks/0/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_2/material
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 2.0]
@@ -288,21 +313,130 @@ tracks/1/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_2/material
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_3/material:next_pass:shader_parameter/burn_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_3/material:next_pass:shader_parameter/dissolve_amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_1/material:next_pass:shader_parameter/burn_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_1/material:next_pass:shader_parameter/dissolve_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_4/material:next_pass:shader_parameter/burn_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_4/material:next_pass:shader_parameter/dissolve_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_5/material:next_pass:shader_parameter/burn_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GothicLikeStructuresStructureD:mesh:surface_5/material:next_pass:shader_parameter/dissolve_amount")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("OmniLight3D:omni_range")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [20.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iixi8"]
 _data = {
 &"RESET": SubResource("Animation_iixi8"),
 &"appear": SubResource("Animation_3mqfk"),
-&"fade": SubResource("Animation_cyadu")
+&"fade": SubResource("Animation_4dpyx")
 }
 
 [node name="Level1" type="StaticBody3D"]
 script = ExtResource("1_3mqfk")
+metadata/_edit_group_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1bvp3")
@@ -311,6 +445,11 @@ environment = SubResource("Environment_1bvp3")
 transform = Transform3D(0.827551, 0.374747, -0.418, 0, 0.74458, 0.667534, 0.56139, -0.552418, 0.616178, 0, 6.81169, 0)
 visible = false
 sky_mode = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, -0.25)
+light_color = Color(0, 0.996078, 0.996078, 1)
+omni_range = 20.0
 
 [node name="GothicLikeStructuresStructureD" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_iixi8")
@@ -348,3 +487,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_iixi8")
 }
 autoplay = "appear"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_3mqfk")
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

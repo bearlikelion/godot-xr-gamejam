@@ -23,10 +23,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_new_rune(icon_scene: String) -> void:
-	var _icon = load(icon_scene).instantiate()
+	var _icon: Node3D = load(icon_scene).instantiate()
 
 	if icon_marker.get_children().size() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
 
 	icon_marker.add_child(_icon)
+
+
+func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
+	print("Snapped to podium: %s" % what)
+	if what.rune_name:
+		Events.rune_snapped.emit(what.rune_name)

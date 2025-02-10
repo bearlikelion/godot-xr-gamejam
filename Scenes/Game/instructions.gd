@@ -9,7 +9,8 @@ func _ready() -> void:
 
 
 func _on_start_game() -> void:
-	queue_free()
+	# queue_free()
+	text = "Find the matching rune"
 
 
 func _on_podium_rose() -> void:

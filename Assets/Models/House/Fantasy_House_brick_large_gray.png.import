@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ci7y0tvu4v6ta"
+path.s3tc="res://.godot/imported/Fantasy_House_brick_large_gray.png-73b0aa66eb2814068f0c265cdb96c481.s3tc.ctex"
+path.etc2="res://.godot/imported/Fantasy_House_brick_large_gray.png-73b0aa66eb2814068f0c265cdb96c481.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "ab253a848d6b0d82689a7b4b8029e0ba"
+}
+
+[deps]
+
+source_file="res://Assets/Models/House/Fantasy_House_brick_large_gray.png"
+dest_files=["res://.godot/imported/Fantasy_House_brick_large_gray.png-73b0aa66eb2814068f0c265cdb96c481.s3tc.ctex", "res://.godot/imported/Fantasy_House_brick_large_gray.png-73b0aa66eb2814068f0c265cdb96c481.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

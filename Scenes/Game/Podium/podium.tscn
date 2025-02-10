@@ -108,10 +108,10 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_tgwla")
 
 [node name="IconMarker" type="Marker3D" parent="."]
-transform = Transform3D(-0.5, 4.37114e-08, 0, -3.9616e-08, -0.453154, 0.211309, 1.84732e-08, 0.211309, 0.453154, 0, 1.25, -0.1)
+transform = Transform3D(-0.5, 4.37114e-08, 0, 3.9616e-08, 0.453154, -0.211309, -1.84732e-08, -0.211309, -0.453154, 0, 1.25, -0.00176602)
 
 [node name="PodiumSnapZone2" parent="." instance=ExtResource("3_t7g23")]
-transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 1.5, 0)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.75, 0)
 script = ExtResource("4_t7g23")
 stash_sound = null
 
@@ -124,4 +124,5 @@ libraries = {
 stream = ExtResource("4_vuqxv")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="has_picked_up" from="PodiumSnapZone2" to="." method="_on_podium_snap_zone_2_has_picked_up"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
