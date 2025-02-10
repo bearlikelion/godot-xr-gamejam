@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=23 format=4 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Player/belt_snap_zone.tscn" id="7_fqdje"]
 [ext_resource type="ArrayMesh" uid="uid://dr28l86xagvfe" path="res://Assets/Models/Structure/GothicLikeStructures_Structure_D.res" id="7_u63k7"]
 [ext_resource type="Material" uid="uid://satta6tkdd3h" path="res://Assets/Models/Circle/Material.001.tres" id="7_wsift"]
+[ext_resource type="ArrayMesh" uid="uid://sacfxswnkbjs" path="res://Assets/Models/Runes/Floating/Mesh/runes icons_Algiz.res" id="9_3hq7a"]
 [ext_resource type="PackedScene" uid="uid://bi033sfhl7vpg" path="res://Scenes/Game/Runes/runes_algiz.tscn" id="11_fqdje"]
 [ext_resource type="AudioStream" uid="uid://i7br773fgtp0" path="res://Assets/Audio/Music/522992__christislord__celtic.ogg" id="12_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://cxgr187ohn7w0" path="res://Assets/Models/Podium/podium.glb" id="13_etgxu"]
@@ -130,6 +131,14 @@ stash_sound = ExtResource("15_kn4b3")
 [node name="BeltSnapZone4" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0.125)
 stash_sound = ExtResource("15_kn4b3")
+
+[node name="RunesIconsAlgiz" type="MeshInstance3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(2.58096e-08, 0.5, 0.866025, -1.49012e-08, 0.866025, -0.5, -1, 0, 2.98023e-08, -2.677, 0.913, -0.15)
+mesh = ExtResource("9_3hq7a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.16463, 0.549096, 0.647288, 1)
 
 [node name="waypoint_circle_001" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 12, 8, 0)
