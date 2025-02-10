@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6d8ux27w4oa4"]
+
+[ext_resource type="PackedScene" uid="uid://d1oaju3bpnqma" path="res://Assets/Models/Circle/waypoint_circle_001.glb" id="1_ctr27"]
+[ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
+[ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="4_83mwp"]
+[ext_resource type="PackedScene" uid="uid://42xbeno6pt3y" path="res://addons/godot-xr-tools/desktop-support/function_desktop_pointer.tscn" id="4_m6pt0"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="5_m6pt0"]
+[ext_resource type="ArrayMesh" uid="uid://dr28l86xagvfe" path="res://Assets/Models/Structure/GothicLikeStructures_Structure_D.res" id="7_u63k7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m6pt0"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_u63k7"]
+sky_material = SubResource("ProceduralSkyMaterial_m6pt0")
+
+[sub_resource type="Environment" id="Environment_wsift"]
+background_mode = 2
+sky = SubResource("Sky_u63k7")
+tonemap_mode = 2
+
+[node name="GameScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.724172, -0.499403, 0.475575, 0, 0.68962, 0.724172, -0.68962, 0.524425, -0.499403, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wsift")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 10, 0)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+environment = ExtResource("2_ihfs7")
+
+[node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("3_7r8ec")]
+
+[node name="FunctionDesktopPointer" parent="XROrigin3D/XRCamera3D" instance=ExtResource("4_m6pt0")]
+
+[node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="LeftHand" parent="XROrigin3D/LeftHandController" instance=ExtResource("4_83mwp")]
+
+[node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -0.5)
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightHand" parent="XROrigin3D/RightHandController" instance=ExtResource("5_m6pt0")]
+
+[node name="waypoint_circle_001" parent="." instance=ExtResource("1_ctr27")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 12, 8, 0)
+
+[node name="GothicLikeStructuresStructureD" type="MeshInstance3D" parent="."]
+mesh = ExtResource("7_u63k7")

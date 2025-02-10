@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot XR Game Jam"
-run/main_scene="res://Scenes/XR/demo_staging.tscn"
+run/main_scene="uid://cfac6n0mwlrlx"
 config/features=PackedStringArray("4.4")
 config/icon="uid://gamnoaueqq45"
 
@@ -20,14 +20,19 @@ config/icon="uid://gamnoaueqq45"
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
 
-[display]
-
-window/size/transparent=true
-window/per_pixel_transparency/allowed=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Materials/": "orange",
+"res://Scenes/": "yellow",
+"res://Scripts/": "green",
+"res://Shaders/": "teal"
+}
 
 [filesystem]
 
@@ -83,7 +88,6 @@ trigger_left={
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 limits/time/time_rollover_secs=30.0
-viewport/transparent_background=true
 
 [xr]
 
