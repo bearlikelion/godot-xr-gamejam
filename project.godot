@@ -19,6 +19,7 @@ config/icon="uid://gamnoaueqq45"
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
 XRToolsRumbleManager="*res://addons/godot-xr-tools/rumble/rumble_manager.gd"
+XrSimulator="*res://addons/xr-simulator/XRSimulator.tscn"
 Events="*res://Scripts/events.gd"
 Global="*res://Scripts/global.gd"
 

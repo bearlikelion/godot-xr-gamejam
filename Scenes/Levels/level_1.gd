@@ -44,11 +44,13 @@ func generate_runes() -> void:
 	# Fill the room with random runes
 	for rune_position: Marker3D in rune_positions:
 		pickable_runes.shuffle()
-		var _rune: PackedScene = load(pickable_runes.front().resource_path)
 		if rune_position.get_children().size() > 0:
 			for child_rune: Node3D in rune_position.get_children():
 				child_rune.queue_free()
 
+		await get_tree().process_frame
+
+		var _rune: PackedScene = load(pickable_runes.front().resource_path)
 		if rune_position.get_children().size() == 0:
 			rune_position.add_child(_rune.instantiate())
 
@@ -59,8 +61,9 @@ func _on_level_1_completed() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
-		Events.load_level_2.emit()
-		queue_free()
+		Events.level_2_load.emit()
+		hide()
+
 
 func _on_audio_stream_player_3d_finished() -> void:
 	animation_player.play("fade")

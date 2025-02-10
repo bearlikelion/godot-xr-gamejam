@@ -20,12 +20,12 @@ sky_horizon_color = Color(0.147171, 0.151731, 0.15893, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0.0540505, 0.0565398, 0.0604691, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
+[sub_resource type="Sky" id="Sky_1jlnc"]
 sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 1
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_1jlnc")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0x4y1"]
 noise_type = 0
@@ -1145,6 +1145,7 @@ script = ExtResource("1_oylv5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -0.08, 2.26494e-07, 0, -1.20797e-08, -1.5, -13, 1.4, -4.5)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_yxf76")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1188,7 +1189,7 @@ transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -13.75
 sprite_frames = SubResource("SpriteFrames_k5w7j")
 animation = &"falame"
 autoplay = "falame"
-frame_progress = 0.270356
+frame_progress = 0.0726415
 
 [node name="Runes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 0)

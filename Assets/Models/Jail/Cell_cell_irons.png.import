@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bd7nyidsm64is"
+path.s3tc="res://.godot/imported/Cell_cell_irons.png-77a58652304ca14f6a0e6aac89673576.s3tc.ctex"
+path.etc2="res://.godot/imported/Cell_cell_irons.png-77a58652304ca14f6a0e6aac89673576.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "815c0dca3908a9af3358e64c72189fe4"
+}
+
+[deps]
+
+source_file="res://Assets/Models/Jail/Cell_cell_irons.png"
+dest_files=["res://.godot/imported/Cell_cell_irons.png-77a58652304ca14f6a0e6aac89673576.s3tc.ctex", "res://.godot/imported/Cell_cell_irons.png-77a58652304ca14f6a0e6aac89673576.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

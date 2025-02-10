@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=22 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://cvxge68eskfdi" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_cid5o"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="13_3hq7a"]
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="13_cid5o"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
+[ext_resource type="Script" uid="uid://f1wyvbypuhqf" path="res://Scenes/Levels/level_2.gd" id="17_18sgl"]
 [ext_resource type="PackedScene" uid="uid://dkhx0yihd1d4d" path="res://Scenes/Game/Podium/podium.tscn" id="17_cid5o"]
 [ext_resource type="PackedScene" uid="uid://bjifh3r7yrwku" path="res://Scenes/Levels/level_2.tscn" id="17_p3bnw"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
@@ -112,6 +113,9 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0.125)
 visible = false
 
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="Base" type="Node3D" parent="."]
 
 [node name="waypoint" parent="Base" instance=ExtResource("10_jevh0")]
@@ -129,14 +133,17 @@ script = ExtResource("13_3hq7a")
 
 [node name="Level1" parent="." instance=ExtResource("15_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -8, 0)
+visible = false
 
 [node name="Level2" parent="." instance=ExtResource("17_p3bnw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 0)
 visible = false
+script = ExtResource("17_18sgl")
 
 [node name="Level3" parent="." instance=ExtResource("18_p3bnw")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.75, -7, 0.5)
 visible = false
+script = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")
