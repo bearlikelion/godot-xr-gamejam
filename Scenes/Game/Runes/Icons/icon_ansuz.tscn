@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_f8ata"]
 size = Vector3(0.4, 0.2, 0.6)
 
-[node name="RuneAlgiz" type="StaticBody3D"]
+[node name="RuneAnsuz" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_jfvw0")

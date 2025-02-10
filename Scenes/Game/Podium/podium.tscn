@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://dkhx0yihd1d4d"]
+[gd_scene load_steps=14 format=4 uid="uid://dkhx0yihd1d4d"]
 
 [ext_resource type="Texture2D" uid="uid://y4vhwjktmset" path="res://Assets/Models/Podium/podium_podiumCv2Lighter.jpg" id="1_e5iid"]
 [ext_resource type="Script" uid="uid://co6hx48vlqg3w" path="res://Scenes/Game/Podium/podium.gd" id="1_vuqxv"]
 [ext_resource type="PackedScene" uid="uid://6uhmgqq54hqk" path="res://Scenes/Player/podium_snap_zone.tscn" id="3_t7g23"]
+[ext_resource type="Script" uid="uid://b58edaec87omi" path="res://Scenes/Game/Podium/podium_snap_zone.gd" id="4_t7g23"]
 [ext_resource type="AudioStream" uid="uid://rgu61f3s55pm" path="res://Assets/Audio/SFX/489606__falcospizaetus__cuttingpaper02.ogg" id="4_vuqxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lc6ux"]
-size = Vector3(0.672241, 0.105698, 0.451599)
+size = Vector3(0.630508, 0.105698, 0.451599)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32016"]
 resource_name = "Material"
@@ -93,7 +94,7 @@ script = ExtResource("1_vuqxv")
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0.0714722, -0.00348759, -0.012116)
+transform = Transform3D(1, 0, 0, 0, 0.99999, -5.66244e-07, 0, 5.66244e-07, 0.99999, -0.0015029, -0.00348759, -0.012116)
 shape = SubResource("BoxShape3D_lc6ux")
 
 [node name="Podium" type="MeshInstance3D" parent="."]
@@ -107,10 +108,12 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_tgwla")
 
 [node name="IconMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66667, 127.533, -4.8667)
+transform = Transform3D(-0.5, 4.37114e-08, 0, -3.9616e-08, -0.453154, 0.211309, 1.84732e-08, 0.211309, 0.453154, 0, 1.25, -0.1)
 
 [node name="PodiumSnapZone2" parent="." instance=ExtResource("3_t7g23")]
 transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 1.5, 0)
+script = ExtResource("4_t7g23")
+stash_sound = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

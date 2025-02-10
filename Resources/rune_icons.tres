@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="RuneIcons" load_steps=5 format=3 uid="uid://bubqyxm5610t0"]
 
 [ext_resource type="Script" uid="uid://dg07pwu0x8868" path="res://Resources/rune_icons.gd" id="1_2a8th"]
-[ext_resource type="PackedScene" uid="uid://cymx6l8vf6tba" path="res://Scenes/Game/Runes/Static/icon_algiz.tscn" id="2_e8q5r"]
-[ext_resource type="PackedScene" uid="uid://b4hv1ipatb832" path="res://Scenes/Game/Runes/Static/icon_ansuz.tscn" id="3_0n5yo"]
-[ext_resource type="PackedScene" uid="uid://bg1ptl0co61yu" path="res://Scenes/Game/Runes/Static/icon_berkana.tscn" id="4_vm4k5"]
+[ext_resource type="PackedScene" uid="uid://cymx6l8vf6tba" path="res://Scenes/Game/Runes/Icons/icon_algiz.tscn" id="2_e8q5r"]
+[ext_resource type="PackedScene" uid="uid://b4hv1ipatb832" path="res://Scenes/Game/Runes/Icons/icon_ansuz.tscn" id="3_0n5yo"]
+[ext_resource type="PackedScene" uid="uid://bg1ptl0co61yu" path="res://Scenes/Game/Runes/Icons/icon_berkana.tscn" id="4_vm4k5"]
 
 [resource]
 script = ExtResource("1_2a8th")

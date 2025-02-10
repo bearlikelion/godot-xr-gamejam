@@ -73,3 +73,5 @@ shape = SubResource("ConvexPolygonShape3D_gnb8m")
 libraries = {
 &"": SubResource("AnimationLibrary_e73e3")
 }
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
