@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://5q1qxr5u5tyk"]
-
-[ext_resource type="Script" path="res://Scenes/XR/MR/wall_scene.gd" id="1_4r7kg"]
-
-[node name="WindowScene" type="StaticBody3D" groups=["window"]]
-script = ExtResource("1_4r7kg")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-operation = 2

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds7klkmlrh4ri"]
-
-[ext_resource type="Script" uid="uid://hw8gare7edr7" path="res://Scripts/default_scene.gd" id="1_asetv"]
-
-[node name="SceneAnchor" type="StaticBody3D"]
-script = ExtResource("1_asetv")
-
-[node name="Label3D" type="Label3D" parent="."]
-text = "SCENE"
