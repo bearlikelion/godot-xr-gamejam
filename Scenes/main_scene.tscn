@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfac6n0mwlrlx"]
+[gd_scene load_steps=11 format=3 uid="uid://cfac6n0mwlrlx"]
 
 [ext_resource type="Script" uid="uid://btgx13lxdbb4y" path="res://addons/godot-xr-tools/staging/staging.gd" id="1_rypbc"]
 [ext_resource type="PackedScene" uid="uid://wtpox7m5vu2b" path="res://addons/godot-xr-tools/effects/fade.tscn" id="2_4rmau"]
@@ -6,10 +6,25 @@
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="4_lh0cr"]
 [ext_resource type="PackedScene" uid="uid://bqumugyvkct4r" path="res://addons/godot-xr-tools/staging/loading_screen.tscn" id="5_a1nw2"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="6_8ug1t"]
+[ext_resource type="AudioStream" uid="uid://c6lvp6qe0tsvv" path="res://Assets/Audio/Music/658817__deadrobotmusic__castles-acoustic-guitar-folk-metal-vibe-103-bpm-c-sharp-minor.ogg" id="7_maf8m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_maf8m"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_huasi"]
+sky_material = SubResource("ProceduralSkyMaterial_maf8m")
+
+[sub_resource type="Environment" id="Environment_m1efj"]
+background_mode = 1
+sky = SubResource("Sky_huasi")
 
 [node name="Staging" type="Node3D"]
 script = ExtResource("1_rypbc")
 main_scene = "uid://b6d8ux27w4oa4"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m1efj")
 
 [node name="Fade" parent="." instance=ExtResource("2_4rmau")]
 
@@ -34,6 +49,11 @@ progress = 0.0
 [node name="Scene" type="Node3D" parent="."]
 
 [node name="StartXR" parent="." instance=ExtResource("6_8ug1t")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_maf8m")
+autoplay = true
+bus = &"Music"
 
 [connection signal="xr_ended" from="StartXR" to="." method="_on_StartXR_xr_ended"]
 [connection signal="xr_started" from="StartXR" to="." method="_on_StartXR_xr_started"]
