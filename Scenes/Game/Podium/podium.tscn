@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://6uhmgqq54hqk" path="res://Scenes/Player/podium_snap_zone.tscn" id="3_t7g23"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lc6ux"]
-size = Vector3(70, 70, 70)
+size = Vector3(70, 23.7719, 49.5599)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32016"]
 resource_name = "Material"
@@ -56,7 +56,7 @@ script = ExtResource("1_vuqxv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 140, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.625, 0, 5.68434e-14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.625, -19.3967, -2.81232)
 shape = SubResource("BoxShape3D_lc6ux")
 
 [node name="Podium" type="MeshInstance3D" parent="."]
@@ -75,4 +75,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66667, 127.533, -4.8667)
 [node name="PodiumSnapZone2" parent="." instance=ExtResource("3_t7g23")]
 transform = Transform3D(-2.91409e-06, 0, 66.6667, 0, 66.6667, 0, -66.6667, 0, -2.91409e-06, 8.333, 166.667, 0)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
