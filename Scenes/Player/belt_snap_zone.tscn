@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clfryumit1k63"]
+[gd_scene load_steps=7 format=3 uid="uid://clfryumit1k63"]
 
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_uw6wt"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_ckbje"]
+[ext_resource type="AudioStream" uid="uid://beaqoue85w8vy" path="res://Assets/Audio/SFX/568424__sheyvan__impact-small-stone-1-1.ogg" id="2_fvjic"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_byxf7"]
 resource_local_to_scene = true
@@ -20,6 +21,7 @@ radial_segments = 32
 rings = 16
 
 [node name="BeltSnapZone" instance=ExtResource("1_uw6wt")]
+stash_sound = ExtResource("2_fvjic")
 grab_distance = 0.1
 
 [node name="CollisionShape3D" parent="." index="0"]

@@ -61,6 +61,8 @@ _data = {
 }
 
 [node name="RunesAlgiz" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_wc5m2")
@@ -94,4 +96,3 @@ surface_material_override/1 = SubResource("StandardMaterial3D_srams")
 libraries = {
 &"": SubResource("AnimationLibrary_e73e3")
 }
-autoplay = "bob"
