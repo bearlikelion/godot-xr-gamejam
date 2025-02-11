@@ -32,7 +32,9 @@ func generate_runes() -> void:
 
 	var pickable_runes: Array = PICKABLE_RUNES.duplicate().pickable_runes
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
-	rune_positions.shuffle()
+
+	if not Global.testing:
+		rune_positions.shuffle()
 
 	# Place one match rune at a random position
 	for pickable_rune: Resource in pickable_runes:

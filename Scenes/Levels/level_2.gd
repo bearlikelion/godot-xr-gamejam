@@ -32,6 +32,9 @@ func _on_start_game() -> void:
 
 func place_magic_book() -> void:
 	var book_positions: Array[Node] = get_node("Books").get_children()
+	if not Global.testing:
+		book_positions.shuffle()
+
 	var magic_book_pos: Marker3D = book_positions.pop_front()
 	magic_book_pos.add_child(MAGIC_BOOK.instantiate())
 	Events.place_on_pedistal.emit(MAGIC_BOOK_STATIC.resource_path)

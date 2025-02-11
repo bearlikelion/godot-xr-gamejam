@@ -1,6 +1,6 @@
 extends Node
 
-
+var testing: bool = true # DO NOT SHIP WITH TRUE
 var game_started: bool = false
 var level: int = 1
 var rune_to_match: String = ""

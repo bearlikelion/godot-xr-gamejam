@@ -108,11 +108,10 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_tgwla")
 
 [node name="IconMarker" type="Marker3D" parent="."]
-transform = Transform3D(-1, 1.24369e-07, 7.9232e-08, 7.9232e-08, 0.906308, -0.422618, -1.24369e-07, -0.422618, -0.906308, 0, 1.25, -0.00176602)
+transform = Transform3D(-1, 1.24369e-07, 7.9232e-08, 1.24369e-07, 0.422618, 0.906308, 7.9232e-08, 0.906308, -0.422618, 0, 1.25, -0.00176602)
 
 [node name="PodiumSnapZone" parent="." instance=ExtResource("3_t7g23")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1.75, 0)
-visible = false
 script = ExtResource("4_t7g23")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

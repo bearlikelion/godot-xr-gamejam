@@ -8,8 +8,9 @@ size = Vector3(0.4, 0.2, 0.6)
 [node name="RuneAlgiz" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0206146, 0.0296173)
 mesh = ExtResource("1_f8ata")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050354, -0.00900269, 0.0502319)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0050354, -0.0296173, 0.0206146)
 shape = SubResource("BoxShape3D_f8ata")
