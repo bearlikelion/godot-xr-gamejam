@@ -9,14 +9,14 @@ var breakable: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Events.level_3_completed.connect(_on_level_3_completed)
 
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	if breakable:
 		hide()
 		if not break_sound.playing:
@@ -25,3 +25,8 @@ func _on_body_entered(body: Node) -> void:
 
 func _on_break_sound_finished() -> void:
 	queue_free()
+
+
+func _on_level_3_completed() -> void:
+	if visible:
+		hide()

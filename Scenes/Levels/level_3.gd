@@ -41,7 +41,7 @@ func place_crystals() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
 		magic_crystal.queue_free()
-		Events.level_3_load.emit()
+		Events.level_4_load.emit()
 		hide()
 
 

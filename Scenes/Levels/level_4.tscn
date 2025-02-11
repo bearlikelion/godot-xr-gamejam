@@ -1,6 +1,6 @@
 [gd_scene load_steps=127 format=4 uid="uid://8wpuh0rmhc5j"]
 
-[ext_resource type="Script" uid="uid://bogiyld65p6ks" path="res://Scenes/Levels/level_1.gd" id="1_oylv5"]
+[ext_resource type="Script" uid="uid://dcbfy7nym63ll" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
 [ext_resource type="Texture2D" uid="uid://dj5mppii3liv7" path="res://Assets/Models/Blacksmith/medievalblacksmith_WroughtIron.jpg" id="2_wyygt"]
 [ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="3_ovj6s"]
 [ext_resource type="Texture2D" uid="uid://b5ixrkvwymr1e" path="res://Assets/Models/Blacksmith/medievalblacksmith_TreeLogEdgeWeathered.jpg" id="3_u87on"]
@@ -2037,7 +2037,7 @@ _data = {
 }
 
 [node name="Level4" type="StaticBody3D"]
-script = ExtResource("1_oylv5")
+script = ExtResource("1_31yle")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1.66893e-06, 0, -2, 0, 2, 0, 2, 0, -1.66893e-06, -3.24879, 13.2079, -3.40481)
