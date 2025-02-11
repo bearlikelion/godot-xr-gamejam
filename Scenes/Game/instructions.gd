@@ -8,6 +8,7 @@ func _ready() -> void:
 	Events.start_game.connect(_on_start_game)
 	Events.podium_rose.connect(_on_podium_rose)
 	Events.level_2_load.connect(_on_level_2_load)
+	Events.level_3_load.connect(_on_level_3_load)
 
 
 func _on_podium_rose() -> void:
@@ -22,4 +23,10 @@ func _on_start_game() -> void:
 func _on_level_2_load() -> void:
 	animation_player.play("RESET")
 	text = "Find the magic book"
+	animation_player.play("fade")
+
+
+func _on_level_3_load() -> void:
+	animation_player.play("RESET")
+	text = "Find a sturdy crystal"
 	animation_player.play("fade")

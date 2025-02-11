@@ -10,7 +10,8 @@ func _ready() -> void:
 	animation_player.play("rise")
 	audio_stream_player_3d.play()
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
-	Events.level_1_completed.connect(_on_level_1_completed)
+	Events.level_1_completed.connect(_on_level_completed)
+	Events.level_2_completed.connect(_on_level_completed)
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
@@ -35,13 +36,11 @@ func _on_place_on_pedistal(scene_string: String) -> void:
 	icon_marker.add_child(_item)
 
 
-func _on_level_1_completed() -> void:
-	# Remove rune when level 1 completed
+func _on_level_completed() -> void:
+	# Remove icon marker child on level compelte
 	if icon_marker.get_children().size() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
-
-	# podium_snap_zone.drop_object()
 
 
 func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
@@ -53,3 +52,11 @@ func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
 	if Global.level == 2:
 		if what is MagicBook:
 			Events.podium_snapped.emit(what.book_name)
+
+	if Global.level == 3:
+		if what is PickableCrystal:
+			if what.magic_crystal == true:
+				Events.podium_snapped.emit("magic_crystal")
+			else:
+				what.breakable = true
+				Events.podium_snapped.emit("weak_crystal")

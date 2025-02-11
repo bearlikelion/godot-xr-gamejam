@@ -4,6 +4,8 @@ extends StaticBody3D
 const MAGIC_BOOK = preload("res://Scenes/Game/Books/magic_book.tscn")
 const MAGIC_BOOK_STATIC = preload("res://Scenes/Game/Books/magic_book_static.tscn")
 
+var magic_book = MAGIC_BOOK.instantiate()
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var fail_sound: AudioStreamPlayer3D = $FailSound
@@ -12,22 +14,12 @@ const MAGIC_BOOK_STATIC = preload("res://Scenes/Game/Books/magic_book_static.tsc
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
+	Global.level = 2
+	place_magic_book()
 	animation_player.play("appear")
-	collision_shape_3d.disabled = false
 
 	Events.level_2_completed.connect(_on_level_2_completed)
 	Events.wrong_book.connect(_on_wrong_book)
-	# Events.start_game.connect(_on_start_game)
-
-	Global.level = 2
-	place_magic_book()
-
-
-func _on_start_game() -> void:
-	place_magic_book() # Generate runes
-	show()
-	collision_shape_3d.disabled = false
-	animation_player.play("appear")
 
 
 func place_magic_book() -> void:
@@ -36,7 +28,7 @@ func place_magic_book() -> void:
 		book_positions.shuffle()
 
 	var magic_book_pos: Marker3D = book_positions.pop_front()
-	magic_book_pos.add_child(MAGIC_BOOK.instantiate())
+	magic_book_pos.add_child(magic_book)
 	Events.place_on_pedistal.emit(MAGIC_BOOK_STATIC.resource_path)
 
 	for book in get_tree().get_nodes_in_group("book"):
@@ -50,6 +42,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_audio_stream_player_3d_finished() -> void:
+	magic_book.queue_free()
 	animation_player.play("fade")
 
 
