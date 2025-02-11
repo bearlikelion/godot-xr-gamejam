@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
 
-[ext_resource type="Script" uid="uid://cvxge68eskfdi" path="res://addons/godot-xr-tools/staging/scene_base.gd" id="1_cid5o"]
+[ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="5_kn4b3"]
@@ -14,9 +14,7 @@
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="13_cid5o"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
 [ext_resource type="PackedScene" uid="uid://dkhx0yihd1d4d" path="res://Scenes/Game/Podium/podium.tscn" id="17_cid5o"]
-[ext_resource type="PackedScene" uid="uid://bjifh3r7yrwku" path="res://Scenes/Levels/level_2.tscn" id="17_p3bnw"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
-[ext_resource type="PackedScene" uid="uid://8wpuh0rmhc5j" path="res://Scenes/Levels/level_4.tscn" id="18_p3bnw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -86,7 +84,7 @@ _data = {
 }
 
 [node name="GameScene" type="Node3D"]
-script = ExtResource("1_cid5o")
+script = ExtResource("1_kn4b3")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -182,15 +180,6 @@ libraries = {
 
 [node name="Level1" parent="." instance=ExtResource("15_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -8, 0)
-visible = false
-
-[node name="Level2" parent="." instance=ExtResource("17_p3bnw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75, 0, 0)
-
-[node name="Level3" parent="." instance=ExtResource("18_p3bnw")]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.75, -7, 0.5)
-visible = false
-script = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")

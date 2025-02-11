@@ -6,19 +6,26 @@ const MAGIC_BOOK = preload("res://Scenes/Game/Books/magic_book.tscn")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var fail_sound: AudioStreamPlayer3D = $FailSound
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
-	Events.level_2_load.connect(_on_level_2_load)
+	show()
+	animation_player.play("appear")
+	collision_shape_3d.disabled = false
+
 	Events.level_2_completed.connect(_on_level_2_completed)
 	Events.wrong_book.connect(_on_wrong_book)
 	# Events.start_game.connect(_on_start_game)
+
+	Global.level = 2
+	place_magic_book()
 
 
 func _on_start_game() -> void:
 	place_magic_book() # Generate runes
 	show()
+	collision_shape_3d.disabled = false
 	animation_player.play("appear")
 
 
@@ -29,13 +36,6 @@ func place_magic_book() -> void:
 
 	for book in get_tree().get_nodes_in_group("book"):
 		book.freeze = false
-
-
-func _on_level_2_load() -> void:
-	Global.level = 2
-	place_magic_book()
-	show()
-	animation_player.play("appear")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

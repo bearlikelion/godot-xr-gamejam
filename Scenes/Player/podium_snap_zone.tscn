@@ -6,12 +6,12 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_byxf7"]
 resource_local_to_scene = true
-radius = 0.1
+radius = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcuek"]
 transparency = 1
 cull_mode = 1
-albedo_color = Color(0.784314, 0.784314, 0.784314, 0.392157)
+albedo_color = Color(0.784314, 0.784314, 0.784314, 0.294118)
 
 [sub_resource type="SphereMesh" id="SphereMesh_vvg7m"]
 material = SubResource("StandardMaterial3D_kcuek")
@@ -22,7 +22,8 @@ rings = 16
 
 [node name="PodiumSnapZone" instance=ExtResource("1_rsksq")]
 stash_sound = ExtResource("2_d8m0w")
-grab_distance = 0.1
+grab_distance = 0.2
+snap_mode = 1
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_byxf7")

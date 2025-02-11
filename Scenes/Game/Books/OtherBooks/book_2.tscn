@@ -53,6 +53,8 @@ freeze = true
 freeze_mode = 1
 script = ExtResource("1_o1pil")
 book_name = "Book2"
+ranged_grab_method = 2
+ranged_grab_speed = 10.0
 metadata/_custom_type_script = ExtResource("2_kol7c")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_qwfhi")]

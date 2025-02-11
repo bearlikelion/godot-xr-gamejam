@@ -4,12 +4,16 @@ extends StaticBody3D
 const RUNE_ICONS = preload("res://Resources/Level1/rune_icons.tres")
 const PICKABLE_RUNES = preload("res://Resources/Level1/pickable_runes.tres")
 
+var match_rune: PickableRune
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
+	collision_shape_3d.disabled = true
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 
@@ -17,6 +21,7 @@ func _ready() -> void:
 func _on_start_game() -> void:
 	generate_runes() # Generate runes
 	show()
+	collision_shape_3d.disabled = false
 	animation_player.play("appear")
 
 
@@ -38,7 +43,8 @@ func generate_runes() -> void:
 			print("Match rune: %s" % pickable_rune.resource_path.get_file())
 			var first_position: Marker3D = rune_positions.front()
 			var first_rune: PackedScene = load(pickable_rune.resource_path)
-			first_position.add_child(first_rune.instantiate())
+			match_rune = first_rune.instantiate()
+			first_position.add_child(match_rune)
 			pickable_runes.erase(pickable_rune) # Only one correct rune
 
 	# Fill the room with random runes
@@ -56,7 +62,9 @@ func _on_level_1_completed() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
+		match_rune.queue_free()
 		Events.level_2_load.emit()
+		collision_shape_3d.disabled = true
 		hide()
 
 

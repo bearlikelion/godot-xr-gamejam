@@ -3,6 +3,7 @@ extends Node3D
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var icon_marker: Marker3D = $IconMarker
+@onready var podium_snap_zone: Area3D = $PodiumSnapZone
 
 
 func _ready() -> void:
@@ -38,6 +39,8 @@ func _on_level_1_completed() -> void:
 	if icon_marker.get_children().size() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
+
+	# podium_snap_zone.drop_object()
 
 
 func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
