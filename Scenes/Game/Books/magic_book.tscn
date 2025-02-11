@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqsmofomcp88e"]
+
+[ext_resource type="Script" uid="uid://cxsnariltmnp0" path="res://Scenes/Game/Books/magic_book.gd" id="1_y2hv6"]
+[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_kv0k6"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_72o6d"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_xsejr"]
+[ext_resource type="ArrayMesh" uid="uid://c7ucgtwg6m2c4" path="res://Assets/Models/Books/Mesh/books_Plane_009.res" id="5_y2hv6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y2hv6"]
+points = PackedVector3Array(-0.215488, -0.399764, 0.000197098, -0.201268, -0.399764, -0.052974, -0.201268, -0.399764, 0.0533493, -0.215488, 0.398319, 0.000197098, -0.165035, -0.399764, -0.0885218, -0.201268, 0.398319, -0.052974, -0.163872, -0.399764, 0.0885018, -0.201268, 0.398319, 0.0533493, -0.150541, -0.399764, -0.0961284, -0.165035, 0.398319, -0.0885218, -0.150473, -0.399764, 0.0962025, -0.150473, 0.398319, 0.0962214, -0.163872, 0.398319, 0.0885018, 0.48279, -0.399764, -0.0961284, -0.150541, 0.398319, -0.0961284, 0.482859, -0.399764, 0.0962025, 0.482859, 0.398319, 0.0962025, 0.482859, -0.399764, 0.0781085, 0.48279, 0.398319, -0.0961284, 0.482859, 0.398241, 0.0781085)
+
+[sub_resource type="Animation" id="Animation_pkvfb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tqk3w"]
+resource_name = "bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e73e3"]
+_data = {
+&"RESET": SubResource("Animation_pkvfb"),
+&"bob": SubResource("Animation_tqk3w")
+}
+
+[node name="MagicBook" type="RigidBody3D" groups=["book"]]
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_y2hv6")
+book_name = "magic_book"
+metadata/_custom_type_script = ExtResource("2_kv0k6")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_72o6d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223218, 0, 0)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_xsejr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496167, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = ExtResource("5_y2hv6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_y2hv6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e73e3")
+}
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]

@@ -1,3 +1,4 @@
+class_name Level1
 extends StaticBody3D
 
 const RUNE_ICONS = preload("res://Resources/Level1/rune_icons.tres")
@@ -9,13 +10,12 @@ const PICKABLE_RUNES = preload("res://Resources/Level1/pickable_runes.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
-	generate_runes()
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 
 
 func _on_start_game() -> void:
-	generate_runes() # Regenerate runes
+	generate_runes() # Generate runes
 	show()
 	animation_player.play("appear")
 
@@ -36,7 +36,7 @@ func generate_runes() -> void:
 		if pickable_rune.resource_path.get_file().replace("rune_", "") == \
 		rune_to_match.resource_path.get_file().replace("icon_", ""):
 			print("Match rune: %s" % pickable_rune.resource_path.get_file())
-			var first_position: Marker3D = rune_positions.pop_front()
+			var first_position: Marker3D = rune_positions.front()
 			var first_rune: PackedScene = load(pickable_rune.resource_path)
 			first_position.add_child(first_rune.instantiate())
 			pickable_runes.erase(pickable_rune) # Only one correct rune
@@ -44,14 +44,9 @@ func generate_runes() -> void:
 	# Fill the room with random runes
 	for rune_position: Marker3D in rune_positions:
 		pickable_runes.shuffle()
-		if rune_position.get_children().size() > 0:
-			for child_rune: Node3D in rune_position.get_children():
-				child_rune.queue_free()
-
-		await get_tree().process_frame
-
 		var _rune: PackedScene = load(pickable_runes.front().resource_path)
-		if rune_position.get_children().size() == 0:
+		if rune_position.get_child_count() == 0:
+			print("Place Rune")
 			rune_position.add_child(_rune.instantiate())
 
 

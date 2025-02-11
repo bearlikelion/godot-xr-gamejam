@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d2g8gqa1b10cd"]
+
+[ext_resource type="Texture2D" uid="uid://b58i0nklpyv10" path="res://Assets/Models/House/Fantasy_House_wood_fine_2.png" id="1_icprf"]
+
+[resource]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.739994, 0.539435, 0.342256, 1)
+albedo_texture = ExtResource("1_icprf")
+roughness = 0.5

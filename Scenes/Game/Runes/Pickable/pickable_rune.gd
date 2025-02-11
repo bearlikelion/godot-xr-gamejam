@@ -1,4 +1,5 @@
 @tool
+class_name PickableRune
 extends XRToolsPickable
 
 @export var rune_name: String

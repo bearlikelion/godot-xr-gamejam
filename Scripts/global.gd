@@ -8,7 +8,7 @@ var rune_to_match: String = ""
 
 func _ready() -> void:
 	Events.new_rune_to_match.connect(_on_new_rune_to_match)
-	Events.rune_snapped.connect(_on_rune_snapped)
+	Events.podium_snapped.connect(_on_podium_snapped)
 
 
 func _on_new_rune_to_match(icon_scene: String) -> void:
@@ -19,7 +19,14 @@ func _on_new_rune_to_match(icon_scene: String) -> void:
 	print("Global rune to match: %s" % rune_to_match)
 
 
-func _on_rune_snapped(rune_name: String) -> void:
-	if rune_name == rune_to_match and level == 1:
+func _on_podium_snapped(object_name: String) -> void:
+	if object_name == rune_to_match and level == 1:
 		print("Level 1 complete")
 		Events.level_1_completed.emit()
+
+	if level == 2:
+		if object_name == "magic_book":
+			print("Level 2 complete")
+			Events.level_2_completed.emit()
+		else:
+			Events.wrong_book.emit()
