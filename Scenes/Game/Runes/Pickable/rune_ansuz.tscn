@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bswnf2fq44m0r"]
+[gd_scene load_steps=13 format=3 uid="uid://bswnf2fq44m0r"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/pickable_rune.gd" id="1_la12e"]
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_thk6f"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_la12e"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_i473c"]
 [ext_resource type="ArrayMesh" uid="uid://cj1d0dco5xgpv" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Ansuz.res" id="4_su3g5"]
+[ext_resource type="Script" path="res://Scripts/highlight_overlay.gd" id="6_su3g5"]
+[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_fnmig"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_thk6f"]
 points = PackedVector3Array(0.279806, -0.106601, -0.0267913, -0.243791, -0.0496259, 0.0301125, 0.0635195, 0.337291, 0.0301125, 0.0862756, -0.334216, 0.041504, -0.107101, -0.379782, -0.0267913, -0.107101, 0.314473, -0.0267913, 0.268376, 0.109605, 0.0301125, 0.165922, 0.257569, -0.0267913, -0.141286, 0.291725, 0.0301125, -0.17542, -0.322878, 0.0301125, -0.243791, 0.109605, -0.0267913, 0.0976537, -0.368373, -0.0267913, 0.279806, -0.140758, 0.0301125, -0.186798, -0.300131, -0.0267913, -0.0729663, -0.391191, 0.0301125, -0.0843444, -0.254565, 0.041504, 0.268376, 0.109605, -0.0267913, -0.232362, 0.132352, 0.0301125, 0.0748975, 0.337291, -0.0267913, 0.0976537, -0.368373, 0.0301125, 0.0066803, -0.129277, 0.041504, 0.234242, -0.220409, -0.0267913, 0.154595, 0.268978, 0.0301125, 0.0293852, -0.391191, -0.0267913, -0.220984, -0.163505, -0.0267913, 0.131788, -0.277312, 0.041504, 0.1773, -0.288722, 0.0301125, -0.0615882, 0.325882, 0.0301125, -0.164042, 0.257569, -0.0267913, 0.24562, 0.155171, 0.0301125, -0.0615882, -0.322878, 0.041504, -0.00469778, 0.337291, -0.0267913)
@@ -46,6 +48,14 @@ _data = {
 &"bob": SubResource("Animation_tqk3w")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhm6t"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0.493889, 0.976547, 1, 1)
+grow = true
+grow_amount = 0.03
+
 [node name="RunesAnsuz" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 196615
@@ -74,5 +84,11 @@ shape = SubResource("ConvexPolygonShape3D_thk6f")
 libraries = {
 &"": SubResource("AnimationLibrary_e73e3")
 }
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("6_su3g5")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_yhm6t")
+metadata/_custom_type_script = ExtResource("7_fnmig")
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
