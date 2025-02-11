@@ -13,15 +13,13 @@ var match_rune: PickableRune
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
-	collision_shape_3d.disabled = true
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 
 
 func _on_start_game() -> void:
-	generate_runes() # Generate runes
 	show()
-	collision_shape_3d.disabled = false
+	generate_runes() # Generate runes
 	animation_player.play("appear")
 
 
