@@ -96,6 +96,7 @@ top_level = true
 collision_layer = 524288
 collision_mask = 1023
 script = ExtResource("6_jxx51")
+push_rigid_bodies = false
 
 [node name="BeltSnapZone" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.25)
