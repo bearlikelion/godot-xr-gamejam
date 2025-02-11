@@ -16,10 +16,11 @@ func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
 
 
-func _on_body_entered(_body: Node) -> void:
+func _on_body_entered(body: Node) -> void:
 	if breakable:
 		hide()
-		break_sound.play()
+		if not break_sound.playing:
+			break_sound.play()
 
 
 func _on_break_sound_finished() -> void:
