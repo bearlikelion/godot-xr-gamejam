@@ -46,7 +46,7 @@ func _on_level_1_completed() -> void:
 func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
 	print("Snapped to podium: %s" % what)
 	if Global.level == 1:
-		if what is PickableRune:
+		if what is BaseRune:
 			Events.podium_snapped.emit(what.rune_name)
 
 	if Global.level == 2:

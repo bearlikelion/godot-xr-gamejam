@@ -1,18 +1,15 @@
 class_name Level1
 extends StaticBody3D
 
-const RUNE_ICONS = preload("res://Resources/Level1/rune_icons.tres")
-const PICKABLE_RUNES = preload("res://Resources/Level1/pickable_runes.tres")
-
-var match_rune: PickableRune
+var match_rune: BaseRune
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@export var rune_config: RuneConfig
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 
@@ -24,34 +21,38 @@ func _on_start_game() -> void:
 
 
 func generate_runes() -> void:
-	# Place a random rune on the podium
-	var runic_icons: Array = RUNE_ICONS.duplicate().rune_icons
-	runic_icons.shuffle()
-	var rune_to_match: Resource = runic_icons.pop_front()
-	Events.place_on_pedistal.emit(rune_to_match.resource_path)
+	# Wait for rune resources to be loaded if needed
+	if not rune_config.runes:
+		await rune_config.rune_resources_loaded
 
-	var pickable_runes: Array = PICKABLE_RUNES.duplicate().pickable_runes
+	# Get all available rune names
+	var rune_names = rune_config.runes.keys()
+	rune_names.shuffle()
+
+	# Select a random rune to match
+	var rune_to_match_name = rune_names[0]
+	var rune_to_match = rune_config.runes[rune_to_match_name]
+	Events.place_on_pedistal.emit(rune_to_match.mesh)
+
+	# Get all rune positions and shuffle them
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
 	rune_positions.shuffle()
 
-	# Place one match rune at a random position
-	for pickable_rune: Resource in pickable_runes:
-		if pickable_rune.resource_path.get_file().replace("rune_", "") == \
-		rune_to_match.resource_path.get_file().replace("icon_", ""):
-			print("Match rune: %s" % pickable_rune.resource_path.get_file())
-			var first_position: Marker3D = rune_positions.front()
-			var first_rune: PackedScene = load(pickable_rune.resource_path)
-			match_rune = first_rune.instantiate()
-			first_position.add_child(match_rune)
-			pickable_runes.erase(pickable_rune) # Only one correct rune
+	# Place the matching rune at the first position
+	var first_position: Marker3D = rune_positions.front()
+	match_rune = BaseRune.new()
+	match_rune.rune_mesh = rune_to_match.mesh
+	first_position.add_child(match_rune)
+	rune_names.erase(rune_to_match_name)
 
-	# Fill the room with random runes
-	for rune_position: Marker3D in rune_positions:
-		pickable_runes.shuffle()
-		var _rune: PackedScene = load(pickable_runes.front().resource_path)
-		if rune_position.get_child_count() == 0:
-			print("Place Rune")
-			rune_position.add_child(_rune.instantiate())
+	# Fill remaining positions with random runes
+	for rune_position: Marker3D in rune_positions.slice(1):
+		rune_names.shuffle()
+		var random_rune_name = rune_names[0]
+		var random_rune = rune_config.runes[random_rune_name]
+		var pickable_rune = BaseRune.new()
+		pickable_rune.rune_mesh = random_rune.mesh
+		rune_position.add_child(pickable_rune)
 
 
 func _on_level_1_completed() -> void:

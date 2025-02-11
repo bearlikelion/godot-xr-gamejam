@@ -13,8 +13,8 @@ class RuneResources:
 	var mesh: ArrayMesh
 	var icon: ArrayMesh
 
-	func _init(rune_name: String, mesh_res: Resource, icon_res: Resource) -> void:
-		rune_name = rune_name
+	func _init(in_rune_name: String, mesh_res: Resource, icon_res: Resource) -> void:
+		rune_name = in_rune_name
 		mesh = mesh_res
 		icon = icon_res
 
@@ -22,15 +22,13 @@ class RuneResources:
 var runes: Dictionary[String, RuneResources] = {}
 
 ## Emitted when resources are loaded successfully
-signal resources_loaded
-## Emitted when there's an error loading resources
-signal load_error(error_message: String)
+signal rune_resources_loaded
 
 
 func _ready() -> void:
 	var load_success: bool = _load_resources()
 	if load_success:
-		resources_loaded.emit()
+		rune_resources_loaded.emit()
 
 ## Loads all rune resources into memory
 func _load_resources() -> bool:
@@ -54,7 +52,7 @@ func _load_resources() -> bool:
 	)
 
 	# Only keep runes that have both mesh and icon
-	for rune_name in mesh_resources:
+	for rune_name: String in mesh_resources:
 		if icon_resources.has(rune_name):
 			runes[rune_name] = RuneResources.new(
 				rune_name,
