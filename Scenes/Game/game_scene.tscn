@@ -87,7 +87,7 @@ process_physics_priority = -100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 top_level = true
 collision_layer = 524288
-collision_mask = 1023
+collision_mask = 1019
 script = ExtResource("6_jxx51")
 push_rigid_bodies = false
 
