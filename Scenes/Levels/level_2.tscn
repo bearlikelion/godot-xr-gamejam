@@ -1376,13 +1376,13 @@ transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 0)
 
 [node name="BookPos" type="Marker3D" parent="Books"]
-transform = Transform3D(1.13133e-08, 1, 4.2222e-08, -5.96046e-08, -4.2222e-08, 1, 1, -1.13133e-08, -2.98023e-08, -19, -7.75, 8.25)
+transform = Transform3D(-0.866025, 0.5, 4.69205e-08, -5.96046e-08, -4.2222e-08, 1, 0.5, 0.866025, 2.16642e-08, -19, -7.75, 7.75)
 
 [node name="BookPos1" type="Marker3D" parent="Books"]
-transform = Transform3D(-0.722153, -0.69156, -0.0154489, -0.000321238, 0.0226687, -0.999743, 0.691733, -0.721962, -0.0165925, -23.5, -8.25, 5.75)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 0.999999, 0, 0.707107, 0, -0.707107, -23.5, -8, 5.75)
 
 [node name="BookPos2" type="Marker3D" parent="Books"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16.25, -6.25, 6)
+transform = Transform3D(0.707107, -0.707107, 2.18557e-08, 0, -3.09086e-08, -1, 0.707107, 0.707107, -2.18557e-08, -16.25, -6.25, 6)
 
 [node name="BookPos3" type="Marker3D" parent="Books"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -23.75, -9.5, -6)
