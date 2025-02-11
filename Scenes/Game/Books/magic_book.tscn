@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqsmofomcp88e"]
+[gd_scene load_steps=12 format=3 uid="uid://bqsmofomcp88e"]
 
 [ext_resource type="Script" uid="uid://cxsnariltmnp0" path="res://Scenes/Game/Books/magic_book.gd" id="1_y2hv6"]
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_kv0k6"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_72o6d"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_xsejr"]
 [ext_resource type="ArrayMesh" uid="uid://c7ucgtwg6m2c4" path="res://Assets/Models/Books/Mesh/books_Plane_009.res" id="5_y2hv6"]
+[ext_resource type="Script" path="res://Scripts/highlight_overlay.gd" id="6_mnl23"]
+[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_eo33r"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y2hv6"]
 points = PackedVector3Array(-0.215488, -0.399764, 0.000197098, -0.201268, -0.399764, -0.052974, -0.201268, -0.399764, 0.0533493, -0.215488, 0.398319, 0.000197098, -0.165035, -0.399764, -0.0885218, -0.201268, 0.398319, -0.052974, -0.163872, -0.399764, 0.0885018, -0.201268, 0.398319, 0.0533493, -0.150541, -0.399764, -0.0961284, -0.165035, 0.398319, -0.0885218, -0.150473, -0.399764, 0.0962025, -0.150473, 0.398319, 0.0962214, -0.163872, 0.398319, 0.0885018, 0.48279, -0.399764, -0.0961284, -0.150541, 0.398319, -0.0961284, 0.482859, -0.399764, 0.0962025, 0.482859, 0.398319, 0.0962025, 0.482859, -0.399764, 0.0781085, 0.48279, 0.398319, -0.0961284, 0.482859, 0.398241, 0.0781085)
@@ -16,6 +18,13 @@ length = 0.001
 _data = {
 &"RESET": SubResource("Animation_pkvfb")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b467w"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.03
 
 [node name="MagicBook" type="RigidBody3D" groups=["book"]]
 collision_layer = 4
@@ -31,19 +40,25 @@ metadata/_custom_type_script = ExtResource("2_kv0k6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223218, 0, 0)
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_xsejr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496167, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199234, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132148, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0756136, 0, 0)
 mesh = ExtResource("5_y2hv6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.132148, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0756136, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_y2hv6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_e73e3")
 }
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("6_mnl23")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_b467w")
+metadata/_custom_type_script = ExtResource("7_eo33r")
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]

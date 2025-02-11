@@ -4,7 +4,6 @@ extends StaticBody3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
-@onready var fail_sound: AudioStreamPlayer3D = $FailSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
