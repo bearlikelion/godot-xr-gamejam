@@ -1373,6 +1373,24 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.25,
 [node name="Book10" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
 transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -11.5, 2, -5.75)
 
+[node name="Book11" parent="Fantasy_House" instance=ExtResource("12_yxf76")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.25, 1.25, -6.25)
+
+[node name="Book12" parent="Fantasy_House" instance=ExtResource("11_t27xo")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.75, 2.75, -5.75)
+
+[node name="Book13" parent="Fantasy_House" instance=ExtResource("10_eopvx")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.5, 2.75, -6)
+
+[node name="Book14" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -12, 1.25, -5.5)
+
+[node name="Book15" parent="Fantasy_House" instance=ExtResource("14_5buja")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -11.5, 0.5, 5.75)
+
+[node name="chest02" parent="Fantasy_House" instance=ExtResource("23_jip10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 0, 8)
+
 [node name="Books" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 0)
 
@@ -1404,9 +1422,6 @@ stream = ExtResource("15_t27xo")
 [node name="FailSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18198, 2.5951, 0)
 stream = ExtResource("16_ia1lp")
-
-[node name="chest02" parent="." instance=ExtResource("23_jip10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 0, 8)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

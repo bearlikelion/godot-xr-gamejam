@@ -67,19 +67,17 @@ ranged_grab_speed = 10.0
 metadata/_custom_type_script = ExtResource("2_n8ys1")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_pfape")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223218, 0, 0)
-visible = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145284, 0, 0)
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_gm4ai")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.202219, 0, 0)
-visible = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281847, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, 0, 0, 0)
 mesh = ExtResource("5_1ygh7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, -0.0745459, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, -0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_y2hv6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

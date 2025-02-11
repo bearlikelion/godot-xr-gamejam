@@ -38,6 +38,16 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://c8n5lisyakn70"
 }
+},
+"meshes": {
+"crystal_Cylinder_016": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://Assets/Models/Cave/Mesh/crystal_Cylinder_016.res"
+}
 }
 }
 gltf/naming_version=1
