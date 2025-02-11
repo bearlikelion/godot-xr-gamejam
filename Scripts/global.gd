@@ -34,6 +34,6 @@ func _on_podium_snapped(object_name: String) -> void:
 	if level == 3:
 		if object_name == "magic_crystal":
 			print("Level 3 Completed")
-			Events.Level_3_completed.emit()
+			Events.level_3_completed.emit()
 		else:
 			Events.wrong_crystal.emit()

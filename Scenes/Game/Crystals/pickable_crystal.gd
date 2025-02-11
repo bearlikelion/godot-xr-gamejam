@@ -1,3 +1,4 @@
+@tool
 class_name PickableCrystal
 extends XRToolsPickable
 
@@ -11,11 +12,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_dropped(pickable: Variant) -> void:
+func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	if breakable:
 		hide()
 		break_sound.play()
