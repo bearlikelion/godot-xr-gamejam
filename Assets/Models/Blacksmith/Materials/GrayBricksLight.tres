@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ma1at88kf5ed"]
+
+[ext_resource type="Texture2D" uid="uid://biki1ahelavei" path="res://Assets/Models/Blacksmith/blacksmith_GreyBricksLight.jpg" id="1_85e4b"]
+
+[resource]
+resource_name = "GrayBricksLight"
+albedo_texture = ExtResource("1_85e4b")
+roughness = 0.5

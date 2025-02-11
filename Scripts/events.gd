@@ -19,3 +19,6 @@ signal wrong_book
 signal level_3_load
 signal level_3_completed
 signal wrong_crystal
+
+signal level_4_load
+signal level_4_complete

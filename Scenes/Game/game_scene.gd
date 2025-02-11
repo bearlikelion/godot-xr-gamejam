@@ -16,6 +16,7 @@ const LEVEL_4 = preload("res://Scenes/Levels/level_4.tscn")
 func _ready() -> void:
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
+	Events.level_4_load.connect(_on_level_4_load)
 
 
 func _on_level_2_load() -> void:
@@ -26,3 +27,8 @@ func _on_level_2_load() -> void:
 func _on_level_3_load() -> void:
 	remove_child(level_2)
 	add_child(level_3)
+
+
+func _on_level_4_load() -> void:
+	remove_child(level_3)
+	add_child(level_4)

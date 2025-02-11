@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dfdt63r7wxynb"]
+
+[ext_resource type="Texture2D" uid="uid://6ga07fobhgjx" path="res://Assets/Models/Blacksmith/blacksmith_WroughtIronHot.jpg" id="1_yebt0"]
+
+[resource]
+resource_name = "HotIron"
+cull_mode = 2
+albedo_texture = ExtResource("1_yebt0")
+roughness = 0.5

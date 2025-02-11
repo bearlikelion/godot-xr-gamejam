@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d2v8xptyocmv5"]
+
+[ext_resource type="Texture2D" uid="uid://de1v0j7es0ska" path="res://Assets/Models/Blacksmith/blacksmith_LeatherBrown.jpg" id="1_c5v6e"]
+
+[resource]
+resource_name = "LeatherBrown"
+cull_mode = 2
+albedo_texture = ExtResource("1_c5v6e")
+roughness = 0.5
