@@ -3,7 +3,7 @@ class_name PickableRune
 extends XRToolsPickable
 
 @export var rune_name: String
-
+@export var rune_mesh: Resource
 
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
