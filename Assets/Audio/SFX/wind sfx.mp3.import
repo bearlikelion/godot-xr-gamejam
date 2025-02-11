@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlnauc3desbf8"
+path="res://.godot/imported/wind sfx.mp3-be2d89a1dc9803682fe4307e54a102bd.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/wind sfx.mp3"
+dest_files=["res://.godot/imported/wind sfx.mp3-be2d89a1dc9803682fe4307e54a102bd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
