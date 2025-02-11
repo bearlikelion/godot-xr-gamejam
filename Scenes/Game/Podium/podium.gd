@@ -27,9 +27,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_place_on_pedistal(scene_string: String) -> void:
 	var _item: Node3D = load(scene_string).instantiate()
 
-	if icon_marker.get_children().size() > 0:
+	if icon_marker.get_child_count() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
+
 
 	icon_marker.add_child(_item)
 

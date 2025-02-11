@@ -13,6 +13,7 @@ const LEVEL_3 = preload("res://Scenes/Levels/level_3.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.level_2_load.connect(_on_level_2_load)
+	Events.level_3_load.connect(_on_level_3_load)
 
 
 func _on_level_2_load() -> void:
