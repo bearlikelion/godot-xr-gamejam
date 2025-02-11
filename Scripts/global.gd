@@ -7,11 +7,11 @@ var rune_to_match: String = ""
 
 
 func _ready() -> void:
-	Events.new_rune_to_match.connect(_on_new_rune_to_match)
+	Events.place_on_pedistal.connect(_on_place_on_pedistal)
 	Events.podium_snapped.connect(_on_podium_snapped)
 
 
-func _on_new_rune_to_match(icon_scene: String) -> void:
+func _on_place_on_pedistal(icon_scene: String) -> void:
 	rune_to_match = icon_scene.get_file().replace("icon_", "")\
 	.replace("rune_", "")\
 	.replace(".tscn", "")

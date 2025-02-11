@@ -33,6 +33,7 @@ func place_magic_book() -> void:
 	var book_positions: Array[Node] = get_node("Books").get_children()
 	var magic_book_pos: Marker3D = book_positions.pop_front()
 	magic_book_pos.add_child(MAGIC_BOOK.instantiate())
+	Events.place_on_pedistal.emit(MAGIC_BOOK.resource_path)
 
 	for book in get_tree().get_nodes_in_group("book"):
 		book.freeze = false

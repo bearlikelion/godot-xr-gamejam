@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=15 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -9,11 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="8_3hq7a"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
-[ext_resource type="PackedScene" uid="uid://d0jltq36ybsle" path="res://Scenes/Game/Podium/waypoint.tscn" id="10_jevh0"]
-[ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="13_3hq7a"]
-[ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="13_cid5o"]
+[ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
-[ext_resource type="PackedScene" uid="uid://dkhx0yihd1d4d" path="res://Scenes/Game/Podium/podium.tscn" id="17_cid5o"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
@@ -21,67 +18,6 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cid5o"]
 albedo_color = Color(0, 0.996078, 0.996078, 1)
-
-[sub_resource type="Animation" id="Animation_p3bnw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:outline_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yi1st"]
-resource_name = "fade"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:outline_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_18sgl"]
-_data = {
-&"RESET": SubResource("Animation_p3bnw"),
-&"fade": SubResource("Animation_yi1st")
-}
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
@@ -158,28 +94,11 @@ push_rigid_bodies = false
 [node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Base" type="Node3D" parent="."]
-
-[node name="waypoint" parent="Base" instance=ExtResource("10_jevh0")]
-
-[node name="podium_holder" type="Node3D" parent="Base"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.75, 0.25, 0)
-
-[node name="podium" parent="Base/podium_holder" instance=ExtResource("17_cid5o")]
-
-[node name="Instructions" type="Label3D" parent="Base"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1.5, 0)
-text = "Touch Podium to Begin"
-font = ExtResource("13_cid5o")
-script = ExtResource("13_3hq7a")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Base/Instructions"]
-libraries = {
-&"": SubResource("AnimationLibrary_18sgl")
-}
+[node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 
 [node name="Level1" parent="." instance=ExtResource("15_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -8, 0)
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")

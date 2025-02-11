@@ -2,7 +2,7 @@ extends Node
 
 signal podium_rose
 signal start_game
-signal new_rune_to_match(icon_scene: String)
+signal place_on_pedistal(scene_string: String)
 signal podium_snapped(object_name: String)
 signal level_1_completed
 

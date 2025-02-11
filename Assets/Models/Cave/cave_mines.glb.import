@@ -1,0 +1,72 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://j0qg71l7k013"
+path="res://.godot/imported/cave_mines.glb-8f2efe2e93fb8164a5dfaa0f6faf2a94.scn"
+
+[deps]
+
+source_file="res://Assets/Models/Cave/cave_mines.glb"
+dest_files=["res://.godot/imported/cave_mines.glb-8f2efe2e93fb8164a5dfaa0f6faf2a94.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"crystal": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/crystal.tres"
+},
+"light_001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/light_001.tres"
+},
+"metal_004": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/metal_004.tres"
+},
+"rock": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/rock.tres"
+},
+"rock_001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/rock_001.tres"
+},
+"stalags_001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/stalags_001.tres"
+},
+"wood": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/wood.tres"
+},
+"wood_005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Cave/Materials/wood_005.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

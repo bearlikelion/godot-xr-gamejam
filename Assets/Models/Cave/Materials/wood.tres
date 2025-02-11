@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://f8nx8kyj3t86"]
+
+[ext_resource type="Texture2D" uid="uid://cdln3uei7k1ji" path="res://Assets/Models/Blacksmith/medievalblacksmith_WoodPlanksOld.jpg" id="1_7s0sq"]
+
+[resource]
+resource_name = "wood"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.692305, 0.362198, 1)
+albedo_texture = ExtResource("1_7s0sq")
+roughness = 0.5

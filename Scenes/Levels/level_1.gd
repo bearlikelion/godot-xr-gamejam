@@ -30,7 +30,7 @@ func generate_runes() -> void:
 	var runic_icons: Array = RUNE_ICONS.duplicate().rune_icons
 	runic_icons.shuffle()
 	var rune_to_match: Resource = runic_icons.pop_front()
-	Events.new_rune_to_match.emit(rune_to_match.resource_path)
+	Events.place_on_pedistal.emit(rune_to_match.resource_path)
 
 	var pickable_runes: Array = PICKABLE_RUNES.duplicate().pickable_runes
 	var rune_positions: Array[Node] = get_node("Runes").get_children()

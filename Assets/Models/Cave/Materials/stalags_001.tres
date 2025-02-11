@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://broe3507wvu42"]
+
+[resource]
+resource_name = "stalags_001"
+cull_mode = 2
+albedo_color = Color(0.0235066, 0.122338, 0.0484788, 1)
+roughness = 0.5
