@@ -100,19 +100,15 @@ push_rigid_bodies = false
 
 [node name="BeltSnapZone" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.25)
-visible = false
 
 [node name="BeltSnapZone2" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
-visible = false
 
 [node name="BeltSnapZone3" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, -0.125)
-visible = false
 
 [node name="BeltSnapZone4" parent="XROrigin3D/PlayerBody" instance=ExtResource("7_fqdje")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0.125)
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

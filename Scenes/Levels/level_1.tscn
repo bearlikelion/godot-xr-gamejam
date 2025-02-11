@@ -455,6 +455,7 @@ mesh = ExtResource("2_iixi8")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
 shape = SubResource("ConcavePolygonShape3D_cid5o")
 
 [node name="Runes" type="Node3D" parent="."]
@@ -467,7 +468,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 5, 0, -5)
 
 [node name="RunePos3" type="Marker3D" parent="Runes"]
-transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 0, 4.75)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 5, 0, 4.75)
 
 [node name="RunePos4" type="Marker3D" parent="Runes"]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 0, 0, 4.75)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://bjifh3r7yrwku"]
+[gd_scene load_steps=105 format=4 uid="uid://bjifh3r7yrwku"]
 
 [ext_resource type="Script" uid="uid://bogiyld65p6ks" path="res://Scenes/Levels/level_1.gd" id="1_oylv5"]
 [ext_resource type="Texture2D" uid="uid://dpdxggc152or4" path="res://Assets/Models/House/Fantasy_House_brick_small_red_2.png.png" id="2_blpqv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ci7y0tvu4v6ta" path="res://Assets/Models/House/Fantasy_House_brick_large_gray.png" id="5_0x4y1"]
 [ext_resource type="Texture2D" uid="uid://3ajonfyka3c8" path="res://Assets/Models/House/Fantasy_House_brick_rustic_brown.png" id="6_uqiic"]
 [ext_resource type="Texture2D" uid="uid://55w8jfgndasq" path="res://Assets/Models/House/Fantasy_House_wood_plywood_green.png" id="7_eopvx"]
+[ext_resource type="PackedScene" uid="uid://dw3rpf24x7ewd" path="res://Assets/Models/Bookshelf/bookshelf.glb" id="10_0x4y1"]
 [ext_resource type="Texture2D" uid="uid://fh5tl3hidud6" path="res://Assets/Images/fire1_64.png" id="10_u40f0"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1jlnc"]
@@ -1145,6 +1146,7 @@ script = ExtResource("1_oylv5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, -0.08, 2.26494e-07, 0, -1.20797e-08, -1.5, -13, 1.4, -4.5)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_1jlnc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1189,6 +1191,12 @@ sprite_frames = SubResource("SpriteFrames_k5w7j")
 animation = &"falame"
 autoplay = "falame"
 frame_progress = 0.0726415
+
+[node name="bookshelf" parent="Fantasy_House" instance=ExtResource("10_0x4y1")]
+transform = Transform3D(-1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, -1.41421, -11.6557, 0.124484, -5.64912)
+
+[node name="bookshelf2" parent="Fantasy_House" instance=ExtResource("10_0x4y1")]
+transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -11.7355, 0.124484, 5.4994)
 
 [node name="Runes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 0)
