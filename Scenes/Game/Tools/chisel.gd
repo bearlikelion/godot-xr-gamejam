@@ -1,3 +1,4 @@
+@tool
 class_name Chisel
 extends XRToolsPickable
 
@@ -9,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
+	print("Chishel hit %s" % body.name)
 	if body is PickableCrystal:
 		if magic_chisel:
 			print("Correct hit!")

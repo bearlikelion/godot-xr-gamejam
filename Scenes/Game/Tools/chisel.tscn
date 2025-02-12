@@ -36,11 +36,9 @@ metadata/_custom_type_script = ExtResource("2_hwaht")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_g7rhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, -0.231555, -0.1)
-visible = true
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_2rswa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, -0.231555, -0.1)
-visible = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -57,6 +55,7 @@ highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = ExtResource("7_knif1")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_mask = 65541
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, 0.154285, 0.000854492)

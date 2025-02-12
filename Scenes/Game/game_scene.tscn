@@ -94,7 +94,7 @@ environment = ExtResource("2_ihfs7")
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("3_7r8ec")]
 
 [node name="Instructions" type="Label3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.63918e-07, 0.25, -1.25)
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.63918e-07, 0, -1.25)
 text = "Touch Podium to Begin"
 font = ExtResource("4_jevh0")
 script = ExtResource("5_3hq7a")

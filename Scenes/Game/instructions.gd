@@ -10,6 +10,7 @@ func _ready() -> void:
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
 	Events.level_4_load.connect(_on_level_4_load)
+	Events.spawn_staff_head.connect(_on_spawn_staff_head)
 
 
 func _on_podium_rose() -> void:
@@ -35,5 +36,11 @@ func _on_level_3_load() -> void:
 
 func _on_level_4_load() -> void:
 	animation_player.play("RESET")
-	text = "Place the crystal on the anvil"
+	text = "Place the crystal\non the anvil"
+	animation_player.play("fade")
+
+
+func _on_spawn_staff_head() -> void:
+	animation_player.play("RESET")
+	text = "Attach the gem\nto a staff"
 	animation_player.play("fade")

@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=4 uid="uid://1ukp4fpxnjxa"]
+[gd_scene load_steps=13 format=4 uid="uid://1ukp4fpxnjxa"]
 
-[ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_ys2ua"]
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_y3fa6"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_n5v0j"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_ldrkx"]
@@ -67,11 +66,7 @@ collision_layer = 4
 collision_mask = 196615
 freeze = true
 freeze_mode = 1
-script = ExtResource("1_ys2ua")
-magic_chisel = true
-ranged_grab_method = 2
-second_hand_grab = 1
-ranged_grab_speed = 10.0
+script = ExtResource("2_y3fa6")
 metadata/_custom_type_script = ExtResource("2_y3fa6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
