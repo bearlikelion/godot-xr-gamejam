@@ -14,6 +14,9 @@ var hits: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.level_3_completed.connect(_on_level_3_completed)
+	if magic_crystal:
+		var material: StandardMaterial3D = mesh_instance_3d.get_surface_override_material(0)
+		material.normal_enabled = false
 
 
 func _on_dropped(_pickable: Variant) -> void:
@@ -47,3 +50,8 @@ func crystal_hit() -> void:
 		get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
 		Events.spawn_staff_head.emit()
 		queue_free()
+
+
+func _on_picked_up(pickable: Variant) -> void:
+	if not magic_crystal:
+		breakable = true

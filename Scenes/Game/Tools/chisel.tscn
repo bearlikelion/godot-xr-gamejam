@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://j8r40txi5r6x"]
+[gd_scene load_steps=12 format=3 uid="uid://j8r40txi5r6x"]
 
 [ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_ln1ld"]
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_hwaht"]
@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dupqd2rnons84" path="res://Assets/Models/Blacksmith/Tools/Meshes/tools_Cube_057.res" id="5_ln1ld"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_37vis"]
 [ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_knif1"]
+[ext_resource type="AudioStream" uid="uid://dikg24tv0dffc" path="res://Assets/Audio/SFX/chisel correct.ogg" id="8_hwaht"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ln1ld"]
 points = PackedVector3Array(-0.0719859, 0.0825392, -0.00143573, -0.0719859, 0.0825392, 0.00143317, -0.0719859, 0.117598, -0.00143573, -0.0597423, 0.0825392, -0.00668816, 0.00127305, -0.220522, -0.014275, -0.0110785, -0.220522, -0.00713886, -0.0597423, 0.0825392, 0.0066856, -0.0719859, 0.117598, 0.00143317, -0.0110785, -0.220522, 0.00713341, 0.00127305, -0.220522, 0.0142724, -0.0102686, 0.126532, -0.00666794, 0.00127305, 0.126499, -0.0133331, -0.0597423, 0.117598, -0.00668816, -0.0147772, 0.0825392, -0.0147575, 0.0136381, -0.220522, -0.00713886, 0.0158654, 0.0825392, -0.0147575, 0.0659062, 0.0825392, -0.00668816, -0.0147772, 0.0825392, 0.0147549, -0.0597423, 0.117598, 0.0066856, 0.00127305, 0.126499, 0.0133306, -0.0102686, 0.126499, 0.00666537, 0.0136381, -0.220522, 0.00713341, 0.0659062, 0.0825392, 0.0066856, 0.0158654, 0.0825392, 0.0147578, 0.0128282, 0.126499, 0.00666537, 0.0128282, 0.126499, -0.00666794, 0.0659062, 0.117598, -0.00668816, 0.0158654, 0.117598, -0.0147575, -0.0147772, 0.117598, -0.0147575, -0.0147772, 0.117598, 0.0147549, 0.0158654, 0.117598, 0.0147549, 0.0659062, 0.117598, 0.0066856)
@@ -35,17 +36,17 @@ ranged_grab_speed = 10.0
 metadata/_custom_type_script = ExtResource("2_hwaht")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_g7rhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, -0.231555, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_2rswa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, -0.231555, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.018445, -0.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
 mesh = ExtResource("5_ln1ld")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
 shape = SubResource("ConvexPolygonShape3D_ln1ld")
 
 [node name="XRToolsHighlightMaterial" type="Node" parent="."]
@@ -55,11 +56,16 @@ highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = ExtResource("7_knif1")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 collision_mask = 65541
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, 0.154285, 0.000854492)
 shape = SubResource("BoxShape3D_g7rhb")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_hwaht")
+area_mask = 3
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
