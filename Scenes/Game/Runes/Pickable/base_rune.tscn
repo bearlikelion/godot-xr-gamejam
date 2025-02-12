@@ -16,7 +16,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,8 +62,6 @@ collision_mask = 196615
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_jokhr")
-rune_name = "Algiz"
-rune_mesh = ExtResource("5_enmme")
 ranged_grab_method = 2
 second_hand_grab = 1
 ranged_grab_speed = 10.0
@@ -75,11 +73,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_5vxlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("5_enmme")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_wc5m2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = ExtResource("5_enmme")
+skeleton = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -88,7 +87,7 @@ libraries = {
 
 [node name="XRToolsRuneHighlightMaterial" type="Node" parent="."]
 script = ExtResource("6_ogtub")
-highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_mesh_instance = NodePath("../CollisionShape3D/MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = ExtResource("7_43dat")
 
