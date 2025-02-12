@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq4w4mt18jxn1"]
+
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_mkwjb"]
+[ext_resource type="Script" uid="uid://cr1rdnldlreg4" path="res://Scenes/Game/Anvil/anvil_snap_zone.gd" id="2_ebd1u"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="3_nkj2p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_byxf7"]
+resource_local_to_scene = true
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcuek"]
+transparency = 1
+cull_mode = 1
+albedo_color = Color(0.784314, 0.784314, 0.784314, 0.294118)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vvg7m"]
+material = SubResource("StandardMaterial3D_kcuek")
+radius = 0.05
+height = 0.1
+radial_segments = 32
+rings = 16
+
+[node name="AnvilSnapZone" instance=ExtResource("1_mkwjb")]
+script = ExtResource("2_ebd1u")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_byxf7")
+
+[node name="Sphere" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("SphereMesh_vvg7m")
+
+[node name="HighlightRing" parent="." index="2" instance=ExtResource("3_nkj2p")]
+
+[connection signal="has_picked_up" from="." to="." method="_on_has_picked_up"]

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://j0qg71l7k013"
+uid="uid://qmepv2x0773g"
 path="res://.godot/imported/cave_mines.glb-8f2efe2e93fb8164a5dfaa0f6faf2a94.scn"
 
 [deps]
@@ -34,37 +34,17 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"crystal": {
+"crystal11": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/crystal.tres"
+"use_external/path": "uid://dd8x64quafwg2"
 },
 "light_001": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/light_001.tres"
+"use_external/path": "uid://c8gb3lvuorqf2"
 },
 "metal_004": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/metal_004.tres"
-},
-"rock": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/rock.tres"
-},
-"rock_001": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/rock_001.tres"
-},
-"stalags_001": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/stalags_001.tres"
-},
-"wood": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/wood.tres"
-},
-"wood_005": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Cave/Materials/wood_005.tres"
+"use_external/path": "uid://con3eunmklinq"
 }
 }
 }

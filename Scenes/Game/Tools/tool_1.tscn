@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://unqsclxu0r2o"]
+
+[ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_1xd25"]
+[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_4iyyy"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_04cxf"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_g6see"]
+[ext_resource type="ArrayMesh" uid="uid://dbrlxpxwbsbin" path="res://Assets/Models/Blacksmith/Tools/Meshes/tools_Cube_037.res" id="5_1xd25"]
+[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_qxs0s"]
+[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_r63jc"]
+[ext_resource type="AudioStream" uid="uid://dufhyamc74f2w" path="res://Assets/Audio/SFX/chisel wrong.ogg" id="8_1xd25"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4iyyy"]
+points = PackedVector3Array(0.0397829, 0.0325225, 0.00597678, -0.0587928, -0.0105929, -0.0306032, -0.0449715, -0.0105929, -0.0306032, -0.00352834, -0.240903, 0.0062368, -0.0587928, -0.0105929, 0.0338857, 0.00567895, -0.240903, -0.0167787, 0.0333112, 0.0262579, -0.0213869, -0.0449715, 0.0539032, -0.0306032, 0.0148862, 0.0262579, 0.0292776, -0.0449715, 0.0539032, 0.0338857, 0.0471325, 0.0170235, 0.0154594, 0.0471325, 0.0170235, -0.0121769, 0.00567895, -0.240903, 0.0062368, -0.0550098, 0.0433744, -0.0283, 0.0148862, 0.0170235, -0.025995, 0.0148862, 0.0446688, -0.0167787, -0.00352834, -0.240903, -0.0121769, 0.0148862, 0.0446688, 0.0200549, -0.0449715, -0.0105929, 0.0338857, -0.0540529, 0.0407113, 0.031, 0.0148862, 0.0170235, 0.0292776, 0.0471325, 0.00781803, 0.0062368, 0.0379148, 0.0124352, 0.0200549, 0.0425185, 0.0262579, -0.0167787, 0.0471325, 0.0262579, 0.0154594, 0.00107531, -0.240903, -0.0167787, 0.0148862, 0.0400805, 0.0246694, 0.0471325, 0.00781803, -0.00296057, 0.0471325, 0.0262579, -0.0121769, 0.0425185, 0.0170235, -0.0167787, 0.0315617, 0.038493, -0.00275487, 0.0148862, 0.0400805, -0.0213869)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+grow = true
+grow_amount = 0.03
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7rhb"]
+size = Vector3(0.261108, 0.0824203, 0.0749512)
+
+[node name="Tool1" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_1xd25")
+ranged_grab_method = 2
+second_hand_grab = 1
+ranged_grab_speed = 10.0
+metadata/_custom_type_script = ExtResource("2_4iyyy")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_04cxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_g6see")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.018445, -0.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
+mesh = ExtResource("5_1xd25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
+shape = SubResource("ConvexPolygonShape3D_4iyyy")
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("6_qxs0s")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_w1ccq")
+metadata/_custom_type_script = ExtResource("7_r63jc")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133689, 0)
+collision_mask = 65541
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, 0.154285, 0.000854492)
+shape = SubResource("BoxShape3D_g7rhb")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_1xd25")
+area_mask = 3
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

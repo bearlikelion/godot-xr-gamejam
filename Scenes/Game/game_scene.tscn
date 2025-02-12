@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=20 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
+[ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="4_jevh0"]
+[ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="5_3hq7a"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="5_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_yi1st"]
 [ext_resource type="Script" uid="uid://fen86f2uqiag" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_jxx51"]
@@ -12,6 +14,67 @@
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
+
+[sub_resource type="Animation" id="Animation_p3bnw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yi1st"]
+resource_name = "fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:outline_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18sgl"]
+_data = {
+&"RESET": SubResource("Animation_p3bnw"),
+&"fade": SubResource("Animation_yi1st")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -29,6 +92,17 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
 environment = ExtResource("2_ihfs7")
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("3_7r8ec")]
+
+[node name="Instructions" type="Label3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.63918e-07, 0, -1.25)
+text = "Touch Podium to Begin"
+font = ExtResource("4_jevh0")
+script = ExtResource("5_3hq7a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D/XRCamera3D/Instructions"]
+libraries = {
+&"": SubResource("AnimationLibrary_18sgl")
+}
 
 [node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
@@ -87,7 +161,7 @@ process_physics_priority = -100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 top_level = true
 collision_layer = 524288
-collision_mask = 1023
+collision_mask = 1019
 script = ExtResource("6_jxx51")
 push_rigid_bodies = false
 

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu1qpb2onhexs"]
+
+[ext_resource type="Texture2D" uid="uid://c3gssrnr3pbqm" path="res://Assets/Models/Blacksmith/blacksmith_Iron.jpg" id="1_i23ap"]
+
+[resource]
+resource_name = "Iron"
+cull_mode = 2
+albedo_texture = ExtResource("1_i23ap")
+roughness = 0.5

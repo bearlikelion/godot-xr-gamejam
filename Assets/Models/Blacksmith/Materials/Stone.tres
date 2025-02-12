@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fl46dm0fbpjg"]
+
+[ext_resource type="Texture2D" uid="uid://dagqfb2pbliuc" path="res://Assets/Models/Blacksmith/blacksmith_Stone.jpg" id="1_adnc1"]
+
+[resource]
+resource_name = "Stone"
+cull_mode = 2
+albedo_texture = ExtResource("1_adnc1")
+roughness = 0.5

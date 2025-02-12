@@ -36,7 +36,9 @@ func generate_runes() -> void:
 
 	# Get all rune positions and shuffle them
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
-	rune_positions.shuffle()
+
+	if not Global.testing:
+		rune_positions.shuffle()
 
 	# Place the matching rune at the first position
 	var first_position: Marker3D = rune_positions.front()

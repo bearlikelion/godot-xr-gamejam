@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kpioak24ef8u"]
+
+[ext_resource type="Texture2D" uid="uid://deklijrk2si43" path="res://Assets/Models/Blacksmith/blacksmith_TreeLogEdge.jpg" id="1_03but"]
+
+[resource]
+resource_name = "LogEdge"
+cull_mode = 2
+albedo_texture = ExtResource("1_03but")
+roughness = 0.5

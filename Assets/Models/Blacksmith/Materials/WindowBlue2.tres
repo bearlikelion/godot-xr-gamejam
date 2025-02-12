@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3akvsqcnrf40"]
+
+[ext_resource type="Texture2D" uid="uid://hbvfu1cocttu" path="res://Assets/Models/Blacksmith/blacksmith_WindowsBlue2.jpg" id="1_0yajk"]
+
+[resource]
+resource_name = "WindowBlue2"
+albedo_texture = ExtResource("1_0yajk")
+roughness = 0.5

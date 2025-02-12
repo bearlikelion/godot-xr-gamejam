@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dl8c2y3td2dct"]
+
+[ext_resource type="Texture2D" uid="uid://c8xg1fedehvt8" path="res://Assets/Models/Blacksmith/blacksmith_WroughtIron.jpg" id="1_fd2uw"]
+
+[resource]
+resource_name = "WroughtIron"
+cull_mode = 2
+albedo_texture = ExtResource("1_fd2uw")
+roughness = 0.5

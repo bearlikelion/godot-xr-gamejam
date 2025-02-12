@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://fgn6r0k80n3"]
+
+[ext_resource type="Texture2D" uid="uid://2pnmt053mboy" path="res://Assets/Models/Blacksmith/Textures/Grass/Grass002_1K-JPG_Color.jpg" id="1_e5144"]
+[ext_resource type="Texture2D" uid="uid://cvyngad4nblnl" path="res://Assets/Models/Blacksmith/Textures/Grass/Grass002_1K-JPG_AmbientOcclusion.jpg" id="2_hft4f"]
+[ext_resource type="Texture2D" uid="uid://cppbed2ml7xpp" path="res://Assets/Models/Blacksmith/Textures/Grass/Grass002_1K-JPG_NormalGL.jpg" id="3_w1u8t"]
+[ext_resource type="Texture2D" uid="uid://buyw5n5a7rp2e" path="res://Assets/Models/Blacksmith/Textures/Grass/Grass002_1K-JPG_Roughness.jpg" id="4_2w660"]
+
+[resource]
+resource_name = "Grass"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_e5144")
+roughness_texture = ExtResource("4_2w660")
+normal_enabled = true
+normal_texture = ExtResource("3_w1u8t")
+ao_enabled = true
+ao_texture = ExtResource("2_hft4f")
+uv1_scale = Vector3(10, 10, 10)

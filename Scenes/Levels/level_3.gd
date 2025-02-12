@@ -1,7 +1,11 @@
 class_name Level3
 extends StaticBody3D
 
+const PICKABLE_CRYSTAL = preload("res://Scenes/Game/Crystals/pickable_crystal.tscn")
 
+var magic_crystal: RigidBody3D
+
+@onready var crystals: Node = $Crystals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var fail_sound: AudioStreamPlayer3D = $FailSound
@@ -9,19 +13,38 @@ extends StaticBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
+	Global.level = 3
 	animation_player.play("appear")
+	place_crystals()
 
-	# Events.start_game.connect(_on_start_game)
+	Events.level_3_completed.connect(_on_level_3_completed)
+	Events.wrong_crystal.connect(_on_wrong_crystal)
 
 
-func _on_start_game() -> void:
-	show()
-	animation_player.play("appear")
+func place_crystals() -> void:
+	var crystal_i: int = 0
+	var crystal_positions: Array[Node] = crystals.get_children()
+
+	if not Global.testing:
+		crystal_positions.shuffle()
+
+	for crystal_position: Marker3D in crystal_positions:
+		var _crystal: PickableCrystal = PICKABLE_CRYSTAL.instantiate()
+
+		crystal_position.add_child(_crystal)
+		if crystal_i == 0:
+			_crystal.mesh_instance_3d.material_override = null
+			_crystal.magic_crystal = true
+			_crystal.add_to_group("magic_crystal")
+			magic_crystal = _crystal
+
+		crystal_i += 1
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
-		Events.level_3_load.emit()
+		# magic_crystal.queue_free()
+		Events.level_4_load.emit()
 		hide()
 
 
@@ -31,3 +54,7 @@ func _on_audio_stream_player_3d_finished() -> void:
 
 func _on_level_3_completed() -> void:
 	audio_stream_player_3d.play()
+
+
+func _on_wrong_crystal() -> void:
+	fail_sound.play()

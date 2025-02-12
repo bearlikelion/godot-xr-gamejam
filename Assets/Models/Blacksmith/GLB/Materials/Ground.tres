@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://d37hrvfbd8ak4"]
+
+[ext_resource type="Texture2D" uid="uid://cb6awttgk1dx3" path="res://Assets/Models/Blacksmith/Textures/Ground/cliff_side_diff_1k.jpg" id="1_kj150"]
+[ext_resource type="Texture2D" uid="uid://ddo2abrt0xn6m" path="res://Assets/Models/Blacksmith/Textures/Ground/cliff_side_nor_gl_1k.jpg" id="2_6smf5"]
+[ext_resource type="Texture2D" uid="uid://c1a4l14n08e40" path="res://Assets/Models/Blacksmith/Textures/Ground/cliff_side_ao_1k.jpg" id="2_7wlmo"]
+[ext_resource type="Texture2D" uid="uid://b4h4ecdm5ao7h" path="res://Assets/Models/Blacksmith/Textures/Ground/cliff_side_rough_1k.jpg" id="4_n57a3"]
+
+[resource]
+resource_name = "Ground"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_kj150")
+roughness_texture = ExtResource("4_n57a3")
+normal_enabled = true
+normal_texture = ExtResource("2_6smf5")
+ao_enabled = true
+ao_texture = ExtResource("2_7wlmo")
+uv1_scale = Vector3(10, 10, 10)

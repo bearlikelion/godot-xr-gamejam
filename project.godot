@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Godot XR Game Jam"
+config/name="A Wizards Way"
 run/main_scene="uid://cfac6n0mwlrlx"
 config/features=PackedStringArray("4.4")
-config/icon="uid://gamnoaueqq45"
+config/icon="uid://dlt38y4i6j5it"
 
 [autoload]
 
