@@ -56,6 +56,9 @@ metadata/_custom_type_script = ExtResource("7_euglk")
 [node name="BreakSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_viavv")
 
+[node name="CrystalLight" type="OmniLight3D" parent="."]
+light_color = Color(0.759449, 0.908376, 0.927622, 1)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="picked_up" from="." to="." method="_on_picked_up"]
