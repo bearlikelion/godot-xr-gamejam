@@ -1273,155 +1273,159 @@ _data = {
 &"fade": SubResource("Animation_jd2hh")
 }
 
-[node name="Level2" type="StaticBody3D"]
+[node name="Level2" type="Node3D"]
+
+[node name="Level2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 script = ExtResource("1_t27xo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level2"]
 shape = SubResource("ConcavePolygonShape3D_u40f0")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level2"]
 environment = SubResource("Environment_1bvp3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level2/WorldEnvironment"]
 transform = Transform3D(0.827551, 0.374747, -0.418, 0, 0.74458, 0.667534, 0.56139, -0.552418, 0.616178, 0, 6.81169, 0)
 visible = false
 sky_mode = 2
 
-[node name="Fantasy_House" type="Node3D" parent="."]
+[node name="Fantasy_House" type="Node3D" parent="Level2"]
 
-[node name="House" type="MeshInstance3D" parent="Fantasy_House"]
+[node name="House" type="MeshInstance3D" parent="Level2/Fantasy_House"]
 mesh = SubResource("ArrayMesh_qwf1j")
 skeleton = NodePath("")
 
-[node name="CandleLight" type="OmniLight3D" parent="Fantasy_House"]
+[node name="CandleLight" type="OmniLight3D" parent="Level2/Fantasy_House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20783, 4.56818, 0)
 light_color = Color(1, 0.498039, 0, 1)
 omni_range = 10.0
 
-[node name="CandleLight2" type="OmniLight3D" parent="Fantasy_House"]
+[node name="CandleLight2" type="OmniLight3D" parent="Level2/Fantasy_House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.797, 5.82385, 7.64794)
 light_color = Color(1, 0.498039, 0, 1)
 omni_range = 10.0
 
-[node name="CandleLight3" type="OmniLight3D" parent="Fantasy_House"]
+[node name="CandleLight3" type="OmniLight3D" parent="Level2/Fantasy_House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.797, 5.82385, -7.64248)
 light_color = Color(1, 0.498039, 0, 1)
 omni_range = 10.0
 
-[node name="FireLight" type="OmniLight3D" parent="Fantasy_House"]
+[node name="FireLight" type="OmniLight3D" parent="Level2/Fantasy_House"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3112, 1.83947, -0.000812262)
 light_color = Color(1, 0.498039, 0, 1)
 light_energy = 3.0
 omni_range = 20.0
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Fantasy_House"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Level2/Fantasy_House"]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -13.5, 1.25, 0)
 sprite_frames = SubResource("SpriteFrames_k5w7j")
 animation = &"flame"
 autoplay = "flame"
 frame_progress = 0.953464
 
-[node name="bookcasewood02" parent="Fantasy_House" instance=ExtResource("11_u40f0")]
+[node name="bookcasewood02" parent="Level2/Fantasy_House" instance=ExtResource("11_u40f0")]
 transform = Transform3D(-1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, -1.06066, -11.75, 0, 5.75)
 
-[node name="bookcasewood03" parent="Fantasy_House" instance=ExtResource("11_u40f0")]
+[node name="bookcasewood03" parent="Level2/Fantasy_House" instance=ExtResource("11_u40f0")]
 transform = Transform3D(-1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, -1.06066, -11.75, 0, -6)
 
-[node name="tableplank03" parent="Fantasy_House" instance=ExtResource("12_uqiic")]
+[node name="tableplank03" parent="Level2/Fantasy_House" instance=ExtResource("12_uqiic")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.90162, 0, 8.25)
 
-[node name="tableplank02" parent="Fantasy_House" instance=ExtResource("13_eopvx")]
+[node name="tableplank02" parent="Level2/Fantasy_House" instance=ExtResource("13_eopvx")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -7.87986, 0, -8.25)
 
-[node name="grandfatherclock01" parent="Fantasy_House" instance=ExtResource("14_t27xo")]
+[node name="grandfatherclock01" parent="Level2/Fantasy_House" instance=ExtResource("14_t27xo")]
 transform = Transform3D(1.41421, 0, 1.41421, 0, 2, 0, -1.41421, 0, 1.41421, -3.51869, 0.0240982, -5.9148)
 
-[node name="skinbear01" parent="Fantasy_House" instance=ExtResource("15_yxf76")]
+[node name="skinbear01" parent="Level2/Fantasy_House" instance=ExtResource("15_yxf76")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -7.75, 0, -4.5)
 
-[node name="bookcasewood01" parent="Fantasy_House" instance=ExtResource("16_yxf76")]
+[node name="bookcasewood01" parent="Level2/Fantasy_House" instance=ExtResource("16_yxf76")]
 transform = Transform3D(1.41421, 0, -1.41421, 0, 2, 0, 1.41421, 0, 1.41421, -4, 0, 6)
 
-[node name="Book1" parent="Fantasy_House" instance=ExtResource("10_eopvx")]
-transform = Transform3D(-0.258819, 0.933013, -0.25, 0, 0.258819, 0.965926, 0.965926, 0.25, -0.0669873, -8.5, 2, 7.75)
-
-[node name="Book2" parent="Fantasy_House" instance=ExtResource("10_eopvx")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4, 3.75, 5.75)
-
-[node name="Book4" parent="Fantasy_House" instance=ExtResource("11_t27xo")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -3.75, 2.75, 5.5)
-
-[node name="Book3" parent="Fantasy_House" instance=ExtResource("12_yxf76")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4.5, 2.75, 6.25)
-
-[node name="Book5" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
-transform = Transform3D(0.707107, 0.707107, 3.09086e-08, 0, -4.37114e-08, 1, 0.707107, -0.707107, -3.09086e-08, -4.25, 1.5, 5.75)
-
-[node name="Book6" parent="Fantasy_House" instance=ExtResource("10_eopvx")]
-transform = Transform3D(-0.707107, 0.707107, 2.18557e-08, -1.09809e-22, -3.09086e-08, 1, 0.707107, 0.707107, 2.18557e-08, -11.75, 1, 5.5)
-
-[node name="Book7" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
-transform = Transform3D(-0.707107, 0.707107, 3.09086e-08, 0, -4.37114e-08, 1, 0.707107, 0.707107, 3.09086e-08, -11.75, 2.75, 5.5)
-
-[node name="Book8" parent="Fantasy_House" instance=ExtResource("12_yxf76")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.5, 2.25, -8)
-
-[node name="Book9" parent="Fantasy_House" instance=ExtResource("14_5buja")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.25, 2.25, -8)
-
-[node name="Book10" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
-transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -11.5, 2, -5.75)
-
-[node name="Book11" parent="Fantasy_House" instance=ExtResource("12_yxf76")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.25, 1.25, -6.25)
-
-[node name="Book12" parent="Fantasy_House" instance=ExtResource("11_t27xo")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.75, 2.75, -5.75)
-
-[node name="Book13" parent="Fantasy_House" instance=ExtResource("10_eopvx")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -11.5, 2.75, -6)
-
-[node name="Book14" parent="Fantasy_House" instance=ExtResource("13_ia1lp")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -12, 1.25, -5.5)
-
-[node name="Book15" parent="Fantasy_House" instance=ExtResource("14_5buja")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -11.5, 0.5, 5.75)
-
-[node name="chest02" parent="Fantasy_House" instance=ExtResource("23_jip10")]
+[node name="chest02" parent="Level2/Fantasy_House" instance=ExtResource("23_jip10")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 0, 8)
 
-[node name="Books" type="Node3D" parent="."]
+[node name="Books" type="Node3D" parent="Level2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 0)
 
-[node name="BookPos" type="Marker3D" parent="Books"]
+[node name="BookPos" type="Marker3D" parent="Level2/Books"]
 transform = Transform3D(2.98023e-07, 1, -1.32624e-07, -5.96045e-08, 1.32624e-07, 1, 1, -2.98023e-07, -2.98023e-08, -19, -7.75, 7.75)
 
-[node name="BookPos1" type="Marker3D" parent="Books"]
+[node name="BookPos1" type="Marker3D" parent="Level2/Books"]
 transform = Transform3D(-0.707107, 0.707106, 3.09086e-08, 0, -4.37113e-08, 1, 0.707107, 0.707106, 3.09086e-08, -23.5, -8, 5.75)
 
-[node name="BookPos2" type="Marker3D" parent="Books"]
+[node name="BookPos2" type="Marker3D" parent="Level2/Books"]
 transform = Transform3D(0.648393, 0.0757506, 0.757527, 0.0309105, -0.996836, 0.0732233, 0.760678, -0.0240619, -0.648684, -16.25, -6.25, 6.25)
 
-[node name="BookPos3" type="Marker3D" parent="Books"]
+[node name="BookPos3" type="Marker3D" parent="Level2/Books"]
 transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 4.37114e-08, 1.91069e-15, -1, -0.707107, -0.707107, -3.09086e-08, -23.75, -9.5, -5.75)
 
-[node name="BookPos4" type="Marker3D" parent="Books"]
+[node name="BookPos4" type="Marker3D" parent="Level2/Books"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.75, -7.75, -8.25)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="FakeBooks" type="Node" parent="Level2"]
+
+[node name="Book1" parent="Level2/FakeBooks" instance=ExtResource("10_eopvx")]
+transform = Transform3D(-0.258819, 0.933013, -0.25, 0, 0.258819, 0.965926, 0.965926, 0.25, -0.0669873, 0.5, 2, 7.75)
+
+[node name="Book2" parent="Level2/FakeBooks" instance=ExtResource("10_eopvx")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5, 3.75, 5.75)
+
+[node name="Book4" parent="Level2/FakeBooks" instance=ExtResource("11_t27xo")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5.25, 2.75, 5.5)
+
+[node name="Book3" parent="Level2/FakeBooks" instance=ExtResource("12_yxf76")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4.5, 2.75, 6.25)
+
+[node name="Book5" parent="Level2/FakeBooks" instance=ExtResource("13_ia1lp")]
+transform = Transform3D(0.707107, 0.707107, 3.09086e-08, 0, -4.37114e-08, 1, 0.707107, -0.707107, -3.09086e-08, 4.75, 1.5, 5.75)
+
+[node name="Book6" parent="Level2/FakeBooks" instance=ExtResource("10_eopvx")]
+transform = Transform3D(-0.707107, 0.707107, 2.18557e-08, -1.09809e-22, -3.09086e-08, 1, 0.707107, 0.707107, 2.18557e-08, -2.75, 1, 5.5)
+
+[node name="Book7" parent="Level2/FakeBooks" instance=ExtResource("13_ia1lp")]
+transform = Transform3D(-0.707107, 0.707107, 3.09086e-08, 0, -4.37114e-08, 1, 0.707107, 0.707107, 3.09086e-08, -2.75, 2.75, 5.5)
+
+[node name="Book8" parent="Level2/FakeBooks" instance=ExtResource("12_yxf76")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.5, 2.25, -8)
+
+[node name="Book9" parent="Level2/FakeBooks" instance=ExtResource("14_5buja")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75, 2.25, -8)
+
+[node name="Book10" parent="Level2/FakeBooks" instance=ExtResource("13_ia1lp")]
+transform = Transform3D(-0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, -0.707107, 3.09086e-08, -2.5, 2, -5.75)
+
+[node name="Book11" parent="Level2/FakeBooks" instance=ExtResource("12_yxf76")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.25, 1.25, -6.25)
+
+[node name="Book12" parent="Level2/FakeBooks" instance=ExtResource("11_t27xo")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.75, 2.75, -5.75)
+
+[node name="Book13" parent="Level2/FakeBooks" instance=ExtResource("10_eopvx")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -2.5, 2.75, -6)
+
+[node name="Book14" parent="Level2/FakeBooks" instance=ExtResource("13_ia1lp")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -3, 1.25, -5.5)
+
+[node name="Book15" parent="Level2/FakeBooks" instance=ExtResource("14_5buja")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -2.5, 0.5, 5.75)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level2"]
 libraries = {
 &"": SubResource("AnimationLibrary_iixi8")
 }
 autoplay = "appear"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2078, 2.5951, 0)
 stream = ExtResource("15_t27xo")
 
-[node name="FailSound" type="AudioStreamPlayer3D" parent="."]
+[node name="FailSound" type="AudioStreamPlayer3D" parent="Level2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18198, 2.5951, 0)
 stream = ExtResource("16_ia1lp")
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
+[connection signal="animation_finished" from="Level2/AnimationPlayer" to="Level2" method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="Level2/AudioStreamPlayer3D" to="Level2" method="_on_audio_stream_player_3d_finished"]

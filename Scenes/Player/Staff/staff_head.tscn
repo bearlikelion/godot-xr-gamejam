@@ -14,7 +14,6 @@ points = PackedVector3Array(1.35621, -0.24021, 0.0179888, -1.61649, 1.235, 0.122
 blend_mode = 4
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
 grow = true
 grow_amount = 0.03
 
@@ -82,6 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.108286, -0.1)
 
 [node name="XRToolsHighlightMaterial" type="Node" parent="."]
 script = ExtResource("6_3sd7x")
+highlight_mesh_instance = NodePath("../crystal blue/staff_001")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = ExtResource("7_6y3o5")
 
