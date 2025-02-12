@@ -12,8 +12,9 @@ func _ready() -> void:
 
 
 func destroy_crystal() -> void:
-	hide()
-	crystal_shatter.play()
+	if is_inside_tree():
+		hide()
+		crystal_shatter.play()
 
 
 func _on_body_exited(body: Node3D) -> void:
