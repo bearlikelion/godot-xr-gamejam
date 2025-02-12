@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_7iapi"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_880kf"]
 [ext_resource type="ArrayMesh" uid="uid://q461ynt4ncqv" path="res://Assets/Models/Cave/Mesh/crystal_Cylinder_016.res" id="4_kkpq2"]
-[ext_resource type="Script" path="res://Scripts/highlight_overlay.gd" id="6_0lebc"]
+[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_0lebc"]
 [ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_euglk"]
 [ext_resource type="AudioStream" uid="uid://4l11v1n87shw" path="res://Assets/Audio/SFX/crystal_break.ogg" id="8_viavv"]
 

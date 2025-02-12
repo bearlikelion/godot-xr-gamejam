@@ -1,70 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn58ykxc07caw"]
+[gd_scene load_steps=3 format=3 uid="uid://dn58ykxc07caw"]
 
 [ext_resource type="PackedScene" uid="uid://d0jltq36ybsle" path="res://Scenes/Game/Podium/waypoint.tscn" id="1_n4sxw"]
 [ext_resource type="PackedScene" uid="uid://dkhx0yihd1d4d" path="res://Scenes/Game/Podium/podium.tscn" id="2_asapf"]
-[ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="3_e7jg4"]
-[ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="4_6xb6l"]
-
-[sub_resource type="Animation" id="Animation_p3bnw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:outline_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_yi1st"]
-resource_name = "fade"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:outline_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_18sgl"]
-_data = {
-&"RESET": SubResource("Animation_p3bnw"),
-&"fade": SubResource("Animation_yi1st")
-}
 
 [node name="Base" type="Node3D" groups=["base"]]
 
@@ -74,14 +11,3 @@ _data = {
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.75, 0.25, 0)
 
 [node name="podium" parent="podium_holder" instance=ExtResource("2_asapf")]
-
-[node name="Instructions" type="Label3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 1.5, 0)
-text = "Touch Podium to Begin"
-font = ExtResource("3_e7jg4")
-script = ExtResource("4_6xb6l")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Instructions"]
-libraries = {
-&"": SubResource("AnimationLibrary_18sgl")
-}

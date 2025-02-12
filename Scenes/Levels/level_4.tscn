@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=4 uid="uid://8wpuh0rmhc5j"]
+[gd_scene load_steps=178 format=4 uid="uid://8wpuh0rmhc5j"]
 
 [ext_resource type="Script" uid="uid://dcbfy7nym63ll" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
 [ext_resource type="Material" uid="uid://dl8c2y3td2dct" path="res://Assets/Models/Blacksmith/Materials/WroughtIron.tres" id="2_eb5oh"]
@@ -29,6 +29,7 @@
 [ext_resource type="Material" uid="uid://d37hrvfbd8ak4" path="res://Assets/Models/Blacksmith/GLB/Materials/Ground.tres" id="22_d51q7"]
 [ext_resource type="Material" uid="uid://b1sxlw3tw71kh" path="res://Assets/Models/Blacksmith/GLB/Materials/Snow.tres" id="23_lapqw"]
 [ext_resource type="Texture2D" uid="uid://bjqb5an31jn6a" path="res://Assets/Images/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="25_e7hmo"]
+[ext_resource type="PackedScene" uid="uid://j8r40txi5r6x" path="res://Scenes/Game/Tools/chisel.tscn" id="30_oteb1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_roffe"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -2501,7 +2502,7 @@ mesh = SubResource("ArrayMesh_ghrp8")
 skeleton = NodePath("")
 
 [node name="AnvilSnapZone" parent="blacksmith/Anvil" instance=ExtResource("3_lapqw")]
-transform = Transform3D(2.40341e-05, 0.999988, 0.00489646, -0.999988, 7.32459e-08, 0.00489652, 0.00489646, -0.00489652, 0.999976, 0, 0.166667, 0)
+transform = Transform3D(-0.00489652, -0.939173, 0.34341, 3.88051e-11, 0.343414, 0.939184, -0.999988, 0.00459873, -0.00168153, 0, 0.143738, 0)
 
 [node name="AnvilBolts" type="MeshInstance3D" parent="blacksmith"]
 transform = Transform3D(-0.00489652, 0, -0.999988, 0, 1, 0, 0.999988, 0, -0.00489652, -5.90813, 0.641935, 1.00439)
@@ -2570,12 +2571,13 @@ mesh = SubResource("ArrayMesh_n4lxc")
 skeleton = NodePath("")
 
 [node name="ShortLog" type="MeshInstance3D" parent="blacksmith"]
-transform = Transform3D(9.53674e-07, 1, 0, -1, 9.53674e-07, 0, 0, 0, 1, -0.806522, 0.229808, -7.17292)
+transform = Transform3D(-2.94395e-07, -0.323524, 1.20741, -1.25, 1.13745e-06, -1.77636e-14, -1.0987e-06, -1.20741, -0.323524, -2.79092, 0.229808, 1.3273)
 mesh = SubResource("ArrayMesh_il1ml")
 skeleton = NodePath("")
 
 [node name="ToolHangers" type="MeshInstance3D" parent="blacksmith"]
 transform = Transform3D(-7.15256e-07, 0, 1, 0, 1, 0, -1, 0, -7.15256e-07, -5.71813, 0.963174, -0.37205)
+visible = false
 mesh = SubResource("ArrayMesh_5s4gl")
 skeleton = NodePath("")
 
@@ -2586,7 +2588,7 @@ mesh = SubResource("ArrayMesh_te3pd")
 skeleton = NodePath("")
 
 [node name="WoodCutters Axe" type="MeshInstance3D" parent="blacksmith"]
-transform = Transform3D(-0.463182, -0.389822, 0.795928, 0.643917, -0.765096, -2.08616e-07, 0.608961, 0.512511, 0.605391, -0.790751, 0.78091, -7.18468)
+transform = Transform3D(0.885114, 0.744926, 0.473453, 0.804896, -0.956369, -5.7034e-07, 0.362236, 0.304865, -1.15687, -2.80636, 0.916641, 1.31511)
 mesh = SubResource("ArrayMesh_wmlpa")
 skeleton = NodePath("")
 
@@ -2596,7 +2598,7 @@ mesh = SubResource("ArrayMesh_5ljxe")
 skeleton = NodePath("")
 
 [node name="BlacksmithSign" type="MeshInstance3D" parent="blacksmith"]
-transform = Transform3D(-0.375938, 3.03671e-07, 1.0123e-06, -2.39594e-07, 0.397804, -0.262268, -7.98696e-07, -0.262268, -0.397804, -1.7754, 2.91267, 2.22893)
+transform = Transform3D(-0.375938, 3.03671e-07, 1.0123e-06, -2.39594e-07, 0.397804, -0.262268, -7.98696e-07, -0.262268, -0.397804, -2.2754, 2.07934, 2.22893)
 mesh = SubResource("ArrayMesh_l7bbl")
 skeleton = NodePath("")
 
@@ -2725,6 +2727,11 @@ mesh = SubResource("SphereMesh_eb5oh")
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 2.75, 1.75)
 omni_range = 20.0
+
+[node name="Tools" type="Node" parent="."]
+
+[node name="Chisel" parent="Tools" instance=ExtResource("30_oteb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04773, -3.20999)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

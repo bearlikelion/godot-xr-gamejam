@@ -2,8 +2,11 @@
 class_name PickableCrystal
 extends XRToolsPickable
 
+const STAFF_HEAD = preload("res://Scenes/Player/Staff/staff_head.tscn")
+
 var magic_crystal: bool = false
 var breakable: bool = false
+var hits: int = 0
 
 @onready var break_sound: AudioStreamPlayer3D = $BreakSound
 
@@ -30,3 +33,8 @@ func _on_break_sound_finished() -> void:
 func _on_level_3_completed() -> void:
 	if visible and not magic_crystal:
 		hide()
+
+
+func crystal_hit() -> void:
+	hits += 1
+	scale -= Vector3(0.25, 0.25, 0.25)

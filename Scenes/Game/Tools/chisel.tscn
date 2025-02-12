@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://j8r40txi5r6x"]
+
+[ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_ln1ld"]
+[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_hwaht"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_g7rhb"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_2rswa"]
+[ext_resource type="ArrayMesh" uid="uid://dupqd2rnons84" path="res://Assets/Models/Blacksmith/Tools/Meshes/tools_Cube_057.res" id="5_ln1ld"]
+[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_37vis"]
+[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_knif1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ln1ld"]
+points = PackedVector3Array(-0.0719859, 0.0825392, -0.00143573, -0.0719859, 0.0825392, 0.00143317, -0.0719859, 0.117598, -0.00143573, -0.0597423, 0.0825392, -0.00668816, 0.00127305, -0.220522, -0.014275, -0.0110785, -0.220522, -0.00713886, -0.0597423, 0.0825392, 0.0066856, -0.0719859, 0.117598, 0.00143317, -0.0110785, -0.220522, 0.00713341, 0.00127305, -0.220522, 0.0142724, -0.0102686, 0.126532, -0.00666794, 0.00127305, 0.126499, -0.0133331, -0.0597423, 0.117598, -0.00668816, -0.0147772, 0.0825392, -0.0147575, 0.0136381, -0.220522, -0.00713886, 0.0158654, 0.0825392, -0.0147575, 0.0659062, 0.0825392, -0.00668816, -0.0147772, 0.0825392, 0.0147549, -0.0597423, 0.117598, 0.0066856, 0.00127305, 0.126499, 0.0133306, -0.0102686, 0.126499, 0.00666537, 0.0136381, -0.220522, 0.00713341, 0.0659062, 0.0825392, 0.0066856, 0.0158654, 0.0825392, 0.0147578, 0.0128282, 0.126499, 0.00666537, 0.0128282, 0.126499, -0.00666794, 0.0659062, 0.117598, -0.00668816, 0.0158654, 0.117598, -0.0147575, -0.0147772, 0.117598, -0.0147575, -0.0147772, 0.117598, 0.0147549, 0.0158654, 0.117598, 0.0147549, 0.0659062, 0.117598, 0.0066856)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+grow = true
+grow_amount = 0.03
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g7rhb"]
+size = Vector3(0.261108, 0.0824203, 0.0749512)
+
+[node name="Chisel" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_ln1ld")
+magic_chisel = true
+ranged_grab_method = 2
+second_hand_grab = 1
+ranged_grab_speed = 10.0
+metadata/_custom_type_script = ExtResource("2_hwaht")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_g7rhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, -0.231555, -0.1)
+visible = true
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_2rswa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, -0.231555, -0.1)
+visible = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("5_ln1ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_ln1ld")
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("6_37vis")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_w1ccq")
+metadata/_custom_type_script = ExtResource("7_knif1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000549316, 0.154285, 0.000854492)
+shape = SubResource("BoxShape3D_g7rhb")
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

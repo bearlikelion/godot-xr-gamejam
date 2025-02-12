@@ -9,6 +9,7 @@ func _ready() -> void:
 	Events.podium_rose.connect(_on_podium_rose)
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
+	Events.level_4_load.connect(_on_level_4_load)
 
 
 func _on_podium_rose() -> void:
@@ -29,4 +30,10 @@ func _on_level_2_load() -> void:
 func _on_level_3_load() -> void:
 	animation_player.play("RESET")
 	text = "Find a sturdy crystal"
+	animation_player.play("fade")
+
+
+func _on_level_4_load() -> void:
+	animation_player.play("RESET")
+	text = "Place the crystal on the anvil"
 	animation_player.play("fade")
