@@ -2868,6 +2868,7 @@ autoplay = "flame"
 shape = SubResource("ConcavePolygonShape3D_iw2e1")
 
 [node name="ForgeArea" type="Area3D" parent="Level4/blacksmith/Forge"]
+collision_mask = 65541
 script = ExtResource("13_p0l4d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/blacksmith/Forge/ForgeArea"]

@@ -8,7 +8,7 @@ extends XRToolsPickable
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	picked_up.connect(_on_picked_up)
+	pass
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
@@ -21,5 +21,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			print("Wrong tool for the job")
 
 
-func _on_picked_up() -> void:
-	freeze = false
+func _on_dropped(pickable: Variant) -> void:
+	if not magic_chisel and freeze:
+		freeze = false

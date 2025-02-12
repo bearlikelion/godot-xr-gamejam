@@ -12,6 +12,7 @@ func _on_staff_head_connected() -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("magic_crystal"):
+	print("Body entered forge: %s" % body.name)
+	if body.is_in_group("staff_head"):
 		print("Staff forged")
 		Events.staff_forged.emit()

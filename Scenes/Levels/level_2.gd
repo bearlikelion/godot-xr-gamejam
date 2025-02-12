@@ -4,7 +4,7 @@ extends StaticBody3D
 const MAGIC_BOOK = preload("res://Scenes/Game/Books/magic_book.tscn")
 const MAGIC_BOOK_STATIC = preload("res://Scenes/Game/Books/magic_book_static.tscn")
 
-var magic_book = MAGIC_BOOK.instantiate()
+var magic_book: MagicBook = MAGIC_BOOK.instantiate()
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D

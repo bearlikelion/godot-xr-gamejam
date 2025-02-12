@@ -1,5 +1,7 @@
 extends Node3D
 
+var staff_forged: bool = false
+
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var icon_marker: Marker3D = $IconMarker
@@ -12,6 +14,7 @@ func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
 	Events.level_1_completed.connect(_on_level_completed)
 	Events.level_2_completed.connect(_on_level_completed)
+	Events.staff_forged.connect(_on_staff_forged)
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
@@ -42,6 +45,10 @@ func _on_level_completed() -> void:
 			icon_child.queue_free()
 
 
+func _on_staff_forged() -> void:
+	staff_forged = true
+
+
 func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 	print("Snapped to podium: %s" % what)
 	if Global.level == 1:
@@ -60,3 +67,7 @@ func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 			else:
 				what.breakable = true
 				Events.podium_snapped.emit("weak_crystal")
+
+	if Global.level == 4:
+		if what is Staff and staff_forged:
+			Events.level_4_completed.emit()
