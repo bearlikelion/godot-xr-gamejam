@@ -28,5 +28,5 @@ func _on_break_sound_finished() -> void:
 
 
 func _on_level_3_completed() -> void:
-	if visible:
+	if visible and not magic_crystal:
 		hide()

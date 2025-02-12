@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://y4vhwjktmset" path="res://Assets/Models/Podium/podium_podiumCv2Lighter.jpg" id="1_e5iid"]
 [ext_resource type="Script" uid="uid://co6hx48vlqg3w" path="res://Scenes/Game/Podium/podium.gd" id="1_vuqxv"]
-[ext_resource type="PackedScene" uid="uid://6uhmgqq54hqk" path="res://Scenes/Player/podium_snap_zone.tscn" id="3_t7g23"]
+[ext_resource type="PackedScene" uid="uid://6uhmgqq54hqk" path="res://Scenes/Game/Podium/podium_snap_zone.tscn" id="3_t7g23"]
 [ext_resource type="Script" uid="uid://b58edaec87omi" path="res://Scenes/Game/Podium/podium_snap_zone.gd" id="4_t7g23"]
 [ext_resource type="AudioStream" uid="uid://rgu61f3s55pm" path="res://Assets/Audio/SFX/489606__falcospizaetus__cuttingpaper02.ogg" id="4_vuqxv"]
 
@@ -123,5 +123,5 @@ libraries = {
 stream = ExtResource("4_vuqxv")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="has_picked_up" from="PodiumSnapZone" to="." method="_on_podium_snap_zone_2_has_picked_up"]
+[connection signal="has_picked_up" from="PodiumSnapZone" to="." method="_on_podium_snap_zone_has_picked_up"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

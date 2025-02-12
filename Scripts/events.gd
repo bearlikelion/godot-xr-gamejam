@@ -21,4 +21,4 @@ signal level_3_completed
 signal wrong_crystal
 
 signal level_4_load
-signal level_4_complete
+signal level_4_completed

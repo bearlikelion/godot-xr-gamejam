@@ -32,7 +32,6 @@ func _on_place_on_pedistal(scene_string: String) -> void:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
 
-
 	icon_marker.add_child(_item)
 
 
@@ -43,7 +42,7 @@ func _on_level_completed() -> void:
 			icon_child.queue_free()
 
 
-func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
+func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 	print("Snapped to podium: %s" % what)
 	if Global.level == 1:
 		if what is PickableRune:
@@ -56,6 +55,7 @@ func _on_podium_snap_zone_2_has_picked_up(what: Variant) -> void:
 	if Global.level == 3:
 		if what is PickableCrystal:
 			if what.magic_crystal == true:
+				what.reparent(get_tree().get_first_node_in_group("base"), true)
 				Events.podium_snapped.emit("magic_crystal")
 			else:
 				what.breakable = true
