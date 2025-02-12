@@ -2536,6 +2536,7 @@ skeleton = NodePath("")
 
 [node name="AnvilSnapZone" parent="blacksmith/Anvil" groups=["anvil_snap_zone"] instance=ExtResource("3_lapqw")]
 transform = Transform3D(-0.00489652, -0.939173, 0.34341, 3.88051e-11, 0.343414, 0.939184, -0.999988, 0.00459873, -0.00168153, 0, 0.143738, 0)
+snap_require = "magic_crystal"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="blacksmith/Anvil"]
 
@@ -2842,7 +2843,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.66984, -3.18028)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574118, 1.66984, -3.18028)
 
 [node name="StaffHandle" parent="." instance=ExtResource("33_x7vre")]
-transform = Transform3D(0.973996, 0.0249132, -0.225192, 0, 0.993936, 0.10996, 0.226566, -0.1071, 0.96809, -6.15134, 0, -0.5)
+transform = Transform3D(0.973996, 0.0249132, -0.225192, -0.00495438, 0.99604, 0.0887641, 0.226512, -0.0853402, 0.970263, -6.0907, 1.50175, -0.813568)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
