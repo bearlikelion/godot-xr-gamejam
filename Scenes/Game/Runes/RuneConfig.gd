@@ -2,62 +2,69 @@ class_name RuneConfig
 extends Node
 
 ## Configuration class for managing rune meshes and icons.
-## Provides centralized access to rune resources and ensures they are preloaded.
+## Provides centralized access to rune resources.
 
 # Directories containing the assets
 const MESH_DIRECTORY: String = "res://Assets/Models/Runes/Rocks/Mesh/"
 const ICON_DIRECTORY: String = "res://Assets/Models/Runes/Static/Mesh/"
-## Structure to hold rune resources
+const RUNE_SCENE_PATH: String = "res://Scenes/Game/Runes/Pickable/base_rune.tscn"
+
+## Structure to hold rune resource paths
 class RuneResources:
 	var rune_name: String
-	var mesh: ArrayMesh
-	var icon: ArrayMesh
+	var mesh_path: String
+	var icon_path: String
 
-	func _init(in_rune_name: String, mesh_res: Resource, icon_res: Resource) -> void:
+	func _init(in_rune_name: String, in_mesh_path: String, in_icon_path: String) -> void:
 		rune_name = in_rune_name
-		mesh = mesh_res
-		icon = icon_res
+		mesh_path = in_mesh_path
+		icon_path = in_icon_path
 
-## Dictionary mapping rune names to their resources
+## Dictionary mapping rune names to their resource paths
 var runes: Dictionary[String, RuneResources] = {}
+var _base_rune_scene: PackedScene
 
-## Emitted when resources are loaded successfully
-signal rune_resources_loaded
-
+## Emitted when rune paths are validated
+signal runes_validated
 
 func _ready() -> void:
-	var load_success: bool = _load_resources()
-	if load_success:
-		rune_resources_loaded.emit()
+	_base_rune_scene = preload(RUNE_SCENE_PATH)
+	if not _base_rune_scene:
+		push_error("Failed to load base rune scene from: " + RUNE_SCENE_PATH)
+		return
 
-## Loads all rune resources into memory
-func _load_resources() -> bool:
+	var success: bool = validate_runes()
+	if success:
+		runes_validated.emit()
+
+## Validates available runes without loading resources
+## Returns true if successful, false if there was an error
+func validate_runes() -> bool:
 	var success: bool = true
-	var mesh_resources: Dictionary = {}
-	var icon_resources: Dictionary = {}
-	# Load mesh resources
+	var mesh_paths: Dictionary = {}
+	var icon_paths: Dictionary = {}
+
+	# Scan for mesh paths
 	success = success and _scan_directory(
 		MESH_DIRECTORY,
 		"runes_",
-		mesh_resources,
-		"ArrayMesh"
+		mesh_paths
 	)
 
-	# Load icon resources
+	# Scan for icon paths
 	success = success and _scan_directory(
 		ICON_DIRECTORY,
 		"runes icons_",
-		icon_resources,
-		"ArrayMesh"
+		icon_paths
 	)
 
 	# Only keep runes that have both mesh and icon
-	for rune_name: String in mesh_resources:
-		if icon_resources.has(rune_name):
+	for rune_name: String in mesh_paths:
+		if icon_paths.has(rune_name):
 			runes[rune_name] = RuneResources.new(
 				rune_name,
-				mesh_resources[rune_name],
-				icon_resources[rune_name]
+				mesh_paths[rune_name],
+				icon_paths[rune_name]
 			)
 
 	if runes.is_empty():
@@ -66,9 +73,9 @@ func _load_resources() -> bool:
 
 	return success
 
-## Scans a directory for rune resources
+## Scans a directory for rune resources and stores their paths
 ## Returns true if successful, false if there was an error
-func _scan_directory(directory: String, prefix: String, out_resources: Dictionary, resource_type: String) -> bool:
+func _scan_directory(directory: String, prefix: String, out_paths: Dictionary) -> bool:
 	var success: bool = true
 
 	var files: PackedStringArray = ResourceLoader.list_directory(directory)
@@ -77,12 +84,7 @@ func _scan_directory(directory: String, prefix: String, out_resources: Dictionar
 			if file_name.begins_with(prefix) and file_name.ends_with(".res"):
 				var rune_name: String = _extract_rune_name(file_name, prefix)
 				var resource_path: String = directory + file_name
-				var resource: Resource = load(resource_path)
-				if resource:
-					out_resources[rune_name] = resource
-				else:
-					success = false
-					print("Failed to load " + resource_type + " resource: " + resource_path)
+				out_paths[rune_name] = resource_path
 	else:
 		success = false
 		print("Failed to open directory: " + directory)
@@ -96,21 +98,50 @@ func _extract_rune_name(file_name: String, prefix: String) -> String:
 	var ext_length: int = ".res".length()
 	return file_name.substr(prefix_length, file_name.length() - prefix_length - ext_length)
 
-## Returns the mesh resource for a given rune name
-## Returns null if the rune doesn't exist
-func get_rune_mesh(rune_name: String) -> ArrayMesh:
-	if not runes.has(rune_name):
-		print("Rune not found: " + rune_name)
+## Creates a new rune PackedScene with the specified rune name
+## Returns null if the rune name doesn't exist or scene creation fails
+func create_rune(rune_name: String) -> BaseRune:
+	if not runes.has(rune_name) or not _base_rune_scene:
 		return null
-	return runes[rune_name].mesh
 
-## Returns the icon resource for a given rune name
-## Returns null if the rune doesn't exist
-func get_rune_icon(rune_name: String) -> ArrayMesh:
-	if not runes.has(rune_name):
-		print("Rune not found: " + rune_name)
+	# First instantiate the base scene to modify it
+	var base_rune: BaseRune = _base_rune_scene.duplicate().instantiate()
+	if not base_rune:
 		return null
-	return runes[rune_name].icon
+
+	# Set the properties
+	base_rune.rune_name = rune_name
+	base_rune.rune_mesh = load(runes[rune_name].mesh_path)
+
+	var mesh_instance: MeshInstance3D = base_rune.get_node("MeshInstance3D")
+	mesh_instance.set_mesh(base_rune.rune_mesh)
+
+	return base_rune
+
+## Creates an array of random rune PackedScenes
+## count: Number of runes to create
+## Returns: Array of PackedScenes with configured runes
+func create_random_runes(count: int) -> Array[BaseRune]:
+	var result: Array[BaseRune] = []
+	if runes.is_empty() or not _base_rune_scene:
+		push_error("No runes available to create or base scene not loaded")
+		return result
+
+	# Get all available rune names and shuffle them
+	var available_runes = runes.keys()
+	available_runes.shuffle()
+
+	# Create specified number of runes
+	for i in range(count):
+		if i >= available_runes.size():
+			break
+
+		var rune_name = available_runes[i]
+		var rune = create_rune(rune_name)
+		if rune:
+			result.append(rune)
+
+	return result
 
 ## Returns a list of all available rune names
 ## These runes are guaranteed to have both mesh and icon resources

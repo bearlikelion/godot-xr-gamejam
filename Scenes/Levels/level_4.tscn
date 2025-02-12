@@ -1,6 +1,6 @@
 [gd_scene load_steps=191 format=4 uid="uid://8wpuh0rmhc5j"]
 
-[ext_resource type="Script" uid="uid://dcbfy7nym63ll" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
+[ext_resource type="Script" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
 [ext_resource type="Material" uid="uid://dl8c2y3td2dct" path="res://Assets/Models/Blacksmith/Materials/WroughtIron.tres" id="2_eb5oh"]
 [ext_resource type="Material" uid="uid://dw4gee2ihoimy" path="res://Assets/Models/Blacksmith/Materials/OakBark.tres" id="3_e7hmo"]
 [ext_resource type="PackedScene" uid="uid://dq4w4mt18jxn1" path="res://Scenes/Game/Anvil/anvil_snap_zone.tscn" id="3_lapqw"]

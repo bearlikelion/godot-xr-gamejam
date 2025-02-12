@@ -25,14 +25,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		Events.podium_rose.emit()
 
 
-func _on_place_on_pedistal(scene_string: String) -> void:
-	var _item: Node3D = load(scene_string).instantiate()
+func _on_place_on_pedistal(base_rune: BaseRune) -> void:
+	base_rune = base_rune.duplicate()
+	base_rune.enabled = false  # Make it so it can't be picked up
 
 	if icon_marker.get_child_count() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
 
-	icon_marker.add_child(_item)
+	icon_marker.add_child(base_rune)
 
 
 func _on_level_completed() -> void:

@@ -1,65 +1,57 @@
 class_name Level1
 extends StaticBody3D
 
-var match_rune: BaseRune
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @export var rune_config: RuneConfig
 
+var match_rune: BaseRune
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hide()
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
-
+	if not rune_config:
+		push_error("RuneConfig not assigned to Level1")
+		return
 
 func _on_start_game() -> void:
 	show()
 	generate_runes() # Generate runes
 	animation_player.play("appear")
 
-
 func generate_runes() -> void:
-	# Wait for rune resources to be loaded if needed
-	if not rune_config.runes:
-		await rune_config.rune_resources_loaded
+	if rune_config.runes.is_empty():
+		push_error("No runes available in RuneConfig")
+		return
 
-	# Get all available rune names
-	var rune_names = rune_config.runes.keys()
-	rune_names.shuffle()
-
-	# Select a random rune to match
-	var rune_to_match_name = rune_names[0]
-	var rune_to_match = rune_config.runes[rune_to_match_name]
-	Events.place_on_pedistal.emit(rune_to_match.mesh)
-
-	# Get all rune positions and shuffle them
+	# Get all rune positions
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
+	if rune_positions.is_empty():
+		push_error("No rune positions found in Level1")
+		return
 
 	if not Global.testing:
 		rune_positions.shuffle()
 
-	# Place the matching rune at the first position
-	var first_position: Marker3D = rune_positions.front()
-	match_rune = BaseRune.new()
-	match_rune.rune_mesh = rune_to_match.mesh
-	first_position.add_child(match_rune)
-	rune_names.erase(rune_to_match_name)
+	# Generate all runes including the match rune
+	var all_runes: Array[BaseRune] = rune_config.create_random_runes(rune_positions.size())
+	if all_runes.is_empty():
+		push_error("Failed to create runes")
+		return
 
-	# Fill remaining positions with random runes
-	for rune_position: Marker3D in rune_positions.slice(1):
-		rune_names.shuffle()
-		var random_rune_name = rune_names[0]
-		var random_rune = rune_config.runes[random_rune_name]
-		var pickable_rune = BaseRune.new()
-		pickable_rune.rune_mesh = random_rune.mesh
-		rune_position.add_child(pickable_rune)
+	# Get the first rune as our match target and place it on the pedestal
+	match_rune = all_runes[0]
+	Events.place_on_pedistal.emit(match_rune)
 
+	# Place all runes in positions
+	for i in range(all_runes.size()):
+		rune_positions[i].add_child(all_runes[i])
 
 func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
@@ -67,7 +59,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		Events.level_2_load.emit()
 		collision_shape_3d.disabled = true
 		hide()
-
 
 func _on_audio_stream_player_3d_finished() -> void:
 	animation_player.play("fade")

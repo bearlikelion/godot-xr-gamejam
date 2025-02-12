@@ -11,11 +11,8 @@ func _ready() -> void:
 	Events.podium_snapped.connect(_on_podium_snapped)
 
 
-func _on_place_on_pedistal(icon_scene: String) -> void:
-	rune_to_match = icon_scene.get_file().replace("icon_", "")\
-	.replace("rune_", "")\
-	.replace(".tscn", "")
-
+func _on_place_on_pedistal(base_rune: BaseRune) -> void:
+	rune_to_match = base_rune.rune_name
 	print("Global rune to match: %s" % rune_to_match)
 
 

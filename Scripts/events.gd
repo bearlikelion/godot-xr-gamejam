@@ -2,7 +2,7 @@
 extends Node
 
 # Global signals
-signal place_on_pedistal(scene_string: String)
+signal place_on_pedistal(base_rune: BaseRune)
 signal podium_snapped(object_name: String)
 
 # Star signals
