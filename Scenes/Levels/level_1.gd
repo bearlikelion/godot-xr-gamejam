@@ -33,8 +33,7 @@ func generate_runes() -> void:
 		push_error("No rune positions found in Level1")
 		return
 
-	if not Global.testing:
-		rune_positions.shuffle()
+
 
 	# Generate all runes including the match rune
 	var all_runes: Array[BaseRune] = rune_config.create_random_runes(rune_positions.size())

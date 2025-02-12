@@ -128,16 +128,17 @@ func create_random_runes(count: int) -> Array[BaseRune]:
 		return result
 
 	# Get all available rune names and shuffle them
-	var available_runes = runes.keys()
-	available_runes.shuffle()
+	var available_runes: Array[String] = runes.keys()
+	if not Global.testing:
+		available_runes.shuffle()
 
 	# Create specified number of runes
 	for i in range(count):
 		if i >= available_runes.size():
 			break
 
-		var rune_name = available_runes[i]
-		var rune = create_rune(rune_name)
+		var rune_name: String = available_runes[i]
+		var rune: BaseRune = create_rune(rune_name)
 		if rune:
 			result.append(rune)
 
