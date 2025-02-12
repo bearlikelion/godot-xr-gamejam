@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr3q3c3wdyw3c"
+path="res://.godot/imported/chisel wrong.mp3-4b3d7ac9af8cc1804636c2e21c50cbf7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/chisel wrong.mp3"
+dest_files=["res://.godot/imported/chisel wrong.mp3-4b3d7ac9af8cc1804636c2e21c50cbf7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
