@@ -30,4 +30,8 @@ signal level_4_completed
 signal level_5_load
 signal button_pushed(color: String)
 signal level_5_completed
+
+signal level_6_load
+signal reset_potions
+signal level_6_complete
 #endregion

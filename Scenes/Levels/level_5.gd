@@ -8,6 +8,8 @@ var sequence: Array[String]
 var player_input: Array[String]
 var sequence_index: int = 0
 var is_player_turn: bool = false
+var input_delay: Timer = Timer.new()
+var accept_input: bool = true
 
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level5/AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
@@ -18,6 +20,9 @@ var is_player_turn: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.level = 5
+	input_delay.wait_time = 0.25
+	input_delay.timeout.connect(_on_input_delay_timeout)
+	add_child(input_delay)
 	animation_player.play("appear")
 
 	Events.button_pushed.connect(_on_button_pushed)
@@ -35,6 +40,7 @@ func start_simon() -> void:
 func add_to_sequence() -> void:
 	if sequence_index > lights.size():
 		print("PLAYER WINS SIMON")
+		Events.level_5_completed.emit()
 		audio_stream_player_3d.play()
 		animation_player.play("fade")
 	else:
@@ -70,9 +76,11 @@ func show_light(button_to_press: String) -> void:
 
 
 func check_player_input(color: String) -> void:
-	if not is_player_turn:
+	if not is_player_turn or not accept_input:
 		return
 
+	accept_input = false
+	input_delay.start()
 	player_input.append(color)
 
 	if player_input[sequence_index] != sequence[sequence_index]:
@@ -80,13 +88,11 @@ func check_player_input(color: String) -> void:
 		await get_tree().create_timer(3.0).timeout
 		start_simon()
 		return
-	else:
-		show_light(color)
 
 	sequence_index += 1
 	if sequence_index >= sequence.size():
 		is_player_turn = false
-		await get_tree().create_timer(TIMEOUT).timeout
+		await get_tree().create_timer(3.0).timeout
 		player_input.clear()
 		add_to_sequence()
 
@@ -115,4 +121,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		start_simon()
 
 	if anim_name == "fade":
-		Events.level_5_completed.emit()
+		Events.level_6_load.emit()
+
+
+func _on_input_delay_timeout() -> void:
+	accept_input = true
+	input_delay.stop()

@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://4n5uyclpjjub"]
+[gd_scene load_steps=12 format=4 uid="uid://4n5uyclpjjub"]
 
 [ext_resource type="Script" uid="uid://becpxxe681mww" path="res://Scenes/Player/Staff/staff.gd" id="1_0ywk1"]
-[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_aqlmq"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_pdr8c"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_dji7v"]
 [ext_resource type="PackedScene" uid="uid://brt0qlh38dd43" path="res://Scenes/Player/Staff/staff_snap_zone.tscn" id="5_5576e"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_fgk8h"]
-[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_7ai1l"]
 [ext_resource type="Texture2D" uid="uid://bn7ua0bfsqxrc" path="res://Assets/Models/Staff/staff_handle_staff01Ds.png" id="7_semff"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0ywk1"]
@@ -66,7 +64,8 @@ freeze = true
 freeze_mode = 1
 script = ExtResource("1_0ywk1")
 enabled = false
-metadata/_custom_type_script = ExtResource("2_aqlmq")
+ranged_grab_method = 2
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -93,7 +92,7 @@ skeleton = NodePath("")
 script = ExtResource("6_fgk8h")
 highlight_mesh_instance = NodePath("../staff_handle/staff")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
-metadata/_custom_type_script = ExtResource("7_7ai1l")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
 [connection signal="has_picked_up" from="StaffSnapZone" to="StaffSnapZone" method="_on_has_picked_up"]

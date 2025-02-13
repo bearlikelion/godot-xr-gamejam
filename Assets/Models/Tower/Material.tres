@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c3h7lcfu3slkq"]
+
+[ext_resource type="Texture2D" uid="uid://kan25gqqnhui" path="res://Assets/Models/Tower/Texture/guard_towerColor.png" id="1_usqdk"]
+[ext_resource type="Texture2D" uid="uid://bublvusq7r3g1" path="res://Assets/Models/Tower/Texture/guard_towerAO.png" id="2_l658t"]
+[ext_resource type="Texture2D" uid="uid://cna2xyt2pwtyc" path="res://Assets/Models/Tower/Texture/guard_towerMetal.png" id="3_n6dcr"]
+[ext_resource type="Texture2D" uid="uid://dyg63kmoa510s" path="res://Assets/Models/Tower/Texture/guard_towerNormal.png" id="4_6h6rn"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_usqdk")
+metallic = 1.0
+metallic_texture = ExtResource("3_n6dcr")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("4_6h6rn")
+ao_enabled = true
+ao_texture = ExtResource("2_l658t")

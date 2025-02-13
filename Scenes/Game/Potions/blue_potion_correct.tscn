@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://deosfamgtfbv8"]
+
+[ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_djrja"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_fnkwl"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_fltjg"]
+[ext_resource type="ArrayMesh" uid="uid://h2i7rc0p4g7a" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Tube_002.res" id="4_djrja"]
+[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="5_2upgt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6upqm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fnkwl"]
+points = PackedVector3Array(-0.00035942, 0.00107444, -0.0642774, -0.00461034, 0.00564901, -0.066126, -0.061695, 0.00826923, 0.0359483, 0.0618551, 0.00529642, 0.034313, -0.00922835, 0.131933, -0.0133039, 0.0613243, 0.00794521, -0.0361524, -0.061695, 0.00826923, -0.0359483, -0.00035942, 0.00107426, 0.0642776, -0.00922835, 0.131933, 0.0133039, 0.00165446, 0.0250671, 0.0644969, 0.0179986, 0.116358, -0.0122314, 0.00165718, 0.0250127, -0.064584, -0.0583774, 0.000897969, -0.0322332, 0.0578132, 0.02726, 0.0320838, 0.0578612, 0.000686497, -0.0323255, -0.0591311, 0.0228087, 0.0344457, -0.0590719, 0.0228516, -0.034411, 0.0569466, 0.0258546, -0.0335867, -0.0583775, 0.000897895, 0.0322333, 0.0578609, 0.000686736, 0.0323253, -0.0183824, 0.115427, -0.0120082, -0.00248711, 0.00754113, 0.0685313, 0.0179986, 0.116358, 0.0122314, -0.0185897, 0.0228238, -0.056708, -0.0186079, 0.0227812, 0.0567648, 0.00161803, 0.114819, 0.0217589, 0.00161803, 0.114819, -0.0217589, 0.00387266, 0.00818445, -0.0677688, 0.0443013, 0.0227364, 0.0426183, 0.0132082, 0.123556, -0.00775317, 0.00387266, 0.00818445, 0.0677688, 0.0443447, 0.022695, -0.0426597)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+grow = true
+grow_amount = 0.03
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3vs2"]
+size = Vector3(0.0610237, 0.134894, 0.0647949)
+
+[node name="BluePotionCorrect" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_djrja")
+potion_color = "BLUE"
+correct_potion = true
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_fnkwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.168445, -0.1)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("3_fltjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.168445, -0.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("4_djrja")
+surface_material_override/2 = SubResource("StandardMaterial3D_6upqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fnkwl")
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("5_2upgt")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_w1ccq")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00097847, 0.196268, -0.000512704)
+shape = SubResource("BoxShape3D_m3vs2")
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
