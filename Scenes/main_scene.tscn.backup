@@ -72,24 +72,24 @@ follow_speed = SubResource("21")
 splash_screen = ExtResource("5_76v2p")
 progress = 0.0
 
+[node name="Label3D" type="Label3D" parent="LoadingScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, -40)
+text = "A Wizards Way"
+font = ExtResource("6_ioaeq")
+font_size = 690
+outline_size = 100
+
 [node name="SplashScreen" type="MeshInstance3D" parent="LoadingScreen"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15, -50)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.40701, 15, -50)
 mesh = SubResource("PlaneMesh_gnsmo")
 surface_material_override/0 = SubResource("StandardMaterial3D_1o2lp")
 
-[node name="Label3D" type="Label3D" parent="LoadingScreen/SplashScreen"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, -20)
-text = "A Wizards Way"
-font = ExtResource("6_ioaeq")
-font_size = 500
-outline_size = 100
-
 [node name="ProgressBar" type="MeshInstance3D" parent="LoadingScreen"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -10)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -4, -10)
 mesh = SubResource("3")
 
 [node name="PressToContinue" type="MeshInstance3D" parent="LoadingScreen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, -10)
 visible = false
 mesh = SubResource("19")
 surface_material_override/0 = SubResource("StandardMaterial3D_k8dyo")
@@ -97,7 +97,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k8dyo")
 [node name="HoldButton" parent="LoadingScreen/PressToContinue" instance=ExtResource("9_lhp3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55766, 0, 0)
 hold_time = 0.5
-color = Color(0, 0.717647, 1, 1)
+color = Color(0.611612, 0.761105, 0.894469, 1)
+
+[node name="Label3D" type="Label3D" parent="LoadingScreen/PressToContinue"]
+text = "Hold Trigger to Start"
+font = ExtResource("6_ioaeq")
+font_size = 200
+outline_size = 100
 
 [node name="Scene" type="Node3D" parent="."]
 
