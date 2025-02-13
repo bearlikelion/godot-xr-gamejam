@@ -1,0 +1,97 @@
+[gd_scene load_steps=16 format=3 uid="uid://butemle61eo12"]
+
+[ext_resource type="Script" uid="uid://dvp0xckga0uj6" path="res://Scenes/Levels/level_7.gd" id="1_2ge20"]
+[ext_resource type="LightmapGIData" uid="uid://b2rb30tkxxquo" path="res://Scenes/Levels/Lighting/level_6.lmbake" id="2_0aha3"]
+[ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="3_e7x8w"]
+[ext_resource type="PackedScene" uid="uid://c08hydiidhgbp" path="res://Assets/Models/Norway/Norway.glb" id="5_ovpfc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eygg8"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_5l77v"]
+sky_material = SubResource("ProceduralSkyMaterial_eygg8")
+
+[sub_resource type="Environment" id="Environment_6y1v7"]
+background_mode = 2
+sky = SubResource("Sky_5l77v")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+
+[sub_resource type="Animation" id="Animation_iixi8"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_3mqfk"]
+resource_name = "appear"
+length = 3.0
+
+[sub_resource type="Animation" id="Animation_l0my4"]
+resource_name = "blue"
+length = 2.0
+step = 1.0
+
+[sub_resource type="Animation" id="Animation_4dpyx"]
+resource_name = "fade"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_k5iiv"]
+resource_name = "green"
+length = 2.0
+step = 1.0
+
+[sub_resource type="Animation" id="Animation_vdfhy"]
+resource_name = "red"
+length = 2.0
+step = 1.0
+
+[sub_resource type="Animation" id="Animation_xrly6"]
+resource_name = "yellow"
+length = 2.0
+step = 1.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iixi8"]
+_data = {
+&"RESET": SubResource("Animation_iixi8"),
+&"appear": SubResource("Animation_3mqfk"),
+&"blue": SubResource("Animation_l0my4"),
+&"fade": SubResource("Animation_4dpyx"),
+&"green": SubResource("Animation_k5iiv"),
+&"red": SubResource("Animation_vdfhy"),
+&"yellow": SubResource("Animation_xrly6")
+}
+
+[node name="Level8" type="Node3D"]
+script = ExtResource("1_2ge20")
+
+[node name="Level8" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, -13.25, -1.25)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level8"]
+environment = SubResource("Environment_6y1v7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level8"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, -1.25, 13.25, -4)
+
+[node name="LightmapGI" type="LightmapGI" parent="Level8"]
+light_data = ExtResource("2_0aha3")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Level8"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level8"]
+libraries = {
+&"": SubResource("AnimationLibrary_iixi8")
+}
+autoplay = "appear"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+stream = ExtResource("3_e7x8w")
+bus = &"SFX"
+
+[node name="Norway" parent="Level8" instance=ExtResource("5_ovpfc")]
+
+[node name="Crowd" type="Node" parent="Level8"]
+
+[connection signal="animation_finished" from="Level8/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="Level8/AudioStreamPlayer3D" to="Level8" method="_on_audio_stream_player_3d_finished"]

@@ -14,3 +14,4 @@ func _on_chest_opened() -> void:
 func _on_has_picked_up(what: Variant) -> void:
 	if what is WizardHat:
 		what.reparent(get_tree().get_first_node_in_group("base"))
+		Events.player_equipped_hat.emit()

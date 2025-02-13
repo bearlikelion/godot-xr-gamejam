@@ -38,4 +38,9 @@ signal level_6_completed
 signal level_7_load
 signal chest_opened
 signal grabbed_hat
+signal player_equipped_hat
+signal level_7_completed
+
+signal level_8_load
+
 #endregion
