@@ -14,13 +14,17 @@ var accept_input: bool = true
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level5/AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
 @onready var fail_sound: AudioStreamPlayer3D = $Level5/FailSound
-@onready var simon: AudioStreamPlayer3D = $Level5/Simon
+
+@onready var simon_red: AudioStreamPlayer3D = $Level5/Lights/Red/SimonRed
+@onready var simon_green: AudioStreamPlayer3D = $Level5/Lights/Green/SimonGreen
+@onready var simon_yellow: AudioStreamPlayer3D = $Level5/Lights/Yellow/SimonYellow
+@onready var simon_blue: AudioStreamPlayer3D = $Level5/Lights/Blue/SimonBlue
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.level = 5
-	input_delay.wait_time = 0.25
+	input_delay.wait_time = 0.5
 	input_delay.timeout.connect(_on_input_delay_timeout)
 	add_child(input_delay)
 	animation_player.play("appear")
@@ -54,7 +58,7 @@ func play_sequence() -> void:
 	print("Play Sequence: %s" % [sequence])
 	for color in sequence:
 		show_light(color)
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(2.1).timeout
 	is_player_turn = true
 
 
@@ -62,17 +66,16 @@ func show_light(button_to_press: String) -> void:
 	match button_to_press:
 		"Red":
 			animation_player.play("red")
-			simon.pitch_scale = 0.8
+			simon_red.play()
 		"Green":
 			animation_player.play("green")
-			simon.pitch_scale = 0.9
+			simon_green.play()
 		"Yellow":
 			animation_player.play("yellow")
-			simon.pitch_scale = 1.1
+			simon_yellow.play()
 		"Blue":
 			animation_player.play("blue")
-			simon.pitch_scale = 1.2
-	simon.play()
+			simon_blue.play()
 
 
 func check_player_input(color: String) -> void:
@@ -103,17 +106,16 @@ func _on_button_pushed(button_color: String) -> void:
 	match button_color:
 		"Red":
 			animation_player.play("red")
-			simon.pitch_scale = 0.8
+			simon_red.play()
 		"Green":
 			animation_player.play("green")
-			simon.pitch_scale = 0.9
+			simon_green.play()
 		"Yellow":
 			animation_player.play("yellow")
-			simon.pitch_scale = 1.1
+			simon_yellow.play()
 		"Blue":
 			animation_player.play("blue")
-			simon.pitch_scale = 1.2
-	simon.play()
+			simon_blue.play()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

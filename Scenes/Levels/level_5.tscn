@@ -220,7 +220,7 @@ shader_parameter/dissolve_amount = 1.0
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_jfrt3")
 shader = ExtResource("21_28itd")
-shader_parameter/albedo = Color(0.480133, 0, 0.240176, 1)
+shader_parameter/albedo = Color(0.0619233, 0.0449795, 0.100559, 1)
 shader_parameter/texture_albedo = ExtResource("22_ljpai")
 shader_parameter/point_size = 0.0
 shader_parameter/texture_ORM = ExtResource("23_34ad4")
@@ -359,7 +359,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/Red:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lights/Green:omni_range")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lights/Yellow:omni_range")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_4dpyx"]
@@ -428,7 +464,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/Red:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lights/Blue:omni_range")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_vdfhy"]
@@ -445,7 +517,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/Green:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lights/Blue:omni_range")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_xrly6"]
@@ -462,7 +570,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/Blue:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lights/Green:omni_range")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lights/Red:omni_range")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iixi8"]
@@ -506,11 +650,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 stream = ExtResource("27_vdfhy")
 bus = &"SFX"
 
-[node name="Simon" type="AudioStreamPlayer3D" parent="Level5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
-stream = ExtResource("28_k5iiv")
-bus = &"SFX"
-
 [node name="Lights" type="Node" parent="Level5"]
 
 [node name="Red" type="OmniLight3D" parent="Level5/Lights"]
@@ -518,22 +657,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -9.75)
 light_color = Color(1, 0, 0, 1)
 omni_range = 10.0
 
+[node name="SimonRed" type="AudioStreamPlayer3D" parent="Level5/Lights/Red"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 0.8
+bus = &"SFX"
+
 [node name="Green" type="OmniLight3D" parent="Level5/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25, 5, -9.75)
 light_color = Color(0, 1, 0, 1)
 omni_range = 10.0
+
+[node name="SimonGreen" type="AudioStreamPlayer3D" parent="Level5/Lights/Green"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 0.9
+bus = &"SFX"
 
 [node name="Yellow" type="OmniLight3D" parent="Level5/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, 5.75, 15.25)
 light_color = Color(1, 1, 0, 1)
 omni_range = 10.0
 
+[node name="SimonYellow" type="AudioStreamPlayer3D" parent="Level5/Lights/Yellow"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 1.1
+bus = &"SFX"
+
 [node name="Blue" type="OmniLight3D" parent="Level5/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25, -0.75, 15.25)
 light_color = Color(0, 0, 1, 1)
 omni_range = 10.0
 
+[node name="SimonBlue" type="AudioStreamPlayer3D" parent="Level5/Lights/Blue"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+bus = &"SFX"
+
 [connection signal="animation_finished" from="Level5/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="Level5/AudioStreamPlayer3D" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="finished" from="Level5/FailSound" to="Level5" method="_on_audio_stream_player_3d_finished"]
-[connection signal="finished" from="Level5/Simon" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Red/SimonRed" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Green/SimonGreen" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Yellow/SimonYellow" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Blue/SimonBlue" to="Level5" method="_on_audio_stream_player_3d_finished"]
