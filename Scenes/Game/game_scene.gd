@@ -18,6 +18,9 @@ const LEVEL_5 = preload("res://Scenes/Levels/level_5.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+
 	match starting_level:
 		"LEVEL_1":
 			add_child(level_1)

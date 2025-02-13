@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b068apleqoflb"]
+[gd_scene load_steps=10 format=3 uid="uid://b068apleqoflb"]
 
 [ext_resource type="Script" uid="uid://b5lw77mt7bbl" path="res://Scenes/Game/Crystals/pickable_crystal.gd" id="1_sp386"]
-[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_xccpw"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_7iapi"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_880kf"]
 [ext_resource type="ArrayMesh" uid="uid://q461ynt4ncqv" path="res://Assets/Models/Cave/Mesh/crystal_Cylinder_016.res" id="4_kkpq2"]
 [ext_resource type="Material" uid="uid://dd8x64quafwg2" path="res://Materials/BlueCrystal.tres" id="5_y1q37"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_0lebc"]
-[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_euglk"]
 [ext_resource type="AudioStream" uid="uid://4l11v1n87shw" path="res://Assets/Audio/SFX/crystal_break.ogg" id="8_viavv"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kkpq2"]
@@ -32,7 +30,7 @@ script = ExtResource("1_sp386")
 ranged_grab_method = 2
 second_hand_grab = 1
 ranged_grab_speed = 10.0
-metadata/_custom_type_script = ExtResource("2_xccpw")
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_7iapi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0868199, 0, 0)
@@ -51,13 +49,10 @@ shape = SubResource("ConvexPolygonShape3D_kkpq2")
 script = ExtResource("6_0lebc")
 highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
-metadata/_custom_type_script = ExtResource("7_euglk")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [node name="BreakSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_viavv")
-
-[node name="CrystalLight" type="OmniLight3D" parent="."]
-light_color = Color(0.759449, 0.908376, 0.927622, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="dropped" from="." to="." method="_on_dropped"]

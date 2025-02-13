@@ -70,4 +70,5 @@ func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 
 	if Global.level == 4:
 		if what is Staff and staff_forged:
+			what.reparent(get_tree().get_first_node_in_group("base"), true)
 			Events.level_4_completed.emit()
