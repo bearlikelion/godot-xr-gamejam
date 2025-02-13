@@ -2,20 +2,42 @@
 class_name BaseRune
 extends XRToolsPickable
 
+# Rune Configuration
+@export_group("Rune Properties")
+## The name identifier for this rune
 @export var rune_name: String
+## The mesh to use for this rune's visual representation
 @export var rune_mesh: ArrayMesh
-@export var hover_height: float = 0.2  # Target hover height
-@export var spring_strength: float = 20.0  # How strongly to maintain hover height
-@export var damping: float = 0.8  # How quickly to dampen movement (0-1)
-@export var bob_amplitude: float = 0.05  # How much to bob
-@export var bob_frequency: float = 2.0  # How fast to bob
-@export var hover_timeout: float = 0.5  # How long to hover before falling
 
+# Hover and Bob Configuration
+@export_group("Hover Properties")
+## Height above initial position to hover
+@export var hover_height: float = 0.2
+## Spring force strength for maintaining hover height
+@export var spring_strength: float = 20.0
+## Damping factor for horizontal movement (0-1)
+@export var damping: float = 0.8
+
+@export_group("Bob Properties")
+## Maximum distance to bob up and down
+@export var bob_amplitude: float = 0.05
+## Frequency of bobbing motion (cycles per second)
+@export var bob_frequency: float = 2.0
+## Time to maintain upward momentum when stopping hover
+@export var hover_timeout: float = 0.5
+
+# State Variables
+## Starting position of the rune
 var _initial_position: Vector3
+## Current hover state
 var _is_hovering: bool = false
+## Whether the rune is transitioning from hover to fall
 var _is_falling: bool = false
+## Accumulated time for bob calculation
 var _time: float = 0.0
+## Timer for controlling hover-to-fall transition
 var _hover_timer: float = 0.0
+## Previous frame's velocity for momentum preservation
 var _last_velocity: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
