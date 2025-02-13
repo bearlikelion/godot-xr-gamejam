@@ -14,6 +14,7 @@ func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
 	Events.level_1_completed.connect(_on_level_completed)
 	Events.level_2_completed.connect(_on_level_completed)
+	Events.level_6_completed.connect(_on_level_completed)
 	Events.staff_forged.connect(_on_staff_forged)
 
 

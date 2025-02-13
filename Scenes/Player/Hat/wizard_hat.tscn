@@ -77,7 +77,7 @@ shadow_mesh = SubResource("ArrayMesh_ql0ud")
 
 [node name="wizard_hat" type="RigidBody3D" groups=["wizard_hat"]]
 collision_layer = 4
-collision_mask = 196615
+collision_mask = 65543
 script = ExtResource("1_wrqbh")
 ranged_grab_method = 2
 ranged_grab_speed = 5.0

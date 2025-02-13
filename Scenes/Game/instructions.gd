@@ -14,6 +14,7 @@ func _ready() -> void:
 	Events.spawn_staff_head.connect(_on_spawn_staff_head)
 	Events.staff_head_connected.connect(_on_staff_head_connected)
 	Events.staff_forged.connect(_on_staff_forged)
+	Events.level_5_load.connect(_on_level_5_load)
 
 
 func _on_podium_rose() -> void:
@@ -22,13 +23,13 @@ func _on_podium_rose() -> void:
 
 
 func _on_start_game() -> void:
-	text = "Find the matching rune"
+	text = "Find the\nmatching rune"
 	animation_player.play("fade")
 
 
 func _on_level_2_load() -> void:
 	animation_player.play("RESET")
-	text = "Find the magic book"
+	text = "Find the\nmagic book"
 	animation_player.play("fade")
 
 
@@ -46,7 +47,7 @@ func _on_level_4_load() -> void:
 
 func _on_find_tool() -> void:
 	animation_player.play("RESET")
-	text = "Find the right tool\nto craft a gem"
+	text = "Use the right tool\nto make a gem"
 	animation_player.play("fade")
 
 
@@ -65,4 +66,10 @@ func _on_staff_head_connected() -> void:
 func _on_staff_forged() -> void:
 	animation_player.play("RESET")
 	text = "Place the staff\non the podium"
+	animation_player.play("fade")
+
+
+func _on_level_5_load() -> void:
+	animation_player.play("RESET")
+	text = "Follow the\nsequence"
 	animation_player.play("fade")
