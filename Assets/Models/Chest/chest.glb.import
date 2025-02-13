@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cyx384tquak3c"
-path="res://.godot/imported/goldkey.glb-4fed3925a100c1f31b662a9b54653657.scn"
+uid="uid://ds87tq1vk7x72"
+path="res://.godot/imported/chest.glb-2751a91c196a6fcc95cdfb38a185c595.scn"
 
 [deps]
 
-source_file="res://Assets/Models/goldkey.glb"
-dest_files=["res://.godot/imported/goldkey.glb-4fed3925a100c1f31b662a9b54653657.scn"]
+source_file="res://Assets/Models/Chest/chest.glb"
+dest_files=["res://.godot/imported/chest.glb-2751a91c196a6fcc95cdfb38a185c595.scn"]
 
 [params]
 
