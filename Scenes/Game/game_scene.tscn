@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="8_3hq7a"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
+[ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
@@ -131,6 +132,13 @@ laser_length = 1
 laser_material = SubResource("StandardMaterial3D_cid5o")
 show_target = true
 collision_mask = 5308416
+
+[node name="FPSCounter" type="Label3D" parent="XROrigin3D/LeftHandController"]
+transform = Transform3D(7.49965e-09, -0.707107, 0.707107, -1.23634e-07, 0.707107, 0.707107, -1, -9.27257e-08, -8.21196e-08, -0.25, 0, -3.27835e-08)
+text = "FPS"
+font = ExtResource("4_jevh0")
+font_size = 12
+script = ExtResource("10_kn4b3")
 
 [node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
