@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://8wpuh0rmhc5j"]
+[gd_scene load_steps=203 format=4 uid="uid://8wpuh0rmhc5j"]
 
 [ext_resource type="Script" uid="uid://dcbfy7nym63ll" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
 [ext_resource type="Material" uid="uid://dl8c2y3td2dct" path="res://Assets/Models/Blacksmith/Materials/WroughtIron.tres" id="2_eb5oh"]
@@ -31,6 +31,9 @@
 [ext_resource type="Material" uid="uid://b1sxlw3tw71kh" path="res://Assets/Models/Blacksmith/GLB/Materials/Snow.tres" id="23_lapqw"]
 [ext_resource type="Shader" uid="uid://de61eng24g4m8" path="res://Shaders/3d_disolve.gdshader" id="23_lhrhx"]
 [ext_resource type="Texture2D" uid="uid://bjqb5an31jn6a" path="res://Assets/Images/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="25_e7hmo"]
+[ext_resource type="PackedScene" uid="uid://bsdciqtcr1ll3" path="res://Assets/Models/Trees/tree2.glb" id="28_hckno"]
+[ext_resource type="PackedScene" uid="uid://c2binxhid83ar" path="res://Assets/Models/Trees/tree1.glb" id="29_d12sp"]
+[ext_resource type="PackedScene" uid="uid://pthdooxa4clo" path="res://Assets/Models/Trees/tree3.glb" id="30_mypyk"]
 [ext_resource type="PackedScene" uid="uid://unqsclxu0r2o" path="res://Scenes/Game/Tools/tool_1.tscn" id="31_ep717"]
 [ext_resource type="PackedScene" uid="uid://cnhgxwo8t4q2c" path="res://Scenes/Game/Tools/tool_3.tscn" id="32_ep717"]
 [ext_resource type="PackedScene" uid="uid://decrye8x8cqqs" path="res://Scenes/Game/Tools/tool_2.tscn" id="32_x7vre"]
@@ -3056,6 +3059,15 @@ material_overlay = SubResource("ShaderMaterial_ipr37")
 mesh = SubResource("ArrayMesh_pude2")
 skeleton = NodePath("")
 
+[node name="tree2" parent="Level4/terrain" instance=ExtResource("28_hckno")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 61.3825, 4.43503, -36.8995)
+
+[node name="tree1" parent="Level4/terrain" instance=ExtResource("29_d12sp")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 26.8683, 4.333, -60.8391)
+
+[node name="tree3" parent="Level4/terrain" instance=ExtResource("30_mypyk")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 47.0431, 4.17781, -52.5777)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level4"]
 libraries = {
 &"": SubResource("AnimationLibrary_iixi8")
@@ -3107,6 +3119,18 @@ metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="StaffHandle" parent="Level4" instance=ExtResource("33_x7vre")]
 transform = Transform3D(0.973996, 0.0249132, -0.225192, -0.00495438, 0.99604, 0.0887641, 0.226512, -0.0853402, 0.970263, -6.0907, 0.966543, -0.813568)
+
+[node name="tree2" parent="." instance=ExtResource("28_hckno")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -6.24991, -0.0734005, 28.5541)
+
+[node name="tree3" parent="." instance=ExtResource("28_hckno")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 13.4758, -0.0734005, 26.4037)
+
+[node name="tree4" parent="." instance=ExtResource("30_mypyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7088, -0.149076, -6.15813)
+
+[node name="tree5" parent="." instance=ExtResource("28_hckno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7302, -0.137268, -7.09715)
 
 [connection signal="body_entered" from="Level4/blacksmith/Forge/ForgeArea" to="Level4/blacksmith/Forge/ForgeArea" method="_on_body_entered"]
 [connection signal="animation_finished" from="Level4/AnimationPlayer" to="Level4" method="_on_animation_player_animation_finished"]

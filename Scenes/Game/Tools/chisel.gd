@@ -36,4 +36,4 @@ func _on_spawn_staff_head() -> void:
 	if magic_chisel:
 		freeze = false
 		magic_chisel = false
-		print("Chisel has gravity")
+		print("Chisel has gravity, and is no longer magic")
