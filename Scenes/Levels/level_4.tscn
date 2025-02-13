@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=4 uid="uid://8wpuh0rmhc5j"]
+[gd_scene load_steps=194 format=4 uid="uid://8wpuh0rmhc5j"]
 
 [ext_resource type="Script" uid="uid://dcbfy7nym63ll" path="res://Scenes/Levels/level_4.gd" id="1_31yle"]
 [ext_resource type="Material" uid="uid://dl8c2y3td2dct" path="res://Assets/Models/Blacksmith/Materials/WroughtIron.tres" id="2_eb5oh"]
@@ -33,6 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://cnhgxwo8t4q2c" path="res://Scenes/Game/Tools/tool_3.tscn" id="32_ep717"]
 [ext_resource type="PackedScene" uid="uid://decrye8x8cqqs" path="res://Scenes/Game/Tools/tool_2.tscn" id="32_x7vre"]
 [ext_resource type="PackedScene" uid="uid://4n5uyclpjjub" path="res://Scenes/Player/Staff/staff_handle.tscn" id="33_x7vre"]
+[ext_resource type="PackedScene" uid="uid://c2binxhid83ar" path="res://Assets/Models/Trees/tree1.glb" id="34_p0l4d"]
+[ext_resource type="PackedScene" uid="uid://bsdciqtcr1ll3" path="res://Assets/Models/Trees/tree2.glb" id="35_ipr37"]
+[ext_resource type="PackedScene" uid="uid://pthdooxa4clo" path="res://Assets/Models/Trees/tree3.glb" id="36_hckno"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_roffe"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -2844,6 +2847,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574118, 1.66984, -3.18028)
 
 [node name="StaffHandle" parent="." instance=ExtResource("33_x7vre")]
 transform = Transform3D(0.973996, 0.0249132, -0.225192, -0.00495438, 0.99604, 0.0887641, 0.226512, -0.0853402, 0.970263, -6.0907, 1.50175, -0.813568)
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="tree1" parent="Trees" instance=ExtResource("34_p0l4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5364, -0.0733991, 1.76992)
+
+[node name="tree2" parent="Trees" instance=ExtResource("35_ipr37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6957, -0.217296, -12.0762)
+
+[node name="tree3" parent="Trees" instance=ExtResource("34_p0l4d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.960226, -0.31672, 23.8791)
+
+[node name="tree4" parent="Trees" instance=ExtResource("34_p0l4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6654, 1.46697, 7.99957)
+
+[node name="tree5" parent="Trees" instance=ExtResource("36_hckno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2218, -0.216307, -8.51334)
+
+[node name="tree6" parent="Trees" instance=ExtResource("36_hckno")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -13.2935, -0.0635266, -13.7033)
+
+[node name="tree7" parent="Trees" instance=ExtResource("35_ipr37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8954, -0.270449, -7.81515)
+
+[node name="tree8" parent="Trees" instance=ExtResource("34_p0l4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46147, -0.221941, 12.4341)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
