@@ -33,5 +33,5 @@ signal level_5_completed
 
 signal level_6_load
 signal reset_potions
-signal level_6_complete
+signal level_6_completed
 #endregion

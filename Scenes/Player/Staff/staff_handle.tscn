@@ -65,6 +65,7 @@ freeze_mode = 1
 script = ExtResource("1_0ywk1")
 enabled = false
 ranged_grab_method = 2
+ranged_grab_speed = 15.0
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
