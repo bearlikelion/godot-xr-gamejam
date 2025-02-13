@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
-[ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
 [sub_resource type="Animation" id="Animation_p3bnw"]
@@ -87,7 +86,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
-starting_level = "LEVEL_1"
+starting_level = "LEVEL_5"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -184,10 +183,6 @@ push_rigid_bodies = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
-
-[node name="Level1" parent="." instance=ExtResource("15_3hq7a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -8, 0)
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")

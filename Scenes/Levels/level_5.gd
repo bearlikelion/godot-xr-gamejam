@@ -1,6 +1,6 @@
 extends Node3D
 
-const TIMEOUT = 1.5
+const TIMEOUT = 2.0
 const BUTTON_PANEL = preload("res://Scenes/Game/Buttons/button_panel.tscn")
 
 var lights: Array[String] = ["Red", "Green", "Yellow", "Blue"]
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func start_simon() -> void:
-	get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	sequence.clear()
 	player_input.clear()
 	sequence_index = 0

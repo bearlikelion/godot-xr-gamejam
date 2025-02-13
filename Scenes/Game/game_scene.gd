@@ -10,7 +10,7 @@ const LEVEL_3 = preload("res://Scenes/Levels/level_3.tscn")
 const LEVEL_4 = preload("res://Scenes/Levels/level_4.tscn")
 const LEVEL_5 = preload("res://Scenes/Levels/level_5.tscn")
 
-@onready var level_1: Level1 = LEVEL_1.instantiate()
+@onready var level_1: Node3D = LEVEL_1.instantiate()
 @onready var level_2: Node3D = LEVEL_2.instantiate()
 @onready var level_3: Node3D = LEVEL_3.instantiate()
 @onready var level_4: Node3D = LEVEL_4.instantiate()

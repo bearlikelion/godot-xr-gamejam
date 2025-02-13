@@ -345,6 +345,23 @@ tracks/3/keys = {
 "values": [0.0, 10.0, 10.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_l0my4"]
+resource_name = "blue"
+length = 2.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/Blue:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_4dpyx"]
 resource_name = "fade"
 length = 2.0
@@ -397,25 +414,10 @@ tracks/3/keys = {
 "values": [10.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_vdfhy"]
-resource_name = "red"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lights/Red:omni_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 10.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_k5iiv"]
 resource_name = "green"
-length = 3.0
+length = 2.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -423,7 +425,24 @@ tracks/0/path = NodePath("Lights/Green:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 10.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vdfhy"]
+resource_name = "red"
+length = 2.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/Red:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 10.0, 0.0]
@@ -431,7 +450,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_xrly6"]
 resource_name = "yellow"
-length = 3.0
+length = 2.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -439,23 +459,7 @@ tracks/0/path = NodePath("Lights/Yellow:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 10.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_l0my4"]
-resource_name = "blue"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lights/Blue:omni_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
+"times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 10.0, 0.0]
@@ -476,7 +480,7 @@ _data = {
 script = ExtResource("1_vdfhy")
 
 [node name="Level5" type="StaticBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -5, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, -5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level5"]
 shape = SubResource("ConcavePolygonShape3D_fgs3v")
