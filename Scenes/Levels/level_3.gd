@@ -29,12 +29,15 @@ func place_crystals() -> void:
 		crystal_positions.shuffle()
 
 	for crystal_position: Marker3D in crystal_positions:
-		var _crystal: RigidBody3D = PICKABLE_CRYSTAL.instantiate()
-		if crystal_i == 0:
-			_crystal.magic_crystal = true
-			magic_crystal = _crystal
+		var _crystal: PickableCrystal = PICKABLE_CRYSTAL.instantiate()
 
 		crystal_position.add_child(_crystal)
+		if crystal_i == 0:
+			_crystal.mesh_instance_3d.material_override = null
+			_crystal.magic_crystal = true
+			_crystal.add_to_group("magic_crystal")
+			magic_crystal = _crystal
+
 		crystal_i += 1
 
 

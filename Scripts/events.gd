@@ -22,7 +22,7 @@ signal wrong_crystal
 
 signal level_4_load
 signal level_4_completed
-signal crystal_on_anvil
+signal find_tool
 signal spawn_staff_head
-signal crystal_attached
+signal staff_head_connected
 signal staff_burned

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dq4w4mt18jxn1"]
 
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="1_mkwjb"]
-[ext_resource type="AudioStream" uid="uid://beaqoue85w8vy" path="res://Assets/Audio/SFX/568424__sheyvan__impact-small-stone-1-1.ogg" id="2_h81pm"]
+[ext_resource type="Script" uid="uid://cr1rdnldlreg4" path="res://Scenes/Game/Anvil/anvil_snap_zone.gd" id="2_ebd1u"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="3_nkj2p"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_byxf7"]
@@ -21,7 +21,7 @@ radial_segments = 32
 rings = 16
 
 [node name="AnvilSnapZone" instance=ExtResource("1_mkwjb")]
-stash_sound = ExtResource("2_h81pm")
+script = ExtResource("2_ebd1u")
 grab_distance = 0.2
 snap_mode = 1
 
@@ -32,3 +32,5 @@ shape = SubResource("SphereShape3D_byxf7")
 mesh = SubResource("SphereMesh_vvg7m")
 
 [node name="HighlightRing" parent="." index="2" instance=ExtResource("3_nkj2p")]
+
+[connection signal="has_picked_up" from="." to="." method="_on_has_picked_up"]

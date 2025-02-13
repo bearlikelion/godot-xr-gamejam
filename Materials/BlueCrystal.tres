@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=0 format=3 uid="uid://dd8x64quafwg2"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dd8x64quafwg2"]
+
+[ext_resource type="Texture2D" uid="uid://bg533vv3s36uw" path="res://Assets/Images/WireReinforced_N.jpg" id="1_k3dcb"]
 
 [resource]
 transparency = 1
@@ -7,6 +9,9 @@ roughness = 0.83
 emission_enabled = true
 emission = Color(0, 0.188672, 0.246094, 1)
 emission_energy_multiplier = 5.65
+normal_enabled = true
+normal_scale = 5.0
+normal_texture = ExtResource("1_k3dcb")
 rim_enabled = true
 rim_tint = 0.0
 refraction_enabled = true

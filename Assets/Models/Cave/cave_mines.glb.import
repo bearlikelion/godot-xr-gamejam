@@ -36,7 +36,7 @@ _subresources={
 "materials": {
 "crystal11": {
 "use_external/enabled": true,
-"use_external/path": "uid://c8n5lisyakn70"
+"use_external/path": "uid://dd8x64quafwg2"
 },
 "light_001": {
 "use_external/enabled": true,

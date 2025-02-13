@@ -47,3 +47,8 @@ func crystal_hit() -> void:
 		get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
 		Events.spawn_staff_head.emit()
 		queue_free()
+
+
+func _on_picked_up(_pickable: Variant) -> void:
+	if not magic_crystal:
+		breakable = true
