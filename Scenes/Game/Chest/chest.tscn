@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cjcse5mepy1ko" path="res://Assets/Models/Treasure/Chest/chest_Chest3.png" id="1_3ehix"]
 [ext_resource type="Script" uid="uid://cmdpvhqv2s5wn" path="res://Scenes/Game/Chest/chest.gd" id="1_k6j3p"]
-[ext_resource type="PackedScene" uid="uid://iusgv8yc1tui" path="res://Scenes/Player/wizard_hat.tscn" id="2_ddj0l"]
+[ext_resource type="PackedScene" uid="uid://iusgv8yc1tui" path="res://Scenes/Player/Hat/wizard_hat.tscn" id="2_ddj0l"]
 [ext_resource type="Texture2D" uid="uid://c2vmh70231rxx" path="res://Assets/Models/Treasure/Chest/chest_Chest3-norm.png" id="2_k6j3p"]
 [ext_resource type="AudioStream" uid="uid://sbi3welo812w" path="res://Assets/Audio/SFX/fail.ogg" id="4_nb0e8"]
 [ext_resource type="AudioStream" uid="uid://cxrdghaa2i73p" path="res://Assets/Audio/SFX/unlock.ogg" id="4_npjry"]
@@ -112,7 +112,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_2yj6k"]
 resource_name = "hat_bob"
 length = 3.0
-loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -158,9 +157,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0528127, 0, 0)
 visible = false
 shape = SubResource("ConvexPolygonShape3D_3ehix")
 
-[node name="wizard_hat" parent="." instance=ExtResource("2_ddj0l")]
-transform = Transform3D(0.0347933, 0, 0.247567, 0, 0.25, 0, -0.247567, 0, 0.0347933, 0, 1.13016, 0.3)
+[node name="wizard_hat" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_ddj0l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.3)
 visible = false
+animation_player = NodePath("../chest/AnimationPlayer")
 
 [node name="chest" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -181,7 +181,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.74228e-08, 0, 1, 3.55271e-15, 1, 0, 0.015296, 1.12715, -0.665836)
 bones/1/enabled = true
 bones/1/position = Vector3(0.015296, 1.12715, -0.665836)
-bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/1/rotation = Quaternion(4.36819e-08, 0.999326, 0.0367244, 1.60527e-09)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="chest/Armature/Skeleton3D"]

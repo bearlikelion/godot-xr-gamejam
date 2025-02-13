@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=22 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="5_3hq7a"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_yi1st"]
 [ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="6_3hq7a"]
+[ext_resource type="PackedScene" uid="uid://ynnywkbue5j5" path="res://Scenes/Player/Hat/hat_snap_zone.tscn" id="6_cid5o"]
 [ext_resource type="Script" uid="uid://fen86f2uqiag" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_jxx51"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
@@ -86,7 +87,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
-starting_level = "LEVEL_7"
+starting_level = "LEVEL_1"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -107,6 +108,8 @@ script = ExtResource("5_3hq7a")
 libraries = {
 &"": SubResource("AnimationLibrary_18sgl")
 }
+
+[node name="HatSnapZone" parent="XROrigin3D/XRCamera3D" instance=ExtResource("6_cid5o")]
 
 [node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)

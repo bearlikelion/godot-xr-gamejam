@@ -34,4 +34,8 @@ signal level_5_completed
 signal level_6_load
 signal reset_potions
 signal level_6_completed
+
+signal level_7_load
+signal chest_opened
+signal grabbed_hat
 #endregion

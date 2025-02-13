@@ -4,6 +4,8 @@ extends StaticBody3D
 @onready var fail: AudioStreamPlayer3D = $Fail
 @onready var unlock: AudioStreamPlayer3D = $Unlock
 
+var unlocked: bool = false
+
 
 func _ready() -> void:
 	animation_player.play("Close")
@@ -11,10 +13,12 @@ func _ready() -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is ChestKey:
-		if body.golden_key:
+		if body.golden_key and not unlocked:
 			print("UNLOCK")
+			unlocked = true
 			unlock.play()
 			animation_player.play("Open")
+			Events.chest_opened.emit()
 		else:
 			print("Wrong key")
 			fail.play()
