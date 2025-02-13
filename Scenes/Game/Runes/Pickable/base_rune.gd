@@ -36,6 +36,16 @@ var _was_bobbing: bool = false
 var _time: float = 0.0
 ## Previous frame's velocity for momentum preservation
 var _last_velocity: Vector3 = Vector3.ZERO
+## Random offset for bob timing to prevent synchronization
+var _bob_phase_offset: float = 0.0
+## Random frequency modifier to make each rune slightly different
+var _bob_frequency_modifier: float = 1.0
+## Random amplitude modifier for varying bob heights
+var _bob_amplitude_modifier: float = 1.0
+## Random direction modifier (-1 or 1) for initial bob direction
+var _bob_direction: float = 1.0
+## Random hover height modifier
+var _hover_height_modifier: float = 1.0
 
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
@@ -43,6 +53,12 @@ func _ready() -> void:
 	_initial_position = global_position
 	freeze = false
 
+	# Initialize random bobbing parameters
+	_bob_phase_offset = randf_range(0, PI * 2.0)  # Random phase offset (0 to 2π)
+	_bob_frequency_modifier = randf_range(0.1, 10.0)  # Frequency variation
+	_bob_amplitude_modifier = randf_range(0.5, 10.0)  # Amplitude variation
+	_bob_direction = 1.0 if randf() > 0.5 else -1.0  # Random initial direction
+	_hover_height_modifier = randf_range(0.5, 2.0)  # 50% to 200% base height variation
 	# Set the mesh if it exists
 	if rune_mesh and has_node("CollisionShape3D/MeshInstance3D"):
 		$CollisionShape3D/MeshInstance3D.mesh = rune_mesh
@@ -56,9 +72,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 func _apply_hover_bobbing(state: PhysicsDirectBodyState3D) -> void:
 	_time += state.step
 
-	# Calculate the target height including bobbing
-	var bob_offset = bob_amplitude * sin(bob_frequency * _time * PI * 2.0)
-	var target_height = _initial_position.y + hover_height + bob_offset
+	# Calculate the target height including bobbing with random modifiers
+	var bob_phase = bob_frequency * _bob_frequency_modifier * _time * PI * 2.0 + _bob_phase_offset
+	var bob_offset = bob_amplitude * _bob_amplitude_modifier * _bob_direction * sin(bob_phase)
+	var target_height = _initial_position.y + (hover_height * _hover_height_modifier) + bob_offset
 
 	# Calculate spring force based on distance from target
 	var current_height = state.transform.origin.y
