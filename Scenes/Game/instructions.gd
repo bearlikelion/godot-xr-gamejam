@@ -13,6 +13,7 @@ func _ready() -> void:
 	Events.find_tool.connect(_on_find_tool)
 	Events.spawn_staff_head.connect(_on_spawn_staff_head)
 	Events.staff_head_connected.connect(_on_staff_head_connected)
+	Events.staff_forged.connect(_on_staff_forged)
 
 
 func _on_podium_rose() -> void:
@@ -48,6 +49,7 @@ func _on_find_tool() -> void:
 	text = "Find the right tool\nto craft a gem"
 	animation_player.play("fade")
 
+
 func _on_spawn_staff_head() -> void:
 	animation_player.play("RESET")
 	text = "Attach the gem\nto a staff"
@@ -56,4 +58,11 @@ func _on_spawn_staff_head() -> void:
 
 func _on_staff_head_connected() -> void:
 	animation_player.play("RESET")
-	text = "Burn the gem\nto the staff"
+	text = "Enchant the staff\nin the flame"
+	animation_player.play("fade")
+
+
+func _on_staff_forged() -> void:
+	animation_player.play("RESET")
+	text = "Place the staff\non the podium"
+	animation_player.play("fade")

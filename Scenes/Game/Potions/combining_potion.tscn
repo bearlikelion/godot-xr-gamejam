@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5tia3oaavf5m"]
+
+[ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_s7tjm"]
+[ext_resource type="ArrayMesh" uid="uid://2iye1jwiu2lt" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Tube_001.res" id="4_s7tjm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxxke"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7tjm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7tjm"]
+points = PackedVector3Array(0.0192262, 0.0229584, -0.0442421, 0.002694, 0.074215, 0.0592272, -0.0013292, 0.0742879, 0.0599453, -0.00129483, 0.131053, -0.0206511, -0.0529693, 0.031035, -0.0320242, 0.0525706, 0.0308727, 0.0321068, -0.00342622, 0.0017078, 0.0342443, -0.0515015, 0.074211, 0.0310752, 0.0511036, 0.0742393, -0.0312786, 0.0183716, 0.131141, 0.0107743, -0.00339592, 0.0723121, -0.0607292, -0.0514614, 0.0742063, -0.0311079, 0.0295938, 0.00218357, -0.0196159, -0.0176617, 0.133534, 0.0111848, -0.0530003, 0.0310131, 0.0319859, -0.0307626, 0.000990962, -0.0178713, 0.0511442, 0.0742441, 0.0312461, 0.00278121, 0.030999, 0.060945, 0.0027794, 0.0310208, -0.0609664, 0.0525398, 0.0308945, -0.0321452, 0.0296104, 0.00214676, 0.0195697, 0.0273, 0.119334, -0.0153636, -0.00342684, 0.00169469, -0.0343202, -0.0176151, 0.133358, -0.0112118, -0.0301272, 0.00239346, 0.0194965, 0.00688259, 0.0723157, -0.0587135, 0.000679176, 0.118446, 0.0311069, 0.0546, 0.0552891, -0.00109815, -0.00339813, 0.031139, 0.0607156, -0.00339631, 0.0311609, -0.0607368, -0.00339855, 0.0723156, 0.0607237, 0.0499996, 0.0723046, 0.033849)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7tjm"]
+size = Vector3(0.0855103, 0.108759, 0.0955566)
+
+[node name="CombiningPotion" type="Node3D"]
+
+[node name="CombiningPotion" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_s7tjm")
+combining_potion = true
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CombiningPotion"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("4_s7tjm")
+surface_material_override/1 = SubResource("StandardMaterial3D_sxxke")
+surface_material_override/2 = SubResource("StandardMaterial3D_s7tjm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CombiningPotion"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_s7tjm")
+
+[node name="CombiningArea" type="Area3D" parent="CombiningPotion"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CombiningPotion/CombiningArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00088501, 0.202646, -0.000219712)
+shape = SubResource("BoxShape3D_s7tjm")
+
+[connection signal="dropped" from="CombiningPotion" to="CombiningPotion" method="_on_dropped"]
+[connection signal="area_entered" from="CombiningPotion/CombiningArea" to="CombiningPotion" method="_on_combining_area_area_entered"]

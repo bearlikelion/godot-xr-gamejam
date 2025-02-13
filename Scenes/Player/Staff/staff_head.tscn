@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://1ukp4fpxnjxa"]
+[gd_scene load_steps=11 format=4 uid="uid://1ukp4fpxnjxa"]
 
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_y3fa6"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_n5v0j"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_ldrkx"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_3sd7x"]
 [ext_resource type="Texture2D" uid="uid://c454j18cds7ut" path="res://Assets/Models/Staff/crystal blue_staff01D.png" id="7_1p7hk"]
-[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_6y3o5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1p7hk"]
 points = PackedVector3Array(1.35621, -0.24021, 0.0179888, -1.61649, 1.235, 0.122636, -1.60918, 1.235, 0.229197, -0.0137953, 4.95584, -0.46323, 0.204629, -1.49916, -1.08187, -0.118282, 1.235, 1.37953, -0.550369, -1.4485, 0.873825, 1.52011, 1.74558, 0.124928, 0.750008, -1.49443, 0.885768, -0.640842, 1.96573, -0.921206, 0.620924, 1.86893, -0.935176, -0.78865, -1.64374, -0.321791, 0.318436, -2.31436, 0.120601, -0.246325, 4.95584, -0.230769, 1.11973, -1.23937, -0.390784, 1.29972, 1.63829, 0.529386, -0.117118, 1.64797, 1.36612, -0.0137953, 4.72274, -0.114539, -0.981545, -1.23853, -0.307531, 0.086788, 1.6382, 1.33798, -1.59229, 1.65494, 0.123442, 1.56455, 1.235, 0.333811, 1.07272, -1.48193, 0.0130608, -0.727639, 0.929532, -0.792898, -1.54308, 1.64185, 0.226994, 0.714518, -1.15953, 0.956871, 0.313858, -2.26546, -0.0973278, -0.362419, 4.60692, -0.114539, 1.51093, 1.74253, 0.328451, -0.22418, 0.0783455, -1.03379, 1.38161, -0.267554, -0.09226, 0.0953628, -2.27386, 0.121234)
@@ -14,7 +13,6 @@ points = PackedVector3Array(1.35621, -0.24021, 0.0179888, -1.61649, 1.235, 0.122
 blend_mode = 4
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(1, 1, 0, 1)
 grow = true
 grow_amount = 0.03
 
@@ -58,9 +56,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1gg4e")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eeq3n"]
-data = PackedVector3Array(0.248792, -2.42766, 0.0419493, -0.528848, -1.52221, 0.885444, 0.772837, -1.45746, 0.919132, 0.772837, -1.45746, 0.919132, 1.20815, -1.45746, -0.309764, 0.248792, -2.42766, 0.0419493, 0.248792, -2.42766, 0.0419493, -0.898031, -1.56223, -0.364293, -0.528848, -1.52221, 0.885444, 0.248792, -2.42766, 0.0419493, 0.175512, -1.52221, -1.10297, -0.898031, -1.56223, -0.364293, 0.248792, -2.42766, 0.0419493, 1.20815, -1.45746, -0.309764, 0.175512, -1.52221, -1.10297, 0.772837, -1.45746, 0.919132, 1.67488, 1.64664, 0.274508, 1.20815, -1.45746, -0.309764, -0.528848, -1.52221, 0.885444, -0.0452377, 1.58251, 1.45807, 0.772837, -1.45746, 0.919132, -0.898031, -1.56223, -0.364293, -1.69981, 1.47877, 0.187137, -0.528848, -1.52221, 0.885444, 0.175512, -1.52221, -1.10297, -0.647437, 1.82557, -0.967073, -0.898031, -1.56223, -0.364293, 1.20815, -1.45746, -0.309764, 0.654248, 1.89032, -0.933385, 0.175512, -1.52221, -1.10297, 0.772837, -1.45746, 0.919132, -0.0452377, 1.58251, 1.45807, 1.67488, 1.64664, 0.274508, -0.528848, -1.52221, 0.885444, -1.69981, 1.47877, 0.187137, -0.0452377, 1.58251, 1.45807, -0.898031, -1.56223, -0.364293, -0.647437, 1.82557, -0.967073, -1.69981, 1.47877, 0.187137, 0.175512, -1.52221, -1.10297, 0.654248, 1.89032, -0.933385, -0.647437, 1.82557, -0.967073, 1.20815, -1.45746, -0.309764, 1.67488, 1.64664, 0.274508, 0.654248, 1.89032, -0.933385, -0.0452377, 1.58251, 1.45807, -0.162652, 4.89768, -0.376405, 1.67488, 1.64664, 0.274508, -1.69981, 1.47877, 0.187137, -0.162652, 4.89768, -0.376405, -0.0452377, 1.58251, 1.45807, -0.647437, 1.82557, -0.967073, -0.162652, 4.89768, -0.376405, -1.69981, 1.47877, 0.187137, 0.654248, 1.89032, -0.933385, -0.162652, 4.89768, -0.376405, -0.647437, 1.82557, -0.967073, 1.67488, 1.64664, 0.274508, -0.162652, 4.89768, -0.376405, 0.654248, 1.89032, -0.933385)
-
 [node name="StaffHead" type="RigidBody3D" groups=["staff_head"]]
 collision_layer = 4
 collision_mask = 196615
@@ -68,7 +63,7 @@ freeze = true
 freeze_mode = 1
 script = ExtResource("2_y3fa6")
 ranged_grab_method = 2
-metadata/_custom_type_script = ExtResource("2_y3fa6")
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.0527226, 0, 0, 0, 0.0527236, 0, 0, 0, 0.0527226, 0, 0.00768614, 0)
@@ -82,8 +77,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.108286, -0.1)
 
 [node name="XRToolsHighlightMaterial" type="Node" parent="."]
 script = ExtResource("6_3sd7x")
+highlight_mesh_instance = NodePath("../crystal blue/staff_001")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
-metadata/_custom_type_script = ExtResource("7_6y3o5")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [node name="crystal blue" type="Node3D" parent="."]
 
@@ -91,10 +87,5 @@ metadata/_custom_type_script = ExtResource("7_6y3o5")
 transform = Transform3D(0.0527226, 0, 0, 0, 0.0527236, 0, 0, 0, 0.0527226, 0, 0.00768614, 0)
 mesh = SubResource("ArrayMesh_6evuf")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="crystal blue/staff_001"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="crystal blue/staff_001/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_eeq3n")
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
