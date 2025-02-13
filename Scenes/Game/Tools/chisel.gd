@@ -35,3 +35,5 @@ func _on_dropped(_pickable: Variant) -> void:
 func _on_spawn_staff_head() -> void:
 	if magic_chisel:
 		freeze = false
+		magic_chisel = false
+		print("Chisel has gravity")
