@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="PickableRunes" load_steps=3 format=3 uid="uid://b8ksxce6ipnxk"]
-
-[ext_resource type="Script" uid="uid://bxwbvbgapp5u2" path="res://Resources/Level1/pickable_runes.gd" id="1_bhlmu"]
-[ext_resource type="PackedScene" uid="uid://b6jms2ca8yrmh" path="res://Scenes/Game/Runes/Pickable/base_rune.tscn" id="2_558tu"]
-
-[resource]
-script = ExtResource("1_bhlmu")
-pickable_runes = Array[PackedScene]([ExtResource("2_558tu")])
-metadata/_custom_type_script = ExtResource("1_bhlmu")

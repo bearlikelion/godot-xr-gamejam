@@ -48,6 +48,7 @@ func generate_runes() -> void:
 
 	# Place all runes in positions
 	for i in range(all_runes.size()):
+		all_runes[i]._is_bobbing = true
 		rune_positions[i].add_child(all_runes[i])
 
 func _on_level_1_completed() -> void:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6jms2ca8yrmh"]
+[gd_scene load_steps=15 format=3 uid="uid://b6jms2ca8yrmh"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/base_rune.gd" id="1_jokhr"]
 [ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_7dxm5"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_f4lbg"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5vxlm"]
+[ext_resource type="Shader" uid="uid://b2edwg1s4w7k2" path="res://Shaders/Chromatic_Aberration_Sphere.gdshader" id="5_7dxm5"]
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_ogtub"]
 [ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_43dat"]
@@ -48,13 +49,29 @@ _data = {
 &"bob": SubResource("Animation_tqk3w")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4lbg"]
+render_priority = 0
+shader = ExtResource("5_7dxm5")
+shader_parameter/sphere_color = Color(0, 0, 0, 0)
+shader_parameter/wave_amplitude = 0.006
+shader_parameter/wave_frequency = 19.397
+shader_parameter/wave_speed = 3.618
+shader_parameter/chroma_amount = 1.0
+shader_parameter/stars_enabled = true
+shader_parameter/star_field_scale = 4.377
+shader_parameter/star_size = 0.008
+shader_parameter/star_intensity = 1.0
+shader_parameter/star_axis_speed = 0.051
+shader_parameter/star_move_mode = 1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
+next_pass = SubResource("ShaderMaterial_f4lbg")
 blend_mode = 4
 cull_mode = 1
 shading_mode = 0
 albedo_color = Color(0.470436, 0.972641, 1, 1)
 grow = true
-grow_amount = 0.03
+grow_amount = 0.015
 
 [node name="BaseRune" type="RigidBody3D"]
 collision_layer = 4
