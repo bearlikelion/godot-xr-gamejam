@@ -26,4 +26,8 @@ signal spawn_staff_head
 signal staff_head_connected
 signal staff_forged
 signal level_4_completed
+
+signal level_5_load
+signal button_pushed(color: String)
+signal level_5_completed
 #endregion

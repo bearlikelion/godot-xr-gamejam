@@ -28,7 +28,7 @@ func spawn_chisel() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade":
-		# Events.level_5_load.emit()
+		Events.level_5_load.emit()
 		hide()
 
 

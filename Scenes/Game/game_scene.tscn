@@ -1,18 +1,19 @@
-[gd_scene load_steps=21 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=22 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="4_jevh0"]
 [ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="5_3hq7a"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="5_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_yi1st"]
+[ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="6_3hq7a"]
 [ext_resource type="Script" uid="uid://fen86f2uqiag" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_jxx51"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="8_3hq7a"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
+[ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="10_3hq7a"]
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
+[ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
 [ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
@@ -86,6 +87,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
+starting_level = "LEVEL_5"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -114,11 +116,11 @@ pose = &"aim"
 
 [node name="Area3D" type="Area3D" parent="XROrigin3D/LeftHandController" groups=["player_hand"]]
 
-[node name="LeftHand" parent="XROrigin3D/LeftHandController/Area3D" instance=ExtResource("5_kn4b3")]
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHandController/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
+
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftHandController/Area3D" instance=ExtResource("6_3hq7a")]
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHandController" instance=ExtResource("5_yi1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
@@ -133,12 +135,8 @@ laser_material = SubResource("StandardMaterial3D_cid5o")
 show_target = true
 collision_mask = 5308416
 
-[node name="FPSCounter" type="Label3D" parent="XROrigin3D/LeftHandController"]
-transform = Transform3D(7.49965e-09, -0.707107, 0.707107, -1.23634e-07, 0.707107, 0.707107, -1, -9.27257e-08, -8.21196e-08, -0.25, 0, -3.27835e-08)
-text = "FPS"
-font = ExtResource("4_jevh0")
-font_size = 12
-script = ExtResource("10_kn4b3")
+[node name="FunctionPoseDetector" parent="XROrigin3D/LeftHandController" instance=ExtResource("10_3hq7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 
 [node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
@@ -151,7 +149,7 @@ pose = &"aim"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
 
-[node name="RightHand" parent="XROrigin3D/RightHandController/Area3D" instance=ExtResource("8_3hq7a")]
+[node name="RightPhysicsHand" parent="XROrigin3D/RightHandController/Area3D" instance=ExtResource("11_cid5o")]
 
 [node name="FunctionPickup" parent="XROrigin3D/RightHandController" instance=ExtResource("5_yi1st")]
 ranged_distance = 25.0
@@ -164,6 +162,13 @@ laser_length = 1
 laser_material = SubResource("StandardMaterial3D_cid5o")
 show_target = true
 collision_mask = 5308416
+
+[node name="FunctionPoseDetector" parent="XROrigin3D/RightHandController" instance=ExtResource("10_3hq7a")]
+
+[node name="FPSCounter" type="Label3D" parent="XROrigin3D/RightHandController"]
+transform = Transform3D(1, -7.81598e-14, 1.74846e-07, 2.4869e-13, 1, 7.6146e-15, -1.74845e-07, -8.59803e-15, 1, 0.25, 0, 3.27835e-08)
+text = "FPS"
+script = ExtResource("10_kn4b3")
 
 [node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"]]
 process_priority = -100
