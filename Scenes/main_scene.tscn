@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cfac6n0mwlrlx"]
+[gd_scene load_steps=26 format=3 uid="uid://cfac6n0mwlrlx"]
 
 [ext_resource type="Script" uid="uid://btgx13lxdbb4y" path="res://addons/godot-xr-tools/staging/staging.gd" id="1_rypbc"]
 [ext_resource type="PackedScene" uid="uid://wtpox7m5vu2b" path="res://addons/godot-xr-tools/effects/fade.tscn" id="2_4rmau"]
@@ -17,9 +17,6 @@
 [ext_resource type="Material" uid="uid://dyuaw57o8y3i" path="res://addons/godot-xr-tools/materials/highlight.tres" id="8_5oxhp"]
 [ext_resource type="Texture2D" uid="uid://ocyj01x5mtt7" path="res://addons/godot-xr-tools/assets/misc/Hold trigger to continue.png" id="8_7ewk0"]
 [ext_resource type="PackedScene" uid="uid://cymteydkxagpp" path="res://addons/godot-xr-tools/misc/hold_button.tscn" id="9_lhp3t"]
-[ext_resource type="LightmapGIData" uid="uid://cye17bxneykk" path="res://Scenes/Levels/Lighting/level_1.lmbake" id="9_nt2eh"]
-[ext_resource type="LightmapGIData" uid="uid://b34bo8fe7psoo" path="res://Scenes/Levels/Lighting/level_2.lmbake" id="10_oyb3p"]
-[ext_resource type="LightmapGIData" uid="uid://djic2y7r1pl5a" path="res://Scenes/Levels/Lighting/level_3.lmbake" id="11_jvnna"]
 
 [sub_resource type="PlaneMesh" id="1"]
 size = Vector2(0.001, 0.001)
@@ -94,15 +91,6 @@ surface_material_override/0 = ExtResource("7_8edxt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 mesh = SubResource("1")
 surface_material_override/0 = ExtResource("8_5oxhp")
-
-[node name="Level1GI" type="LightmapGI" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
-light_data = ExtResource("9_nt2eh")
-
-[node name="Level2GI" type="LightmapGI" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
-light_data = ExtResource("10_oyb3p")
-
-[node name="Level3GI" type="LightmapGI" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
-light_data = ExtResource("11_jvnna")
 
 [node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
