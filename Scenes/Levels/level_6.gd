@@ -1,3 +1,4 @@
+class_name Level6
 extends Node3D
 
 const PICKABLE_POTIONS = preload("res://Resources/Level6/pickable_potions.tres")
