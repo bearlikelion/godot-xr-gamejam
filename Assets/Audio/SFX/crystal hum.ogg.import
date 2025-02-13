@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d38o3u7es3fms"
+path="res://.godot/imported/crystal hum.ogg-e790aed754a897a3e953c59849b1a08d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/crystal hum.ogg"
+dest_files=["res://.godot/imported/crystal hum.ogg-e790aed754a897a3e953c59849b1a08d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
