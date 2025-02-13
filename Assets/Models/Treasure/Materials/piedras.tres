@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjpj44sewublx"]
+
+[resource]
+resource_name = "piedras"
+cull_mode = 2
+albedo_color = Color(0.27603, 0.208703, 0.259196, 1)
+roughness = 0.87541

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bn88kvitjkp53"]
+
+[resource]
+resource_name = "bronze.001"
+cull_mode = 2
+albedo_color = Color(0.659979, 0.360709, 0.0968555, 1)
+metallic = 0.92459
+roughness = 0.47377

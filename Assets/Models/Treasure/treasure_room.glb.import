@@ -33,9 +33,150 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
-"nodes": {
-"PATH:3_013": {
-"generate/physics": true
+"materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.tres"
+},
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.001.tres"
+},
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.003.tres"
+},
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.005.tres"
+},
+"Material.009": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.009.tres"
+},
+"Material.012": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.012.tres"
+},
+"Material.016": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/Material.016.tres"
+},
+"bronze.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/bronze.001.tres"
+},
+"cemento.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/cemento.005.tres"
+},
+"clay.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/clay.003.tres"
+},
+"cubierta.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/cubierta.001.tres"
+},
+"cuero libro.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/cuero libro.002.tres"
+},
+"dorado.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/dorado.001.tres"
+},
+"dorado.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/dorado.002.tres"
+},
+"dorado.003": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/dorado.003.tres"
+},
+"fire": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/fire.tres"
+},
+"fire.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/fire.001.tres"
+},
+"inner rock.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/inner rock.001.tres"
+},
+"madera": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/madera.tres"
+},
+"madera.006": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/madera.006.tres"
+},
+"madera.007": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/madera.007.tres"
+},
+"madera.008": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/madera.008.tres"
+},
+"metal": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/metal.tres"
+},
+"metal.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/metal.001.tres"
+},
+"metal.005": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/metal.005.tres"
+},
+"metal.006": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/metal.006.tres"
+},
+"metal.009": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/metal.009.tres"
+},
+"papel.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/papel.002.tres"
+},
+"pedra1.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/pedra1.002.tres"
+},
+"pedra2.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/pedra2.001.tres"
+},
+"pedra3.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/pedra3.001.tres"
+},
+"pedras.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/pedras.001.tres"
+},
+"piedras": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/piedras.tres"
+},
+"pluma": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/pluma.tres"
+},
+"rock": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/rock.tres"
+},
+"vela.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Models/Treasure/Materials/vela.001.tres"
 }
 }
 }

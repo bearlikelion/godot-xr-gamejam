@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://daxyw0foq81om"]
+
+[resource]
+resource_name = "inner rock.001"
+cull_mode = 2
+albedo_color = Color(0.734511, 0.669989, 0.689813, 1)
+metallic = 0.754098
+roughness = 0.172131

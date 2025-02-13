@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://2fi6cnlfomol"]
+
+[resource]
+resource_name = "fire.001"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.716204, 0.188027, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0.815526, 0.312592, 1)
+emission_energy_multiplier = 5.0
