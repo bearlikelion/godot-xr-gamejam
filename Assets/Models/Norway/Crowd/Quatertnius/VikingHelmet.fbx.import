@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b6hco4o65hwq3"
-path="res://.godot/imported/VikingHelmet.fbx-4c7593058ea2bba29585e6464f8939ea.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quatertnius/VikingHelmet.fbx"
-dest_files=["res://.godot/imported/VikingHelmet.fbx-4c7593058ea2bba29585e6464f8939ea.scn"]
 
 [params]
 

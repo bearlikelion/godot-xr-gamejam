@@ -9,13 +9,13 @@ var is_cooling: bool = false
 
 func _ready() -> void:
 	material_overlay = staff_001.material_overlay
-	material_overlay.albedo_color.a = 0
+	material_overlay.albedo_color.a = 0.0
 
 
 func _process(_delta: float) -> void:
 	if is_cooling:
-		material_overlay.albedo_color.a = lerp(material_overlay.albedo_color.a, 0, 0.5)
-	if material_overlay.albedo_color.a == 0:
+		material_overlay.albedo_color.a = lerp(material_overlay.albedo_color.a, 0.0, 0.1)
+	if material_overlay.albedo_color.a == 0.0:
 		is_cooling = false
 
 

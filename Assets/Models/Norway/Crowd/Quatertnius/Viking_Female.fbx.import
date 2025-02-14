@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bcmehgldd5jbc"
-path="res://.godot/imported/Viking_Female.fbx-094b7e2535f4e6f8d531fde0ace5e409.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quatertnius/Viking_Female.fbx"
-dest_files=["res://.godot/imported/Viking_Female.fbx-094b7e2535f4e6f8d531fde0ace5e409.scn"]
 
 [params]
 

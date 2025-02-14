@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://0042w7unjag"
-path="res://.godot/imported/Chef_Hat.fbx-36ddcaa1ed75623b705d1d2527e64a8f.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quatertnius/Chef_Hat.fbx"
-dest_files=["res://.godot/imported/Chef_Hat.fbx-36ddcaa1ed75623b705d1d2527e64a8f.scn"]
 
 [params]
 

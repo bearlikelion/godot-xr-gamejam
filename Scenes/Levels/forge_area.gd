@@ -4,8 +4,9 @@ extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	monitoring = false
-	Events.staff_head_connected.connect(_on_staff_head_connected)
+	#monitoring = false
+	#Events.staff_head_connected.connect(_on_staff_head_connected)
+	pass
 
 
 func _on_staff_head_connected() -> void:
@@ -14,7 +15,10 @@ func _on_staff_head_connected() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	print("Body entered forge: %s" % body.name)
-	forge_audio_stream_player_3d.play()
+	
+	if body is XRToolsPickable:
+		forge_audio_stream_player_3d.play()
+	
 	if body is StaffHead:
 		print("Staff forged")
 		body.forge_cook()
