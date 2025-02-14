@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=23 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
+[ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_yi1st"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
 [sub_resource type="Animation" id="Animation_p3bnw"]
@@ -141,6 +142,8 @@ collision_mask = 5308416
 [node name="FunctionPoseDetector" parent="XROrigin3D/LeftHandController" instance=ExtResource("10_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 
+[node name="MovementFlight" parent="XROrigin3D/LeftHandController" instance=ExtResource("12_yi1st")]
+
 [node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 tracker = &"right_hand"
@@ -173,6 +176,9 @@ transform = Transform3D(1, -7.81598e-14, 1.74846e-07, 2.4869e-13, 1, 7.6146e-15,
 text = "FPS"
 script = ExtResource("10_kn4b3")
 
+[node name="MovementFlight" parent="XROrigin3D/RightHandController" instance=ExtResource("12_yi1st")]
+controller = 1
+
 [node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"]]
 process_priority = -100
 process_physics_priority = -100
@@ -182,9 +188,6 @@ collision_layer = 524288
 collision_mask = 1019
 script = ExtResource("6_jxx51")
 push_rigid_bodies = false
-
-[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 

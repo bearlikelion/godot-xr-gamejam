@@ -11,6 +11,7 @@ const LEVEL_4 = preload("res://Scenes/Levels/level_4.tscn")
 const LEVEL_5 = preload("res://Scenes/Levels/level_5.tscn")
 const LEVEL_6 = preload("res://Scenes/Levels/level_6.tscn")
 const LEVEL_7 = preload("res://Scenes/Levels/level_7.tscn")
+const LEVEL_8 = preload("res://Scenes/Levels/level_8.tscn")
 
 @onready var level_1: Node3D = LEVEL_1.instantiate()
 @onready var level_2: Node3D = LEVEL_2.instantiate()
@@ -19,6 +20,8 @@ const LEVEL_7 = preload("res://Scenes/Levels/level_7.tscn")
 @onready var level_5: Node3D = LEVEL_5.instantiate()
 @onready var level_6: Node3D = LEVEL_6.instantiate()
 @onready var level_7: Node3D = LEVEL_7.instantiate()
+@onready var level_8: Node3D = LEVEL_8.instantiate()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +49,9 @@ func _ready() -> void:
 		"LEVEL_7":
 			Events.start_game.emit()
 			add_child(level_7)
+		"LEVEL_8":
+			Events.start_game.emit()
+			add_child(level_8)
 
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
@@ -53,6 +59,7 @@ func _ready() -> void:
 	Events.level_5_load.connect(_on_level_5_load)
 	Events.level_6_load.connect(_on_level_6_load)
 	Events.level_7_load.connect(_on_level_7_load)
+	Events.level_8_load.connect(_on_level_8_load)
 
 
 func _on_level_2_load() -> void:
@@ -83,3 +90,8 @@ func _on_level_6_load() -> void:
 func _on_level_7_load() -> void:
 	remove_child(level_6)
 	add_child(level_7)
+
+
+func _on_level_8_load() -> void:
+	remove_child(level_7)
+	add_child(level_8)

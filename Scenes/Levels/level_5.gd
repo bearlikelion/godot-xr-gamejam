@@ -42,7 +42,7 @@ func start_simon() -> void:
 
 
 func add_to_sequence() -> void:
-	if sequence_index > lights.size():
+	if sequence_index >= lights.size():
 		print("PLAYER WINS SIMON")
 		Events.level_5_completed.emit()
 		audio_stream_player_3d.play()

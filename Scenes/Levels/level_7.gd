@@ -26,6 +26,7 @@ func place_keys() -> void:
 			_key_pos.add_child(GOLD_KEY.instantiate())
 		else:
 			_key_pos.add_child(RUSTY_KEY.instantiate())
+		keys_placed += 1
 
 
 func _on_equipped_hat() -> void:

@@ -1,10 +1,15 @@
-[gd_scene load_steps=23 format=4 uid="uid://butemle61eo12"]
+[gd_scene load_steps=28 format=4 uid="uid://butemle61eo12"]
 
 [ext_resource type="Script" uid="uid://dvp0xckga0uj6" path="res://Scenes/Levels/level_7.gd" id="1_2ge20"]
-[ext_resource type="LightmapGIData" uid="uid://b2rb30tkxxquo" path="res://Scenes/Levels/Lighting/level_6.lmbake" id="2_0aha3"]
 [ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="3_e7x8w"]
+[ext_resource type="PackedScene" uid="uid://py43ke1sm6qa" path="res://Scenes/Game/Crowd/casual2_female.tscn" id="5_88rf7"]
 [ext_resource type="Texture2D" uid="uid://bgs23uacjq3f5" path="res://Assets/Models/Norway/skybox_winter_stylized_0.png" id="5_dqeop"]
 [ext_resource type="PackedScene" uid="uid://c08hydiidhgbp" path="res://Assets/Models/Norway/Norway.glb" id="5_ovpfc"]
+[ext_resource type="PackedScene" uid="uid://ymct8802nfmo" path="res://Scenes/Game/Crowd/casual2_male.tscn" id="6_deshb"]
+[ext_resource type="PackedScene" uid="uid://dajgn3yc3b7ej" path="res://Scenes/Game/Crowd/casual3_female.tscn" id="7_v1oxq"]
+[ext_resource type="PackedScene" uid="uid://b7qjg58b2dj1t" path="res://Scenes/Game/Crowd/casual_bald.tscn" id="8_deshb"]
+[ext_resource type="PackedScene" uid="uid://dxhbhhqxsr6kc" path="res://Scenes/Game/Crowd/casual3_male.tscn" id="8_nnumf"]
+[ext_resource type="PackedScene" uid="uid://djq5amw6pxosu" path="res://Scenes/Game/Crowd/chef_hat.tscn" id="10_v1oxq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eygg8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -112,80 +117,100 @@ size = Vector3(64, 10.8, 1.1)
 [node name="Level8" type="Node3D"]
 script = ExtResource("1_2ge20")
 
-[node name="Level8" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, -13.25, -1.25)
+[node name="FinalLevel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 26.25, 9)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Level8"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="FinalLevel"]
 environment = SubResource("Environment_6y1v7")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level8"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, -1.25, 13.25, -4)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="FinalLevel"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, -16.5, -14.25, -8.25)
 
-[node name="LightmapGI" type="LightmapGI" parent="Level8"]
-light_data = ExtResource("2_0aha3")
+[node name="LightmapGI" type="LightmapGI" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -27.5, -4.25)
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="Level8"]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -27.5, -4.25)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Level8"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FinalLevel"]
+root_node = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_iixi8")
 }
 autoplay = "appear"
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Level8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -23.25, -4.25)
 stream = ExtResource("3_e7x8w")
 bus = &"SFX"
 
-[node name="Norway" parent="Level8" instance=ExtResource("5_ovpfc")]
+[node name="Norway" parent="FinalLevel" instance=ExtResource("5_ovpfc")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15.25, -27.5, -4.25)
 
-[node name="Crowd" type="Node" parent="Level8"]
+[node name="Crowd" type="Node" parent="FinalLevel"]
 
-[node name="Skybox" type="Node3D" parent="Level8"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 24.5, 0)
+[node name="Casual2Female" parent="FinalLevel/Crowd" instance=ExtResource("5_88rf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2.6)
 
-[node name="Sketchfab_model" type="Node3D" parent="Level8/Skybox"]
+[node name="Crowd" parent="FinalLevel/Crowd" instance=ExtResource("6_deshb")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 7.5, 0, 1.8)
+
+[node name="Casual3Female" parent="FinalLevel/Crowd" instance=ExtResource("7_v1oxq")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 18.2, 0, -2.2)
+
+[node name="Casual3Female2" parent="FinalLevel/Crowd" instance=ExtResource("8_nnumf")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 25.4, 0, 2.5)
+
+[node name="Bald" parent="FinalLevel/Crowd" instance=ExtResource("8_deshb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 51.4, 0, 2.1)
+
+[node name="Skybox" type="Node3D" parent="FinalLevel"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -15.25, -3, -4.25)
+
+[node name="Sketchfab_model" type="Node3D" parent="FinalLevel/Skybox"]
 transform = Transform3D(8.18602e-05, 0, 0, 0, 1.81766e-20, 8.18602e-05, 0, -8.18602e-05, 1.81766e-20, 0, 0, 0)
 
-[node name="25f46e898af049c8b8641d52e84f5d4b_fbx" type="Node3D" parent="Level8/Skybox/Sketchfab_model"]
+[node name="25f46e898af049c8b8641d52e84f5d4b_fbx" type="Node3D" parent="FinalLevel/Skybox/Sketchfab_model"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 
-[node name="RootNode" type="Node3D" parent="Level8/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx"]
+[node name="RootNode" type="Node3D" parent="FinalLevel/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx"]
 
-[node name="skybox" type="Node3D" parent="Level8/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx/RootNode"]
+[node name="skybox" type="Node3D" parent="FinalLevel/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx/RootNode"]
 transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0)
 
-[node name="skybox_skybox_0" type="MeshInstance3D" parent="Level8/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx/RootNode/skybox"]
+[node name="skybox_skybox_0" type="MeshInstance3D" parent="FinalLevel/Skybox/Sketchfab_model/25f46e898af049c8b8641d52e84f5d4b_fbx/RootNode/skybox"]
 mesh = SubResource("ArrayMesh_2jes8")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Level8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.7)
+[node name="StaticBody3D" type="StaticBody3D" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -27.5, 36.45)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Level8/StaticBody3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="FinalLevel/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6, 0, 0)
 size = Vector3(64, 10.8, 1.1)
 material = SubResource("StandardMaterial3D_ovpfc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level8/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinalLevel/StaticBody3D"]
 shape = SubResource("BoxShape3D_ovpfc")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="Level8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.2)
+[node name="StaticBody3D2" type="StaticBody3D" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -27.5, -57.45)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Level8/StaticBody3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="FinalLevel/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95, -0.05, 0)
 size = Vector3(64, 10.8, 1.1)
 material = SubResource("StandardMaterial3D_ovpfc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level8/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinalLevel/StaticBody3D2"]
 shape = SubResource("BoxShape3D_ovpfc")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="Level8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3, 0)
+[node name="StaticBody3D3" type="StaticBody3D" parent="FinalLevel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.25, -22.2, -4.25)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level8/StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinalLevel/StaticBody3D3"]
 shape = SubResource("WorldBoundaryShape3D_dqeop")
 
-[connection signal="animation_finished" from="Level8/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="finished" from="Level8/AudioStreamPlayer3D" to="Level8" method="_on_audio_stream_player_3d_finished"]
+[node name="ChatHat" parent="." instance=ExtResource("10_v1oxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2, 0, -2.1)
+
+[connection signal="animation_finished" from="FinalLevel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

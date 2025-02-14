@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://py43ke1sm6qa"]
+
+[ext_resource type="PackedScene" uid="uid://j4nby3bjtgr4" path="res://Assets/Models/Norway/Crowd/Quat/Casual2_Female.fbx" id="1_0hoxx"]
+[ext_resource type="Script" uid="uid://1sysdiquyiyu" path="res://Scenes/Game/Crowd/crowd.gd" id="1_v38w1"]
+
+[node name="Casual2Female" type="Node3D"]
+script = ExtResource("1_v38w1")
+
+[node name="Root Scene" parent="." instance=ExtResource("1_0hoxx")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="Root Scene" index="1"]
+autoplay = "CharacterArmature|Victory"
+
+[editable path="Root Scene"]
