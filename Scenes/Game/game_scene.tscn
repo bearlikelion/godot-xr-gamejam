@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=24 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
 [ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_yi1st"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
+[ext_resource type="PackedScene" uid="uid://uqsarnow28ej" path="res://Scenes/Levels/level_6.tscn" id="18_yi1st"]
 
 [sub_resource type="Animation" id="Animation_p3bnw"]
 length = 0.001
@@ -194,3 +195,5 @@ push_rigid_bodies = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")
 bus = &"Music"
+
+[node name="Level6" parent="." instance=ExtResource("18_yi1st")]

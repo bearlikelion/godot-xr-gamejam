@@ -41,7 +41,6 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 			purple_material.albedo_color = Color.PURPLE
 			mesh_instance_3d.set_surface_override_material(1, purple_material)
 			Events.level_6_completed.emit()
-			Events.level_7_load.emit()
 
 		if not potion.correct_potion:
 			var black_material: StandardMaterial3D = StandardMaterial3D.new()
