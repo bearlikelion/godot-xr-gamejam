@@ -32,5 +32,6 @@ Assets gathered from [OpenGameArt.org](https://opengameart.org/) and [Itch.io](h
 [Staff](https://opengameart.org/content/staff-1)
 [Potions](https://opengameart.org/content/potions)
 [Guard Tower](https://opengameart.org/content/guard-tower)
+[Dungeon Asset Pack](https://arill-studio.itch.io/dungeon-asset-pack)
 [Wizard Hat](https://poly.pizza/m/7VVumyY7L_u) from poly.pizza
 [Three Musketeers Assset Pack](https://louis-tudge.itch.io/the-three-musketeers-asset-pack-scene)
