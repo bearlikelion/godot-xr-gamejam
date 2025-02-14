@@ -6,16 +6,56 @@ extends XRToolsPickable
 @export var correct_potion: bool = false
 @export var combining_potion: bool = false
 
+@export_group("Liquid Simulation")
+@export_range (0.0, 1.0, 0.001) var liquid_mobility: float = 0.1
+
+@export var springConstant: int = 200
+@export var reaction: int = 4
+@export var dampening: int = 3
+
 var blue_potion: bool = false
 var red_potion: bool = false
 var correct_potions: int = 0
 
+var vel: float = 0.0
+var accell: Vector2
+var coeff: Vector2
+var coeff_old: Vector2
+var coeff_old_old: Vector2
+var liquidShaderMaterial: ShaderMaterial
+
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
+@onready var pos1 : Vector3 = get_global_transform().origin
+@onready var pos2 : Vector3 = pos1
+@onready var pos3 : Vector3 = pos2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if combining_potion:
 		enabled = false
+
+	liquidShaderMaterial = mesh_instance_3d.get_surface_override_material(1)
+
+
+func _physics_process(delta: float) -> void:
+	if liquidShaderMaterial:
+		var accell_3d:Vector3 = (pos3 - 2 * pos2 + pos1) * 3600.0
+		pos1 = pos2
+		pos2 = pos3
+		pos3 = get_global_transform().origin + rotation
+		accell = Vector2(accell_3d.x + accell_3d.y, accell_3d.z + accell_3d.y)
+		coeff_old_old = coeff_old
+		coeff_old = coeff
+		coeff = (-springConstant * coeff_old - reaction * accell) / 3600.0 + 2 * coeff_old - coeff_old_old - delta * dampening * (coeff_old - coeff_old_old)
+		if not correct_potion:
+			liquidShaderMaterial.set_shader_parameter("fill_amount", 1.0)
+
+		liquidShaderMaterial.set_shader_parameter("coeff", coeff*liquid_mobility)
+		if (pos1.distance_to(pos3) < 0.01):
+			vel = clamp (vel-delta*1.0,0.0,1.0)
+		else:
+			vel = 1.0
+		liquidShaderMaterial.set_shader_parameter("vel", vel)
 
 
 func _on_combining_area_area_entered(area: Area3D) -> void:

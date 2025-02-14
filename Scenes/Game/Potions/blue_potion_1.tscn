@@ -1,10 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj5t7mhc1vbdg"]
+[gd_scene load_steps=12 format=3 uid="uid://bj5t7mhc1vbdg"]
 
 [ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_6upqm"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_r38kf"]
 [ext_resource type="ArrayMesh" uid="uid://cfx7cx87u17v7" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Cylinder.res" id="4_6upqm"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_wvg55"]
+[ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="5_m3vs2"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_jlv60"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovomw"]
+render_priority = 0
+shader = ExtResource("5_m3vs2")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/vel = 0.0
+shader_parameter/liquid_color = Color(0, 0, 1, 1)
+shader_parameter/foam_color = Color(0.9, 0.3, 0.8, 1)
+shader_parameter/foam_line = 0.0
+shader_parameter/fill_amount = 0.54
+shader_parameter/size = Vector2(1, 1)
+shader_parameter/glass_thickness = 0.0
+shader_parameter/scale = 1.0
+shader_parameter/wave_intensity = 0.05
+shader_parameter/HasBubbles = true
+shader_parameter/AlwaysBubbles = false
+shader_parameter/BubbleStrength = 0.5
+shader_parameter/BubbleMask = 0.5
+shader_parameter/BubbleSpeed = Vector2(3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6upqm"]
 transparency = 1
@@ -42,6 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.168445, -0.1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("4_6upqm")
+surface_material_override/1 = SubResource("ShaderMaterial_ovomw")
 surface_material_override/2 = SubResource("StandardMaterial3D_6upqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

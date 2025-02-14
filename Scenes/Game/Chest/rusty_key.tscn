@@ -13,7 +13,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erxv8"]
 albedo_color = Color(0.194223, 0.142689, 0.109052, 1)
 albedo_texture = ExtResource("4_0ylmq")
-metallic_specular = 0.0
+metallic = 1.0
 metallic_texture = ExtResource("5_r6r38")
 roughness_texture = ExtResource("7_6xo4t")
 normal_enabled = true
