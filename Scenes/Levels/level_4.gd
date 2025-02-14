@@ -22,8 +22,8 @@ func spawn_chisel() -> void:
 	var chisel_posisitions: Array[Node] = chisels.get_children()
 	if not Global.testing:
 		chisel_posisitions.shuffle()
-
-	chisel_posisitions.pop_front().add_child(CHISEL.instantiate())
+	var magic_chisel: Chisel = CHISEL.instantiate()
+	chisel_posisitions.pop_front().add_child(magic_chisel)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

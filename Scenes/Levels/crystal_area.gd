@@ -1,7 +1,7 @@
 class_name CrystalArea
 extends Area3D
 
-var delay_time: float = randf_range(0.25, 5.0)
+var delay_time: float = randf_range(0.25, 3.0)
 
 @onready var crystal_shatter: AudioStreamPlayer3D = $CrystalShatter
 

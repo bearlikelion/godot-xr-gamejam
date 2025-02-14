@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://8da668ufxk48"]
+
+[resource]
+resource_name = "dorado.003"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.651056, 0.107967, 1)
+metallic = 0.84918
+roughness = 0.127869

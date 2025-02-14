@@ -52,7 +52,7 @@ func generate_runes() -> void:
 		pickable_runes.shuffle()
 		var _rune: PackedScene = load(pickable_runes.front().resource_path)
 		if rune_position.get_child_count() == 0:
-			print("Place Rune")
+			# print("Place Rune")
 			rune_position.add_child(_rune.instantiate())
 
 

@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://j8r40txi5r6x"]
+[gd_scene load_steps=10 format=3 uid="uid://j8r40txi5r6x"]
 
 [ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_ln1ld"]
-[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_hwaht"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_g7rhb"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_2rswa"]
 [ext_resource type="ArrayMesh" uid="uid://dupqd2rnons84" path="res://Assets/Models/Blacksmith/Tools/Meshes/tools_Cube_057.res" id="5_ln1ld"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_37vis"]
-[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_knif1"]
 [ext_resource type="AudioStream" uid="uid://dikg24tv0dffc" path="res://Assets/Audio/SFX/chisel correct.ogg" id="8_hwaht"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ln1ld"]
@@ -33,7 +31,7 @@ magic_chisel = true
 ranged_grab_method = 2
 second_hand_grab = 1
 ranged_grab_speed = 10.0
-metadata/_custom_type_script = ExtResource("2_hwaht")
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_g7rhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
@@ -53,7 +51,7 @@ shape = SubResource("ConvexPolygonShape3D_ln1ld")
 script = ExtResource("6_37vis")
 highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
-metadata/_custom_type_script = ExtResource("7_knif1")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)

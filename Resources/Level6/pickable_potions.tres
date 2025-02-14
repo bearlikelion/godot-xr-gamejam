@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PickablePotions" load_steps=8 format=3 uid="uid://b5wmiunk5wcen"]
+
+[ext_resource type="Script" uid="uid://bxhwdeoilml32" path="res://Resources/Level6/pickable_potions.gd" id="1_c5liq"]
+[ext_resource type="PackedScene" uid="uid://bj5t7mhc1vbdg" path="res://Scenes/Game/Potions/blue_potion_1.tscn" id="1_et3pc"]
+[ext_resource type="PackedScene" uid="uid://em7iv3beweyd" path="res://Scenes/Game/Potions/blue_potion_2.tscn" id="2_7cxp6"]
+[ext_resource type="PackedScene" uid="uid://deosfamgtfbv8" path="res://Scenes/Game/Potions/blue_potion_correct.tscn" id="3_3t2pd"]
+[ext_resource type="PackedScene" uid="uid://b8v606mp2gst" path="res://Scenes/Game/Potions/red_potion_1.tscn" id="4_j73lj"]
+[ext_resource type="PackedScene" uid="uid://phhar7cb2lxf" path="res://Scenes/Game/Potions/red_potion_2.tscn" id="5_s7663"]
+[ext_resource type="PackedScene" uid="uid://bhp5pkpf8h557" path="res://Scenes/Game/Potions/red_potion_correct.tscn" id="6_3qjqh"]
+
+[resource]
+script = ExtResource("1_c5liq")
+potions = Array[PackedScene]([ExtResource("1_et3pc"), ExtResource("2_7cxp6"), ExtResource("3_3t2pd"), ExtResource("4_j73lj"), ExtResource("5_s7663"), ExtResource("6_3qjqh")])
+metadata/_custom_type_script = "uid://bxhwdeoilml32"
