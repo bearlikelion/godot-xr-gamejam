@@ -242,7 +242,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/0/path = NodePath("Lights/Red:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -254,7 +254,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/1/path = NodePath("Lights/Green:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -266,7 +266,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -278,7 +278,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/3/path = NodePath("Lights/Blue:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -291,53 +291,54 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_3mqfk"]
 resource_name = "appear"
 length = 3.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/0/path = NodePath("Lights/Red:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667, 2.02, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/1/path = NodePath("Lights/Green:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.966667, 2.02, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.966667, 2.02, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/3/path = NodePath("Lights/Blue:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.966667, 2.02, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 10.0, 10.0, 0.0]
+"values": [0.0, 20.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_l0my4"]
@@ -347,7 +348,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/0/path = NodePath("Lights/Blue:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -359,7 +360,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/1/path = NodePath("Lights/Red:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -371,7 +372,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/2/path = NodePath("Lights/Green:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -383,7 +384,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/3/path = NodePath("Lights/Yellow:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -399,7 +400,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/0/path = NodePath("Lights/Red:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -411,7 +412,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/1/path = NodePath("Lights/Green:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -423,7 +424,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -435,7 +436,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/3/path = NodePath("Lights/Blue:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -452,7 +453,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/0/path = NodePath("Lights/Green:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -464,7 +465,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/1/path = NodePath("Lights/Red:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -476,7 +477,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -488,7 +489,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/3/path = NodePath("Lights/Blue:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -505,7 +506,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/0/path = NodePath("Lights/Red:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -517,7 +518,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/1/path = NodePath("Lights/Green:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -529,7 +530,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/2/path = NodePath("Lights/Yellow:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -541,7 +542,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/3/path = NodePath("Lights/Blue:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -558,7 +559,7 @@ step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Structure_I/Lights/Yellow:omni_range")
+tracks/0/path = NodePath("Lights/Yellow:omni_range")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -570,7 +571,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Structure_I/Lights/Blue:omni_range")
+tracks/1/path = NodePath("Lights/Blue:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -582,7 +583,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Structure_I/Lights/Green:omni_range")
+tracks/2/path = NodePath("Lights/Green:omni_range")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -594,7 +595,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Structure_I/Lights/Red:omni_range")
+tracks/3/path = NodePath("Lights/Red:omni_range")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -624,6 +625,63 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, -5,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level5"]
 shape = SubResource("ConcavePolygonShape3D_fgs3v")
 
+[node name="Lights" type="Node" parent="Level5"]
+
+[node name="Red" type="OmniLight3D" parent="Level5/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, -9.25)
+light_color = Color(1, 0, 0, 1)
+omni_range = 20.0
+
+[node name="SimonRed" type="AudioStreamPlayer3D" parent="Level5/Lights/Red"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="Green" type="OmniLight3D" parent="Level5/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 5, -9)
+light_color = Color(0, 1, 0, 1)
+omni_range = 20.0
+
+[node name="SimonGreen" type="AudioStreamPlayer3D" parent="Level5/Lights/Green"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="Yellow" type="OmniLight3D" parent="Level5/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 5, 12)
+light_color = Color(1, 1, 0, 1)
+omni_range = 20.0
+
+[node name="SimonYellow" type="AudioStreamPlayer3D" parent="Level5/Lights/Yellow"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="Blue" type="OmniLight3D" parent="Level5/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, 12)
+light_color = Color(0, 0, 1, 1)
+omni_range = 20.0
+
+[node name="SimonBlue" type="AudioStreamPlayer3D" parent="Level5/Lights/Blue"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+stream = ExtResource("28_k5iiv")
+attenuation_model = 3
+volume_db = 2.0
+bus = &"SFX"
+
 [node name="Structure_I" type="MeshInstance3D" parent="Level5"]
 mesh = SubResource("ArrayMesh_l0my4")
 skeleton = NodePath("")
@@ -638,63 +696,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37114e-08, 9, -1)
 size = Vector3(51, 20, 29)
 interior = true
 enable_shadows = true
-
-[node name="Lights" type="Node" parent="Level5/Structure_I"]
-
-[node name="Red" type="OmniLight3D" parent="Level5/Structure_I/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, -9.25)
-light_color = Color(1, 0, 0, 1)
-light_bake_mode = 1
-omni_range = 20.0
-
-[node name="SimonRed" type="AudioStreamPlayer3D" parent="Level5/Structure_I/Lights/Red"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-stream = ExtResource("28_k5iiv")
-attenuation_model = 3
-volume_db = 2.0
-pitch_scale = 0.8
-bus = &"SFX"
-
-[node name="Green" type="OmniLight3D" parent="Level5/Structure_I/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 5, -9)
-light_color = Color(0, 1, 0, 1)
-light_bake_mode = 1
-omni_range = 20.0
-
-[node name="SimonGreen" type="AudioStreamPlayer3D" parent="Level5/Structure_I/Lights/Green"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-stream = ExtResource("28_k5iiv")
-attenuation_model = 3
-volume_db = 2.0
-pitch_scale = 0.9
-bus = &"SFX"
-
-[node name="Yellow" type="OmniLight3D" parent="Level5/Structure_I/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 5, 12)
-light_color = Color(1, 1, 0, 1)
-light_bake_mode = 1
-omni_range = 20.0
-
-[node name="SimonYellow" type="AudioStreamPlayer3D" parent="Level5/Structure_I/Lights/Yellow"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-stream = ExtResource("28_k5iiv")
-attenuation_model = 3
-volume_db = 2.0
-pitch_scale = 1.1
-bus = &"SFX"
-
-[node name="Blue" type="OmniLight3D" parent="Level5/Structure_I/Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 0, 12)
-light_color = Color(0, 0, 1, 1)
-light_bake_mode = 1
-omni_range = 20.0
-
-[node name="SimonBlue" type="AudioStreamPlayer3D" parent="Level5/Structure_I/Lights/Blue"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-stream = ExtResource("28_k5iiv")
-attenuation_model = 3
-volume_db = 2.0
-bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level5"]
 libraries = {
@@ -712,10 +713,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 stream = ExtResource("27_vdfhy")
 bus = &"SFX"
 
-[connection signal="finished" from="Level5/Structure_I/Lights/Red/SimonRed" to="Level5" method="_on_audio_stream_player_3d_finished"]
-[connection signal="finished" from="Level5/Structure_I/Lights/Green/SimonGreen" to="Level5" method="_on_audio_stream_player_3d_finished"]
-[connection signal="finished" from="Level5/Structure_I/Lights/Yellow/SimonYellow" to="Level5" method="_on_audio_stream_player_3d_finished"]
-[connection signal="finished" from="Level5/Structure_I/Lights/Blue/SimonBlue" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Red/SimonRed" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Green/SimonGreen" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Yellow/SimonYellow" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="Level5/Lights/Blue/SimonBlue" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="animation_finished" from="Level5/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="Level5/AudioStreamPlayer3D" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="finished" from="Level5/FailSound" to="Level5" method="_on_audio_stream_player_3d_finished"]

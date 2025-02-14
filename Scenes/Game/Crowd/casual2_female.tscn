@@ -9,6 +9,26 @@ script = ExtResource("1_v38w1")
 [node name="Root Scene" parent="." instance=ExtResource("1_0hoxx")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
+[node name="Skeleton3D" parent="Root Scene/RootNode/CharacterArmature" index="0"]
+bones/3/position = Vector3(2.15305e-05, 0.010042, 0.000193107)
+bones/3/rotation = Quaternion(-2.02149e-12, 1.19209e-07, -1.7053e-13, 1)
+bones/5/rotation = Quaternion(0.090893, 4.36223e-07, 5.61949e-08, 0.995861)
+bones/6/rotation = Quaternion(-0.00683997, -8.3234e-07, -1.53436e-09, 0.999977)
+bones/7/rotation = Quaternion(-0.0333817, 6.7764e-07, -2.3115e-09, 0.999443)
+bones/8/rotation = Quaternion(-3.72529e-09, -0.000275475, 1.55781e-11, 1)
+bones/10/position = Vector3(0.00133202, 0.00140841, 0.000135214)
+bones/11/rotation = Quaternion(0.284249, 0.22663, 0.772367, -0.520856)
+bones/12/rotation = Quaternion(-0.0216919, 0.136674, -0.184171, 0.973104)
+bones/13/rotation = Quaternion(0.0125384, 0.0181956, -0.00654262, 0.999734)
+bones/15/position = Vector3(-0.0013313, 0.00140755, 0.000134612)
+bones/16/rotation = Quaternion(-0.284249, 0.22663, 0.772367, 0.520856)
+bones/17/rotation = Quaternion(-0.0215653, -0.138777, 0.18375, 0.972888)
+bones/18/rotation = Quaternion(0.0125383, -0.0181948, 0.00654355, 0.999734)
+bones/20/rotation = Quaternion(0.995077, 0.010376, -0.00147398, 0.0985507)
+bones/21/rotation = Quaternion(0.185027, 0.00212233, 0.00959818, 0.982684)
+bones/23/rotation = Quaternion(0.995077, -0.0103775, 0.00147462, 0.0985507)
+bones/24/rotation = Quaternion(0.185027, -0.00212229, -0.00959818, 0.982684)
+
 [node name="AnimationPlayer" parent="Root Scene" index="1"]
 autoplay = "CharacterArmature|Victory"
 

@@ -15,10 +15,10 @@ var accept_input: bool = true
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
 @onready var fail_sound: AudioStreamPlayer3D = $Level5/FailSound
 
-@onready var simon_red: AudioStreamPlayer3D = $Level5/Lights/Red/SimonRed
-@onready var simon_green: AudioStreamPlayer3D = $Level5/Lights/Green/SimonGreen
-@onready var simon_yellow: AudioStreamPlayer3D = $Level5/Lights/Yellow/SimonYellow
-@onready var simon_blue: AudioStreamPlayer3D = $Level5/Lights/Blue/SimonBlue
+@onready var simon_red: AudioStreamPlayer3D = %SimonRed
+@onready var simon_green: AudioStreamPlayer3D = %SimonGreen
+@onready var simon_yellow: AudioStreamPlayer3D = %SimonYellow
+@onready var simon_blue: AudioStreamPlayer3D = %SimonBlue
 
 
 # Called when the node enters the scene tree for the first time.

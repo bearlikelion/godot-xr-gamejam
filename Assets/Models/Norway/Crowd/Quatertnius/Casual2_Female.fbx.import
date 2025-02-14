@@ -1837,7 +1837,7 @@ _subresources={
 "materials": {
 "Face": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Models/Norway/Crowd/Quat/Materials/Face.tres"
+"use_external/path": "uid://bslgafyqagyvy"
 },
 "Skin": {
 "use_external/enabled": true,
