@@ -2533,7 +2533,7 @@ _data = {
 &"CharacterArmature|Walk_Carry": SubResource("Animation_bmjkd")
 }
 
-[node name="ChatHat" type="Node3D"]
+[node name="ChefHat" type="Node3D"]
 script = ExtResource("1_cbyug")
 walking = true
 

@@ -1,5 +1,5 @@
 class_name Level3
-extends StaticBody3D
+extends Node3D
 
 const PICKABLE_CRYSTAL = preload("res://Scenes/Game/Crystals/pickable_crystal.tscn")
 

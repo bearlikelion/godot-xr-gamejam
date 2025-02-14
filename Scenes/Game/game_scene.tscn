@@ -88,7 +88,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
-starting_level = "LEVEL_1"
+starting_level = "LEVEL_3"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -188,6 +188,9 @@ collision_layer = 524288
 collision_mask = 1019
 script = ExtResource("6_jxx51")
 push_rigid_bodies = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 

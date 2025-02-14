@@ -56,5 +56,5 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 			return
 
 
-func _on_dropped(pickable: Variant) -> void:
+func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
