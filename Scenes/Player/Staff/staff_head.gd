@@ -12,16 +12,18 @@ func _ready() -> void:
 	material_overlay.albedo_color.a = 0.0
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if is_cooling:
-		material_overlay.albedo_color.a = lerp(material_overlay.albedo_color.a, 0.0, 0.1)
+		material_overlay.albedo_color.a = lerp(material_overlay.albedo_color.a, 0.0, (0.9*delta))
 	if material_overlay.albedo_color.a == 0.0:
 		is_cooling = false
 
 
 func forge_cook() -> void:
 	material_overlay.albedo_color.a	= 1.0
+	print("Set crystal to red. Crystal alpha: %s" % material_overlay.albedo_color.a)
 
 
 func chill_out() -> void:
 	is_cooling = true
+	print("Crystal alpha: %s" % material_overlay.albedo_color.a)
