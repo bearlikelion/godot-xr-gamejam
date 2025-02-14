@@ -3,7 +3,8 @@
 importer="2d_array_texture"
 type="CompressedTexture2DArray"
 uid="uid://bryt1ljdygk5q"
-path="res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.ctexarray"
+path.bptc="res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.bptc.ctexarray"
+path.astc="res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.astc.ctexarray"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,7 +13,7 @@ metadata={
 [deps]
 
 source_file="res://Scenes/Levels/Lighting/level_1.exr"
-dest_files=["res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.ctexarray"]
+dest_files=["res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.bptc.ctexarray", "res://.godot/imported/level_1.exr-2907b68174d3abab9717a6eb3781a852.astc.ctexarray"]
 
 [params]
 
