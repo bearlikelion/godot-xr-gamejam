@@ -58,7 +58,7 @@ void fragment() {
 		bubbles.x        = smoothstep(BubbleMask, 1.0, texture(bubbles_tex, scale * BubbleSpeed * pos.yx + distortion - TIME * vec2(2.0, 0.5)).r);
 		bubbles.y        = smoothstep(BubbleMask, 1.0, texture(bubbles_tex, scale * BubbleSpeed * pos.yz + distortion - TIME * vec2(2.0, 0.0)).r);
 		bubbles         *= weights.zx * 1.0 * bubble_weight;
-		BACKLIGHT.z      = bubbles.x + bubbles.y;
+		// BACKLIGHT.z      = bubbles.x + bubbles.y;
 	}
 
 	if (FRONT_FACING)
@@ -76,11 +76,11 @@ void fragment() {
 	}
 }
 
-void light()
-{
-	// Liquid "glow" when held against light.
-	lowp float d  = dot(-VIEW, LIGHT);
-	lowp float dd = smoothstep(0.0, 1.0, d);
-	dd *= dd;
-	DIFFUSE_LIGHT = (dd -BACKLIGHT.z * d) * liquid_color.rgb;
-}
+//void light()
+//{
+	//// Liquid "glow" when held against light.
+	//lowp float d  = dot(-VIEW, LIGHT);
+	//lowp float dd = smoothstep(0.0, 1.0, d);
+	//dd *= dd;
+	//DIFFUSE_LIGHT = (dd -BACKLIGHT.z * d) * liquid_color.rgb;
+//}

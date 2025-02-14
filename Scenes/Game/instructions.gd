@@ -15,6 +15,9 @@ func _ready() -> void:
 	Events.staff_head_connected.connect(_on_staff_head_connected)
 	Events.staff_forged.connect(_on_staff_forged)
 	Events.level_5_load.connect(_on_level_5_load)
+	Events.level_6_load.connect(_on_level_6_load)
+	Events.level_7_load.connect(_on_level_7_load)
+	Events.chest_opened.connect(_on_chest_opened)
 
 
 func _on_podium_rose() -> void:
@@ -72,4 +75,22 @@ func _on_staff_forged() -> void:
 func _on_level_5_load() -> void:
 	animation_player.play("RESET")
 	text = "Follow the\nsequence"
+	animation_player.play("fade")
+
+
+func _on_level_6_load() -> void:
+	animation_player.play("RESET")
+	text = "Mix the potion"
+	animation_player.play("fade")
+
+
+func _on_level_7_load() -> void:
+	animation_player.play("RESET")
+	text = "Find the golden key"
+	animation_player.play("fade")
+
+
+func _on_chest_opened() -> void:
+	animation_player.play("RESET")
+	text = "Wear the Wizard Hat"
 	animation_player.play("fade")

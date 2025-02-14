@@ -89,6 +89,7 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 			Events.reset_potions.emit()
 			red_potion = false
 			blue_potion = false
+			correct_potions = 0
 			await get_tree().create_timer(2.0).timeout
 			var white_material: StandardMaterial3D = StandardMaterial3D.new()
 			white_material.albedo_color = Color.WHITE

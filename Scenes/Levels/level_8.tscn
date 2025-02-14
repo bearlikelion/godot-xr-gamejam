@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=4 uid="uid://butemle61eo12"]
+[gd_scene load_steps=27 format=4 uid="uid://butemle61eo12"]
 
-[ext_resource type="Script" uid="uid://dvp0xckga0uj6" path="res://Scenes/Levels/level_7.gd" id="1_2ge20"]
 [ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="3_e7x8w"]
 [ext_resource type="PackedScene" uid="uid://py43ke1sm6qa" path="res://Scenes/Game/Crowd/casual2_female.tscn" id="5_88rf7"]
 [ext_resource type="Texture2D" uid="uid://bgs23uacjq3f5" path="res://Assets/Models/Norway/skybox_winter_stylized_0.png" id="5_dqeop"]
@@ -115,7 +114,6 @@ size = Vector3(64, 10.8, 1.1)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dqeop"]
 
 [node name="Level8" type="Node3D"]
-script = ExtResource("1_2ge20")
 
 [node name="FinalLevel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 26.25, 9)

@@ -13,7 +13,7 @@ shader = ExtResource("2_fltjg")
 shader_parameter/coeff = Vector2(0, 0)
 shader_parameter/vel = 0.0
 shader_parameter/liquid_color = Color(0, 0, 1, 1)
-shader_parameter/foam_color = Color(0.9, 0.3, 0.8, 1)
+shader_parameter/foam_color = Color(2.74345e-06, 0, 0.685646, 1)
 shader_parameter/foam_line = 0.0
 shader_parameter/fill_amount = 0.54
 shader_parameter/size = Vector2(1, 1)
@@ -53,6 +53,7 @@ script = ExtResource("1_djrja")
 potion_color = "BLUE"
 correct_potion = true
 liquid_mobility = 0.5
+ranged_grab_method = 2
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_fnkwl")]
