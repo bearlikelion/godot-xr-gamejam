@@ -1,16 +1,14 @@
 # Credits
 
-## Lead Developer
+## Lead Developer:
 Mark Arneman [bearlikelion.com](https://bearlikelion.com)
 
 ## Development Help:
 Cyberhusky\
 GI_Jaws
 
-
 ## Music:
 Troll Lyd [troll-lyd.itch.io](https://troll-lyd.itch.io/)
-
 
 ## Assets:
 Assets gathered from [OpenGameArt.org](https://opengameart.org/) and [Itch.io](https://itch.io/)
@@ -36,4 +34,4 @@ Assets gathered from [OpenGameArt.org](https://opengameart.org/) and [Itch.io](h
 [Guard Tower](https://opengameart.org/content/guard-tower)\
 [Dungeon Asset Pack](https://arill-studio.itch.io/dungeon-asset-pack)\
 [Wizard Hat](https://poly.pizza/m/7VVumyY7L_u) from poly.pizza\
-[Three Musketeers Assset Pack](https://louis-tudge.itch.io/the-three-musketeers-asset-pack-scene)\
+[Three Musketeers Assset Pack](https://louis-tudge.itch.io/the-three-musketeers-asset-pack-scene)
