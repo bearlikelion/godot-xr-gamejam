@@ -6,12 +6,14 @@ const RUSTY_KEY = preload("res://Scenes/Game/Chest/rusty_key.tscn")
 
 @onready var keys: Node = $Level7/Keys
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level7/AudioStreamPlayer3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	place_keys()
 	Events.player_equipped_hat.connect(_on_equipped_hat)
+	animation_player.play("appear")
 
 
 func place_keys() -> void:
@@ -31,4 +33,9 @@ func place_keys() -> void:
 
 func _on_equipped_hat() -> void:
 	audio_stream_player_3d.play()
-	Events.level_7_completed.emit()
+	animation_player.play("fade")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "fade":
+		Events.level_7_completed.emit()
