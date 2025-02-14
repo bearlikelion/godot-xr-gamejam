@@ -195,7 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.018445, -0.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 0, 0.25, 0)
 mesh = SubResource("ArrayMesh_ixh3d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

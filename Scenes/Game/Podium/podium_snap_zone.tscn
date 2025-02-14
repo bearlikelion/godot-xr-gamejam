@@ -20,7 +20,7 @@ height = 0.1
 radial_segments = 32
 rings = 16
 
-[node name="PodiumSnapZone" instance=ExtResource("1_rsksq")]
+[node name="PodiumSnapZone" groups=["podium_snap_zone"] instance=ExtResource("1_rsksq")]
 stash_sound = ExtResource("2_d8m0w")
 grab_distance = 0.2
 snap_mode = 1
