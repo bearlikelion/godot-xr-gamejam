@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://uqsarnow28ej"]
+[gd_scene load_steps=22 format=4 uid="uid://uqsarnow28ej"]
 
 [ext_resource type="Script" uid="uid://d1n86ku8amlhd" path="res://Scenes/Levels/level_6.gd" id="1_ik81l"]
 [ext_resource type="LightmapGIData" uid="uid://b2rb30tkxxquo" path="res://Scenes/Levels/Lighting/level_6.lmbake" id="2_h7uay"]
 [ext_resource type="Material" uid="uid://c3h7lcfu3slkq" path="res://Assets/Models/Tower/Material.tres" id="4_vrotf"]
 [ext_resource type="Shader" uid="uid://de61eng24g4m8" path="res://Shaders/3d_disolve.gdshader" id="5_eygg8"]
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="5_ik81l"]
+[ext_resource type="Texture2D" uid="uid://bjqb5an31jn6a" path="res://Assets/Images/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="7_5l77v"]
 [ext_resource type="AudioStream" uid="uid://dkrxe1ps7kful" path="res://Assets/Audio/SFX/sparkle.ogg" id="26_n56iq"]
 [ext_resource type="AudioStream" uid="uid://sbi3welo812w" path="res://Assets/Audio/SFX/fail.ogg" id="27_syqna"]
 
@@ -157,6 +158,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a0pqn")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y1v7"]
+albedo_texture = ExtResource("7_5l77v")
+
 [node name="Level6" type="Node3D"]
 script = ExtResource("1_ik81l")
 
@@ -207,6 +211,12 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1, 0)
 material_overlay = SubResource("ShaderMaterial_cjb10")
 mesh = SubResource("ArrayMesh_h7uay")
 skeleton = NodePath("")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level6/guard_tower"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.46393e-08, 8.25, 1.25)
+flip_faces = true
+radius = 20.0
+material = SubResource("StandardMaterial3D_6y1v7")
 
 [node name="Label3D" type="Label3D" parent="Level6"]
 transform = Transform3D(-0.0365391, 0, -0.999332, 0, 1, 0, 0.999332, 0, -0.0365391, 2.66399, 15.2989, -3.98227)

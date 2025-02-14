@@ -6,6 +6,8 @@
 [resource]
 resource_name = "crystal"
 transparency = 1
+blend_mode = 1
+cull_mode = 1
 albedo_color = Color(0.542987, 0.773327, 0.773327, 1)
 albedo_texture = ExtResource("1_xy20n")
 roughness = 0.5

@@ -4,8 +4,8 @@ extends Node3D
 const GOLD_KEY = preload("res://Scenes/Game/Chest/gold_key.tscn")
 const RUSTY_KEY = preload("res://Scenes/Game/Chest/rusty_key.tscn")
 
-@onready var keys: Node = $Level7/Keys
-@onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level7/AudioStreamPlayer3D
+@onready var keys: Node = $Keys
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func place_keys() -> void:
-	var keys_placed = 0
+	var keys_placed: int = 0
 	var key_positions: Array[Node] = keys.get_children()
 
 	if not Global.testing:

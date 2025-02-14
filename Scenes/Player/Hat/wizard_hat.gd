@@ -9,7 +9,7 @@ func _ready() -> void:
 	picked_up.connect(_on_picked_up)
 
 
-func _on_picked_up(pickable: Variant) -> void:
+func _on_picked_up(_pickable: Variant) -> void:
 	if animation_player:
 		animation_player.stop()
 
