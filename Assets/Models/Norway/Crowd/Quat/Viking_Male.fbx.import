@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ccafu0woka1ap"
-path="res://.godot/imported/Viking_Male.fbx-6d5133e61a11d244ca28e53926593491.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quat/Viking_Male.fbx"
-dest_files=["res://.godot/imported/Viking_Male.fbx-6d5133e61a11d244ca28e53926593491.scn"]
 
 [params]
 

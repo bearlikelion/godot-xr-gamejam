@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://owip7sfoniun"
-path="res://.godot/imported/Witch.fbx-02a5d79261132a55d512d1bbd73bbaf0.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quat/Witch.fbx"
-dest_files=["res://.godot/imported/Witch.fbx-02a5d79261132a55d512d1bbd73bbaf0.scn"]
 
 [params]
 

@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dpleviqu86t5j"
-path="res://.godot/imported/Casual3_Female.fbx-70f08e871fd49c45566891364fb19ab3.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quat/Casual3_Female.fbx"
-dest_files=["res://.godot/imported/Casual3_Female.fbx-70f08e871fd49c45566891364fb19ab3.scn"]
 
 [params]
 

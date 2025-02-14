@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://crydxsy8ol2cl"
-path="res://.godot/imported/Cowboy_Hair.fbx-e8f34befdb3cedecadabb5dbeedcb753.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quat/Cowboy_Hair.fbx"
-dest_files=["res://.godot/imported/Cowboy_Hair.fbx-e8f34befdb3cedecadabb5dbeedcb753.scn"]
 
 [params]
 

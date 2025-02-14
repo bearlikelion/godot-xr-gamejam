@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://fyla83fkfysq"
-path="res://.godot/imported/Cowboy_Female.fbx-f51182b38f441cb752a529dce1ed59bb.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assets/Models/Norway/Crowd/Quat/Cowboy_Female.fbx"
-dest_files=["res://.godot/imported/Cowboy_Female.fbx-f51182b38f441cb752a529dce1ed59bb.scn"]
 
 [params]
 
