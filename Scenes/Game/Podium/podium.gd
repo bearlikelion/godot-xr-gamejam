@@ -30,7 +30,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_place_on_pedistal(scene_string_or_base_rune) -> void:
 
-	if type_string(typeof(scene_string_or_base_rune)) == "TYPE_STRING":
+	if type_string(typeof(scene_string_or_base_rune)) == "String":
 		_on_place_on_pedistal_string(scene_string_or_base_rune)
 	else: # Assume base_rune
 		_on_place_on_pedistal_rune(scene_string_or_base_rune)
@@ -48,6 +48,7 @@ func _on_place_on_pedistal_string(scene_string: String):
 func _on_place_on_pedistal_rune(base_rune: BaseRune) -> void:
 	base_rune = base_rune.duplicate()
 	base_rune.enabled = false  # Make it so it can't be picked up
+	base_rune.freeze = true
 
 	if icon_marker.get_child_count() > 0:
 		for icon_child in icon_marker.get_children():

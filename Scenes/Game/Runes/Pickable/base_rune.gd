@@ -62,7 +62,6 @@ func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	highlight_updated.connect(_on_highlight_updated)
 	_initial_position = global_position
-	freeze = false
 
 	# Initialize random bobbing parameters
 	_bob_phase_offset = randf_range(0, PI * 2.0)  # Random phase offset (0 to 2π)
