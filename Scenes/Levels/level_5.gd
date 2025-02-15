@@ -11,10 +11,13 @@ var is_player_turn: bool = false
 var input_delay: Timer = Timer.new()
 var accept_input: bool = true
 var player_won: bool = false
+var pushing_buttons: bool = false
 
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level5/AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
 @onready var fail_sound: AudioStreamPlayer3D = $Level5/FailSound
+@onready var button_mashing_timer: Timer = $Level5/ButtonMashingTimer
+
 
 @onready var simon_red: AudioStreamPlayer3D = %SimonRed
 @onready var simon_green: AudioStreamPlayer3D = %SimonGreen
@@ -36,34 +39,43 @@ func _ready() -> void:
 
 
 func start_simon() -> void:
-	await get_tree().create_timer(1.5).timeout
-	sequence.clear()
-	player_input.clear()
-	sequence_index = 0
-	add_to_sequence()
-	play_sequence()
+	if !pushing_buttons:
+		await get_tree().create_timer(1.5).timeout
+		sequence.clear()
+		player_input.clear()
+		sequence_index = 0
+		add_to_sequence()
+		play_sequence()
+	else:
+		start_simon()
 
 
 func add_to_sequence() -> void:
-	if sequence_index >= lights.size():
-		print("PLAYER WINS SIMON")
-		player_won = true
-		audio_stream_player_3d.play()
-		animation_player.play("fade")
-		Events.level_5_completed.emit()
+	if !pushing_buttons:
+		if sequence_index >= lights.size():
+			print("PLAYER WINS SIMON")
+			player_won = true
+			audio_stream_player_3d.play()
+			animation_player.play("fade")
+			Events.level_5_completed.emit()
+		else:
+			sequence.append(lights[randi() % lights.size()])
 	else:
-		sequence.append(lights[randi() % lights.size()])
+		add_to_sequence()
 
 
 func play_sequence() -> void:
-	if not player_won:
-		await get_tree().create_timer(1.5).timeout
-		is_player_turn = true
-		sequence_index = 0
-		print("Play Sequence: %s" % [sequence])
-		for color in sequence:
-			show_light(color)
-			await get_tree().create_timer(2.1).timeout
+	if !pushing_buttons:
+		if not player_won:
+			await get_tree().create_timer(1.5).timeout
+			is_player_turn = true
+			sequence_index = 0
+			print("Play Sequence: %s" % [sequence])
+			for color in sequence:
+				show_light(color)
+				await get_tree().create_timer(2.1).timeout
+	else:
+		play_sequence()
 
 
 func show_light(button_to_press: String) -> void:
@@ -108,8 +120,19 @@ func check_player_input(color: String) -> void:
 			play_sequence()
 
 
+func playerpushingbuttons():
+	if !pushing_buttons:
+		pushing_buttons = true
+		button_mashing_timer.wait_time = 1.0
+
+
+func _on_button_mashing_timer_timeout() -> void:
+	pushing_buttons = false
+
+
 func _on_button_pushed(button_color: String) -> void:
 	check_player_input(button_color)
+	playerpushingbuttons()
 
 	match button_color:
 		"Red":
