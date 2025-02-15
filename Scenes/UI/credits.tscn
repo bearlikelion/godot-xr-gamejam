@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://blv7evxcyv402"]
+[gd_scene load_steps=9 format=3 uid="uid://blv7evxcyv402"]
 
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="1_h87vg"]
 [ext_resource type="Script" uid="uid://c6oudf34j55na" path="res://Scenes/UI/credits.gd" id="1_tdxk4"]
@@ -10,6 +10,44 @@ line_spacing = 10.0
 font = ExtResource("1_h87vg")
 font_size = 96
 
+[sub_resource type="Animation" id="Animation_k0d3f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(244, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_tdxk4"]
+resource_name = "scroll_credits"
+length = 60.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 59.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(244, -100), Vector2(244, -100), Vector2(244, -2657)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1g7ho"]
+_data = {
+&"RESET": SubResource("Animation_k0d3f"),
+&"scroll_credits": SubResource("Animation_tdxk4")
+}
+
 [node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -18,60 +56,125 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tdxk4")
+scroll = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+offset_left = 244.0
+offset_top = -100.0
+offset_right = 1035.0
+offset_bottom = 3046.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
-[node name="Spacing" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Spacing" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "
 "
 label_settings = SubResource("LabelSettings_q4iv0")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "A Wizards Way
 by Mark Arneman"
 label_settings = SubResource("LabelSettings_q4iv0")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("2_lm48m")
 expand_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 6
 texture = ExtResource("3_tdxk4")
 expand_mode = 5
 
-[node name="Credits" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+[node name="Credits" type="RichTextLabel" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
+text = "[center]
+[font_size=48]Lead Developer:[/font_size]
+Mark Arneman 
+[url=https://bearlikelion.com]bearlikelion.com[/url]
+
+[font_size=48]Development Help:[/font_size]
+Cyberhusky
+GI_Jaws
+
+[font_size=48]Music:[/font_size]
+Troll Lyd 
+[url=https://troll-lyd.itch.io/]troll-lyd.itch.io[/url]
+
+[font_size=48]Thanks to:[/font_size]
+Stepbro
+CarinaMachina
+RunnyBabbit
+Everyone who play tested
+
+[font_size=48]Assets:[/font_size]
+[url=https://opengameart.org/]OpenGameArt.org[/url] 
+and 
+[url=https://itch.io/]Itch.io[/url]
+
+[font_size=32]Font:[/font_size]
+
+[url=https://www.dafont.com/wizards-magic.font]Wizards Magic[/url]
+
+[font_size=32]Assets Used:[/font_size]
+
+[url=https://loafbrr.itch.io/gothic-like-structures]Gothic-Like Structures[/url]
+
+[url=https://opengameart.org/content/way-point-circle]Waypoint Circle[/url]
+
+[url=https://opengameart.org/content/podium]Podium[/url]
+
+[url=https://opengameart.org/content/lowpoly-nordic-runes-icons]Lowpoly Nordic Runes[/url]
+
+[url=https://opengameart.org/content/lowpoly-futhark-icons]Lowpoly Futhark Icons[/url]
+
+[url=https://comic-and-sons.itch.io/low-poly-fantasy-house]Fantasy House[/url]
+
+[url=https://opengameart.org/content/mini-library]Mini Library[/url]
+
+[url=https://opengameart.org/content/low-poly-house-interior]Low Poly House Interior[/url]
+
+[url=https://opengameart.org/content/animated-fires]Animated Fire[/url]
+
+[url=https://opengameart.org/content/free-mine-assets-pack]Mine Assets Pack[/url]
+
+[url=https://opengameart.org/content/broken-glass-batch-of-7-seamless-textures-with-normalmaps]Broken Glass normal maps[/url]
+
+[url=https://opengameart.org/content/medieval-blacksmith-interior]Medieval Blacksmith[/url]
+
+[url=https://opengameart.org/content/staff-1]Staff[/url]
+
+[url=https://opengameart.org/content/potions]Potions[/url]
+
+[url=https://opengameart.org/content/guard-tower]Guard Tower[/url]
+
+[url=https://arill-studio.itch.io/dungeon-asset-pack]Dungeon Asset Pack[/url]
+
+[url=https://poly.pizza/m/7VVumyY7L_u]Wizard Hat[/url] from poly.pizza
+
+[/center]"
 fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1g7ho")
+}

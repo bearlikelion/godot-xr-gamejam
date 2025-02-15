@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	Events.level_2_completed.connect(_on_level_2_completed)
 	Events.wrong_book.connect(_on_wrong_book)
+	Events.restart_level.connect(_on_restart_level)
 
 
 func place_magic_book() -> void:
@@ -42,6 +43,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_audio_stream_player_3d_finished() -> void:
+	Global.magic_book = magic_book.duplicate()
 	magic_book.queue_free()
 	animation_player.play("fade")
 
@@ -52,3 +54,7 @@ func _on_level_2_completed() -> void:
 
 func _on_wrong_book() -> void:
 	fail_sound.play()
+
+
+func _on_restart_level() -> void:
+	animation_player.play("fade")

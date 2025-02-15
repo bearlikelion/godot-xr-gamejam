@@ -11,11 +11,15 @@ var match_rune: BaseRune
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
+  Global.level = 1
+
 	if not rune_config:
 		push_error("RuneConfig not assigned to Level1")
 		return
+	
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
+	Events.restart_level.connect(_on_restart_level)
 
 func _on_start_game() -> void:
 	show()
@@ -62,4 +66,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		hide()
 
 func _on_audio_stream_player_3d_finished() -> void:
+	animation_player.play("fade")
+
+
+func _on_restart_level() -> void:
 	animation_player.play("fade")

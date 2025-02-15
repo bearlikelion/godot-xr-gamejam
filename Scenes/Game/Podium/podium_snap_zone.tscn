@@ -32,3 +32,5 @@ shape = SubResource("SphereShape3D_byxf7")
 mesh = SubResource("SphereMesh_vvg7m")
 
 [node name="HighlightRing" parent="." index="2" instance=ExtResource("2_qkg2o")]
+
+[connection signal="has_dropped" from="." to="." method="_on_has_dropped"]

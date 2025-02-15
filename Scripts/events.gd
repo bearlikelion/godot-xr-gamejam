@@ -45,3 +45,6 @@ signal level_8_load
 #endregion
 
 signal show_credits
+signal repeat_instructions
+signal restart_level
+signal reload_level

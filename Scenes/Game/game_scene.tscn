@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=28 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -12,12 +12,11 @@
 [ext_resource type="Script" uid="uid://dhg46efuyh1cx" path="res://Scenes/UI/credits_2d_in_3d.gd" id="7_18sgl"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
 [ext_resource type="PackedScene" uid="uid://blv7evxcyv402" path="res://Scenes/UI/credits.tscn" id="9_bgmid"]
+[ext_resource type="Script" uid="uid://dqlguqh310qc5" path="res://Scenes/Game/controller.gd" id="9_p3bnw"]
 [ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="10_3hq7a"]
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
-[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="12_p3bnw"]
-[ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_yi1st"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="14_cid5o"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
@@ -50,7 +49,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_yi1st"]
 resource_name = "fade"
-length = 3.0
+length = 5.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -59,10 +58,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -71,10 +70,10 @@ tracks/1/path = NodePath(".:outline_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18sgl"]
@@ -103,7 +102,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
-starting_level = "LEVEL_1"
+starting_level = "LEVEL_3"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -139,6 +138,7 @@ script = ExtResource("7_18sgl")
 [node name="Viewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/Credits"]
 transparent_bg = true
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 
 [node name="Credits" parent="XROrigin3D/XRCamera3D/Credits/Viewport" instance=ExtResource("9_bgmid")]
 
@@ -151,6 +151,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_bgmid")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
 tracker = &"left_hand"
 pose = &"aim"
+script = ExtResource("9_p3bnw")
 
 [node name="Area3D" type="Area3D" parent="XROrigin3D/LeftController" groups=["player_hand"]]
 
@@ -176,13 +177,11 @@ collision_mask = 5308416
 [node name="FunctionPoseDetector" parent="XROrigin3D/LeftController" instance=ExtResource("10_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 
-[node name="MovementDirect" parent="XROrigin3D/LeftController" instance=ExtResource("12_p3bnw")]
-strafe = true
-
 [node name="RightController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 tracker = &"right_hand"
 pose = &"aim"
+script = ExtResource("9_p3bnw")
 
 [node name="Area3D" type="Area3D" parent="XROrigin3D/RightController" groups=["player_hand"]]
 
@@ -212,12 +211,15 @@ text = "FPS"
 script = ExtResource("10_kn4b3")
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("14_cid5o")]
+collision_mask = 1019
+push_rigid_bodies = false
 ground_control = 1
-
-[node name="MovementFlight" parent="XROrigin3D" instance=ExtResource("12_yi1st")]
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")
 bus = &"Music"
+
+[connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController" method="_on_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_button_pressed"]

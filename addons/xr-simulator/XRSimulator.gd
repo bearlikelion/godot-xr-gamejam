@@ -64,9 +64,9 @@ func _search_first_xr_nodes(node: Node):
 		_on_node_added(child)
 
 func _ready():
-	if not enabled or not OS.has_feature("editor"):
-		enabled = false
-		return
+	#if not enabled or not OS.has_feature("editor"):
+		#enabled = false
+		#return
 
 	var left_hand = XRServer.get_tracker("left_hand")
 	if left_hand == null:
@@ -95,8 +95,8 @@ func _process(_delta):
 		viewport.use_xr = false
 
 func _input(event):
-	if not enabled or not OS.has_feature("editor"):
-		return
+	#if not enabled or not OS.has_feature("editor"):
+		#return
 	if not left_tracker or not right_tracker or not camera:
 		return
 	if Input.is_key_pressed(KEY_ESCAPE):

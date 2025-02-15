@@ -1,10 +1,11 @@
 extends Node
 
-var testing: bool = false # DO NOT SHIP WITH TRUE
+var testing: bool = true # DO NOT SHIP WITH TRUE
 var game_started: bool = false
 var level: int = 1
 var rune_to_match: String = ""
-
+var forged_staff: Node3D
+var magic_book: MagicBook
 
 func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
