@@ -60,7 +60,7 @@ points = PackedVector3Array(-1.00048, -0.0987652, -0.529545, 0.993828, 0.0436298
 blend_mode = 4
 cull_mode = 1
 shading_mode = 0
-albedo_color = Color(0.337072, 0.266728, 0.121141, 1)
+albedo_color = Color(0.594204, 0.218127, 0, 1)
 grow = true
 grow_amount = 0.03
 
@@ -70,6 +70,7 @@ collision_mask = 196615
 freeze = true
 freeze_mode = 1
 script = ExtResource("1_0ylmq")
+ranged_grab_method = 2
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_r6r38")]

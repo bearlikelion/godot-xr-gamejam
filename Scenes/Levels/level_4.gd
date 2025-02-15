@@ -8,14 +8,22 @@ const CHISEL = preload("res://Scenes/Game/Tools/chisel.tscn")
 @onready var chisels: Node = $Chisels
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
 	Global.level = 4
 	animation_player.play("appear")
 	spawn_chisel()
-
 	Events.level_4_completed.connect(_on_level_4_completed)
+	var podium_snap_zone: XRToolsSnapZone = get_tree().get_first_node_in_group("podium_snap_zone")
+	if podium_snap_zone: 
+		podium_snap_zone.enabled = true
+		print("podium snap zone is oke doke") 
+	var magic_crystal: PickableCrystal = get_tree().get_first_node_in_group("magic_crystal")
+	if magic_crystal:
+		magic_crystal.enabled = true
+		print("magic crystal is oke doke")
 
 
 func spawn_chisel() -> void:

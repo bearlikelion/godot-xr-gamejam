@@ -65,6 +65,8 @@ func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 			if what.magic_crystal == true:
 				what.reparent(get_tree().get_first_node_in_group("base"), true)
 				Events.podium_snapped.emit("magic_crystal")
+				podium_snap_zone.enabled = false
+				print("podium snap zone is not oke doke")
 			else:
 				what.breakable = true
 				Events.podium_snapped.emit("weak_crystal")

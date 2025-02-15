@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://1ukp4fpxnjxa"]
+[gd_scene load_steps=13 format=4 uid="uid://1ukp4fpxnjxa"]
 
-[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_y3fa6"]
+[ext_resource type="Script" uid="uid://b7mio00lpkkfp" path="res://Scenes/Player/Staff/staff_head.gd" id="1_ryga1"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_n5v0j"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_ldrkx"]
+[ext_resource type="Texture2D" uid="uid://braxhgb84fl8e" path="res://Assets/Models/Staff/crystal red_crystal red.png" id="5_kq7d1"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_3sd7x"]
 [ext_resource type="Texture2D" uid="uid://c454j18cds7ut" path="res://Assets/Models/Staff/crystal blue_staff01D.png" id="7_1p7hk"]
 
@@ -15,6 +16,11 @@ cull_mode = 1
 shading_mode = 0
 grow = true
 grow_amount = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryga1"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("5_kq7d1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhwr1"]
 resource_name = "Material"
@@ -61,7 +67,7 @@ collision_layer = 4
 collision_mask = 196615
 freeze = true
 freeze_mode = 1
-script = ExtResource("2_y3fa6")
+script = ExtResource("1_ryga1")
 ranged_grab_method = 2
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
@@ -85,6 +91,7 @@ metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [node name="staff_001" type="MeshInstance3D" parent="crystal blue"]
 transform = Transform3D(0.0527226, 0, 0, 0, 0.0527236, 0, 0, 0, 0.0527226, 0, 0.00768614, 0)
+material_overlay = SubResource("StandardMaterial3D_ryga1")
 mesh = SubResource("ArrayMesh_6evuf")
 skeleton = NodePath("")
 
