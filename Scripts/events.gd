@@ -43,3 +43,5 @@ signal level_7_completed
 
 signal level_8_load
 #endregion
+
+signal show_credits
