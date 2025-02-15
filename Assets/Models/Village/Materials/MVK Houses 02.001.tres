@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://3a6d3d1n2gkw"]
+
+[ext_resource type="Texture2D" uid="uid://cvf7h5a27atrv" path="res://Assets/Models/Village/Textures/MVK_Houses_02_D.png" id="1_n5xy2"]
+[ext_resource type="Texture2D" uid="uid://bghf5brddmjq3" path="res://Assets/Models/Village/Textures/MVK_Houses_02_AO.png" id="2_n5xy2"]
+[ext_resource type="Texture2D" uid="uid://cb2i484falrar" path="res://Assets/Models/Village/Textures/MVK_Houses_02_NRM.png" id="3_7ydq2"]
+
+[resource]
+resource_name = "MVK Houses 02.001"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 0)
+albedo_texture = ExtResource("1_n5xy2")
+roughness = 0.690035
+normal_enabled = true
+normal_texture = ExtResource("3_7ydq2")
+ao_enabled = true
+ao_texture = ExtResource("2_n5xy2")

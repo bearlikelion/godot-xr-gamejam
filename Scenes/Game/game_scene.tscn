@@ -1,18 +1,24 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=29 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="3_7r8ec"]
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="4_jevh0"]
 [ext_resource type="Script" uid="uid://d6mtm307lnty" path="res://Scenes/Game/instructions.gd" id="5_3hq7a"]
-[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="5_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_yi1st"]
-[ext_resource type="Script" uid="uid://fen86f2uqiag" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_jxx51"]
+[ext_resource type="PackedScene" uid="uid://bdwmserhqai5h" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_hand_low.tscn" id="6_3hq7a"]
+[ext_resource type="PackedScene" uid="uid://ynnywkbue5j5" path="res://Scenes/Player/Hat/hat_snap_zone.tscn" id="6_cid5o"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="6_p3bnw"]
-[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="8_3hq7a"]
+[ext_resource type="Script" uid="uid://dhg46efuyh1cx" path="res://Scenes/UI/credits_2d_in_3d.gd" id="7_18sgl"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
+[ext_resource type="PackedScene" uid="uid://blv7evxcyv402" path="res://Scenes/UI/credits.tscn" id="9_bgmid"]
+[ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="10_3hq7a"]
+[ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
-[ext_resource type="PackedScene" uid="uid://c3he2s4qmuysp" path="res://Scenes/Levels/level_1.tscn" id="15_3hq7a"]
+[ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="12_p3bnw"]
+[ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_yi1st"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="14_cid5o"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
 [sub_resource type="Animation" id="Animation_p3bnw"]
@@ -44,7 +50,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_yi1st"]
 resource_name = "fade"
-length = 5.0
+length = 3.0
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,7 +59,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 5),
+"times": PackedFloat32Array(0.5, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -64,7 +71,7 @@ tracks/1/path = NodePath(".:outline_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 5),
+"times": PackedFloat32Array(0.5, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -76,6 +83,18 @@ _data = {
 &"fade": SubResource("Animation_yi1st")
 }
 
+[sub_resource type="QuadMesh" id="QuadMesh_p3bnw"]
+size = Vector2(6, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_18sgl"]
+viewport_path = NodePath("XROrigin3D/XRCamera3D/Credits/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgmid"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_18sgl")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_kn4b3"]
 size = Vector3(0.1, 0.1, 0.1)
 
@@ -84,9 +103,13 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
+starting_level = "LEVEL_1"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 environment = ExtResource("2_ihfs7")
@@ -95,7 +118,9 @@ environment = ExtResource("2_ihfs7")
 
 [node name="Instructions" type="Label3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.63918e-07, 0, -1.25)
-text = "Touch Podium to Begin"
+no_depth_test = true
+text = "Touch the podium
+to begin"
 font = ExtResource("4_jevh0")
 script = ExtResource("5_3hq7a")
 
@@ -104,25 +129,43 @@ libraries = {
 &"": SubResource("AnimationLibrary_18sgl")
 }
 
-[node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
+[node name="HatSnapZone" parent="XROrigin3D/XRCamera3D" instance=ExtResource("6_cid5o")]
+
+[node name="Credits" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, -2, 0)
+visible = false
+script = ExtResource("7_18sgl")
+
+[node name="Viewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/Credits"]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="Credits" parent="XROrigin3D/XRCamera3D/Credits/Viewport" instance=ExtResource("9_bgmid")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/Credits"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.5, 2, 0)
+mesh = SubResource("QuadMesh_p3bnw")
+surface_material_override/0 = SubResource("StandardMaterial3D_bgmid")
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0, 0)
 tracker = &"left_hand"
 pose = &"aim"
 
-[node name="Area3D" type="Area3D" parent="XROrigin3D/LeftHandController" groups=["player_hand"]]
+[node name="Area3D" type="Area3D" parent="XROrigin3D/LeftController" groups=["player_hand"]]
 
-[node name="LeftHand" parent="XROrigin3D/LeftHandController/Area3D" instance=ExtResource("5_kn4b3")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHandController/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftController/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
 
-[node name="FunctionPickup" parent="XROrigin3D/LeftHandController" instance=ExtResource("5_yi1st")]
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftController/Area3D" instance=ExtResource("6_3hq7a")]
+
+[node name="FunctionPickup" parent="XROrigin3D/LeftController" instance=ExtResource("5_yi1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 ranged_distance = 25.0
 ranged_collision_mask = 65540
 
-[node name="FunctionPointer" parent="XROrigin3D/LeftHandController" instance=ExtResource("6_p3bnw")]
+[node name="FunctionPointer" parent="XROrigin3D/LeftController" instance=ExtResource("6_p3bnw")]
 script = ExtResource("8_cid5o")
 show_laser = 0
 laser_length = 1
@@ -130,24 +173,30 @@ laser_material = SubResource("StandardMaterial3D_cid5o")
 show_target = true
 collision_mask = 5308416
 
-[node name="RightHandController" type="XRController3D" parent="XROrigin3D"]
+[node name="FunctionPoseDetector" parent="XROrigin3D/LeftController" instance=ExtResource("10_3hq7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
+
+[node name="MovementDirect" parent="XROrigin3D/LeftController" instance=ExtResource("12_p3bnw")]
+strafe = true
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 tracker = &"right_hand"
 pose = &"aim"
 
-[node name="Area3D" type="Area3D" parent="XROrigin3D/RightHandController" groups=["player_hand"]]
+[node name="Area3D" type="Area3D" parent="XROrigin3D/RightController" groups=["player_hand"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHandController/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightController/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
 
-[node name="RightHand" parent="XROrigin3D/RightHandController/Area3D" instance=ExtResource("8_3hq7a")]
+[node name="RightPhysicsHand" parent="XROrigin3D/RightController/Area3D" instance=ExtResource("11_cid5o")]
 
-[node name="FunctionPickup" parent="XROrigin3D/RightHandController" instance=ExtResource("5_yi1st")]
+[node name="FunctionPickup" parent="XROrigin3D/RightController" instance=ExtResource("5_yi1st")]
 ranged_distance = 25.0
 ranged_collision_mask = 65540
 
-[node name="FunctionPointer" parent="XROrigin3D/RightHandController" instance=ExtResource("6_p3bnw")]
+[node name="FunctionPointer" parent="XROrigin3D/RightController" instance=ExtResource("6_p3bnw")]
 script = ExtResource("8_cid5o")
 show_laser = 0
 laser_length = 1
@@ -155,24 +204,19 @@ laser_material = SubResource("StandardMaterial3D_cid5o")
 show_target = true
 collision_mask = 5308416
 
-[node name="PlayerBody" type="CharacterBody3D" parent="XROrigin3D" groups=["player_body"]]
-process_priority = -100
-process_physics_priority = -100
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-top_level = true
-collision_layer = 524288
-collision_mask = 1019
-script = ExtResource("6_jxx51")
-push_rigid_bodies = false
+[node name="FunctionPoseDetector" parent="XROrigin3D/RightController" instance=ExtResource("10_3hq7a")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="FPSCounter" type="Label3D" parent="XROrigin3D/RightController"]
+transform = Transform3D(1, -7.81598e-14, 1.74846e-07, 2.4869e-13, 1, 7.6146e-15, -1.74845e-07, -8.59803e-15, 1, 0.25, 0, 3.27835e-08)
+text = "FPS"
+script = ExtResource("10_kn4b3")
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("14_cid5o")]
+ground_control = 1
+
+[node name="MovementFlight" parent="XROrigin3D" instance=ExtResource("12_yi1st")]
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
-
-[node name="Level1" parent="." instance=ExtResource("15_3hq7a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -8, 0)
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_yi1st")

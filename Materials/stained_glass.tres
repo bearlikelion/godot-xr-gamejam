@@ -2,10 +2,10 @@
 
 [ext_resource type="Shader" uid="uid://de61eng24g4m8" path="res://Shaders/3d_disolve.gdshader" id="1_qiui0"]
 [ext_resource type="Shader" uid="uid://clc7etbprjed3" path="res://Materials/StainedGlass.gdshader" id="2_12pfv"]
-[ext_resource type="Texture2D" uid="uid://jiq3lsccyaja" path="res://Assets/Textures/stained_Glass_a/StainedGlassColorVar1.png" id="3_1nc2t"]
-[ext_resource type="Texture2D" uid="uid://bvah55cu17i2n" path="res://Assets/Textures/stained_Glass_a/StainedGlass_A_ORM_1k.png" id="4_gwo2k"]
-[ext_resource type="Texture2D" uid="uid://r732cvpceo82" path="res://Assets/Textures/stained_Glass_a/StainedGlass_A_Normal_1K.png" id="5_sp3ea"]
-[ext_resource type="Texture2D" uid="uid://caanirn17nlpl" path="res://Assets/Textures/FloorBricks_A/ColorVar.png" id="6_e1rem"]
+[ext_resource type="Texture2D" uid="uid://jiq3lsccyaja" path="res://Assets/Models/Tower/Textures/stained_Glass_a/StainedGlassColorVar1.png" id="3_1nc2t"]
+[ext_resource type="Texture2D" uid="uid://bvah55cu17i2n" path="res://Assets/Models/Tower/Textures/stained_Glass_a/StainedGlass_A_ORM_1k.png" id="4_gwo2k"]
+[ext_resource type="Texture2D" uid="uid://r732cvpceo82" path="res://Assets/Models/Tower/Textures/stained_Glass_a/StainedGlass_A_Normal_1K.png" id="5_sp3ea"]
+[ext_resource type="Texture2D" uid="uid://caanirn17nlpl" path="res://Assets/Models/Tower/Textures/FloorBricks_A/ColorVar.png" id="6_e1rem"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2qwyr"]
 noise_type = 0

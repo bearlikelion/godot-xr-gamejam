@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bm8rn5sftautb"]
+
+[resource]
+resource_name = "vela.001"
+cull_mode = 2
+albedo_color = Color(0.886191, 0.906332, 0.86605, 1)
+metallic = 0.121311
+roughness = 0.860656

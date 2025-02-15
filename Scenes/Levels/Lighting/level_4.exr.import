@@ -1,0 +1,28 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://c4onkfiwp5ru8"
+path.bptc="res://.godot/imported/level_4.exr-e2aaec11bedd30c62097e3281668ebde.bptc.ctexarray"
+path.astc="res://.godot/imported/level_4.exr-e2aaec11bedd30c62097e3281668ebde.astc.ctexarray"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Scenes/Levels/Lighting/level_4.exr"
+dest_files=["res://.godot/imported/level_4.exr-e2aaec11bedd30c62097e3281668ebde.bptc.ctexarray", "res://.godot/imported/level_4.exr-e2aaec11bedd30c62097e3281668ebde.astc.ctexarray"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=3

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3dhhegftvdf6"]
+
+[resource]
+resource_name = "candle"
+cull_mode = 2
+roughness = 0.5

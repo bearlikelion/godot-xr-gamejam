@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfr42a2rs5tqs"]
+
+[resource]
+resource_name = "cubierta.001"
+cull_mode = 2
+albedo_color = Color(0.581052, 0.489748, 0.50212, 1)
+metallic = 0.413115
+roughness = 0.667213

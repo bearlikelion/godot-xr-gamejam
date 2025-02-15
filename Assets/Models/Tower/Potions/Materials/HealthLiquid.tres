@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dlqdbbpb7ji7"]
+
+[ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="1_b5cos"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5cos"]
+render_priority = 0
+shader = ExtResource("1_b5cos")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/vel = 0.0
+shader_parameter/liquid_color = Color(0.7, 0.1, 0.6, 1)
+shader_parameter/foam_color = Color(0.9, 0.3, 0.8, 1)
+shader_parameter/foam_line = 0.2
+shader_parameter/fill_amount = 0.5
+shader_parameter/size = Vector2(1, 1)
+shader_parameter/glass_thickness = 0.0
+shader_parameter/scale = 1.0
+shader_parameter/wave_intensity = 0.05
+shader_parameter/HasBubbles = true
+shader_parameter/AlwaysBubbles = false
+shader_parameter/BubbleStrength = 0.5
+shader_parameter/BubbleMask = 0.5
+shader_parameter/BubbleSpeed = Vector2(3, 3)
+
+[resource]
+resource_name = "HealthLiquid"
+next_pass = SubResource("ShaderMaterial_b5cos")
+cull_mode = 2
+albedo_color = Color(1, 0, 0, 1)
+roughness = 0.5

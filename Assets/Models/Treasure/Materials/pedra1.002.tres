@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8vwpqdvuq71l"]
+
+[resource]
+resource_name = "pedra1.002"
+cull_mode = 2
+albedo_color = Color(0.278716, 0.252735, 0.292238, 1)
+metallic = 0.0786885
+roughness = 0.87377

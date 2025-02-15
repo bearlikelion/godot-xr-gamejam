@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ri0c8rxw8ua0"]
+
+[ext_resource type="PackedScene" uid="uid://blv7evxcyv402" path="res://Scenes/UI/credits.tscn" id="1_g1qxi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_g1qxi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hedqt"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evolr"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_hedqt")
+
+[node name="CreditsViewport" type="Node3D"]
+
+[node name="Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="Credits" parent="Viewport" instance=ExtResource("1_g1qxi")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_g1qxi")
+surface_material_override/0 = SubResource("StandardMaterial3D_evolr")

@@ -1,17 +1,25 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfac6n0mwlrlx"]
+[gd_scene load_steps=26 format=3 uid="uid://cfac6n0mwlrlx"]
 
 [ext_resource type="Script" uid="uid://btgx13lxdbb4y" path="res://addons/godot-xr-tools/staging/staging.gd" id="1_rypbc"]
 [ext_resource type="PackedScene" uid="uid://wtpox7m5vu2b" path="res://addons/godot-xr-tools/effects/fade.tscn" id="2_4rmau"]
+[ext_resource type="Script" uid="uid://c2kfpdb48xv1a" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.gd" id="3_2ebs2"]
 [ext_resource type="Script" uid="uid://bcgnvry2orao4" path="res://addons/godot-xr-tools/staging/loading_screen.gd" id="4_76v2p"]
-[ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="4_lh0cr"]
+[ext_resource type="Material" uid="uid://bk72wfw25ff0v" path="res://addons/godot-xr-tools/materials/teleport.tres" id="4_oyb3p"]
 [ext_resource type="Texture2D" uid="uid://dlt38y4i6j5it" path="res://Assets/Images/wizard-vr.png" id="5_76v2p"]
+[ext_resource type="Material" path="res://addons/godot-xr-tools/materials/target.tres" id="5_jvnna"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="6_8ug1t"]
+[ext_resource type="Material" path="res://addons/godot-xr-tools/materials/capsule.tres" id="6_b48ew"]
 [ext_resource type="Shader" uid="uid://4i0pwdtfmtsv" path="res://addons/godot-xr-tools/staging/loading_screen/loading_screen_shader.tres" id="6_drdnd"]
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="6_ioaeq"]
+[ext_resource type="Material" path="res://addons/godot-xr-tools/materials/pointer.tres" id="7_8edxt"]
 [ext_resource type="Texture2D" uid="uid://clbtsf0ahb3fm" path="res://addons/godot-xr-tools/assets/misc/progress_bar.png" id="7_ioaeq"]
 [ext_resource type="AudioStream" uid="uid://c6lvp6qe0tsvv" path="res://Assets/Audio/Music/658817__deadrobotmusic__castles-acoustic-guitar-folk-metal-vibe-103-bpm-c-sharp-minor.ogg" id="7_maf8m"]
+[ext_resource type="Material" uid="uid://dyuaw57o8y3i" path="res://addons/godot-xr-tools/materials/highlight.tres" id="8_5oxhp"]
 [ext_resource type="Texture2D" uid="uid://ocyj01x5mtt7" path="res://addons/godot-xr-tools/assets/misc/Hold trigger to continue.png" id="8_7ewk0"]
 [ext_resource type="PackedScene" uid="uid://cymteydkxagpp" path="res://addons/godot-xr-tools/misc/hold_button.tscn" id="9_lhp3t"]
+
+[sub_resource type="PlaneMesh" id="1"]
+size = Vector2(0.001, 0.001)
 
 [sub_resource type="Curve" id="21"]
 _limits = [0.0, 3.14, 0.0, 1.0]
@@ -56,7 +64,38 @@ main_scene = "uid://b6d8ux27w4oa4"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
-[node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("4_lh0cr")]
+[node name="VRCommonShaderCache" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+script = ExtResource("3_2ebs2")
+
+[node name="teleport" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("4_oyb3p")
+
+[node name="target" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("5_jvnna")
+
+[node name="capsule" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("6_b48ew")
+
+[node name="pointer" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("7_8edxt")
+
+[node name="highlight" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("8_5oxhp")
+
+[node name="liquid" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("8_5oxhp")
 
 [node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

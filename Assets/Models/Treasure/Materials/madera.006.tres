@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cwe3s0eas0rym"]
+
+[resource]
+resource_name = "madera.006"
+cull_mode = 2
+albedo_color = Color(0.327307, 0.268093, 0.114872, 1)
+roughness = 0.74918

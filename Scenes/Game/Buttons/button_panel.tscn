@@ -1,0 +1,269 @@
+[gd_scene load_steps=25 format=3 uid="uid://58sact7s0tse"]
+
+[ext_resource type="Script" uid="uid://l7awjteg1duj" path="res://Scenes/Game/Buttons/button_panel.gd" id="1_woakd"]
+[ext_resource type="Script" uid="uid://buerjomak6bl" path="res://addons/godot-xr-tools/interactables/interactable_area_button.gd" id="2_woakd"]
+[ext_resource type="PackedScene" uid="uid://dc5t2qgmhb2nf" path="res://addons/godot-xr-tools/objects/hand_pose_area.tscn" id="5_y4ux3"]
+[ext_resource type="Resource" uid="uid://ciw0f7mg4ai0k" path="res://addons/godot-xr-tools/hands/poses/pose_point_left.tres" id="6_555bd"]
+[ext_resource type="Resource" uid="uid://bhvrpfo4ecbub" path="res://addons/godot-xr-tools/hands/poses/pose_point_right.tres" id="7_tfux5"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 0.05
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yv6l1"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="CylinderMesh" id="2"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.05
+radial_segments = 16
+rings = 0
+
+[sub_resource type="CylinderShape3D" id="3"]
+height = 0.04
+radius = 0.04
+
+[sub_resource type="CylinderMesh" id="4"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.04
+radial_segments = 16
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y3ah"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="6"]
+height = 0.05
+radius = 0.04
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lygiq"]
+radius = 0.05
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lkdwe"]
+height = 0.05
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtoop"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y4ux3"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.05
+radial_segments = 16
+rings = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_555bd"]
+height = 0.04
+radius = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5io1"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tfux5"]
+top_radius = 0.04
+bottom_radius = 0.04
+height = 0.04
+radial_segments = 16
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufoq6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k14in"]
+height = 0.05
+radius = 0.04
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_04gbi"]
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfovx"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_180sp"]
+albedo_color = Color(0, 0, 1, 1)
+
+[node name="ButtonPanel" type="Node3D"]
+script = ExtResource("1_woakd")
+
+[node name="Red" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.25, -0.15, 0)
+
+[node name="ButtonBase" type="StaticBody3D" parent="Red"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Red/ButtonBase"]
+shape = SubResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Red/ButtonBase"]
+material_override = SubResource("StandardMaterial3D_yv6l1")
+mesh = SubResource("2")
+
+[node name="Button" type="StaticBody3D" parent="Red"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Red/Button"]
+shape = SubResource("3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Red/Button"]
+mesh = SubResource("4")
+surface_material_override/0 = SubResource("StandardMaterial3D_8y3ah")
+
+[node name="InteractableAreaButton" type="Area3D" parent="Red"]
+collision_layer = 0
+collision_mask = 131072
+script = ExtResource("2_woakd")
+button = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Red/InteractableAreaButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+shape = SubResource("6")
+
+[node name="HandPoseArea" parent="Red" instance=ExtResource("5_y4ux3")]
+left_pose = ExtResource("6_555bd")
+right_pose = ExtResource("7_tfux5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Red/HandPoseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+shape = SubResource("SphereShape3D_lygiq")
+
+[node name="Green" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.1, 0.15, 0)
+
+[node name="ButtonBase" type="StaticBody3D" parent="Green"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Green/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+shape = SubResource("CylinderShape3D_lkdwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Green/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_wtoop")
+mesh = SubResource("CylinderMesh_y4ux3")
+
+[node name="Button" type="StaticBody3D" parent="Green"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Green/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+shape = SubResource("CylinderShape3D_555bd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Green/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_x5io1")
+mesh = SubResource("CylinderMesh_tfux5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufoq6")
+
+[node name="InteractableAreaButton" type="Area3D" parent="Green"]
+collision_layer = 0
+collision_mask = 131072
+script = ExtResource("2_woakd")
+button = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Green/InteractableAreaButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("CylinderShape3D_k14in")
+
+[node name="HandPoseArea" parent="Green" instance=ExtResource("5_y4ux3")]
+left_pose = ExtResource("6_555bd")
+right_pose = ExtResource("7_tfux5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Green/HandPoseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("SphereShape3D_04gbi")
+
+[node name="Yellow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.1, 0.15, 0)
+
+[node name="ButtonBase" type="StaticBody3D" parent="Yellow"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Yellow/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+shape = SubResource("CylinderShape3D_lkdwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Yellow/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_wtoop")
+mesh = SubResource("CylinderMesh_y4ux3")
+
+[node name="Button" type="StaticBody3D" parent="Yellow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Yellow/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+shape = SubResource("CylinderShape3D_555bd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Yellow/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_bfovx")
+mesh = SubResource("CylinderMesh_tfux5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufoq6")
+
+[node name="InteractableAreaButton" type="Area3D" parent="Yellow"]
+collision_layer = 0
+collision_mask = 131072
+script = ExtResource("2_woakd")
+button = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Yellow/InteractableAreaButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("CylinderShape3D_k14in")
+
+[node name="HandPoseArea" parent="Yellow" instance=ExtResource("5_y4ux3")]
+left_pose = ExtResource("6_555bd")
+right_pose = ExtResource("7_tfux5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Yellow/HandPoseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("SphereShape3D_04gbi")
+
+[node name="Blue" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.25, 0, 0)
+
+[node name="ButtonBase" type="StaticBody3D" parent="Blue"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+shape = SubResource("CylinderShape3D_lkdwe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blue/ButtonBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.55671e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_wtoop")
+mesh = SubResource("CylinderMesh_y4ux3")
+
+[node name="Button" type="StaticBody3D" parent="Blue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+shape = SubResource("CylinderShape3D_555bd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Blue/Button"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0.15)
+material_override = SubResource("StandardMaterial3D_180sp")
+mesh = SubResource("CylinderMesh_tfux5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ufoq6")
+
+[node name="InteractableAreaButton" type="Area3D" parent="Blue"]
+collision_layer = 0
+collision_mask = 131072
+script = ExtResource("2_woakd")
+button = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue/InteractableAreaButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("CylinderShape3D_k14in")
+
+[node name="HandPoseArea" parent="Blue" instance=ExtResource("5_y4ux3")]
+left_pose = ExtResource("6_555bd")
+right_pose = ExtResource("7_tfux5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blue/HandPoseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0.15)
+shape = SubResource("SphereShape3D_04gbi")
+
+[connection signal="button_pressed" from="Red/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
+[connection signal="button_pressed" from="Green/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
+[connection signal="button_pressed" from="Yellow/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]
+[connection signal="button_pressed" from="Blue/InteractableAreaButton" to="." method="_on_interactable_area_button_button_pressed"]

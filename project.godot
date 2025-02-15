@@ -30,8 +30,8 @@ gdscript/warnings/untyped_declaration=1
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [dotnet]
 
@@ -103,14 +103,17 @@ trigger_left={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 limits/time/time_rollover_secs=30.0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+viewport/transparent_background=true
 
 [xr]
 
 openxr/enabled=true
+openxr/reference_space=0
 openxr/environment_blend_mode=2
 openxr/foveation_level=3
 openxr/foveation_dynamic=true

@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://phhar7cb2lxf"]
+
+[ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_3p6pd"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_0taui"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_dbubr"]
+[ext_resource type="ArrayMesh" uid="uid://cfkcnhhukk4lb" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Cube_004.res" id="4_3p6pd"]
+[ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="5_0taui"]
+[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="5_dc1u5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbubr"]
+render_priority = 0
+shader = ExtResource("5_0taui")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/vel = 0.0
+shader_parameter/liquid_color = Color(1, 0, 0, 1)
+shader_parameter/foam_color = Color(0.9, 0.3, 0.8, 1)
+shader_parameter/foam_line = 0.0
+shader_parameter/fill_amount = 1.0
+shader_parameter/size = Vector2(1, 1)
+shader_parameter/glass_thickness = 0.0
+shader_parameter/scale = 1.0
+shader_parameter/wave_intensity = 0.05
+shader_parameter/HasBubbles = true
+shader_parameter/AlwaysBubbles = false
+shader_parameter/BubbleStrength = 0.5
+shader_parameter/BubbleMask = 0.5
+shader_parameter/BubbleSpeed = Vector2(3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6upqm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0taui"]
+points = PackedVector3Array(0.016, 0.177257, 0.0159914, -0.0422571, 0.104828, -0.0422571, -0.0422571, 0.104828, 0.0412444, 0.02492, -0.0012127, 0.02492, 0.0415648, 0.112838, -0.0425775, -0.0259327, -0.0012127, -0.0259327, 0.0422897, 0.113246, 0.0422897, -0.024053, 0.162455, -0.024053, 0.02492, -0.0012127, -0.0259327, -0.0259327, -0.0012127, 0.02492, -0.024053, 0.162455, 0.0230403, 0.0230403, 0.162455, -0.024053, -0.0425775, 0.112838, 0.0415648, 0.0240514, 0.1656, 0.0240514, -0.0425775, 0.112838, -0.0425775, -0.016, 0.171854, -0.0159919, 0.0413119, 0.10225, 0.0413119, 0.0412514, 0.104847, -0.0422641, 0.0149954, 0.171898, -0.016, -0.016, 0.171854, 0.0149792, -0.0397112, 0.102268, 0.0413187, 0.0413119, 0.10225, -0.0397048)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
+blend_mode = 4
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+grow = true
+grow_amount = 0.03
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3vs2"]
+size = Vector3(0.0779419, 0.125003, 0.0771484)
+
+[node name="RedPotion2" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze = true
+freeze_mode = 1
+script = ExtResource("1_3p6pd")
+potion_color = "RED"
+ranged_grab_method = 2
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_0taui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.168445, -0.1)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("3_dbubr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.168445, -0.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = ExtResource("4_3p6pd")
+surface_material_override/1 = SubResource("ShaderMaterial_dbubr")
+surface_material_override/2 = SubResource("StandardMaterial3D_6upqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_0taui")
+
+[node name="XRToolsHighlightMaterial" type="Node" parent="."]
+script = ExtResource("5_dc1u5")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
+highlight_material = SubResource("StandardMaterial3D_w1ccq")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05176e-05, 0.251384, -0.000488281)
+shape = SubResource("BoxShape3D_m3vs2")
+
+[connection signal="dropped" from="." to="." method="_on_dropped"]
