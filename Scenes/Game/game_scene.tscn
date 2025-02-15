@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=27 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -16,8 +16,6 @@
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="PackedScene" uid="uid://dn58ykxc07caw" path="res://Scenes/Game/base.tscn" id="10_w6h2q"]
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
-[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="12_p3bnw"]
-[ext_resource type="PackedScene" uid="uid://kyhaogt0a4q8" path="res://addons/godot-xr-tools/functions/movement_flight.tscn" id="12_yi1st"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="14_cid5o"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 
@@ -176,9 +174,6 @@ collision_mask = 5308416
 [node name="FunctionPoseDetector" parent="XROrigin3D/LeftController" instance=ExtResource("10_3hq7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 
-[node name="MovementDirect" parent="XROrigin3D/LeftController" instance=ExtResource("12_p3bnw")]
-strafe = true
-
 [node name="RightController" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
 tracker = &"right_hand"
@@ -212,9 +207,9 @@ text = "FPS"
 script = ExtResource("10_kn4b3")
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("14_cid5o")]
+collision_mask = 1019
+push_rigid_bodies = false
 ground_control = 1
-
-[node name="MovementFlight" parent="XROrigin3D" instance=ExtResource("12_yi1st")]
 
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 

@@ -112,6 +112,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_2yj6k"]
 resource_name = "hat_bob"
 length = 3.0
+loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -158,7 +159,7 @@ visible = false
 shape = SubResource("ConvexPolygonShape3D_3ehix")
 
 [node name="wizard_hat" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("2_ddj0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.3)
 visible = false
 animation_player = NodePath("../chest/AnimationPlayer")
 
@@ -181,7 +182,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(-1, 3.55271e-15, 8.74228e-08, 8.74228e-08, 0, 1, 3.55271e-15, 1, 0, 0.015296, 1.12715, -0.665836)
 bones/1/enabled = true
 bones/1/position = Vector3(0.015296, 1.12715, -0.665836)
-bones/1/rotation = Quaternion(3.09086e-08, 0.707107, 0.707107, 3.09086e-08)
+bones/1/rotation = Quaternion(4.36819e-08, 0.999326, 0.0367244, 1.60527e-09)
 bones/1/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="chest/Armature/Skeleton3D"]
