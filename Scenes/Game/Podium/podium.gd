@@ -22,6 +22,10 @@ func _ready() -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if !Global.game_started and area.is_in_group("player_hand"):
 		Global.game_started = true
+
+		if Global.level <= 1:
+			Events.level_1_load.emit()
+
 		Events.start_game.emit()
 
 
@@ -79,7 +83,4 @@ func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 	if Global.level == 4:
 		if what is Staff and staff_forged:
 			Global.forged_staff = what.duplicate()
-			podium_snap_zone.enabled = false
-			podium_snap_zone.drop_object()
-			await get_tree().create_timer(1.0).timeout
 			Events.level_4_completed.emit()

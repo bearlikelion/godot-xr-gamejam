@@ -34,9 +34,7 @@ func place_crystals() -> void:
 
 		crystal_position.add_child(_crystal)
 		if crystal_i == 0:
-			_crystal.mesh_instance_3d.material_override = null
 			_crystal.magic_crystal = true
-			_crystal.add_to_group("magic_crystal")
 			magic_crystal = _crystal
 
 		crystal_i += 1

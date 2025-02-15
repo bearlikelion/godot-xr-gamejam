@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://o045yp0680nw"]
+[gd_resource type="StandardMaterial3D" load_steps=0 format=3 uid="uid://o045yp0680nw"]
 
 [resource]
 resource_name = "Skin"

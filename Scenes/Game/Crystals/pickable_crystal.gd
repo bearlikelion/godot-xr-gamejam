@@ -15,6 +15,10 @@ var hits: int = 0
 func _ready() -> void:
 	Events.level_3_completed.connect(_on_level_3_completed)
 
+	if magic_crystal:
+		mesh_instance_3d.material_override = null
+		add_to_group("magic_crystal")
+
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false

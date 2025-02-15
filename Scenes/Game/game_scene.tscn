@@ -102,7 +102,7 @@ albedo_color = Color(0, 0.996078, 0.996078, 1)
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
-starting_level = "LEVEL_3"
+starting_level = "LEVEL_4"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -118,9 +118,9 @@ environment = ExtResource("2_ihfs7")
 [node name="Instructions" type="Label3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 1.63918e-07, 0, -1.25)
 no_depth_test = true
-text = "Touch the podium
-to begin"
 font = ExtResource("4_jevh0")
+font_size = 24
+outline_size = 8
 script = ExtResource("5_3hq7a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D/XRCamera3D/Instructions"]

@@ -10,6 +10,8 @@ signal podium_rose
 signal start_game
 
 #region Level Signals
+signal level_1_load
+signal level_1_instructions
 signal level_1_completed
 
 signal level_2_load
@@ -29,6 +31,7 @@ signal level_4_completed
 
 signal level_5_load
 signal button_pushed(color: String)
+signal failed_simon
 signal level_5_completed
 
 signal level_6_load

@@ -7,6 +7,9 @@ func _ready() -> void:
 	show_laser = LaserShow.HIDE
 	Events.start_game.connect(_on_start_game)
 
+	if Global.level > 0:
+		_on_start_game()
+
 
 func _on_start_game() -> void:
 	show_laser = LaserShow.SHOW
