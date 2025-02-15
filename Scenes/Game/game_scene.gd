@@ -79,31 +79,37 @@ func _ready() -> void:
 func _on_level_2_load() -> void:
 	remove_child(level_1)
 	add_child(level_2)
+	current_level = level_2
 
 
 func _on_level_3_load() -> void:
 	remove_child(level_2)
 	add_child(level_3)
+	current_level = level_3
 
 
 func _on_level_4_load() -> void:
 	remove_child(level_3)
 	add_child(level_4)
+	current_level = level_4
 
 
 func _on_level_5_load() -> void:
 	remove_child(level_4)
 	add_child(level_5)
+	current_level = level_5
 
 
 func _on_level_6_load() -> void:
 	remove_child(level_5)
 	add_child(level_6)
+	current_level = level_6
 
 
 func _on_level_7_load() -> void:
 	remove_child(level_6)
 	add_child(level_7)
+	current_level = level_7
 
 
 func _on_level_8_load() -> void:
@@ -117,22 +123,29 @@ func _on_reload_level() -> void:
 	match Global.level:
 		1:
 			level_1.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		2:
 			level_2.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		3:
 			level_3.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		4:
 			level_4.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		5:
 			level_5.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		6:
 			level_6.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)
 		7:
 			level_7.queue_free()
+			await get_tree().process_frame
 			add_child(current_level)

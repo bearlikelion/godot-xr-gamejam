@@ -105,7 +105,6 @@ func _on_repeat_instructions() -> void:
 
 func _on_restart_level() -> void:
 	animation_player.play("RESET")
-	text = "Wear the Wizard Hat"
 	animation_player.play("fade")
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	Events.reload_level.emit()

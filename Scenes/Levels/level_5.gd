@@ -24,21 +24,23 @@ var accept_input: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.level = 5
-	input_delay.wait_time = 0.5
-	input_delay.timeout.connect(_on_input_delay_timeout)
-	add_child(input_delay)
+	# input_delay.wait_time = 0.15
+	# input_delay.timeout.connect(_on_input_delay_timeout)
+	# add_child(input_delay)
 	animation_player.play("appear")
 
 	Events.button_pushed.connect(_on_button_pushed)
 	Events.place_on_pedistal.emit(BUTTON_PANEL.resource_path)
 	Events.restart_level.connect(_on_restart_level)
 
+
 func start_simon() -> void:
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	sequence.clear()
 	player_input.clear()
 	sequence_index = 0
 	add_to_sequence()
+	play_sequence()
 
 
 func add_to_sequence() -> void:
@@ -49,17 +51,15 @@ func add_to_sequence() -> void:
 		animation_player.play("fade")
 	else:
 		sequence.append(lights[randi() % lights.size()])
-		play_sequence()
 
 
 func play_sequence() -> void:
-	is_player_turn = false
+	is_player_turn = true
 	sequence_index = 0
 	print("Play Sequence: %s" % [sequence])
 	for color in sequence:
 		show_light(color)
 		await get_tree().create_timer(2.1).timeout
-	is_player_turn = true
 
 
 func show_light(button_to_press: String) -> void:
@@ -79,25 +79,28 @@ func show_light(button_to_press: String) -> void:
 
 
 func check_player_input(color: String) -> void:
-	if not is_player_turn or not accept_input:
+	#if not is_player_turn or not accept_input:
+	if not is_player_turn:
 		return
 
-	accept_input = false
-	input_delay.start()
+	# accept_input = false
+	# input_delay.start()
 	player_input.append(color)
 
-	if player_input[sequence_index] != sequence[sequence_index]:
+
+	if is_player_turn and player_input[sequence_index] != sequence[sequence_index]:
 		fail_sound.play()
-		await get_tree().create_timer(3.0).timeout
 		start_simon()
 		return
 
 	sequence_index += 1
+
 	if sequence_index >= sequence.size():
 		is_player_turn = false
-		await get_tree().create_timer(3.0).timeout
-		player_input.clear()
 		add_to_sequence()
+		await get_tree().create_timer(1.5).timeout
+		player_input.clear()
+		play_sequence()
 
 
 func _on_button_pushed(button_color: String) -> void:
@@ -105,15 +108,19 @@ func _on_button_pushed(button_color: String) -> void:
 
 	match button_color:
 		"Red":
+			animation_player.stop()
 			animation_player.play("red")
 			simon_red.play()
 		"Green":
+			animation_player.stop()
 			animation_player.play("green")
 			simon_green.play()
 		"Yellow":
+			animation_player.stop()
 			animation_player.play("yellow")
 			simon_yellow.play()
 		"Blue":
+			animation_player.stop()
 			animation_player.play("blue")
 			simon_blue.play()
 
