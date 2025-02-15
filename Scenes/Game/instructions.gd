@@ -74,7 +74,7 @@ func _on_level_4_load() -> void:
 
 func _on_find_tool() -> void:
 	animation_player.play("RESET")
-	text = "Use the right tool\nto make a gem"
+	text = "Use the correct tool\nto make a gem"
 	animation_player.play("fade")
 
 

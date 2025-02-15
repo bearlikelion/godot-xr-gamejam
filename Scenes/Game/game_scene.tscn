@@ -238,6 +238,7 @@ collision_mask = 5308416
 
 [node name="FPSCounter" type="Label3D" parent="XROrigin3D/RightController"]
 transform = Transform3D(1, -7.81598e-14, 1.74846e-07, 2.4869e-13, 1, 7.6146e-15, -1.74845e-07, -8.59803e-15, 1, 0.25, 0, 3.27835e-08)
+visible = false
 text = "FPS"
 script = ExtResource("10_kn4b3")
 

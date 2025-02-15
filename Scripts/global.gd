@@ -7,6 +7,7 @@ var rune_to_match: String = ""
 var forged_staff: Node3D
 var magic_book: MagicBook
 var restart: bool = false
+var desktop_mode: bool = false
 
 func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)

@@ -11,8 +11,6 @@ func _ready() -> void:
 
 
 func _on_rumble_event(hand_name: String, body_name: String) -> void:
-	print("Rumble Hand: %s" % hand_name)
-	print("Hand: %s" % hand)
 	if hand_name == hand:
-		print("RUMBLE ME")
-		XRToolsRumbleManager.add(hand_name + "_" + body_name, event, [_controller])
+		if not Global.desktop_mode:
+			XRToolsRumbleManager.add(hand_name + "_" + body_name, event, [_controller])
