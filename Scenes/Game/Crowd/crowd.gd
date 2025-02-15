@@ -1,17 +1,18 @@
 class_name Crowd
 extends Node3D
 
-@export var walking: bool = false
+var animation_speed: float = randf_range(0.7, 1.3)
 
 @onready var player_body: XRToolsPlayerBody = get_tree().get_first_node_in_group("player_body")
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	animation_speed = snappedf(animation_speed, 0.1)
+	if animation_player:
+		animation_player.speed_scale = animation_speed
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if not walking:
-		look_at(player_body.global_position)
-		rotate_object_local(Vector3.UP, PI)
+	look_at(player_body.global_position)
+	rotate_object_local(Vector3.UP, PI)

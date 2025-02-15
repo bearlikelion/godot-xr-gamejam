@@ -15,10 +15,10 @@ func _on_staff_head_connected() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	print("Body entered forge: %s" % body.name)
-	
+
 	if body is XRToolsPickable:
 		forge_audio_stream_player_3d.play()
-	
+
 	if body is StaffHead:
 		print("Staff forged")
 		body.forge_cook()
@@ -26,6 +26,7 @@ func _on_body_entered(body: Node3D) -> void:
 
 
 func _on_body_exited(body: Node3D) -> void:
+	print("Exited Forge: %s" % body.name)
 	if body is StaffHead:
 		body.chill_out()
 		print("Changing staff color to blue")

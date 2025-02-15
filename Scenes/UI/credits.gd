@@ -1,6 +1,6 @@
 extends Control
 
-@export var scroll_speed: float = 50.0
+@export var scroll_speed: float = 25.0
 
 @export_group("Formatting")
 @export var h1_font_size: int = 64

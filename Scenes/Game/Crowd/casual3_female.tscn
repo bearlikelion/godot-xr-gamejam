@@ -2748,6 +2748,7 @@ mesh = SubResource("ArrayMesh_fsq1w")
 skin = SubResource("Skin_eofu3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Root Scene"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_48eyq")
 }
