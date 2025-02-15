@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://uqsarnow28ej"]
+[gd_scene load_steps=23 format=4 uid="uid://uqsarnow28ej"]
 
 [ext_resource type="Script" uid="uid://d1n86ku8amlhd" path="res://Scenes/Levels/level_6.gd" id="1_ik81l"]
 [ext_resource type="LightmapGIData" uid="uid://b2rb30tkxxquo" path="res://Scenes/Levels/Lighting/level_6.lmbake" id="2_h7uay"]
@@ -209,11 +209,15 @@ shadow_mesh = SubResource("ArrayMesh_a0pqn")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y1v7"]
 albedo_texture = ExtResource("7_5l77v")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l77v"]
+size = Vector3(7.2, 1, 7.65)
+
 [node name="Level6" type="Node3D"]
 script = ExtResource("1_ik81l")
 
 [node name="Level6" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -13.25, 4)
+collision_mask = 65543
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Level6"]
 environment = SubResource("Environment_6y1v7")
@@ -299,6 +303,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 1.35, 2.7)
 
 [node name="Marker3D6" type="Marker3D" parent="Level6/Potions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.35, 2.7)
+
+[node name="Floorfix" type="StaticBody3D" parent="Level6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, -4.5)
+collision_mask = 196615
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level6/Floorfix"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.575)
+shape = SubResource("BoxShape3D_5l77v")
 
 [connection signal="animation_finished" from="Level6/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="Level6/AudioStreamPlayer3D" to="Level6" method="_on_audio_stream_player_3d_finished"]

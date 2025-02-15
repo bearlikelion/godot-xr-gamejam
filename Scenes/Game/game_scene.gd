@@ -2,7 +2,8 @@
 class_name GameScene
 extends XRToolsSceneBase
 
-@export_enum("LEVEL_1", "LEVEL_2", "LEVEL_3", "LEVEL_4", "LEVEL_5", "LEVEL_6", "LEVEL_7") var starting_level: String
+@export_enum("LEVEL_1", "LEVEL_2", "LEVEL_3", "LEVEL_4",\
+"LEVEL_5", "LEVEL_6", "LEVEL_7", "LEVEL_8") var starting_level: String
 
 const LEVEL_1 = preload("res://Scenes/Levels/level_1.tscn")
 const LEVEL_2 = preload("res://Scenes/Levels/level_2.tscn")
@@ -13,6 +14,7 @@ const LEVEL_6 = preload("res://Scenes/Levels/level_6.tscn")
 const LEVEL_7 = preload("res://Scenes/Levels/level_7.tscn")
 const LEVEL_8 = preload("res://Scenes/Levels/level_8.tscn")
 
+@onready var base: Node3D = $Base
 @onready var level_1: Node3D = LEVEL_1.instantiate()
 @onready var level_2: Node3D = LEVEL_2.instantiate()
 @onready var level_3: Node3D = LEVEL_3.instantiate()
@@ -27,6 +29,14 @@ const LEVEL_8 = preload("res://Scenes/Levels/level_8.tscn")
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
+
+	Events.level_2_load.connect(_on_level_2_load)
+	Events.level_3_load.connect(_on_level_3_load)
+	Events.level_4_load.connect(_on_level_4_load)
+	Events.level_5_load.connect(_on_level_5_load)
+	Events.level_6_load.connect(_on_level_6_load)
+	Events.level_7_load.connect(_on_level_7_load)
+	Events.level_8_load.connect(_on_level_8_load)
 
 	match starting_level:
 		"LEVEL_1":
@@ -52,14 +62,7 @@ func _ready() -> void:
 		"LEVEL_8":
 			Events.start_game.emit()
 			add_child(level_8)
-
-	Events.level_2_load.connect(_on_level_2_load)
-	Events.level_3_load.connect(_on_level_3_load)
-	Events.level_4_load.connect(_on_level_4_load)
-	Events.level_5_load.connect(_on_level_5_load)
-	Events.level_6_load.connect(_on_level_6_load)
-	Events.level_7_load.connect(_on_level_7_load)
-	Events.level_8_load.connect(_on_level_8_load)
+			base.queue_free()
 
 
 func _on_level_2_load() -> void:
@@ -95,3 +98,5 @@ func _on_level_7_load() -> void:
 func _on_level_8_load() -> void:
 	remove_child(level_7)
 	add_child(level_8)
+	if is_instance_valid(base):
+		base.queue_free()

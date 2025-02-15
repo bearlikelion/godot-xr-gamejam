@@ -6,6 +6,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_byxf7"]
 resource_local_to_scene = true
+radius = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcuek"]
 transparency = 1
@@ -22,8 +23,7 @@ rings = 16
 [node name="HatSnapZone" instance=ExtResource("1_82lis")]
 script = ExtResource("2_dtr47")
 enabled = false
-grab_distance = 0.5
-snap_mode = 1
+grab_distance = 0.1
 snap_require = "wizard_hat"
 
 [node name="CollisionShape3D" parent="." index="0"]

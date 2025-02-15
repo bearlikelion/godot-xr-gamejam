@@ -14,7 +14,6 @@ func _ready() -> void:
 	animation_player.play("appear")
 	Events.reset_potions.connect(_on_reset_potions)
 	Events.level_6_completed.connect(_on_level_6_compelted)
-	place_potions()
 
 
 func place_potions() -> void:
@@ -43,6 +42,7 @@ func _on_level_6_compelted() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
 		Events.place_on_pedistal.emit(COMBINING_POTION.resource_path)
+		place_potions()
 
 	if anim_name == "fade":
 		Events.level_7_load.emit()

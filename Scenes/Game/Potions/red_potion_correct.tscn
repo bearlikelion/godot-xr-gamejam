@@ -1,10 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhp5pkpf8h557"]
+[gd_scene load_steps=12 format=3 uid="uid://bhp5pkpf8h557"]
 
 [ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_cfj22"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_nl7dx"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_3xa7c"]
 [ext_resource type="ArrayMesh" uid="uid://dpifmn7p3wd5l" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Cylinder_007.res" id="4_cfj22"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="5_b78jq"]
+[ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="6_qlyy1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl7dx"]
+render_priority = 0
+shader = ExtResource("6_qlyy1")
+shader_parameter/coeff = Vector2(0, 0)
+shader_parameter/vel = 0.0
+shader_parameter/liquid_color = Color(1, 0, 0, 1)
+shader_parameter/foam_color = Color(0.685733, 8.42288e-07, 3.85046e-07, 1)
+shader_parameter/foam_line = 0.0
+shader_parameter/fill_amount = 0.54
+shader_parameter/size = Vector2(1, 1)
+shader_parameter/glass_thickness = 0.0
+shader_parameter/scale = 1.0
+shader_parameter/wave_intensity = 0.05
+shader_parameter/HasBubbles = true
+shader_parameter/AlwaysBubbles = false
+shader_parameter/BubbleStrength = 0.5
+shader_parameter/BubbleMask = 0.5
+shader_parameter/BubbleSpeed = Vector2(3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6upqm"]
 transparency = 1
@@ -32,6 +52,7 @@ freeze_mode = 1
 script = ExtResource("1_cfj22")
 potion_color = "RED"
 correct_potion = true
+ranged_grab_method = 2
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_nl7dx")]
@@ -43,6 +64,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.168445, -0.1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = ExtResource("4_cfj22")
+skeleton = NodePath("")
+surface_material_override/1 = SubResource("ShaderMaterial_nl7dx")
 surface_material_override/2 = SubResource("StandardMaterial3D_6upqm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -13,4 +13,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	if not walking:
-		look_at(player_body.position)
+		look_at(player_body.global_position)
+		rotate_object_local(Vector3.UP, PI)
