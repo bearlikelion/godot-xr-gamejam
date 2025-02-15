@@ -199,7 +199,7 @@ transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 
 mesh = SubResource("ArrayMesh_ixh3d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 0, 0.25, 0)
 shape = SubResource("ConvexPolygonShape3D_apby8")
 
 [node name="XRToolsHighlightMaterial" type="Node" parent="."]
@@ -213,7 +213,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133689, 0)
 collision_mask = 65541
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196357, 0.428923, 0.000854492)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000150889, 0.428923, -0.207113)
 shape = SubResource("BoxShape3D_g7rhb")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
