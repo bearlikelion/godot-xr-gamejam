@@ -44,6 +44,8 @@ func _on_level_3_completed() -> void:
 func crystal_hit() -> void:
 	hits += 1
 	mesh_instance_3d.scale -= Vector3(0.1, 0.1, 0.1)
+	Events.rumble.emit("LEFT", "CHISEL" + "_" + str(hits))
+	Events.rumble.emit("RIGHT", "CHISEL" + "_" + str(hits))
 
 	if hits > 2:
 		var staff_head: RigidBody3D = STAFF_HEAD.instantiate()

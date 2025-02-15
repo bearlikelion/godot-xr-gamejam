@@ -109,7 +109,7 @@ script = ExtResource("16_bgmid")
 magnitude = 0.5
 active_during_pause = false
 indefinite = false
-duration_ms = 150
+duration_ms = 50
 metadata/_custom_type_script = "uid://bl1e26oybhu13"
 
 [sub_resource type="Resource" id="Resource_p15s5"]
@@ -117,7 +117,7 @@ script = ExtResource("16_bgmid")
 magnitude = 0.5
 active_during_pause = false
 indefinite = false
-duration_ms = 150
+duration_ms = 50
 metadata/_custom_type_script = "uid://bl1e26oybhu13"
 
 [node name="GameScene" type="Node3D"]

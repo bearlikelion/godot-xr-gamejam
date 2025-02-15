@@ -23,6 +23,8 @@ func _on_body_entered(body: Node3D) -> void:
 		print("Staff forged")
 		body.forge_cook()
 		Events.staff_forged.emit()
+		Events.rumble.emit("LEFT", "FORGE")
+		Events.rumble.emit("RIGHT", "FORGE")
 
 
 func _on_body_exited(body: Node3D) -> void:
