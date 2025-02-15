@@ -43,6 +43,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_audio_stream_player_3d_finished() -> void:
+	Global.magic_book = magic_book.duplicate()
 	magic_book.queue_free()
 	animation_player.play("fade")
 

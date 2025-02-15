@@ -32,3 +32,5 @@ visible = false
 mesh = SubResource("SphereMesh_vvg7m")
 
 [node name="HighlightRing" parent="." index="2" instance=ExtResource("3_4wc2c")]
+
+[connection signal="has_picked_up" from="." to="." method="_on_has_picked_up"]

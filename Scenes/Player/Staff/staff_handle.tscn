@@ -96,4 +96,3 @@ highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]
-[connection signal="has_picked_up" from="StaffSnapZone" to="StaffSnapZone" method="_on_has_picked_up"]

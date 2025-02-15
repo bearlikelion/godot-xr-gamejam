@@ -45,7 +45,7 @@ func crystal_hit() -> void:
 		var staff_head: RigidBody3D = STAFF_HEAD.instantiate()
 		staff_head.transform = transform
 		get_tree().get_first_node_in_group("base").add_child(staff_head)
-		get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
+		# get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
 		Events.spawn_staff_head.emit()
 		queue_free()
 

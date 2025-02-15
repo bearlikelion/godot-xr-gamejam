@@ -9,5 +9,8 @@ func _ready() -> void:
 
 
 func _on_has_picked_up(what: Variant) -> void:
-	if what.is_in_group("staff_head"):
+	if what is StaffHead:
+		what.reparent(self)
+		what.enabled = false
+		enabled = false
 		Events.staff_head_connected.emit()
