@@ -39,43 +39,36 @@ func _ready() -> void:
 
 
 func start_simon() -> void:
-	if !pushing_buttons:
-		await get_tree().create_timer(1.5).timeout
-		sequence.clear()
-		player_input.clear()
-		sequence_index = 0
-		add_to_sequence()
-		play_sequence()
-	else:
-		start_simon()
+	await Events.button_timeout
+	await get_tree().create_timer(1.5).timeout
+	sequence.clear()
+	player_input.clear()
+	sequence_index = 0
+	add_to_sequence()
+	play_sequence()
 
 
 func add_to_sequence() -> void:
-	if !pushing_buttons:
-		if sequence_index >= lights.size():
-			print("PLAYER WINS SIMON")
-			player_won = true
-			audio_stream_player_3d.play()
-			animation_player.play("fade")
-			Events.level_5_completed.emit()
-		else:
-			sequence.append(lights[randi() % lights.size()])
+	await Events.button_timeout
+	if sequence_index >= lights.size():
+		print("PLAYER WINS SIMON")
+		player_won = true
+		audio_stream_player_3d.play()
+		animation_player.play("fade")
+		Events.level_5_completed.emit()
 	else:
-		add_to_sequence()
+		sequence.append(lights[randi() % lights.size()])
 
 
 func play_sequence() -> void:
-	if !pushing_buttons:
-		if not player_won:
-			await get_tree().create_timer(1.5).timeout
-			is_player_turn = true
-			sequence_index = 0
-			print("Play Sequence: %s" % [sequence])
-			for color in sequence:
-				show_light(color)
-				await get_tree().create_timer(2.1).timeout
-	else:
-		play_sequence()
+	if not player_won:
+		await get_tree().create_timer(1.5).timeout
+		is_player_turn = true
+		sequence_index = 0
+		print("Play Sequence: %s" % [sequence])
+		for color in sequence:
+			show_light(color)
+			await get_tree().create_timer(2.1).timeout
 
 
 func show_light(button_to_press: String) -> void:
@@ -121,13 +114,13 @@ func check_player_input(color: String) -> void:
 
 
 func playerpushingbuttons():
-	if !pushing_buttons:
-		pushing_buttons = true
-		button_mashing_timer.wait_time = 1.0
+	pushing_buttons = true
+	button_mashing_timer.start(1.0)
 
 
 func _on_button_mashing_timer_timeout() -> void:
 	pushing_buttons = false
+	Events.button_timeout.emit()
 
 
 func _on_button_pushed(button_color: String) -> void:

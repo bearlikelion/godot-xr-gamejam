@@ -32,6 +32,7 @@ signal level_4_completed
 
 signal level_5_load
 signal button_pushed(color: String)
+signal button_timeout
 signal failed_simon
 signal level_5_completed
 
