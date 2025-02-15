@@ -9,9 +9,6 @@ func _ready() -> void:
 	Events.level_5_load.connect(_on_level_5_load)
 	Events.level_6_load.connect(_on_level_6_load)
 
-	if Global.level > 0:
-		_on_start_game()
-
 
 func _on_start_game() -> void:
 	show_laser = LaserShow.SHOW
