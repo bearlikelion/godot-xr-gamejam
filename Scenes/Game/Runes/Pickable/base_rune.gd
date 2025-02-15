@@ -31,7 +31,7 @@ extends XRToolsPickable
 var _initial_position: Vector3
 ## Whether the rune is actively bobbing up and down
 var _is_bobbing: bool = false
-var _was_bobbing: bool = false
+var _was_bobbing: bool = false  # TODO is _was_bobbing needed?? Not being used
 ## Accumulated time for bob calculation
 var _time: float = 0.0
 ## Previous frame's velocity for momentum preservation

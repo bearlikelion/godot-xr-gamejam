@@ -7,8 +7,8 @@
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_ogtub"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wc5m2"]
-points = PackedVector3Array(-0.143925, -0.0789101, 0.028196, -0.128063, -0.12695, -0.035, -0.0202083, 0.273619, -0.035, 0.105515, 0.121781, 0.0352, 0.0808666, -0.215539, 0.0386667, -0.0207851, 0.279781, 0.0352, -0.00539942, -0.239082, -0.0294405, -0.107629, -0.178191, 0.0352, -0.0972513, 0.165706, -0.035, 0.141533, -0.0268078, -0.035, 0.145, -0.083411, 0.0352, 0.0808666, -0.215539, -0.0393333, 0.041361, 0.242731, -0.035, -0.139267, 0.0271, 0.0352, -0.1358, 0.0271, -0.035, 0.0112055, -0.240476, 0.0289189, 0.0265463, 0.263952, 0.0352, -0.0997543, 0.161257, 0.0352, -0.128396, -0.169856, -0.0126383, 0.102748, 0.119229, -0.0349088, -0.0468514, -0.230009, 0.0203898, 0.14892, -0.0864593, 0.0199392, -0.100892, 0.170747, -0.00432135, -0.0628021, -0.219252, -0.0290725, 0.145, -0.0360703, 0.0352, 0.123496, 0.0672593, -0.0204358, 0.0105492, 0.273619, -0.035, -0.144124, -0.0708684, -0.00441242, -0.104934, -0.173184, -0.035, 0.141533, -0.0730421, -0.035, -0.123434, -0.154496, 0.0352, 0.0420666, 0.246684, -0.0199402)
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8rgq"]
+radius = 0.35
 
 [sub_resource type="Animation" id="Animation_pkvfb"]
 length = 0.001
@@ -88,7 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_wc5m2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36766e-05, 0.00179487, -1.26362e-05)
+shape = SubResource("SphereShape3D_c8rgq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = ExtResource("5_enmme")

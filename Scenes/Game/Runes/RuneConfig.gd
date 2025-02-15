@@ -110,6 +110,7 @@ func create_rune(rune_name: String) -> BaseRune:
 		return null
 
 	# Set the properties
+	# TODO should create setter methods but I ain't got time
 	base_rune.rune_name = rune_name
 	base_rune.rune_mesh = load(runes[rune_name].mesh_path)
 
