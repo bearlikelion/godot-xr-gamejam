@@ -7,15 +7,15 @@
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_ogtub"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_c8rgq"]
-radius = 0.35
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8rgq"]
+size = Vector3(0.5, 0.5, 0.05)
 
 [sub_resource type="Animation" id="Animation_pkvfb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:position")
+tracks/0/path = NodePath("MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +31,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:position")
+tracks/0/path = NodePath("MeshInstance3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,13 +87,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0)
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_5vxlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.36766e-05, 0.00179487, -1.26362e-05)
-shape = SubResource("SphereShape3D_c8rgq")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("5_enmme")
-skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_c8rgq")
+debug_color = Color(0.827451, 0, 0.584314, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -102,7 +101,7 @@ libraries = {
 
 [node name="XRToolsRuneHighlightMaterial" type="Node" parent="."]
 script = ExtResource("6_ogtub")
-highlight_mesh_instance = NodePath("../CollisionShape3D/MeshInstance3D")
+highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
