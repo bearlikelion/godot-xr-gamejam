@@ -13,8 +13,10 @@ const RUSTY_KEY = preload("res://Scenes/Game/Chest/rusty_key.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	place_keys()
+	Global.level = 7
 	Events.player_equipped_hat.connect(_on_equipped_hat)
 	animation_player.play("appear")
+	Events.restart_level.connect(_on_restart_level)
 
 
 func place_keys() -> void:
@@ -43,4 +45,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_audio_stream_player_3d_finished() -> void:
 	you_are_a_wizard.play()
+	animation_player.play("fade")
+
+
+func _on_restart_level() -> void:
 	animation_player.play("fade")

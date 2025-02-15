@@ -16,10 +16,11 @@ func _ready() -> void:
 	animation_player.play("appear")
 	spawn_chisel()
 	Events.level_4_completed.connect(_on_level_4_completed)
+	Events.restart_level.connect(_on_restart_level)
 	var podium_snap_zone: XRToolsSnapZone = get_tree().get_first_node_in_group("podium_snap_zone")
-	if podium_snap_zone: 
+	if podium_snap_zone:
 		podium_snap_zone.enabled = true
-		print("podium snap zone is oke doke") 
+		print("podium snap zone is oke doke")
 	var magic_crystal: PickableCrystal = get_tree().get_first_node_in_group("magic_crystal")
 	if magic_crystal:
 		magic_crystal.enabled = true
@@ -46,3 +47,7 @@ func _on_audio_stream_player_3d_finished() -> void:
 
 func _on_level_4_completed() -> void:
 	audio_stream_player_3d.play()
+
+
+func _on_restart_level() -> void:
+	animation_player.play("fade")

@@ -1,5 +1,3 @@
-# Credits
-
 ## Lead Developer:
 Mark Arneman [bearlikelion.com](https://bearlikelion.com)
 
@@ -10,13 +8,20 @@ GI_Jaws
 ## Music:
 Troll Lyd [troll-lyd.itch.io](https://troll-lyd.itch.io/)
 
+## Thanks to:
+Stepbro\
+CarinaMachina\
+RunnyBabbit\
+Everyone who play tested
+
 ## Assets:
-Assets gathered from [OpenGameArt.org](https://opengameart.org/) and [Itch.io](https://itch.io/)
+Assets gathered from \
+[OpenGameArt.org](https://opengameart.org/) and [Itch.io](https://itch.io/)
 
 ### Font:
 [Wizards Magic](https://www.dafont.com/wizards-magic.font)
 
-### 3D Assets:
+### Assets Used:
 [Gothic-Like Structures](https://loafbrr.itch.io/gothic-like-structures)\
 [Waypoint Circle](https://opengameart.org/content/way-point-circle)\
 [Podium](https://opengameart.org/content/podium)\
@@ -34,4 +39,3 @@ Assets gathered from [OpenGameArt.org](https://opengameart.org/) and [Itch.io](h
 [Guard Tower](https://opengameart.org/content/guard-tower)\
 [Dungeon Asset Pack](https://arill-studio.itch.io/dungeon-asset-pack)\
 [Wizard Hat](https://poly.pizza/m/7VVumyY7L_u) from poly.pizza\
-[Three Musketeers Assset Pack](https://louis-tudge.itch.io/the-three-musketeers-asset-pack-scene)

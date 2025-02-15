@@ -18,6 +18,8 @@ func _ready() -> void:
 	Events.level_6_load.connect(_on_level_6_load)
 	Events.level_7_load.connect(_on_level_7_load)
 	Events.chest_opened.connect(_on_chest_opened)
+	Events.repeat_instructions.connect(_on_repeat_instructions)
+	Events.restart_level.connect(_on_restart_level)
 
 
 func _on_podium_rose() -> void:
@@ -94,3 +96,16 @@ func _on_chest_opened() -> void:
 	animation_player.play("RESET")
 	text = "Wear the Wizard Hat"
 	animation_player.play("fade")
+
+
+func _on_repeat_instructions() -> void:
+	animation_player.play("RESET")
+	animation_player.play("fade")
+
+
+func _on_restart_level() -> void:
+	animation_player.play("RESET")
+	text = "Wear the Wizard Hat"
+	animation_player.play("fade")
+	await get_tree().create_timer(3.0).timeout
+	Events.reload_level.emit()

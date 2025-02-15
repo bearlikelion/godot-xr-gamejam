@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	Events.button_pushed.connect(_on_button_pushed)
 	Events.place_on_pedistal.emit(BUTTON_PANEL.resource_path)
-
+	Events.restart_level.connect(_on_restart_level)
 
 func start_simon() -> void:
 	await get_tree().create_timer(3.0).timeout
@@ -129,3 +129,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_input_delay_timeout() -> void:
 	accept_input = true
 	input_delay.stop()
+
+
+func _on_restart_level() -> void:
+	animation_player.play("fade")

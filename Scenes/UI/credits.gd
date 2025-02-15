@@ -1,5 +1,7 @@
+class_name Credits
 extends Control
 
+@export var scroll: bool = false
 @export var scroll_speed: float = 25.0
 
 @export_group("Formatting")
@@ -11,10 +13,10 @@ extends Control
 var text: String
 var amount: float
 var current_scroll: float = 0.0
-var scroll: bool = false
 
-@onready var scroll_container: ScrollContainer = $ScrollContainer
+# @onready var scroll_container: ScrollContainer = $ScrollContainer
 @onready var credits_label: RichTextLabel = %Credits
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,14 +32,16 @@ func _ready() -> void:
 	text = _regex_replace_urls(text)
 	text = _regex_replace_titles(text)
 
-	credits_label.text = ("[center]%s[/center]") % [text]
-	scroll_container.set_deferred("scroll_vertical", 50)
+	# credits_label.text = ("[center]%s[/center]") % [text]
+	# scroll_container.set_deferred("scroll_vertical", 50)
 
 
-func _process(delta: float) -> void:
-	if scroll:
-		current_scroll += scroll_speed * delta
-		scroll_container.scroll_vertical = round(current_scroll)
+func _process(_delta: float) -> void:
+	pass
+	# if scroll:
+		# current_scroll += scroll_speed * delta
+		# scroll_container.set_deferred("scroll_vertical", round(current_scroll))
+
 
 ## Match and remove lines starting with "[]:" (with any content inside the brackets)
 func _regex_replace_comments(credits: String) -> String:
@@ -50,7 +54,7 @@ func _regex_replace_comments(credits: String) -> String:
 func _regex_replace_urls(credits: String) -> String:
 	var regex: RegEx = RegEx.new()
 	var match_string: String = "\\[([^\\]]*)\\]\\(([^\\)]*)\\)"
-	var replace_string: String = "[url=$2]$1[/url]"
+	var replace_string: String = "\n[url=$2]$1[/url]"
 	regex.compile(match_string)
 	return regex.sub(credits, replace_string, true)
 
@@ -69,4 +73,5 @@ func _regex_replace_titles(credits: String) -> String:
 
 
 func _on_show_credits() -> void:
-	scroll = true
+	print("Scroll Credits")
+	animation_player.play("scroll_credits")

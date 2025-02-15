@@ -19,6 +19,7 @@ func _ready() -> void:
 
 	Events.level_3_completed.connect(_on_level_3_completed)
 	Events.wrong_crystal.connect(_on_wrong_crystal)
+	Events.restart_level.connect(_on_restart_level)
 
 
 func place_crystals() -> void:
@@ -58,3 +59,7 @@ func _on_level_3_completed() -> void:
 
 func _on_wrong_crystal() -> void:
 	fail_sound.play()
+
+
+func _on_restart_level() -> void:
+	animation_player.play("fade")
