@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bi27bqlre1llr"
+path="res://.godot/imported/clapping loop.ogg-27f1780c754a0c4e1649f9d299b466aa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/clapping loop.ogg"
+dest_files=["res://.godot/imported/clapping loop.ogg-27f1780c754a0c4e1649f9d299b466aa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

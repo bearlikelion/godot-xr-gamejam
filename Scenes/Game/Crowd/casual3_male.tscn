@@ -1872,6 +1872,7 @@ tracks/28/keys = PackedFloat32Array(0, 1, -0.0507688, -2.67314e-07, -2.27423e-08
 [sub_resource type="Animation" id="Animation_ox7gg"]
 resource_name = "CharacterArmature|Victory"
 length = 1.86667
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
