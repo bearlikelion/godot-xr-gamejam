@@ -113,8 +113,16 @@ func create_rune(rune_name: String) -> BaseRune:
 	base_rune.rune_name = rune_name
 	base_rune.rune_mesh = load(runes[rune_name].mesh_path)
 
-	var mesh_instance: MeshInstance3D = base_rune.get_node("CollisionShape3D/MeshInstance3D")
-	mesh_instance.set_mesh(base_rune.rune_mesh)
+	# Update mesh and collision shape
+	if base_rune.has_node("MeshInstance3D"):
+		var mesh_instance: MeshInstance3D = base_rune.get_node("MeshInstance3D")
+		mesh_instance.set_mesh(base_rune.rune_mesh)
+
+		# Update collision shape based on the new mesh
+		if base_rune.auto_size_collision:
+			base_rune._update_collision_shape_from_mesh()
+		else:
+			base_rune._update_collision_shape()
 
 	return base_rune
 
