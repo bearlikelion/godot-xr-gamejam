@@ -23,7 +23,6 @@ func _ready() -> void:
 			7:
 				_on_level_7_load()
 
-	Events.start_game.connect(_on_start_game)
 	Events.podium_rose.connect(_on_podium_rose)
 	Events.level_1_instructions.connect(_on_level_1_instructions)
 	Events.level_2_load.connect(_on_level_2_load)
@@ -47,10 +46,6 @@ func _on_podium_rose() -> void:
 		animation_player.play("RESET")
 		text = "Touch the podium\nto begin"
 		animation_player.play("fade")
-
-
-func _on_start_game() -> void:
-	animation_player.stop()
 
 
 func _on_level_1_instructions() -> void:

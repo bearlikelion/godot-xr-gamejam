@@ -51,6 +51,7 @@ func crystal_hit() -> void:
 		get_tree().get_first_node_in_group("base").add_child(staff_head)
 		# get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
 		Events.spawn_staff_head.emit()
+		_grab_driver.discard()
 		queue_free()
 
 
