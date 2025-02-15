@@ -4,8 +4,9 @@ extends Node
 # Global signals
 signal place_on_pedistal(scene_string: String)
 signal podium_snapped(object_name: String)
+signal rumble(hand: String, body_name: String)
 
-# Star signals
+# Start signals
 signal podium_rose
 signal start_game
 

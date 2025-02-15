@@ -20,13 +20,15 @@ func _ready() -> void:
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	if !Global.game_started and area.is_in_group("player_hand"):
+	if not Global.game_started and area.is_in_group("player_hand"):
 		Global.game_started = true
 
 		if Global.level <= 1:
 			Events.level_1_load.emit()
 
 		Events.start_game.emit()
+		Events.rumble.emit("LEFT", "PODIUM")
+		Events.rumble.emit("RIGHT", "PODIUM")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
