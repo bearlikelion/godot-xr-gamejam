@@ -180,9 +180,7 @@ func fade_out() -> void:
 	animation_player.play("Fade Out")
 
 func fade_in() -> void:
-	# Play the fade out animation backwards
-	animation_player.play_backwards("Fade Out")
+	animation_player.play("Fade In")
 
 func _on_fade_finished(_anim_name: StringName) -> void:
-	if animation_player.current_animation_position == 0:  # Animation played forward (fade out)
-		queue_free()
+	queue_free()

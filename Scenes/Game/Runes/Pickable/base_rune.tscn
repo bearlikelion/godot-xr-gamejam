@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6jms2ca8yrmh"]
+[gd_scene load_steps=15 format=3 uid="uid://b6jms2ca8yrmh"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/base_rune.gd" id="1_jokhr"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_f4lbg"]
@@ -55,7 +55,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_c8rgq"]
 resource_name = "Fade Out"
-length = 1.072
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -63,14 +63,31 @@ tracks/0/path = NodePath("MeshInstance3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.566667, 1.06667),
-"transitions": PackedFloat32Array(1, 2.44593, 1, 1),
+"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.13333, 1.5, 1.83333, 2.2, 2.4, 2.76667, 2.96667),
+"transitions": PackedFloat32Array(1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0.7, 0.7, 0.7), Vector3(0.3, 0.3, 0.3), Vector3(0.5, 0.5, 0.5), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jokhr"]
+resource_name = "Fade In"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(0.3, 0.3, 0.3), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e73e3"]
 _data = {
+&"Fade In": SubResource("Animation_jokhr"),
 &"Fade Out": SubResource("Animation_c8rgq"),
 &"RESET": SubResource("Animation_pkvfb"),
 &"bob": SubResource("Animation_tqk3w")
