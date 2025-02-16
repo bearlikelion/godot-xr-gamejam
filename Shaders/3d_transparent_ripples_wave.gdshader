@@ -1,39 +1,47 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode diffuse_lambert, specular_schlick_ggx;
 
+// Base color and emission
+uniform vec4 albedo : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+uniform vec4 emission_color : source_color = vec4(1.0, 0.2, 0.1, 1.0);
+uniform float emission_strength : hint_range(0.0, 5.0) = 2.0;
 
-// Handles the concentric ripples
-uniform float frequency: hint_range(0, 15, 0.01) = 4.0;
-uniform float amplitude: hint_range(0, 3, 0.1) = 2.0;
-uniform float ripple_rate : hint_range(0, 20.0, 1) = 5;
-uniform float blending : hint_range(0.0, 1.0, 0.01) = 1.0;
+// Rim effect
+uniform float rim_strength : hint_range(0.0, 5.0) = 1.0;
+uniform float rim_width : hint_range(0.0, 1.0) = 0.5;
 
-// Handles the waves themselves
-uniform float wave_amplitude: hint_range(0.001, 0.1, 0.001) = 0.05;
-uniform float wave_frequency: hint_range(0, 15, 0.01) = 4.0;
+// Pulse effect
+uniform float pulse_speed : hint_range(0.0, 5.0) = 2.0;
+uniform float pulse_intensity : hint_range(0.0, 1.0) = 0.3;
 
-uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap, repeat_disable;
+// Vertex displacement
+uniform float displacement_amount : hint_range(0.0, 0.1) = 0.02;
+uniform float displacement_speed : hint_range(0.0, 5.0) = 1.0;
 
-vec2 wave(vec2 uv, float time) {
-    return vec2(
-        uv.x + sin(uv.y * wave_frequency + time) * wave_amplitude,
-        uv.y + sin(uv.x * wave_frequency + time) * wave_amplitude
-    );
+void vertex() {
+    // Add subtle vertex displacement
+    VERTEX += NORMAL * sin(TIME * displacement_speed + VERTEX.y * 10.0) * displacement_amount;
 }
 
 void fragment() {
-	vec2 screen_pixel_size = 1.0 / VIEWPORT_SIZE;
-	vec2 center_position = -1.0 + 2.0 * UV;
-	float center_distance = length(center_position);
-	
-	float ripple = sin(center_distance * -frequency * PI + ripple_rate * TIME) * amplitude / (center_distance + 1.0);
-	
-	vec2 uv = FRAGCOORD.xy * screen_pixel_size + (center_position/center_distance) * ripple * wave_amplitude;
-	vec2 background_wave = wave(uv, TIME);
-	vec4 background_texture = texture(SCREEN_TEXTURE, background_wave) * sqrt(amplitude);
-	
-	ALBEDO = background_texture.rgb;
-	ALPHA = blending;
+    // Base color
+    ALBEDO = albedo.rgb;
+    
+    // Calculate rim effect
+    float rim = 1.0 - dot(NORMAL, VIEW);
+    rim = pow(rim, (1.0 - rim_width) * 10.0);
+    
+    // Pulsing effect
+    float pulse = sin(TIME * pulse_speed) * 0.5 + 0.5;
+    pulse = pulse * pulse_intensity + (1.0 - pulse_intensity);
+    
+    // Combine rim and pulse for emission
+    vec3 emission = emission_color.rgb * emission_strength * (rim * rim_strength) * pulse;
+    
+    // Apply emission
+    EMISSION = emission;
+    
+    // Add some roughness variation
+    ROUGHNESS = 0.7 - (rim * 0.3);
+    METALLIC = 0.5;
 }
-
-// REFERENCE https://godotshaders.com/shader/3d-transparent-ripples-wave/

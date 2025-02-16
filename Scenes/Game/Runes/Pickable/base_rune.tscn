@@ -1,14 +1,46 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6jms2ca8yrmh"]
+[gd_scene load_steps=13 format=3 uid="uid://b6jms2ca8yrmh"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/base_rune.gd" id="1_jokhr"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_f4lbg"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5vxlm"]
-[ext_resource type="Shader" uid="uid://b2edwg1s4w7k2" path="res://Shaders/Chromatic_Aberration_Sphere.gdshader" id="5_7dxm5"]
+[ext_resource type="Material" uid="uid://i8m5snqc8c0n" path="res://Shaders/3d_transparent_ripples_wave.tres" id="4_jokhr"]
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
-[ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_ogtub"]
+[ext_resource type="Script" uid="uid://bphmm68st7h2a" path="res://Scripts/rune_highlight_overlay.gd" id="5_eu5ey"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8rgq"]
 size = Vector3(0.5, 0.5, 0.05)
+
+[sub_resource type="Animation" id="Animation_jokhr"]
+resource_name = "Fade In"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(0.3, 0.3, 0.3), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c8rgq"]
+resource_name = "Fade Out"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.13333, 1.5, 1.83333, 2.2, 2.4, 2.76667, 2.96667),
+"transitions": PackedFloat32Array(1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0.7, 0.7, 0.7), Vector3(0.3, 0.3, 0.3), Vector3(0.5, 0.5, 0.5), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pkvfb"]
 length = 0.001
@@ -53,38 +85,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_c8rgq"]
-resource_name = "Fade Out"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 0.733333, 1.13333, 1.5, 1.83333, 2.2, 2.4, 2.76667, 2.96667),
-"transitions": PackedFloat32Array(1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 2.44593, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0.5, 0.5, 0.5), Vector3(0.7, 0.7, 0.7), Vector3(0.3, 0.3, 0.3), Vector3(0.5, 0.5, 0.5), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0.1, 0.1, 0.1), Vector3(0.3, 0.3, 0.3), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_jokhr"]
-resource_name = "Fade In"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7, 1, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5, 1.5, 1.5), Vector3(0.3, 0.3, 0.3), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e73e3"]
 _data = {
 &"Fade In": SubResource("Animation_jokhr"),
@@ -92,30 +92,6 @@ _data = {
 &"RESET": SubResource("Animation_pkvfb"),
 &"bob": SubResource("Animation_tqk3w")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4lbg"]
-render_priority = 0
-shader = ExtResource("5_7dxm5")
-shader_parameter/sphere_color = Color(0, 0, 0, 0)
-shader_parameter/wave_amplitude = 0.01
-shader_parameter/wave_frequency = 20.0
-shader_parameter/wave_speed = 3.618
-shader_parameter/chroma_amount = 0.0
-shader_parameter/stars_enabled = false
-shader_parameter/star_field_scale = 4.377
-shader_parameter/star_size = 0.008
-shader_parameter/star_intensity = 1.0
-shader_parameter/star_axis_speed = 0.051
-shader_parameter/star_move_mode = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1ccq"]
-next_pass = SubResource("ShaderMaterial_f4lbg")
-blend_mode = 4
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0.470436, 0.972641, 1, 1)
-grow = true
-grow_amount = 0.015
 
 [node name="BaseRune" type="RigidBody3D"]
 collision_layer = 4
@@ -146,9 +122,9 @@ libraries = {
 }
 
 [node name="XRToolsRuneHighlightMaterial" type="Node" parent="."]
-script = ExtResource("6_ogtub")
+script = ExtResource("5_eu5ey")
 highlight_mesh_instance = NodePath("../MeshInstance3D")
-highlight_material = SubResource("StandardMaterial3D_w1ccq")
+highlight_material = ExtResource("4_jokhr")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [connection signal="dropped" from="." to="." method="_on_dropped"]

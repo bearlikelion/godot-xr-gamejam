@@ -58,6 +58,8 @@ var _bob_direction: float = 1.0
 ## Random hover height modifier
 var _hover_height_modifier: float = 1.0
 
+# Node references
+@onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
@@ -73,8 +75,8 @@ func _ready() -> void:
 	_hover_height_modifier = randf_range(0.5, 2.0)  # 50% to 200% base height variation
 
 	# Set the mesh if it exists
-	if rune_mesh and has_node("MeshInstance3D"):
-		$MeshInstance3D.mesh = rune_mesh
+	if rune_mesh:
+		_mesh_instance.mesh = rune_mesh
 		if auto_size_collision:
 			_update_collision_shape_from_mesh()
 		else:
