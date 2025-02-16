@@ -35,7 +35,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "rise":
 		Events.podium_rose.emit()
 
-func _on_place_on_pedistal(scene_string_or_base_rune) -> void:
+func _on_place_on_pedistal(scene_string_or_base_rune: Variant) -> void:
 
 	if type_string(typeof(scene_string_or_base_rune)) == "String":
 		_on_place_on_pedistal_string(scene_string_or_base_rune)

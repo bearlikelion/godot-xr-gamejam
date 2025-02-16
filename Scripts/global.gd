@@ -14,7 +14,7 @@ func _ready() -> void:
 	Events.podium_snapped.connect(_on_podium_snapped)
 
 
-func _on_place_on_pedistal(resource_string_or_rune) -> void:
+func _on_place_on_pedistal(resource_string_or_rune: Variant) -> void:
 	if type_string(typeof(resource_string_or_rune)) == "String":
 		print("Global resource to match: %s" % resource_string_or_rune)
 	else: # Assume base_rune

@@ -157,7 +157,7 @@ func _apply_natural_fall(state: PhysicsDirectBodyState3D) -> void:
 	state.linear_velocity = damped_velocity
 
 
-func _on_highlight_updated(_pickable, enable: bool) -> void:
+func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
 	if enable and not is_picked_up():
 		_is_bobbing = true
 		_time = 0.0  # Reset time for consistent bobbing

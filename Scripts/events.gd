@@ -2,7 +2,7 @@
 extends Node
 
 # Global signals
-signal place_on_pedistal(scene_string_or_base_rune: String)
+signal place_on_pedistal(scene_string_or_base_rune: Variant)
 signal podium_snapped(object_name: String)
 signal rumble(hand: String, body_name: String)
 
