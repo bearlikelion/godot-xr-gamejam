@@ -13,6 +13,8 @@ signal start_game
 #region Level Signals
 signal level_1_load
 signal level_1_instructions
+signal rune_matched
+signal update_match_progress(current: int, required: int)
 signal level_1_completed
 
 signal level_2_load

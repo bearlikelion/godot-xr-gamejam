@@ -8,6 +8,9 @@ extends StaticBody3D
 @export var rune_config: RuneConfig
 
 var match_rune: BaseRune
+var matches_required: int = 3
+var current_matches: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -19,6 +22,7 @@ func _ready() -> void:
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 	Events.restart_level.connect(_on_restart_level)
+	Events.rune_matched.connect(_on_rune_matched)
 	generate_runes() # Generate runes
 
 	if Global.level == 1:
@@ -60,6 +64,16 @@ func generate_runes() -> void:
 func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
 
+func _on_rune_matched() -> void:
+	current_matches += 1
+	if current_matches >= matches_required:
+		Events.level_1_completed.emit()
+	else:
+		# Generate new runes for the next match
+		generate_runes()
+		# Emit a signal to update the progress display
+		Events.update_match_progress.emit(current_matches, matches_required)
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
 		Events.level_1_instructions.emit()
@@ -73,6 +87,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_audio_stream_player_3d_finished() -> void:
 	animation_player.play("fade")
 
-
 func _on_restart_level() -> void:
+	current_matches = 0
 	animation_player.play("fade")
