@@ -19,6 +19,7 @@ Recommend to play through **PC VR** or on a **Quest 3/3s**, work was done to imp
 * You can also control the camera with your mouse.
 * Left hand with Q | Right hand with E
 * Hold shift+hand to turn hand
+* Hold hand + mouse wheel to move hand in / out
 * Left click for trigger, Right click for grip
 * Q/E + 1 to restart level
 
