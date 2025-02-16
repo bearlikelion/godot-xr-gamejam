@@ -5,6 +5,7 @@ extends Node
 signal place_on_pedistal(scene_string_or_base_rune: Variant)
 signal podium_snapped(object_name: String)
 signal rumble(hand: String, body_name: String)
+signal runes_faded_out  # New signal for fade coordination
 
 # Start signals
 signal podium_rose
@@ -13,6 +14,8 @@ signal start_game
 #region Level Signals
 signal level_1_load
 signal level_1_instructions
+signal rune_matched
+signal update_match_progress(current: int, required: int)
 signal level_1_completed
 
 signal level_2_load

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cfac6n0mwlrlx"]
+[gd_scene load_steps=31 format=3 uid="uid://cfac6n0mwlrlx"]
 
 [ext_resource type="Script" uid="uid://btgx13lxdbb4y" path="res://addons/godot-xr-tools/staging/staging.gd" id="1_rypbc"]
 [ext_resource type="PackedScene" uid="uid://wtpox7m5vu2b" path="res://addons/godot-xr-tools/effects/fade.tscn" id="2_4rmau"]
@@ -15,7 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://clbtsf0ahb3fm" path="res://addons/godot-xr-tools/assets/misc/progress_bar.png" id="7_ioaeq"]
 [ext_resource type="Material" uid="uid://dyuaw57o8y3i" path="res://addons/godot-xr-tools/materials/highlight.tres" id="8_5oxhp"]
 [ext_resource type="Texture2D" uid="uid://ocyj01x5mtt7" path="res://addons/godot-xr-tools/assets/misc/Hold trigger to continue.png" id="8_7ewk0"]
+[ext_resource type="Material" uid="uid://i8m5snqc8c0n" path="res://Shaders/3d_transparent_ripples_wave.tres" id="9_8edxt"]
 [ext_resource type="PackedScene" uid="uid://cymteydkxagpp" path="res://addons/godot-xr-tools/misc/hold_button.tscn" id="9_lhp3t"]
+[ext_resource type="Material" uid="uid://dmc4apnw1vv40" path="res://Shaders/Chromatic_Aberration_Sphere.tres" id="10_5oxhp"]
+[ext_resource type="Material" uid="uid://dciesq1p4m32" path="res://Shaders/faded_rune_icon_glow.tres" id="11_nt2eh"]
+[ext_resource type="Material" uid="uid://bnmm180s00glr" path="res://Shaders/rune_icon_glow.tres" id="12_5cm5d"]
+[ext_resource type="Material" uid="uid://bb2eq00kl7twn" path="res://Shaders/sphere_ripple.tres" id="13_5bov3"]
 [ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_psl12"]
 
 [sub_resource type="PlaneMesh" id="1"]
@@ -106,6 +111,31 @@ surface_material_override/0 = ExtResource("8_5oxhp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 mesh = SubResource("1")
 surface_material_override/0 = ExtResource("8_5oxhp")
+
+[node name="rune_shaders_1" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("9_8edxt")
+
+[node name="rune_shaders_2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("10_5oxhp")
+
+[node name="rune_shaders_3" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("11_nt2eh")
+
+[node name="rune_shaders_4" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("12_5cm5d")
+
+[node name="rune_shaders_5" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/VRCommonShaderCache"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("1")
+surface_material_override/0 = ExtResource("13_5bov3")
 
 [node name="LeftHandController" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

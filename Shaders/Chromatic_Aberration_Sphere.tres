@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dmc4apnw1vv40"]
+
+[ext_resource type="Shader" uid="uid://b2edwg1s4w7k2" path="res://Shaders/Chromatic_Aberration_Sphere.gdshader" id="1_yk25l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yk25l")
+shader_parameter/sphere_color = Color(0, 0, 0, 0)
+shader_parameter/wave_amplitude = 0.006
+shader_parameter/wave_frequency = 19.397
+shader_parameter/wave_speed = 3.618
+shader_parameter/chroma_amount = 1.0
+shader_parameter/stars_enabled = true
+shader_parameter/star_field_scale = 4.377
+shader_parameter/star_size = 0.008
+shader_parameter/star_intensity = 1.0
+shader_parameter/star_axis_speed = 0.051
+shader_parameter/star_move_mode = 1

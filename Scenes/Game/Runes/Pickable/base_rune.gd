@@ -37,6 +37,20 @@ extends XRToolsPickable
 ## Whether to automatically size collision shape based on mesh bounds
 @export var auto_size_collision: bool = true
 
+# Materials
+@export_group("Materials")
+@export var rune_icon_material: StandardMaterial3D = preload("res://Shaders/rune_icon_glow.tres")
+@export var faded_out_rune_icon_material: StandardMaterial3D = preload("res://Shaders/faded_rune_icon_glow.tres")
+
+# Sound Configuration
+@export_group("Sound Effects")
+## Directory containing activation sounds (when rune is placed correctly)
+const ACTIVATION_SOUND_TYPE: String = "activation"
+## Directory containing deactivation sounds (when rune is removed)
+const DEACTIVATION_SOUND_TYPE: String = "deactivation"
+## Directory containing hover sounds (while rune is bobbing)
+const HOVER_SOUND_TYPE: String = "hover"
+
 # State Variables
 ## Starting position of the rune
 var _initial_position: Vector3
@@ -58,9 +72,22 @@ var _bob_direction: float = 1.0
 ## Random hover height modifier
 var _hover_height_modifier: float = 1.0
 
+# Node references
+@onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _audio_player: AudioStreamPlayer3D = $AudioPlayer3D
+@onready var _hover_audio_player: AudioStreamPlayer3D = $HoverAudioPlayer3D
+
+# Sound randomizers
+var _activation_randomizer: AudioStreamRandomizer
+var _deactivation_randomizer: AudioStreamRandomizer
+var _hover_randomizer: AudioStreamRandomizer
+
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	highlight_updated.connect(_on_highlight_updated)
+	animation_player.animation_finished.connect(_on_fade_finished)
+	picked_up.connect(_on_picked_up)  # Connect pickup signal
 	_initial_position = global_position
 
 	# Initialize random bobbing parameters
@@ -70,9 +97,41 @@ func _ready() -> void:
 	_bob_direction = 1.0 if randf() > 0.5 else -1.0  # Random initial direction
 	_hover_height_modifier = randf_range(0.5, 2.0)  # 50% to 200% base height variation
 
+	# Initialize audio player settings
+	if _audio_player and _hover_audio_player:
+		# Configure main audio player settings
+		_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		_audio_player.unit_size = 3.0  # Scale for distance calculations
+		_audio_player.max_db = 0.0  # Maximum volume
+		_audio_player.panning_strength = 1.0  # Full 3D panning
+
+		# Configure hover audio player settings
+		_hover_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		_hover_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		_hover_audio_player.unit_size = 2.0  # Scale for distance calculations
+		_hover_audio_player.panning_strength = 1.0  # Full 3D panning
+		_hover_audio_player.stream_paused = false  # Ensure not paused
+
+		# Get cached randomizers from SoundManager
+		_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
+		_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
+		_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
+
+		if Global.testing:
+			print("[BaseRune] Audio players initialized")
+			print("[BaseRune] Hover randomizer exists: ", _hover_randomizer != null)
+
+	# Initialize audio player settings
+	if _audio_player:
+		# Get cached randomizers from SoundManager
+		_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
+		_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
+		_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
+
 	# Set the mesh if it exists
-	if rune_mesh and has_node("MeshInstance3D"):
-		$MeshInstance3D.mesh = rune_mesh
+	if rune_mesh:
+		_mesh_instance.mesh = rune_mesh
 		if auto_size_collision:
 			_update_collision_shape_from_mesh()
 		else:
@@ -164,11 +223,102 @@ func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
 	elif not enable:
 		_is_bobbing = false
 
+	# Play sounds based on bobbing state transitions
+	if not _was_bobbing and _is_bobbing:
+		if Global.testing:
+			print("[BaseRune] Started bobbing, playing activation sound")
+		play_activation_sound()
+		# Start hover sound after a short delay
+		# await get_tree().create_timer(0.2).timeout
+		_play_hover_sound()
+	elif _was_bobbing and not _is_bobbing:
+		if Global.testing:
+			print("[BaseRune] Stopped bobbing, playing deactivation sound")
+		_stop_hover_sound()  # Stop hover sound first
+		play_deactivation_sound()
+
 	_was_bobbing = _is_bobbing
+	_set_rune_icon_material()
+
+func play_activation_sound() -> void:
+	if Global.testing:
+		print("[BaseRune] Attempting to play activation sound")
+		print("[BaseRune] Audio player exists: ", _audio_player != null)
+		print("[BaseRune] Activation randomizer exists: ", _activation_randomizer != null)
+
+	if _audio_player and _activation_randomizer:
+		_audio_player.stream = _activation_randomizer
+		_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
+		_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
+		_audio_player.play()
+		if Global.testing:
+			print("[BaseRune] Started playing activation sound")
+
+func play_deactivation_sound() -> void:
+	if Global.testing:
+		print("[BaseRune] Attempting to play deactivation sound")
+		print("[BaseRune] Audio player exists: ", _audio_player != null)
+		print("[BaseRune] Deactivation randomizer exists: ", _deactivation_randomizer != null)
+
+	if _audio_player and _deactivation_randomizer:
+		_audio_player.stream = _deactivation_randomizer
+		_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
+		_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
+		_audio_player.play()
+		if Global.testing:
+			print("[BaseRune] Started playing deactivation sound")
+
+func _play_hover_sound() -> void:
+	pass
+	# if _hover_audio_player and _hover_randomizer:
+	# 	_hover_audio_player.stream = _hover_randomizer
+	# 	_hover_audio_player.pitch_scale = randf_range(0.95, 1.05)  # Subtle pitch variation for hover
+	# 	_hover_audio_player.volume_db = randf_range(-5.0, -3.0)  # Quieter than activation/deactivation
+	# 	# if not _hover_audio_player.playing:
+	# 	# 	_hover_audio_player.play()
+
+	# 	if Global.testing:
+	# 		print("[BaseRune] Started playing hover sound")
+
+func _stop_hover_sound() -> void:
+	pass
+	# if _hover_audio_player and _hover_audio_player.playing and _hover_audio_player.stream == _hover_randomizer:
+	# 	_hover_audio_player.stop()
+	# 	if Global.testing:
+	# 		print("[BaseRune] Stopped hover sound")
+
+func _set_rune_icon_material() -> void:
+	if _mesh_instance:
+		if _is_bobbing or is_picked_up():
+			_mesh_instance.set_surface_override_material(1, rune_icon_material)
+			return
+		else:
+			_mesh_instance.set_surface_override_material(1, faded_out_rune_icon_material)
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
 	_initial_position = global_position
+	if Global.testing:
+		print("[BaseRune] Rune dropped, checking if correctly placed")
+	# TODO: Add logic to check if rune is correctly placed
+	# For now, just play activation sound
+	play_activation_sound()
 
 func _on_level_1_completed() -> void:
 	freeze = false
+
+func fade_out() -> void:
+	animation_player.play("Fade Out")
+
+func fade_in() -> void:
+	animation_player.play("Fade In")
+
+func _on_fade_finished(anim_name: StringName) -> void:
+	if anim_name == "Fade Out":
+		Events.runes_faded_out.emit()
+		queue_free()
+
+func _on_picked_up(_pickable: Node3D) -> void:
+	if Global.testing:
+		print("[BaseRune] Rune picked up, playing deactivation sound")
+	play_deactivation_sound()
