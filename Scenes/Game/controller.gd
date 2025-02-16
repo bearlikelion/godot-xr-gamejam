@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_button_pressed(button_name: String) -> void:
-	print("Button Pressed %s" % button_name)
+	# print("Button Pressed %s" % button_name)
 	if button_name == "ax_button":
 		Events.repeat_instructions.emit()
 

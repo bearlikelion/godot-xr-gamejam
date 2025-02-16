@@ -1,3 +1,5 @@
+# Credits
+
 ## Lead Developer:
 Mark Arneman [bearlikelion.com](https://bearlikelion.com)
 

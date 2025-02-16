@@ -64,6 +64,8 @@ offset_left = 244.0
 offset_top = -100.0
 offset_right = 1035.0
 offset_bottom = 3046.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 
@@ -105,37 +107,38 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "[center]
-[font_size=48]Lead Developer:[/font_size]
+[font_size=32]Lead Developer:[/font_size]
 Mark Arneman 
 [url=https://bearlikelion.com]bearlikelion.com[/url]
 
-[font_size=48]Development Help:[/font_size]
+[font_size=32]Development Help:[/font_size]
 Cyberhusky
 GI_Jaws
 
-[font_size=48]Music:[/font_size]
+[font_size=32]Music:[/font_size]
 Troll Lyd 
 [url=https://troll-lyd.itch.io/]troll-lyd.itch.io[/url]
 
-[font_size=48]Thanks to:[/font_size]
+[font_size=32]Thanks to:[/font_size]
 Stepbro
 CarinaMachina
 RunnyBabbit
 Everyone who play tested
 
-[font_size=48]Assets:[/font_size]
-[url=https://opengameart.org/]OpenGameArt.org[/url] 
-and 
+[font_size=32]Assets:[/font_size]
+Assets gathered from 
+
+[url=https://opengameart.org/]OpenGameArt.org[/url] and 
 [url=https://itch.io/]Itch.io[/url]
 
-[font_size=32]Font:[/font_size]
+[font_size=24]Font:[/font_size]
 
 [url=https://www.dafont.com/wizards-magic.font]Wizards Magic[/url]
 
-[font_size=32]Assets Used:[/font_size]
+[font_size=24]Assets Used:[/font_size]
 
 [url=https://loafbrr.itch.io/gothic-like-structures]Gothic-Like Structures[/url]
 
@@ -170,7 +173,6 @@ and
 [url=https://arill-studio.itch.io/dungeon-asset-pack]Dungeon Asset Pack[/url]
 
 [url=https://poly.pizza/m/7VVumyY7L_u]Wizard Hat[/url] from poly.pizza
-
 [/center]"
 fit_content = true
 

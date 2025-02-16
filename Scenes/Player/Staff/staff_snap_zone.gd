@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func _on_has_picked_up(what: Variant) -> void:
 	if what is StaffHead:
+		Events.rumble.emit("LEFT", "STAFF_HEAD")
+		Events.rumble.emit("RIGHT", "STAFF_HEAD")
 		what.reparent(get_parent())
 		await get_tree().create_timer(1.0).timeout
 		what._grab_driver.discard()

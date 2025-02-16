@@ -131,6 +131,7 @@ func _setup_for_openxr() -> bool:
 	if not xr_interface.is_initialized():
 		print("OpenXR: Initializing interface")
 		if not xr_interface.initialize():
+			Global.desktop_mode = true
 			push_error("OpenXR: Failed to initialize")
 			xr_failed_to_initialize.emit()
 			return false

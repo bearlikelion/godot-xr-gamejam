@@ -26,10 +26,14 @@ func _on_dropped(_pickable: Variant) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	if breakable:
-		hide()
-		print("Wrong crystal broke")
-		if not break_sound.playing:
-			break_sound.play()
+		crystal_break()
+
+
+func crystal_break() -> void:
+	hide()
+	print("Wrong crystal broke")
+	if not break_sound.playing:
+		break_sound.play()
 
 
 func _on_break_sound_finished() -> void:
@@ -44,6 +48,8 @@ func _on_level_3_completed() -> void:
 func crystal_hit() -> void:
 	hits += 1
 	mesh_instance_3d.scale -= Vector3(0.1, 0.1, 0.1)
+	Events.rumble.emit("LEFT", "CHISEL" + "_" + str(hits))
+	Events.rumble.emit("RIGHT", "CHISEL" + "_" + str(hits))
 
 	if hits > 2:
 		var staff_head: RigidBody3D = STAFF_HEAD.instantiate()

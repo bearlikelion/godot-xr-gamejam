@@ -113,8 +113,16 @@ func create_rune(rune_name: String) -> BaseRune:
 	base_rune.rune_name = rune_name
 	base_rune.rune_mesh = load(runes[rune_name].mesh_path)
 
-	var mesh_instance: MeshInstance3D = base_rune.get_node("CollisionShape3D/MeshInstance3D")
-	mesh_instance.set_mesh(base_rune.rune_mesh)
+	# Update mesh and collision shape
+	if base_rune.has_node("MeshInstance3D"):
+		var mesh_instance: MeshInstance3D = base_rune.get_node("MeshInstance3D")
+		mesh_instance.set_mesh(base_rune.rune_mesh)
+
+		# Update collision shape based on the new mesh
+		if base_rune.auto_size_collision:
+			base_rune._update_collision_shape_from_mesh()
+		else:
+			base_rune._update_collision_shape()
 
 	return base_rune
 
@@ -128,7 +136,7 @@ func create_random_runes(count: int) -> Array[BaseRune]:
 		return result
 
 	# Get all available rune names and shuffle them
-	var available_runes = runes.keys()
+	var available_runes: Array[String] = runes.keys()
 	available_runes.shuffle()
 
 	# Create specified number of runes
@@ -136,8 +144,8 @@ func create_random_runes(count: int) -> Array[BaseRune]:
 		if i >= available_runes.size():
 			break
 
-		var rune_name = available_runes[i]
-		var rune = create_rune(rune_name)
+		var rune_name: String = available_runes[i]
+		var rune: BaseRune = create_rune(rune_name)
 		if rune:
 			result.append(rune)
 
