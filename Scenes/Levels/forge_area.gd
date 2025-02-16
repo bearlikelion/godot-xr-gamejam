@@ -17,7 +17,7 @@ func _on_body_entered(body: Node3D) -> void:
 	print("Body entered forge: %s" % body.name)
 
 	if body is XRToolsPickable:
-		forge_audio_stream_player_3d.pitch_scale = randf_range(0.8, 1.2)
+		forge_audio_stream_player_3d.pitch_scale = randf_range(1, 1.2)
 		forge_audio_stream_player_3d.play()
 
 	if body is StaffHead:

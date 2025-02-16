@@ -1,20 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://delerup150n4q"]
+[gd_scene load_steps=13 format=3 uid="uid://delerup150n4q"]
 
+[ext_resource type="Script" uid="uid://b5tqwchuhheyg" path="res://Scenes/Game/Potions/Lvl8Potions/grow_potion.gd" id="1_w8ywf"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_4847d"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_e60r4"]
 [ext_resource type="ArrayMesh" uid="uid://d3omwacky7ogn" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Cylinder_006.res" id="4_4tiyc"]
 [ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="5_e06rk"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_kqlgq"]
+[ext_resource type="AudioStream" uid="uid://ctk37syvtje30" path="res://Assets/Audio/SFX/crystal_shatter.ogg" id="6_vvrx7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gra24"]
 render_priority = 0
 shader = ExtResource("5_e06rk")
 shader_parameter/coeff = Vector2(0, 0)
 shader_parameter/vel = 0.0
-shader_parameter/liquid_color = Color(0.654902, 0.654902, 0, 1)
+shader_parameter/liquid_color = Color(0.514293, 0.000188143, 0.51429, 1)
 shader_parameter/foam_color = Color(0.9, 0.3, 0.8, 1)
 shader_parameter/foam_line = 0.0
-shader_parameter/fill_amount = 1.0
+shader_parameter/fill_amount = 0.555
 shader_parameter/size = Vector2(1, 1)
 shader_parameter/glass_thickness = 0.0
 shader_parameter/scale = 1.0
@@ -40,14 +42,16 @@ albedo_color = Color(1, 1, 0, 1)
 grow = true
 grow_amount = 0.03
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m3vs2"]
-size = Vector3(0.101089, 0.107428, 0.114587)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afs4j"]
+radius = 0.0900861
+height = 0.271772
 
-[node name="BluePotion2" type="RigidBody3D"]
+[node name="GrowPotion" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 collision_layer = 4
 collision_mask = 196615
-freeze = true
 freeze_mode = 1
+script = ExtResource("1_w8ywf")
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_4847d")]
@@ -72,8 +76,14 @@ highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
+[node name="ShatterSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_vvrx7")
+
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00032806, 0.184, 0.00062865)
-shape = SubResource("BoxShape3D_m3vs2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00032806, 0.0877036, 0.00062865)
+shape = SubResource("CapsuleShape3D_afs4j")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

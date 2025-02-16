@@ -29,9 +29,6 @@ var starting_new_sequence: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.level = 5
-	# input_delay.wait_time = 0.15
-	# input_delay.timeout.connect(_on_input_delay_timeout)
-	# add_child(input_delay)
 	animation_player.play("appear")
 
 	Events.button_pushed.connect(_on_button_pushed)
@@ -42,11 +39,11 @@ func _ready() -> void:
 func start_simon() -> void:
 	await Events.button_timeout
 	await get_tree().create_timer(1.5).timeout
-	sequence.clear()
 	player_input.clear()
+	sequence.clear()
 	sequence_index = 0
-	add_to_sequence()
 	play_sequence()
+	add_to_sequence()
 
 
 func add_to_sequence() -> void:
@@ -90,14 +87,10 @@ func show_light(button_to_press: String) -> void:
 
 
 func check_player_input(color: String) -> void:
-	#if not is_player_turn or not accept_input:
 	if not is_player_turn:
 		return
 
-	# accept_input = false
-	# input_delay.start()
 	player_input.append(color)
-
 
 	if is_player_turn and player_input[sequence_index] != sequence[sequence_index]:
 		Events.failed_simon.emit()
@@ -119,6 +112,8 @@ func check_player_input(color: String) -> void:
 
 
 func playerpushingbuttons():
+	Events.rumble.emit("LEFT","BUTTON")
+	Events.rumble.emit("RIGHT","BUTTON")
 	pushing_buttons = true
 	button_mashing_timer.start(2.0)
 
@@ -134,16 +129,12 @@ func _on_button_pushed(button_color: String) -> void:
 
 	match button_color:
 		"Red":
-			# animation_player.play("red")
 			simon_red.play()
 		"Green":
-			# animation_player.play("green")
 			simon_green.play()
 		"Yellow":
-			# animation_player.play("yellow")
 			simon_yellow.play()
 		"Blue":
-			# animation_player.play("blue")
 			simon_blue.play()
 
 

@@ -47,6 +47,7 @@ signal player_equipped_hat
 signal level_7_completed
 
 signal level_8_load
+signal grow_potion_used
 #endregion
 
 signal show_credits
