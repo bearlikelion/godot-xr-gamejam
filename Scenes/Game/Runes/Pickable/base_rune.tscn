@@ -128,4 +128,13 @@ highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = ExtResource("4_jokhr")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
+[node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 1
+unit_size = 3.0
+max_distance = 20.0
+bus = &"SFX"
+emission_angle_enabled = true
+emission_angle_degrees = 90.0
+doppler_tracking = 2
+
 [connection signal="dropped" from="." to="." method="_on_dropped"]

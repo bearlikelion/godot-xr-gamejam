@@ -1,16 +1,17 @@
 class_name Level1
 extends StaticBody3D
 
+@export var matches_required: int = 3
+
+var match_rune: BaseRune
+var current_matches: int = 0
+var _remaining_runes: Array[BaseRune]
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var rune_config: RuneConfig = $Runes
 
-var match_rune: BaseRune
-var matches_required: int = 3
-var current_matches: int = 0
-var _remaining_runes: Array[BaseRune]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
