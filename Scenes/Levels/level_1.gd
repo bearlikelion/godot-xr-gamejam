@@ -5,7 +5,7 @@ extends StaticBody3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@export var rune_config: RuneConfig
+@onready var rune_config: RuneConfig = $Runes
 
 var match_rune: BaseRune
 var matches_required: int = 3
@@ -42,6 +42,11 @@ func generate_runes() -> void:
 	if rune_positions.is_empty():
 		push_error("No rune positions found in Level1")
 		return
+
+	# Clean up existing runes
+	for position in rune_positions:
+		for child in position.get_children():
+			child.queue_free()
 
 	if not Global.testing:
 		rune_positions.shuffle()
