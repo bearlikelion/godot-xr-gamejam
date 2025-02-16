@@ -58,6 +58,8 @@ var _bob_direction: float = 1.0
 ## Random hover height modifier
 var _hover_height_modifier: float = 1.0
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	highlight_updated.connect(_on_highlight_updated)
@@ -172,3 +174,15 @@ func _on_dropped(_pickable: Variant) -> void:
 
 func _on_level_1_completed() -> void:
 	freeze = false
+
+func fade_out() -> void:
+	animation_player.connect("animation_finished", _on_fade_finished)
+	animation_player.play("Fade Out")
+
+func fade_in() -> void:
+	# Play the fade out animation backwards
+	animation_player.play_backwards("Fade Out")
+
+func _on_fade_finished(_anim_name: StringName) -> void:
+	if animation_player.current_animation_position == 0:  # Animation played forward (fade out)
+		queue_free()

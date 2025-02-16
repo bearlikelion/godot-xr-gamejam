@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6jms2ca8yrmh"]
+[gd_scene load_steps=14 format=3 uid="uid://b6jms2ca8yrmh"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/base_rune.gd" id="1_jokhr"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_f4lbg"]
@@ -24,6 +24,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tqk3w"]
 resource_name = "bob"
@@ -41,8 +53,25 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_c8rgq"]
+resource_name = "Fade Out"
+length = 1.072
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.566667, 1.06667),
+"transitions": PackedFloat32Array(1, 2.44593, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e73e3"]
 _data = {
+&"Fade Out": SubResource("Animation_c8rgq"),
 &"RESET": SubResource("Animation_pkvfb"),
 &"bob": SubResource("Animation_tqk3w")
 }

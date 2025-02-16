@@ -23,7 +23,6 @@ func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	Events.restart_level.connect(_on_restart_level)
 	Events.rune_matched.connect(_on_rune_matched)
-	generate_runes() # Generate runes
 
 	if Global.level == 1:
 		_on_start_game()
@@ -43,10 +42,11 @@ func generate_runes() -> void:
 		push_error("No rune positions found in Level1")
 		return
 
-	# Clean up existing runes
+	# Fade out existing runes
 	for position in rune_positions:
 		for child in position.get_children():
-			child.queue_free()
+			if child is BaseRune:
+				child.fade_out()
 
 	if not Global.testing:
 		rune_positions.shuffle()
@@ -61,10 +61,11 @@ func generate_runes() -> void:
 	match_rune = all_runes[0]
 	Events.place_on_pedistal.emit(match_rune)
 
-	# Place all runes in positions
+	# Place all runes in positions and fade them in
 	for i in range(all_runes.size()):
 		all_runes[i]._is_bobbing = true
 		rune_positions[i].add_child(all_runes[i])
+		all_runes[i].fade_in()
 
 func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
@@ -82,6 +83,7 @@ func _on_rune_matched() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
 		Events.level_1_instructions.emit()
+		generate_runes()  # Generate runes after level appears
 
 	if anim_name == "fade":
 		match_rune.queue_free()
