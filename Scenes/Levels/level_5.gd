@@ -124,8 +124,8 @@ func _on_button_mashing_timer_timeout() -> void:
 
 
 func _on_button_pushed(button_color: String) -> void:
-	check_player_input(button_color)
 	playerpushingbuttons()
+	check_player_input(button_color)
 
 	match button_color:
 		"Red":
