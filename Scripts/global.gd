@@ -9,6 +9,7 @@ var magic_book: MagicBook
 var restart: bool = false
 var desktop_mode: bool = false
 
+
 func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
 	Events.podium_snapped.connect(_on_podium_snapped)
@@ -24,9 +25,12 @@ func _on_place_on_pedistal(resource_string_or_rune: Variant) -> void:
 
 
 func _on_podium_snapped(object_name: String) -> void:
-	if object_name == rune_to_match and level == 1:
-		print("Level 1 Completed")
-		Events.level_1_completed.emit()
+	if level == 1:
+		if object_name == rune_to_match:
+			print("Rune matched: %s" % object_name)
+			Events.rune_matched.emit()
+		else:
+			Events.wrong_rune.emit()
 
 	if level == 2:
 		if object_name == "magic_book":

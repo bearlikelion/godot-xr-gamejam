@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsol4ny0q4fnd"]
+
+[ext_resource type="Script" uid="uid://bwh8t7sib26qw" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="1_hhckx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n4sxw"]
+size = Vector2(1, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_76q44"]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76q44"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("ViewportTexture_76q44")
+texture_filter = 1
+
+[node name="EndButtons" type="Node3D"]
+script = ExtResource("1_hhckx")
+alpha_scissor_threshold = 0.25
+unshaded = false
+filter = true
+scene_properties_keys = PackedStringArray()
+metadata/_custom_type_script = "uid://bwh8t7sib26qw"
+
+[node name="Viewport" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_n4sxw")
+surface_material_override/0 = SubResource("StandardMaterial3D_76q44")

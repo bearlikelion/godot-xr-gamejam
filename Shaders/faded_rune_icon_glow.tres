@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=0 format=3 uid="uid://dciesq1p4m32"]
+
+[resource]
+resource_name = "Glow"
+cull_mode = 2
+metallic = 1.0
+emission_enabled = true
+emission = Color(0.302067, 0.923437, 1, 1)
+emission_energy_multiplier = 0.1

@@ -19,6 +19,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			unlock.play()
 			animation_player.play("Open")
 			Events.chest_opened.emit()
+		elif body.golden_key and unlocked:
+			pass
 		else:
 			print("Wrong key")
 			fail.play()

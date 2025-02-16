@@ -11,7 +11,7 @@ const COMBINING_POTION = preload("res://Scenes/Game/Potions/combining_potion.tsc
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.level = 7
+	Global.level = 6
 	animation_player.play("appear")
 	Events.reset_potions.connect(_on_reset_potions)
 	Events.level_6_completed.connect(_on_level_6_compelted)
@@ -23,14 +23,16 @@ func place_potions() -> void:
 	potions_to_pick.shuffle()
 
 	for postion_pos: Marker3D in potions.get_children():
-		postion_pos.add_child(potions_to_pick.pop_front().instantiate())
+		var _potion: Potion = potions_to_pick.pop_front().instantiate()
+		_potion.add_to_group("potion")
+		postion_pos.add_child(_potion)
 
 
 func _on_reset_potions() -> void:
 	fail_sound.play()
 
-	for postion_pos: Marker3D in potions.get_children():
-		postion_pos.get_child(0).queue_free()
+	for potion: Potion in get_tree().get_nodes_in_group("potion"):
+		potion.queue_free()
 
 	await get_tree().create_timer(2.0).timeout
 	place_potions()
