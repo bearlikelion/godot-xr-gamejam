@@ -7,6 +7,7 @@ var staff_forged: bool = false
 @onready var icon_marker: Marker3D = $IconMarker
 @onready var podium_snap_zone: PodiumSnapZone = $PodiumSnapZone
 
+var _pending_rune: BaseRune = null
 
 func _ready() -> void:
 	animation_player.play("rise")
@@ -17,6 +18,7 @@ func _ready() -> void:
 	Events.level_4_completed.connect(_on_level_4_completed)
 	Events.level_6_completed.connect(_on_level_completed)
 	Events.staff_forged.connect(_on_staff_forged)
+	Events.runes_faded_out.connect(_on_runes_faded_out)
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
@@ -53,16 +55,34 @@ func _on_place_on_pedistal_string(scene_string: String) -> void:
 	icon_marker.add_child(_item)
 
 func _on_place_on_pedistal_rune(base_rune: BaseRune) -> void:
-	base_rune = base_rune.duplicate()
-	base_rune.enabled = false  # Make it so it can't be picked up
-	base_rune.freeze = true
+	# Store the rune to be placed
+	_pending_rune = base_rune.duplicate()
+	_pending_rune.enabled = false  # Make it so it can't be picked up
+	_pending_rune.freeze = true
 
+	# If there's an existing rune, fade it out first
 	if icon_marker.get_child_count() > 0:
 		for icon_child in icon_marker.get_children():
-			icon_child.queue_free()
+			if icon_child is BaseRune:
+				icon_child.fade_out()
+	else:
+		# If no existing rune, place the new one immediately
+		_place_pending_rune()
 
-	icon_marker.add_child(base_rune)
+func _place_pending_rune() -> void:
+	if not _pending_rune:
+		return
 
+	var temp_mesh: GeometryInstance3D = _pending_rune.get_child(2)
+	temp_mesh.set_surface_override_material(0, load("res://Shaders/3d_transparent_ripples_wave.tres"))
+
+	icon_marker.add_child(_pending_rune)
+	_pending_rune.fade_in()
+	_pending_rune = null
+
+func _on_runes_faded_out() -> void:
+	# Place the pending rune after the old one has faded out
+	_place_pending_rune()
 
 func _on_level_completed() -> void:
 	# Remove icon marker child on level compelte

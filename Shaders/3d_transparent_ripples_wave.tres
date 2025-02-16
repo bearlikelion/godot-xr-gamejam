@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://i8m5snqc8c0n"]
+
+[ext_resource type="Shader" uid="uid://dgbnh2afwpa8s" path="res://Shaders/3d_transparent_ripples_wave.gdshader" id="1_yk25l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yk25l")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/emission_color = Color(1, 0.2, 0.1, 1)
+shader_parameter/emission_strength = 2.0
+shader_parameter/rim_strength = 1.0
+shader_parameter/rim_width = 0.5
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_intensity = 0.3
+shader_parameter/displacement_amount = 0.02
+shader_parameter/displacement_speed = 1.0

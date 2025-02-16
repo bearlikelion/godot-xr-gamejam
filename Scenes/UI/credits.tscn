@@ -72,6 +72,7 @@ size_flags_vertical = 6
 [node name="Spacing" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "
+
 "
 label_settings = SubResource("LabelSettings_q4iv0")
 horizontal_alignment = 1
