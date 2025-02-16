@@ -82,7 +82,7 @@ var _hover_height_modifier: float = 1.0
 # Sound randomizers
 var _activation_randomizer: AudioStreamRandomizer
 var _deactivation_randomizer: AudioStreamRandomizer
-var _hover_randomizer: AudioStreamRandomizer
+# var _hover_randomizer: AudioStreamRandomizer
 
 
 func _ready() -> void:

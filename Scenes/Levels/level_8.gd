@@ -8,7 +8,7 @@ func _ready() -> void:
 	Events.grow_potion_used.connect(spawn_grow_potion)
 
 
-func spawn_grow_potion():
+func spawn_grow_potion() -> void:
 	Events.place_on_pedistal.emit(grow_potion_scene)
 
 

@@ -1,14 +1,12 @@
-[gd_scene load_steps=20 format=4 uid="uid://me5wnj66etpd"]
+[gd_scene load_steps=18 format=4 uid="uid://me5wnj66etpd"]
 
 [ext_resource type="Script" uid="uid://jbfs123hbv06" path="res://Scenes/Game/Tools/chisel.gd" id="1_u1ban"]
-[ext_resource type="Script" uid="uid://cks55t5gs0dd4" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_bxudj"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_pavgs"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_w0tld"]
 [ext_resource type="Material" uid="uid://cu1qpb2onhexs" path="res://Assets/Models/Blacksmith/Materials/Iron.tres" id="5_pavgs"]
 [ext_resource type="Script" uid="uid://c8amyj16um67b" path="res://Scripts/highlight_overlay.gd" id="6_ixh3d"]
 [ext_resource type="Material" uid="uid://dt1i1jdmle25w" path="res://Assets/Models/Blacksmith/Materials/Wood.tres" id="6_w0tld"]
 [ext_resource type="Material" uid="uid://dl8c2y3td2dct" path="res://Assets/Models/Blacksmith/Materials/WroughtIron.tres" id="7_52f6e"]
-[ext_resource type="Script" uid="uid://bc4488qqhutto" path="res://addons/godot-xr-tools/objects/highlight/highlight_material.gd" id="7_apby8"]
 [ext_resource type="AudioStream" uid="uid://dufhyamc74f2w" path="res://Assets/Audio/SFX/chisel wrong.ogg" id="8_kfgv5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j8yfn"]
@@ -186,7 +184,7 @@ script = ExtResource("1_u1ban")
 ranged_grab_method = 2
 second_hand_grab = 1
 ranged_grab_speed = 10.0
-metadata/_custom_type_script = ExtResource("2_bxudj")
+metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_pavgs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
@@ -206,7 +204,7 @@ shape = SubResource("ConvexPolygonShape3D_apby8")
 script = ExtResource("6_ixh3d")
 highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = SubResource("StandardMaterial3D_w1ccq")
-metadata/_custom_type_script = ExtResource("7_apby8")
+metadata/_custom_type_script = "uid://bc4488qqhutto"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133689, 0)

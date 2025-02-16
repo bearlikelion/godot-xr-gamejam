@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5vxlm"]
 [ext_resource type="Material" uid="uid://i8m5snqc8c0n" path="res://Shaders/3d_transparent_ripples_wave.tres" id="4_jokhr"]
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
-[ext_resource type="Script" path="res://Scripts/rune_highlight_overlay.gd" id="5_eu5ey"]
+[ext_resource type="Script" uid="uid://bphmm68st7h2a" path="res://Scripts/rune_highlight_overlay.gd" id="5_eu5ey"]
 [ext_resource type="AudioStream" uid="uid://dn1p6bvwvblg6" path="res://Assets/Audio/SFX/Runes/743246__qubodup__move-stone-rune-4.ogg" id="7_jokhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8rgq"]

@@ -111,7 +111,7 @@ func check_player_input(color: String) -> void:
 				play_sequence()
 
 
-func playerpushingbuttons():
+func player_pushing_buttons() -> void:
 	Events.rumble.emit("LEFT","BUTTON")
 	Events.rumble.emit("RIGHT","BUTTON")
 	pushing_buttons = true
@@ -124,7 +124,7 @@ func _on_button_mashing_timer_timeout() -> void:
 
 
 func _on_button_pushed(button_color: String) -> void:
-	playerpushingbuttons()
+	player_pushing_buttons()
 	check_player_input(button_color)
 
 	match button_color:
