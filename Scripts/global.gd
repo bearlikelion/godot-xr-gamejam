@@ -9,6 +9,7 @@ var magic_book: MagicBook
 var restart: bool = false
 var desktop_mode: bool = false
 
+
 func _ready() -> void:
 	Events.place_on_pedistal.connect(_on_place_on_pedistal)
 	Events.podium_snapped.connect(_on_podium_snapped)
