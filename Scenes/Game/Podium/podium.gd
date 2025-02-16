@@ -68,7 +68,6 @@ func _on_place_on_pedistal_rune(base_rune: BaseRune) -> void:
 
 	icon_marker.add_child(base_rune)
 
-	base_rune.fade_in()
 
 
 func _on_level_completed() -> void:
