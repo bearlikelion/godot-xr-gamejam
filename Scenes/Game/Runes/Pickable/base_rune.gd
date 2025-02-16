@@ -88,7 +88,6 @@ func _ready() -> void:
 	highlight_updated.connect(_on_highlight_updated)
 	animation_player.animation_finished.connect(_on_fade_finished)
 	picked_up.connect(_on_picked_up)  # Connect pickup signal
-	dropped.connect(_on_dropped)  # Connect drop signal
 	_initial_position = global_position
 
 	# Initialize random bobbing parameters
@@ -270,21 +269,23 @@ func play_deactivation_sound() -> void:
 			print("[BaseRune] Started playing deactivation sound")
 
 func _play_hover_sound() -> void:
-	if _hover_audio_player and _hover_randomizer:
-		_hover_audio_player.stream = _hover_randomizer
-		_hover_audio_player.pitch_scale = randf_range(0.95, 1.05)  # Subtle pitch variation for hover
-		_hover_audio_player.volume_db = randf_range(-5.0, -3.0)  # Quieter than activation/deactivation
-		if not _hover_audio_player.playing:
-			_hover_audio_player.play()
+	pass
+	# if _hover_audio_player and _hover_randomizer:
+	# 	_hover_audio_player.stream = _hover_randomizer
+	# 	_hover_audio_player.pitch_scale = randf_range(0.95, 1.05)  # Subtle pitch variation for hover
+	# 	_hover_audio_player.volume_db = randf_range(-5.0, -3.0)  # Quieter than activation/deactivation
+	# 	# if not _hover_audio_player.playing:
+	# 	# 	_hover_audio_player.play()
 
-		if Global.testing:
-			print("[BaseRune] Started playing hover sound")
+	# 	if Global.testing:
+	# 		print("[BaseRune] Started playing hover sound")
 
 func _stop_hover_sound() -> void:
-	if _hover_audio_player and _hover_audio_player.playing and _hover_audio_player.stream == _hover_randomizer:
-		_hover_audio_player.stop()
-		if Global.testing:
-			print("[BaseRune] Stopped hover sound")
+	pass
+	# if _hover_audio_player and _hover_audio_player.playing and _hover_audio_player.stream == _hover_randomizer:
+	# 	_hover_audio_player.stop()
+	# 	if Global.testing:
+	# 		print("[BaseRune] Stopped hover sound")
 
 func _set_rune_icon_material() -> void:
 	if _mesh_instance:
