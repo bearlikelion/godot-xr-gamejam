@@ -37,6 +37,11 @@ extends XRToolsPickable
 ## Whether to automatically size collision shape based on mesh bounds
 @export var auto_size_collision: bool = true
 
+# Materials
+@export_group("Materials")
+@export var rune_icon_material: StandardMaterial3D = preload("res://Shaders/rune_icon_glow.tres")
+@export var faded_out_rune_icon_material: StandardMaterial3D = preload("res://Shaders/faded_rune_icon_glow.tres")
+
 # State Variables
 ## Starting position of the rune
 var _initial_position: Vector3
@@ -169,6 +174,15 @@ func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
 		_is_bobbing = false
 
 	_was_bobbing = _is_bobbing
+	_set_rune_icon_material()
+
+func _set_rune_icon_material() -> void:
+	if _mesh_instance:
+		if _is_bobbing or is_picked_up():
+			_mesh_instance.set_surface_override_material(1, rune_icon_material)
+			return
+		else:
+			_mesh_instance.set_surface_override_material(1, faded_out_rune_icon_material)
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false

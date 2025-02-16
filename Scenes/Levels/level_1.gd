@@ -61,8 +61,8 @@ func place_remaining_runes() -> void:
 
 	# Fade out existing runes except the match rune
 	var has_existing_runes := false
-	for position in rune_positions:
-		for child in position.get_children():
+	for pos in rune_positions:
+		for child in pos.get_children():
 			if child is BaseRune and child != match_rune:
 				has_existing_runes = true
 				child.fade_out()
@@ -93,6 +93,17 @@ func _on_level_1_completed() -> void:
 func _on_rune_matched() -> void:
 	current_matches += 1
 	if current_matches >= matches_required:
+		# Fade out all runes before completing level
+		var rune_positions: Array[Node] = get_node("Runes").get_children()
+		for pos in rune_positions:
+			for child in pos.get_children():
+				if child is BaseRune:
+					child.fade_out()
+
+		# Also fade out the match rune on the pedestal
+		if match_rune:
+			match_rune.fade_out()
+
 		Events.level_1_completed.emit()
 	else:
 		# Generate new set of runes and place the match rune
