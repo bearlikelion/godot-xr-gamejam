@@ -26,10 +26,14 @@ func _on_dropped(_pickable: Variant) -> void:
 
 func _on_body_entered(_body: Node) -> void:
 	if breakable:
-		hide()
-		print("Wrong crystal broke")
-		if not break_sound.playing:
-			break_sound.play()
+		crystal_break()
+
+
+func crystal_break() -> void:
+	hide()
+	print("Wrong crystal broke")
+	if not break_sound.playing:
+		break_sound.play()
 
 
 func _on_break_sound_finished() -> void:
