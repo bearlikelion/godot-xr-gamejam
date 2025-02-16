@@ -11,7 +11,7 @@ const COMBINING_POTION = preload("res://Scenes/Game/Potions/combining_potion.tsc
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.level = 7
+	Global.level = 6
 	animation_player.play("appear")
 	Events.reset_potions.connect(_on_reset_potions)
 	Events.level_6_completed.connect(_on_level_6_compelted)

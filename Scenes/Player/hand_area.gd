@@ -9,7 +9,6 @@ func _on_body_entered(body: Node3D) -> void:
 			body.crystal_break()
 
 		if body is ChestKey:
-			print("Remove Key Shading for Hand Area")
 			body.remove_shading()
 
 		# print("Body entered hand area: %s" % body.name)

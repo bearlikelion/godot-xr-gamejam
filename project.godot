@@ -114,7 +114,6 @@ viewport/transparent_background=true
 [xr]
 
 openxr/enabled=true
-openxr/reference_space=0
 openxr/environment_blend_mode=2
 openxr/foveation_level=3
 openxr/foveation_dynamic=true

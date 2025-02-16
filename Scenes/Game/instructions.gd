@@ -140,5 +140,6 @@ func _on_restart_level() -> void:
 
 	animation_player.play("fade")
 	await get_tree().create_timer(1.5).timeout
-	Global.level = 0
+	if Global.level == 8 or Global.level == 1:
+		Global.level = 0
 	Events.reload_level.emit()
