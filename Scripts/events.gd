@@ -5,6 +5,7 @@ extends Node
 signal place_on_pedistal(scene_string_or_base_rune: Variant)
 signal podium_snapped(object_name: String)
 signal rumble(hand: String, body_name: String)
+signal runes_faded_out  # New signal for fade coordination
 
 # Start signals
 signal podium_rose

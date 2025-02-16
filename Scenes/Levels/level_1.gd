@@ -24,6 +24,7 @@ func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	Events.restart_level.connect(_on_restart_level)
 	Events.rune_matched.connect(_on_rune_matched)
+	Events.runes_faded_out.connect(_on_runes_faded_out)
 
 	# Generate initial runes and place the match rune immediately
 	if Global.level == 1:
@@ -59,10 +60,19 @@ func place_remaining_runes() -> void:
 		return
 
 	# Fade out existing runes except the match rune
+	var has_existing_runes := false
 	for position in rune_positions:
 		for child in position.get_children():
 			if child is BaseRune and child != match_rune:
+				has_existing_runes = true
 				child.fade_out()
+
+	# If there were no runes to fade out, place new ones immediately
+	if not has_existing_runes:
+		_place_new_runes()
+
+func _place_new_runes() -> void:
+	var rune_positions: Array[Node] = get_node("Runes").get_children()
 
 	if not Global.testing:
 		rune_positions.shuffle()
@@ -72,6 +82,10 @@ func place_remaining_runes() -> void:
 		_remaining_runes[i]._is_bobbing = true
 		rune_positions[i].add_child(_remaining_runes[i])
 		_remaining_runes[i].fade_in()
+
+func _on_runes_faded_out() -> void:
+	# Place new runes after old ones have faded out
+	_place_new_runes()
 
 func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
@@ -85,7 +99,7 @@ func _on_rune_matched() -> void:
 		generate_new_rune_set()
 		Events.place_on_pedistal.emit(match_rune)
 
-		# Place the remaining runes
+		# Start the fade out/fade in sequence
 		place_remaining_runes()
 
 		# Emit a signal to update the progress display

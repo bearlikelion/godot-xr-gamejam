@@ -184,5 +184,7 @@ func fade_out() -> void:
 func fade_in() -> void:
 	animation_player.play("Fade In")
 
-func _on_fade_finished(_anim_name: StringName) -> void:
+func _on_fade_finished(anim_name: StringName) -> void:
+	if anim_name == "Fade Out":
+		Events.runes_faded_out.emit()
 	queue_free()
