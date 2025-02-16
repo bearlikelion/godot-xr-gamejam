@@ -35,8 +35,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "rise":
 		Events.podium_rose.emit()
 
+func _on_place_on_pedistal(scene_string_or_base_rune: Variant) -> void:
 
-func _on_place_on_pedistal(scene_string: String) -> void:
+	if type_string(typeof(scene_string_or_base_rune)) == "String":
+		_on_place_on_pedistal_string(scene_string_or_base_rune)
+	else: # Assume base_rune
+		_on_place_on_pedistal_rune(scene_string_or_base_rune)
+
+
+func _on_place_on_pedistal_string(scene_string: String) -> void:
 	var _item: Node3D = load(scene_string).instantiate()
 
 	if icon_marker.get_child_count() > 0:
@@ -44,6 +51,17 @@ func _on_place_on_pedistal(scene_string: String) -> void:
 			icon_child.queue_free()
 
 	icon_marker.add_child(_item)
+
+func _on_place_on_pedistal_rune(base_rune: BaseRune) -> void:
+	base_rune = base_rune.duplicate()
+	base_rune.enabled = false  # Make it so it can't be picked up
+	base_rune.freeze = true
+
+	if icon_marker.get_child_count() > 0:
+		for icon_child in icon_marker.get_children():
+			icon_child.queue_free()
+
+	icon_marker.add_child(base_rune)
 
 
 func _on_level_completed() -> void:
@@ -64,7 +82,7 @@ func _on_level_4_completed() -> void:
 func _on_podium_snap_zone_has_picked_up(what: Variant) -> void:
 	print("Snapped to podium: %s" % what)
 	if Global.level == 1:
-		if what is PickableRune:
+		if what is BaseRune:
 			Events.podium_snapped.emit(what.rune_name)
 
 	if Global.level == 2:
