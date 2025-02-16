@@ -10,32 +10,29 @@ var _remaining_runes: Array[BaseRune]
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var fail_sound: AudioStreamPlayer3D = $FailSound
 @onready var rune_config: RuneConfig = $Runes
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
 	Global.level = 1
 
 	if not rune_config:
 		push_error("RuneConfig not assigned to Level1")
 		return
-	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 	Events.restart_level.connect(_on_restart_level)
 	Events.rune_matched.connect(_on_rune_matched)
+	Events.wrong_rune.connect(_on_wrong_rune)
 	Events.runes_faded_out.connect(_on_runes_faded_out)
+	animation_player.play("appear")
 
 	# Generate initial runes and place the match rune immediately
 	if Global.level == 1:
 		generate_new_rune_set()
 		Events.place_on_pedistal.emit(match_rune)
-		_on_start_game()
 
-func _on_start_game() -> void:
-	show()
-	animation_player.play("appear")
 
 # Generates a new set of runes and selects one as the match target
 func generate_new_rune_set() -> void:
@@ -52,8 +49,11 @@ func generate_new_rune_set() -> void:
 	# Set the first rune as our match target
 	match_rune = _remaining_runes[0]
 
+
 # Places the remaining runes in the level
 func place_remaining_runes() -> void:
+	await get_tree().create_timer(1.5).timeout
+
 	# Get all rune positions
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
 	if rune_positions.is_empty():
@@ -71,6 +71,7 @@ func place_remaining_runes() -> void:
 	# If there were no runes to fade out, place new ones immediately
 	if not has_existing_runes:
 		_place_new_runes()
+
 
 func _place_new_runes() -> void:
 	var rune_positions: Array[Node] = get_node("Runes").get_children()
@@ -90,12 +91,22 @@ func _place_new_runes() -> void:
 		_remaining_runes[i].fade_in()
 		_remaining_runes[i]._play_hover_sound()
 
+
 func _on_runes_faded_out() -> void:
 	# Place new runes after old ones have faded out
 	_place_new_runes()
 
+
 func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
+
+
+func _on_wrong_rune() -> void:
+	fail_sound.play()
+	#var podium_snap: PodiumSnapZone = get_tree().get_first_node_in_group("podium_snap_zone")
+	#if podium_snap:
+		#podium_snap.drop_object()
+
 
 func _on_rune_matched() -> void:
 	current_matches += 1
@@ -123,6 +134,7 @@ func _on_rune_matched() -> void:
 		# Emit a signal to update the progress display
 		Events.update_match_progress.emit(current_matches, matches_required)
 
+
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
 		Events.level_1_instructions.emit()
@@ -133,8 +145,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		collision_shape_3d.disabled = true
 		hide()
 
+
 func _on_audio_stream_player_3d_finished() -> void:
 	animation_player.play("fade")
+
 
 func _on_restart_level() -> void:
 	current_matches = 0

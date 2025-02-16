@@ -2,6 +2,9 @@ extends Label3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var grab_instructed: bool = false
+var place_instrudcted: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
@@ -25,6 +28,9 @@ func _ready() -> void:
 
 	Events.podium_rose.connect(_on_podium_rose)
 	Events.level_1_instructions.connect(_on_level_1_instructions)
+	Events.grab_instruction.connect(_on_grab_instructions)
+	Events.place_instruction.connect(_on_place_instruction)
+	Events.wrong_rune.connect(_on_wrong_rune)
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
 	Events.level_4_load.connect(_on_level_4_load)
@@ -50,7 +56,29 @@ func _on_podium_rose() -> void:
 
 func _on_level_1_instructions() -> void:
 	animation_player.play("RESET")
-	text = "Find the\nmatching rune"
+	text = "Find the\nmatching runes"
+	animation_player.play("fade")
+
+
+func _on_grab_instructions() -> void:
+	if not grab_instructed:
+		grab_instructed = true
+		animation_player.play("RESET")
+		text = "Use the grip\nfor telekenesis"
+		animation_player.play("fade")
+
+
+func _on_place_instruction() -> void:
+	if not place_instrudcted:
+		place_instrudcted = true
+		animation_player.play("RESET")
+		text = "Place rune above\nthe podium"
+		animation_player.play("fade")
+
+
+func _on_wrong_rune() -> void:
+	animation_player.play("RESET")
+	text = "Incorrect\nmatch"
 	animation_player.play("fade")
 
 

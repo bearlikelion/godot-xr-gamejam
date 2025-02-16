@@ -75,13 +75,15 @@ var _hover_height_modifier: float = 1.0
 # Node references
 @onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var _audio_player: AudioStreamPlayer3D = $AudioPlayer3D
-@onready var _hover_audio_player: AudioStreamPlayer3D = $HoverAudioPlayer3D
+# @onready var _audio_player: AudioStreamPlayer3D = $AudioPlayer3D
+# @onready var _hover_audio_player: AudioStreamPlayer3D = $HoverAudioPlayer3D
+@onready var pickup_audio: AudioStreamPlayer3D = $PickupAudio
 
 # Sound randomizers
 var _activation_randomizer: AudioStreamRandomizer
 var _deactivation_randomizer: AudioStreamRandomizer
 var _hover_randomizer: AudioStreamRandomizer
+
 
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
@@ -98,36 +100,36 @@ func _ready() -> void:
 	_hover_height_modifier = randf_range(0.5, 2.0)  # 50% to 200% base height variation
 
 	# Initialize audio player settings
-	if _audio_player and _hover_audio_player:
-		# Configure main audio player settings
-		_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
-		_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
-		_audio_player.unit_size = 3.0  # Scale for distance calculations
-		_audio_player.max_db = 0.0  # Maximum volume
-		_audio_player.panning_strength = 1.0  # Full 3D panning
-
-		# Configure hover audio player settings
-		_hover_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
-		_hover_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
-		_hover_audio_player.unit_size = 2.0  # Scale for distance calculations
-		_hover_audio_player.panning_strength = 1.0  # Full 3D panning
-		_hover_audio_player.stream_paused = false  # Ensure not paused
+	#if _audio_player and _hover_audio_player:
+		## Configure main audio player settings
+		#_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		#_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		#_audio_player.unit_size = 3.0  # Scale for distance calculations
+		#_audio_player.max_db = 0.0  # Maximum volume
+		#_audio_player.panning_strength = 1.0  # Full 3D panning
+#
+		## Configure hover audio player settings
+		#_hover_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		#_hover_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		#_hover_audio_player.unit_size = 2.0  # Scale for distance calculations
+		#_hover_audio_player.panning_strength = 1.0  # Full 3D panning
+		#_hover_audio_player.stream_paused = false  # Ensure not paused
 
 		# Get cached randomizers from SoundManager
-		_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
-		_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
-		_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
+		#_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
+		#_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
+		#_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
 
-		if Global.testing:
-			print("[BaseRune] Audio players initialized")
-			print("[BaseRune] Hover randomizer exists: ", _hover_randomizer != null)
+		#if Global.testing:
+			#print("[BaseRune] Audio players initialized")
+			#print("[BaseRune] Hover randomizer exists: ", _hover_randomizer != null)
 
 	# Initialize audio player settings
-	if _audio_player:
+	#if _audio_player:
 		# Get cached randomizers from SoundManager
-		_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
-		_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
-		_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
+		#_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
+		#_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
+		#_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
 
 	# Set the mesh if it exists
 	if rune_mesh:
@@ -137,6 +139,7 @@ func _ready() -> void:
 		else:
 			_update_collision_shape()
 
+
 func _update_collision_shape_from_mesh() -> void:
 	if not has_node("CollisionShape3D") or not rune_mesh:
 		return
@@ -145,6 +148,7 @@ func _update_collision_shape_from_mesh() -> void:
 	collision_radius = max(bounds.size.x, bounds.size.z) * 0.5
 	collision_height = bounds.size.y
 	_update_collision_shape()
+
 
 func _update_collision_shape() -> void:
 	if not has_node("CollisionShape3D"):
@@ -175,11 +179,13 @@ func _update_collision_shape() -> void:
 
 	collision_node.shape = new_shape
 
+
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if _is_bobbing:
 		_apply_hover_bobbing(state)
 	else:
 		_apply_natural_fall(state)
+
 
 func _apply_hover_bobbing(state: PhysicsDirectBodyState3D) -> void:
 	_time += state.step
@@ -217,6 +223,8 @@ func _apply_natural_fall(state: PhysicsDirectBodyState3D) -> void:
 
 
 func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
+	Events.grab_instruction.emit()
+
 	if enable and not is_picked_up():
 		_is_bobbing = true
 		_time = 0.0  # Reset time for consistent bobbing
@@ -240,33 +248,36 @@ func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
 	_was_bobbing = _is_bobbing
 	_set_rune_icon_material()
 
+
 func play_activation_sound() -> void:
 	if Global.testing:
 		print("[BaseRune] Attempting to play activation sound")
-		print("[BaseRune] Audio player exists: ", _audio_player != null)
+		# print("[BaseRune] Audio player exists: ", _audio_player != null)
 		print("[BaseRune] Activation randomizer exists: ", _activation_randomizer != null)
 
-	if _audio_player and _activation_randomizer:
-		_audio_player.stream = _activation_randomizer
-		_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
-		_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
-		_audio_player.play()
-		if Global.testing:
-			print("[BaseRune] Started playing activation sound")
+	#if _audio_player and _activation_randomizer:
+		#_audio_player.stream = _activation_randomizer
+		#_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
+		#_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
+		#_audio_player.play()
+		#if Global.testing:
+			#print("[BaseRune] Started playing activation sound")
+
 
 func play_deactivation_sound() -> void:
 	if Global.testing:
 		print("[BaseRune] Attempting to play deactivation sound")
-		print("[BaseRune] Audio player exists: ", _audio_player != null)
+		# print("[BaseRune] Audio player exists: ", _audio_player != null)
 		print("[BaseRune] Deactivation randomizer exists: ", _deactivation_randomizer != null)
 
-	if _audio_player and _deactivation_randomizer:
-		_audio_player.stream = _deactivation_randomizer
-		_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
-		_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
-		_audio_player.play()
-		if Global.testing:
-			print("[BaseRune] Started playing deactivation sound")
+	#if _audio_player and _deactivation_randomizer:
+		#_audio_player.stream = _deactivation_randomizer
+		#_audio_player.pitch_scale = randf_range(0.9, 1.1)  # Slight pitch variation
+		#_audio_player.volume_db = randf_range(-2.0, 2.0)  # Slight volume variation
+		#_audio_player.play()
+		#if Global.testing:
+			#print("[BaseRune] Started playing deactivation sound")
+
 
 func _play_hover_sound() -> void:
 	pass
@@ -280,12 +291,14 @@ func _play_hover_sound() -> void:
 	# 	if Global.testing:
 	# 		print("[BaseRune] Started playing hover sound")
 
+
 func _stop_hover_sound() -> void:
 	pass
 	# if _hover_audio_player and _hover_audio_player.playing and _hover_audio_player.stream == _hover_randomizer:
 	# 	_hover_audio_player.stop()
 	# 	if Global.testing:
 	# 		print("[BaseRune] Stopped hover sound")
+
 
 func _set_rune_icon_material() -> void:
 	if _mesh_instance:
@@ -294,6 +307,7 @@ func _set_rune_icon_material() -> void:
 			return
 		else:
 			_mesh_instance.set_surface_override_material(1, faded_out_rune_icon_material)
+
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
@@ -304,21 +318,27 @@ func _on_dropped(_pickable: Variant) -> void:
 	# For now, just play activation sound
 	play_activation_sound()
 
+
 func _on_level_1_completed() -> void:
 	freeze = false
+
 
 func fade_out() -> void:
 	animation_player.play("Fade Out")
 
+
 func fade_in() -> void:
 	animation_player.play("Fade In")
+
 
 func _on_fade_finished(anim_name: StringName) -> void:
 	if anim_name == "Fade Out":
 		Events.runes_faded_out.emit()
 		queue_free()
 
+
 func _on_picked_up(_pickable: Node3D) -> void:
 	if Global.testing:
 		print("[BaseRune] Rune picked up, playing deactivation sound")
 	play_deactivation_sound()
+	pickup_audio.play()

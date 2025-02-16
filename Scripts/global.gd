@@ -29,7 +29,8 @@ func _on_podium_snapped(object_name: String) -> void:
 		if object_name == rune_to_match:
 			print("Rune matched: %s" % object_name)
 			Events.rune_matched.emit()
-		return
+		else:
+			Events.wrong_rune.emit()
 
 	if level == 2:
 		if object_name == "magic_book":

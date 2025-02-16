@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6jms2ca8yrmh"]
+[gd_scene load_steps=14 format=3 uid="uid://b6jms2ca8yrmh"]
 
 [ext_resource type="Script" uid="uid://dpxhfs75ad83g" path="res://Scenes/Game/Runes/Pickable/base_rune.gd" id="1_jokhr"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_f4lbg"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_5vxlm"]
 [ext_resource type="Material" uid="uid://i8m5snqc8c0n" path="res://Shaders/3d_transparent_ripples_wave.tres" id="4_jokhr"]
 [ext_resource type="ArrayMesh" uid="uid://dvi8o6hc1ctb7" path="res://Assets/Models/Runes/Rocks/Mesh/runes_Algiz.res" id="5_enmme"]
-[ext_resource type="Script" uid="uid://bphmm68st7h2a" path="res://Scripts/rune_highlight_overlay.gd" id="5_eu5ey"]
+[ext_resource type="Script" path="res://Scripts/rune_highlight_overlay.gd" id="5_eu5ey"]
+[ext_resource type="AudioStream" uid="uid://dn1p6bvwvblg6" path="res://Assets/Audio/SFX/Runes/743246__qubodup__move-stone-rune-4.ogg" id="7_jokhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8rgq"]
 size = Vector3(0.5, 0.5, 0.05)
@@ -128,22 +129,13 @@ highlight_mesh_instance = NodePath("../MeshInstance3D")
 highlight_material = ExtResource("4_jokhr")
 metadata/_custom_type_script = "uid://bc4488qqhutto"
 
-[node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="PickupAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_jokhr")
 attenuation_model = 1
 unit_size = 3.0
 max_db = 0.0
 max_distance = 20.0
 max_polyphony = 2
-bus = &"SFX"
-emission_angle_enabled = true
-emission_angle_degrees = 90.0
-doppler_tracking = 2
-
-[node name="HoverAudioPlayer3D" type="AudioStreamPlayer3D" parent="."]
-attenuation_model = 1
-unit_size = 2.0
-max_db = 1.0
-max_distance = 20.0
 bus = &"SFX"
 emission_angle_enabled = true
 emission_angle_degrees = 90.0

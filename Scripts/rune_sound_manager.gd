@@ -10,10 +10,12 @@ const RUNE_SOUNDS: Dictionary = {
 # Cached randomizers
 var _rune_randomizers: Dictionary[String, AudioStreamRandomizer] = {}
 
+
 func _ready() -> void:
 	if Global.testing:
 		print("[RuneSoundManager] Initializing sound system...")
 	_load_all_rune_sounds()
+
 
 func _load_all_rune_sounds() -> void:
 	for sound_type: String in RUNE_SOUNDS:
@@ -26,6 +28,7 @@ func _load_all_rune_sounds() -> void:
 				print("[RuneSoundManager] Successfully loaded randomizer for type: ", sound_type)
 		else:
 			push_error("[RuneSoundManager] Failed to create randomizer for type: " + sound_type)
+
 
 func _create_randomizer(sounds_dir: String) -> AudioStreamRandomizer:
 	var dir: DirAccess = DirAccess.open(sounds_dir)
@@ -71,6 +74,7 @@ func _create_randomizer(sounds_dir: String) -> AudioStreamRandomizer:
 	if Global.testing:
 		print("[RuneSoundManager] Successfully loaded ", index, " sounds from ", sounds_dir)
 	return randomizer
+
 
 ## Returns the AudioStreamRandomizer for the given sound type
 ## Returns null if the sound type doesn't exist or hasn't been loaded
