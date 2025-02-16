@@ -714,6 +714,7 @@ stream = ExtResource("27_vdfhy")
 bus = &"SFX"
 
 [node name="ButtonMashingTimer" type="Timer" parent="Level5"]
+wait_time = 2.0
 autostart = true
 
 [connection signal="finished" from="Level5/Lights/Red/SimonRed" to="Level5" method="_on_audio_stream_player_3d_finished"]

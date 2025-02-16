@@ -12,6 +12,7 @@ var input_delay: Timer = Timer.new()
 var accept_input: bool = true
 var player_won: bool = false
 var pushing_buttons: bool = false
+var starting_new_sequence: bool = false
 
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level5/AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
@@ -49,7 +50,6 @@ func start_simon() -> void:
 
 
 func add_to_sequence() -> void:
-	await Events.button_timeout
 	if sequence_index >= lights.size():
 		print("PLAYER WINS SIMON")
 		player_won = true
@@ -57,6 +57,7 @@ func add_to_sequence() -> void:
 		animation_player.play("fade")
 		Events.level_5_completed.emit()
 	else:
+		await Events.button_timeout
 		sequence.append(lights[randi() % lights.size()])
 
 
@@ -69,6 +70,7 @@ func play_sequence() -> void:
 		for color in sequence:
 			show_light(color)
 			await get_tree().create_timer(2.1).timeout
+			starting_new_sequence = false
 
 
 func show_light(button_to_press: String) -> void:
@@ -108,14 +110,17 @@ func check_player_input(color: String) -> void:
 	if sequence_index >= sequence.size():
 		if not player_won:
 			is_player_turn = false
-			add_to_sequence()
-			player_input.clear()
-			play_sequence()
+			# sequence breaks by either repeating sequences or not ending level
+			if not starting_new_sequence:
+				starting_new_sequence = true
+				add_to_sequence()
+				player_input.clear()
+				play_sequence()
 
 
 func playerpushingbuttons():
 	pushing_buttons = true
-	button_mashing_timer.start(1.0)
+	button_mashing_timer.start(2.0)
 
 
 func _on_button_mashing_timer_timeout() -> void:
