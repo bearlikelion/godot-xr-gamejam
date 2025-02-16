@@ -57,6 +57,11 @@ func _on_place_on_pedistal_rune(base_rune: BaseRune) -> void:
 	base_rune.enabled = false  # Make it so it can't be picked up
 	base_rune.freeze = true
 
+	var temp_mesh: GeometryInstance3D = base_rune.get_child(2)
+
+
+	temp_mesh.set_material_overlay(load("res://Shaders/Chromatic_Aberration_Sphere.tres"))
+
 	if icon_marker.get_child_count() > 0:
 		for icon_child in icon_marker.get_children():
 			icon_child.queue_free()
