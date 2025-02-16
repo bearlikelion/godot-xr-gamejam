@@ -50,8 +50,10 @@ height = 0.271772
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 collision_layer = 4
 collision_mask = 196615
+mass = 0.3
 freeze_mode = 1
 script = ExtResource("1_w8ywf")
+ranged_grab_method = 2
 metadata/_custom_type_script = "uid://cks55t5gs0dd4"
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_4847d")]

@@ -2,6 +2,8 @@
 class_name Potion
 extends XRToolsPickable
 
+@onready var pouring_sfx: AudioStreamPlayer3D = $PouringSFX
+
 @export_enum("RED", "BLUE") var potion_color: String
 @export var correct_potion: bool = false
 @export var combining_potion: bool = false
@@ -62,6 +64,8 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 	if area.get_parent() is Potion:
 		var potion: Potion = area.get_parent()
 		if potion.correct_potion and potion.potion_color == "RED" and not red_potion:
+			pouring_sfx.pitch_scale = 1.0
+			pouring_sfx.play()
 			red_potion = true
 			var red_material: StandardMaterial3D = StandardMaterial3D.new()
 			red_material.albedo_color = Color.RED
@@ -69,6 +73,8 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 			correct_potions += 1
 
 		if potion.correct_potion and potion.potion_color == "BLUE" and not blue_potion:
+			pouring_sfx.pitch_scale = 1.0
+			pouring_sfx.play()
 			blue_potion = true
 			var blue_material: StandardMaterial3D = StandardMaterial3D.new()
 			blue_material.albedo_color = Color.BLUE
@@ -76,13 +82,18 @@ func _on_combining_area_area_entered(area: Area3D) -> void:
 			correct_potions += 1
 
 		if correct_potions == 2:
+			pouring_sfx.pitch_scale = 1.3
+			pouring_sfx.play()
 			print("PLAYER GOT IT CORRECT WIN LEVEL")
 			var purple_material: StandardMaterial3D = StandardMaterial3D.new()
 			purple_material.albedo_color = Color.PURPLE
 			mesh_instance_3d.set_surface_override_material(1, purple_material)
+			await get_tree().create_timer(2.0).timeout
 			Events.level_6_completed.emit()
 
 		if not potion.correct_potion:
+			pouring_sfx.pitch_scale = 0.8
+			pouring_sfx.play()
 			var black_material: StandardMaterial3D = StandardMaterial3D.new()
 			black_material.albedo_color = Color.BLACK
 			mesh_instance_3d.set_surface_override_material(1, black_material)
