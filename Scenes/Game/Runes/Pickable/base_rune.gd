@@ -70,6 +70,7 @@ var _hover_height_modifier: float = 1.0
 func _ready() -> void:
 	Events.level_1_completed.connect(_on_level_1_completed)
 	highlight_updated.connect(_on_highlight_updated)
+	animation_player.animation_finished.connect(_on_fade_finished)
 	_initial_position = global_position
 
 	# Initialize random bobbing parameters
@@ -192,7 +193,6 @@ func _on_level_1_completed() -> void:
 	freeze = false
 
 func fade_out() -> void:
-	animation_player.connect("animation_finished", _on_fade_finished)
 	animation_player.play("Fade Out")
 
 func fade_in() -> void:
@@ -201,4 +201,4 @@ func fade_in() -> void:
 func _on_fade_finished(anim_name: StringName) -> void:
 	if anim_name == "Fade Out":
 		Events.runes_faded_out.emit()
-	queue_free()
+		queue_free()

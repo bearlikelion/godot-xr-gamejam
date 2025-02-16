@@ -77,6 +77,11 @@ func _place_new_runes() -> void:
 	if not Global.testing:
 		rune_positions.shuffle()
 
+	# Make sure all remaining runes are removed from their current parents first
+	for rune in _remaining_runes:
+		if rune.get_parent():
+			rune.get_parent().remove_child(rune)
+
 	# Place all remaining runes in positions and fade them in
 	for i in range(_remaining_runes.size()):
 		_remaining_runes[i]._is_bobbing = true
@@ -122,7 +127,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		place_remaining_runes()  # Place remaining runes after level appears
 
 	if anim_name == "fade":
-		match_rune.queue_free()
 		Events.level_2_load.emit()
 		collision_shape_3d.disabled = true
 		hide()
