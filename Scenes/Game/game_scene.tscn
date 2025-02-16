@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b6d8ux27w4oa4"]
+[gd_scene load_steps=33 format=3 uid="uid://b6d8ux27w4oa4"]
 
 [ext_resource type="Script" uid="uid://djrekxojdxtoe" path="res://Scenes/Game/game_scene.gd" id="1_kn4b3"]
 [ext_resource type="Environment" uid="uid://ckiwtcdsam7ed" path="res://addons/godot-xr-tools/staging/staging_env.tres" id="2_ihfs7"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://btf05hjpw6k05" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_hand_low.tscn" id="11_cid5o"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="14_cid5o"]
 [ext_resource type="Script" uid="uid://bl1e26oybhu13" path="res://addons/godot-xr-tools/rumble/rumble_event.gd" id="16_bgmid"]
-[ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_yi1st"]
 [ext_resource type="Script" uid="uid://c7ey4bsfl65ep" path="res://addons/godot-xr-tools/rumble/rumble_manager.gd" id="20_nvdyc"]
 [ext_resource type="Script" uid="uid://bnm4u1co4hy7k" path="res://Scenes/Game/rumbler.gd" id="20_p15s5"]
 
@@ -125,9 +124,6 @@ script = ExtResource("1_kn4b3")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D"]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 environment = ExtResource("2_ihfs7")
@@ -256,11 +252,10 @@ collision_mask = 1019
 push_rigid_bodies = false
 ground_control = 1
 
-[node name="Base" parent="." instance=ExtResource("10_w6h2q")]
+[node name="OmniLight3D" type="OmniLight3D" parent="XROrigin3D/PlayerBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_yi1st")
-bus = &"Music"
+[node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 
 [connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController" method="_on_button_pressed"]
 [connection signal="body_entered" from="XROrigin3D/LeftController/HandArea" to="XROrigin3D/LeftController/HandArea" method="_on_body_entered"]

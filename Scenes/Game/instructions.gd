@@ -116,7 +116,7 @@ func _on_level_6_load() -> void:
 
 func _on_level_7_load() -> void:
 	animation_player.play("RESET")
-	text = "Find the golden key"
+	text = "Find the golden key\nto unlock the chest"
 	animation_player.play("fade")
 
 

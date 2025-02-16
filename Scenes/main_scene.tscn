@@ -13,10 +13,10 @@
 [ext_resource type="FontFile" uid="uid://bo3dgpywy1cfg" path="res://Assets/Fonts/Wizards' Magic.ttf" id="6_ioaeq"]
 [ext_resource type="Material" path="res://addons/godot-xr-tools/materials/pointer.tres" id="7_8edxt"]
 [ext_resource type="Texture2D" uid="uid://clbtsf0ahb3fm" path="res://addons/godot-xr-tools/assets/misc/progress_bar.png" id="7_ioaeq"]
-[ext_resource type="AudioStream" uid="uid://c6lvp6qe0tsvv" path="res://Assets/Audio/Music/658817__deadrobotmusic__castles-acoustic-guitar-folk-metal-vibe-103-bpm-c-sharp-minor.ogg" id="7_maf8m"]
 [ext_resource type="Material" uid="uid://dyuaw57o8y3i" path="res://addons/godot-xr-tools/materials/highlight.tres" id="8_5oxhp"]
 [ext_resource type="Texture2D" uid="uid://ocyj01x5mtt7" path="res://addons/godot-xr-tools/assets/misc/Hold trigger to continue.png" id="8_7ewk0"]
 [ext_resource type="PackedScene" uid="uid://cymteydkxagpp" path="res://addons/godot-xr-tools/misc/hold_button.tscn" id="9_lhp3t"]
+[ext_resource type="AudioStream" uid="uid://djs2poy5im71q" path="res://Assets/Audio/Music/Tavern Candles.ogg" id="17_psl12"]
 
 [sub_resource type="PlaneMesh" id="1"]
 size = Vector2(0.001, 0.001)
@@ -143,7 +143,7 @@ color = Color(0, 0.717647, 1, 1)
 [node name="StartXR" parent="." instance=ExtResource("6_8ug1t")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_maf8m")
+stream = ExtResource("17_psl12")
 autoplay = true
 bus = &"Music"
 
