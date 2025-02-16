@@ -12,18 +12,20 @@ var match_rune: BaseRune
 func _ready() -> void:
 	hide()
 	Global.level = 1
-
+  
 	if not rune_config:
 		push_error("RuneConfig not assigned to Level1")
 		return
-
 	Events.start_game.connect(_on_start_game)
 	Events.level_1_completed.connect(_on_level_1_completed)
 	Events.restart_level.connect(_on_restart_level)
+	generate_runes() # Generate runes
+
+	if Global.level == 1:
+		_on_start_game()
 
 func _on_start_game() -> void:
 	show()
-	generate_runes() # Generate runes
 	animation_player.play("appear")
 
 func generate_runes() -> void:
@@ -59,6 +61,9 @@ func _on_level_1_completed() -> void:
 	audio_stream_player_3d.play()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "appear":
+		Events.level_1_instructions.emit()
+
 	if anim_name == "fade":
 		match_rune.queue_free()
 		Events.level_2_load.emit()

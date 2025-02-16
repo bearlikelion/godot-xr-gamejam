@@ -1,14 +1,17 @@
+@tool
 class_name Credits
 extends Control
+
+@export_tool_button("Generate Credits") var generate_action: Callable = generate_credits
 
 @export var scroll: bool = false
 @export var scroll_speed: float = 25.0
 
 @export_group("Formatting")
-@export var h1_font_size: int = 64
-@export var h2_font_size: int = 48
-@export var h3_font_size: int = 32
-@export var h4_font_size: int = 24
+@export var h1_font_size: int = 48
+@export var h2_font_size: int = 32
+@export var h3_font_size: int = 24
+@export var h4_font_size: int = 16
 
 var text: String
 var amount: float
@@ -18,10 +21,13 @@ var current_scroll: float = 0.0
 @onready var credits_label: RichTextLabel = %Credits
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.show_credits.connect(_on_show_credits)
 
+
+func generate_credits() -> void:
 	text = FileAccess.get_file_as_string("res://CREDITS.md")
 	var end_of_first_line: int = text.find("\n") + 1
 	text = text.right(-end_of_first_line)
@@ -31,16 +37,7 @@ func _ready() -> void:
 	text = _regex_replace_comments(text)
 	text = _regex_replace_urls(text)
 	text = _regex_replace_titles(text)
-
-	# credits_label.text = ("[center]%s[/center]") % [text]
-	# scroll_container.set_deferred("scroll_vertical", 50)
-
-
-func _process(_delta: float) -> void:
-	pass
-	# if scroll:
-		# current_scroll += scroll_speed * delta
-		# scroll_container.set_deferred("scroll_vertical", round(current_scroll))
+	credits_label.text = ("[center]%s[/center]") % [text]
 
 
 ## Match and remove lines starting with "[]:" (with any content inside the brackets)

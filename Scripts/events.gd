@@ -4,12 +4,15 @@ extends Node
 # Global signals
 signal place_on_pedistal(scene_string_or_base_rune: String)
 signal podium_snapped(object_name: String)
+signal rumble(hand: String, body_name: String)
 
-# Star signals
+# Start signals
 signal podium_rose
 signal start_game
 
 #region Level Signals
+signal level_1_load
+signal level_1_instructions
 signal level_1_completed
 
 signal level_2_load
@@ -29,6 +32,7 @@ signal level_4_completed
 
 signal level_5_load
 signal button_pushed(color: String)
+signal failed_simon
 signal level_5_completed
 
 signal level_6_load

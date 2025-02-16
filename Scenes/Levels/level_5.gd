@@ -10,6 +10,7 @@ var sequence_index: int = 0
 var is_player_turn: bool = false
 var input_delay: Timer = Timer.new()
 var accept_input: bool = true
+var player_won: bool = false
 
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $Level5/AudioStreamPlayer3D
 @onready var animation_player: AnimationPlayer = $Level5/AnimationPlayer
@@ -46,20 +47,23 @@ func start_simon() -> void:
 func add_to_sequence() -> void:
 	if sequence_index >= lights.size():
 		print("PLAYER WINS SIMON")
-		Events.level_5_completed.emit()
+		player_won = true
 		audio_stream_player_3d.play()
 		animation_player.play("fade")
+		Events.level_5_completed.emit()
 	else:
 		sequence.append(lights[randi() % lights.size()])
 
 
 func play_sequence() -> void:
-	is_player_turn = true
-	sequence_index = 0
-	print("Play Sequence: %s" % [sequence])
-	for color in sequence:
-		show_light(color)
-		await get_tree().create_timer(2.1).timeout
+	if not player_won:
+		await get_tree().create_timer(1.5).timeout
+		is_player_turn = true
+		sequence_index = 0
+		print("Play Sequence: %s" % [sequence])
+		for color in sequence:
+			show_light(color)
+			await get_tree().create_timer(2.1).timeout
 
 
 func show_light(button_to_press: String) -> void:
@@ -89,6 +93,7 @@ func check_player_input(color: String) -> void:
 
 
 	if is_player_turn and player_input[sequence_index] != sequence[sequence_index]:
+		Events.failed_simon.emit()
 		fail_sound.play()
 		start_simon()
 		return
@@ -96,11 +101,11 @@ func check_player_input(color: String) -> void:
 	sequence_index += 1
 
 	if sequence_index >= sequence.size():
-		is_player_turn = false
-		add_to_sequence()
-		await get_tree().create_timer(1.5).timeout
-		player_input.clear()
-		play_sequence()
+		if not player_won:
+			is_player_turn = false
+			add_to_sequence()
+			player_input.clear()
+			play_sequence()
 
 
 func _on_button_pushed(button_color: String) -> void:
@@ -108,20 +113,16 @@ func _on_button_pushed(button_color: String) -> void:
 
 	match button_color:
 		"Red":
-			animation_player.stop()
-			animation_player.play("red")
+			# animation_player.play("red")
 			simon_red.play()
 		"Green":
-			animation_player.stop()
-			animation_player.play("green")
+			# animation_player.play("green")
 			simon_green.play()
 		"Yellow":
-			animation_player.stop()
-			animation_player.play("yellow")
+			# animation_player.play("yellow")
 			simon_yellow.play()
 		"Blue":
-			animation_player.stop()
-			animation_player.play("blue")
+			# animation_player.play("blue")
 			simon_blue.play()
 
 

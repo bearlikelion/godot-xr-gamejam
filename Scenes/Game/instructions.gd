@@ -4,9 +4,27 @@ extends Label3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hide()
-	Events.start_game.connect(_on_start_game)
+	show()
+
+	if Global.level > 0:
+		match Global.level:
+			1:
+				_on_level_1_instructions()
+			2:
+				_on_level_2_load()
+			3:
+				_on_level_3_load()
+			4:
+				_on_level_4_load()
+			5:
+				_on_level_5_load()
+			6:
+				_on_level_6_load()
+			7:
+				_on_level_7_load()
+
 	Events.podium_rose.connect(_on_podium_rose)
+	Events.level_1_instructions.connect(_on_level_1_instructions)
 	Events.level_2_load.connect(_on_level_2_load)
 	Events.level_3_load.connect(_on_level_3_load)
 	Events.level_4_load.connect(_on_level_4_load)
@@ -15,6 +33,7 @@ func _ready() -> void:
 	Events.staff_head_connected.connect(_on_staff_head_connected)
 	Events.staff_forged.connect(_on_staff_forged)
 	Events.level_5_load.connect(_on_level_5_load)
+	Events.failed_simon.connect(_on_failed_simon)
 	Events.level_6_load.connect(_on_level_6_load)
 	Events.level_7_load.connect(_on_level_7_load)
 	Events.chest_opened.connect(_on_chest_opened)
@@ -23,11 +42,14 @@ func _ready() -> void:
 
 
 func _on_podium_rose() -> void:
-	show()
-	animation_player.play("fade")
+	if Global.level == 0:
+		animation_player.play("RESET")
+		text = "Touch the podium\nto begin"
+		animation_player.play("fade")
 
 
-func _on_start_game() -> void:
+func _on_level_1_instructions() -> void:
+	animation_player.play("RESET")
 	text = "Find the\nmatching rune"
 	animation_player.play("fade")
 
@@ -52,7 +74,7 @@ func _on_level_4_load() -> void:
 
 func _on_find_tool() -> void:
 	animation_player.play("RESET")
-	text = "Use the right tool\nto make a gem"
+	text = "Use the correct tool\nto make a gem"
 	animation_player.play("fade")
 
 
@@ -80,6 +102,12 @@ func _on_level_5_load() -> void:
 	animation_player.play("fade")
 
 
+func _on_failed_simon() -> void:
+	animation_player.play("RESET")
+	text = "Incorrect\nsequence"
+	animation_player.play("fade")
+
+
 func _on_level_6_load() -> void:
 	animation_player.play("RESET")
 	text = "Mix the potion"
@@ -88,7 +116,7 @@ func _on_level_6_load() -> void:
 
 func _on_level_7_load() -> void:
 	animation_player.play("RESET")
-	text = "Find the golden key"
+	text = "Find the golden key\nto unlock the chest"
 	animation_player.play("fade")
 
 
@@ -105,6 +133,7 @@ func _on_repeat_instructions() -> void:
 
 func _on_restart_level() -> void:
 	animation_player.play("RESET")
+	text = "Restarting level"
 	animation_player.play("fade")
 	await get_tree().create_timer(1.5).timeout
 	Events.reload_level.emit()

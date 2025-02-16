@@ -31,13 +31,10 @@ func place_crystals() -> void:
 
 	for crystal_position: Marker3D in crystal_positions:
 		var _crystal: PickableCrystal = PICKABLE_CRYSTAL.instantiate()
-
-		crystal_position.add_child(_crystal)
 		if crystal_i == 0:
-			_crystal.mesh_instance_3d.material_override = null
 			_crystal.magic_crystal = true
-			_crystal.add_to_group("magic_crystal")
 			magic_crystal = _crystal
+		crystal_position.add_child(_crystal)
 
 		crystal_i += 1
 

@@ -15,6 +15,10 @@ var hits: int = 0
 func _ready() -> void:
 	Events.level_3_completed.connect(_on_level_3_completed)
 
+	if magic_crystal:
+		mesh_instance_3d.material_override = null
+		add_to_group("magic_crystal")
+
 
 func _on_dropped(_pickable: Variant) -> void:
 	freeze = false
@@ -40,6 +44,8 @@ func _on_level_3_completed() -> void:
 func crystal_hit() -> void:
 	hits += 1
 	mesh_instance_3d.scale -= Vector3(0.1, 0.1, 0.1)
+	Events.rumble.emit("LEFT", "CHISEL" + "_" + str(hits))
+	Events.rumble.emit("RIGHT", "CHISEL" + "_" + str(hits))
 
 	if hits > 2:
 		var staff_head: RigidBody3D = STAFF_HEAD.instantiate()
@@ -47,6 +53,7 @@ func crystal_hit() -> void:
 		get_tree().get_first_node_in_group("base").add_child(staff_head)
 		# get_tree().get_first_node_in_group("anvil_snap_zone").pick_up_object(staff_head)
 		Events.spawn_staff_head.emit()
+		_grab_driver.discard()
 		queue_free()
 
 
