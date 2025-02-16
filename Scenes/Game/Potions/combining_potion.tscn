@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5tia3oaavf5m"]
+[gd_scene load_steps=9 format=3 uid="uid://b5tia3oaavf5m"]
 
 [ext_resource type="Script" uid="uid://br51oame87iow" path="res://Scenes/Game/Potions/potion.gd" id="1_s7tjm"]
 [ext_resource type="Shader" uid="uid://cvq7qhvqkvn67" path="res://Shaders/liquid.gdshader" id="3_nh8wn"]
+[ext_resource type="AudioStream" uid="uid://cuyaec8gl2qwu" path="res://Assets/Audio/SFX/pouring.ogg" id="4_ifu30"]
 [ext_resource type="ArrayMesh" uid="uid://2iye1jwiu2lt" path="res://Assets/Models/Tower/Potions/Meshes/potions_0_Tube_001.res" id="4_s7tjm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ifu30"]
@@ -12,7 +13,7 @@ shader_parameter/vel = 0.0
 shader_parameter/liquid_color = Color(1, 1, 1, 1)
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_line = 0.0
-shader_parameter/fill_amount = 0.54
+shader_parameter/fill_amount = 1.0
 shader_parameter/size = Vector2(1, 1)
 shader_parameter/glass_thickness = 0.0
 shader_parameter/scale = 1.0
@@ -61,6 +62,9 @@ shape = SubResource("ConvexPolygonShape3D_s7tjm")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CombiningPotion/CombiningArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00088501, 0.202646, -0.000219712)
 shape = SubResource("BoxShape3D_s7tjm")
+
+[node name="PouringSFX" type="AudioStreamPlayer3D" parent="CombiningPotion"]
+stream = ExtResource("4_ifu30")
 
 [connection signal="dropped" from="CombiningPotion" to="CombiningPotion" method="_on_dropped"]
 [connection signal="area_entered" from="CombiningPotion/CombiningArea" to="CombiningPotion" method="_on_combining_area_area_entered"]

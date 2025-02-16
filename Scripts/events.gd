@@ -38,6 +38,7 @@ signal level_4_completed
 
 signal level_5_load
 signal button_pushed(color: String)
+signal button_timeout
 signal failed_simon
 signal level_5_completed
 
@@ -52,6 +53,7 @@ signal player_equipped_hat
 signal level_7_completed
 
 signal level_8_load
+signal grow_potion_used
 #endregion
 
 signal show_credits

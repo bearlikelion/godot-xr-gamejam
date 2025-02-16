@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=4 uid="uid://c586yqd28moln"]
+[gd_scene load_steps=24 format=4 uid="uid://c586yqd28moln"]
 
 [ext_resource type="Script" uid="uid://1sysdiquyiyu" path="res://Scenes/Game/Crowd/crowd.gd" id="1_cv4lo"]
 [ext_resource type="Material" uid="uid://o045yp0680nw" path="res://Materials/Skin.tres" id="2_weq7l"]
 [ext_resource type="Material" uid="uid://bslgafyqagyvy" path="res://Materials/Face.tres" id="3_w0k0x"]
+[ext_resource type="Script" uid="uid://c0o5bdl0fbxwh" path="res://Scenes/Game/Crowd/area_3d.gd" id="4_weq7l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nic1"]
 resource_name = "Light"
@@ -196,6 +197,10 @@ bind/21/pose = Transform3D(-1, 5.33379e-07, -1.50505e-05, -3.56992e-07, -0.99993
 bind/22/name = &"PoleTarget.R"
 bind/22/bone = -1
 bind/22/pose = Transform3D(1, -7.15256e-07, 0, -5.68434e-14, 1.19209e-07, 1, -7.15256e-07, -1, 0, 0.00260682, -0.00722118, -0.00963032)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cv4lo"]
+radius = 0.363209
+height = 1.64973
 
 [sub_resource type="Animation" id="Animation_4mabm"]
 resource_name = "CharacterArmature|Defeat"
@@ -2728,6 +2733,13 @@ bones/31/scale = Vector3(1, 1, 1)
 [node name="Body2" type="MeshInstance3D" parent="Viking_Male/CharacterArmature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_pjqwo")
 skin = SubResource("Skin_drp4h")
+
+[node name="Area3D" type="Area3D" parent="Viking_Male/CharacterArmature"]
+script = ExtResource("4_weq7l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Viking_Male/CharacterArmature/Area3D"]
+transform = Transform3D(0.02, 0, 0, 0, -2.38418e-09, -0.02, 0, 0.02, -2.38418e-09, 0, 0.000491331, 0.0156824)
+shape = SubResource("CapsuleShape3D_cv4lo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Viking_Male"]
 unique_name_in_owner = true

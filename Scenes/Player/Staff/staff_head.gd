@@ -23,9 +23,8 @@ func _process(delta: float) -> void:
 func forge_cook() -> void:
 	material_overlay.albedo_color.a	= 1.0
 	staff_head.material_overlay = material_overlay
-	print("Set crystal to red. Crystal alpha: %s" % material_overlay.albedo_color.a)
+	Events.rumble.emit()
 
 
 func chill_out() -> void:
 	is_cooling = true
-	print("Crystal alpha: %s" % material_overlay.albedo_color.a)

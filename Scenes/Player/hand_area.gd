@@ -1,4 +1,5 @@
 extends Area3D
+class_name PlayerHand
 
 @export_enum("LEFT", "RIGHT") var hand: String
 

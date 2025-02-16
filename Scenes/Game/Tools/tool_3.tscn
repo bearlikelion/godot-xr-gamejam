@@ -35,10 +35,10 @@ ranged_grab_speed = 10.0
 metadata/_custom_type_script = ExtResource("2_jn6uq")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("3_pjvmq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0527231, 0.018445, -0.1)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0947686, 0.018445, -0.0522783)
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("4_x74dg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520524, 0.018445, -0.1)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0947686, 0.018445, 0.0524972)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.25, 0)

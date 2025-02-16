@@ -713,6 +713,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 0)
 stream = ExtResource("27_vdfhy")
 bus = &"SFX"
 
+[node name="ButtonMashingTimer" type="Timer" parent="Level5"]
+wait_time = 2.0
+autostart = true
+
 [connection signal="finished" from="Level5/Lights/Red/SimonRed" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="finished" from="Level5/Lights/Green/SimonGreen" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="finished" from="Level5/Lights/Yellow/SimonYellow" to="Level5" method="_on_audio_stream_player_3d_finished"]
@@ -720,3 +724,4 @@ bus = &"SFX"
 [connection signal="animation_finished" from="Level5/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="finished" from="Level5/AudioStreamPlayer3D" to="Level5" method="_on_audio_stream_player_3d_finished"]
 [connection signal="finished" from="Level5/FailSound" to="Level5" method="_on_audio_stream_player_3d_finished"]
+[connection signal="timeout" from="Level5/ButtonMashingTimer" to="." method="_on_button_mashing_timer_timeout"]

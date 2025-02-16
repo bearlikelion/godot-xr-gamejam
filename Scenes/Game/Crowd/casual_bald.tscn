@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://b7qjg58b2dj1t"]
+[gd_scene load_steps=23 format=4 uid="uid://b7qjg58b2dj1t"]
 
 [ext_resource type="Material" uid="uid://o045yp0680nw" path="res://Materials/Skin.tres" id="1_dnetw"]
 [ext_resource type="Script" uid="uid://1sysdiquyiyu" path="res://Scenes/Game/Crowd/crowd.gd" id="1_f8jfa"]
 [ext_resource type="Material" uid="uid://bslgafyqagyvy" path="res://Materials/Face.tres" id="2_f8jfa"]
+[ext_resource type="Script" uid="uid://c0o5bdl0fbxwh" path="res://Scenes/Game/Crowd/area_3d.gd" id="4_d3lb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3dco"]
 resource_name = "Shirt"
@@ -186,6 +187,10 @@ bind/21/pose = Transform3D(-1, 5.33381e-07, -1.50505e-05, -3.56992e-07, -0.99993
 bind/22/name = &"PoleTarget.R"
 bind/22/bone = -1
 bind/22/pose = Transform3D(1, -7.15256e-07, 1.42109e-13, -1.42109e-13, 6.12323e-17, 1, -7.15256e-07, -1, 6.11307e-17, 0.00260682, -0.00722118, -0.00963032)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8jfa"]
+radius = 0.363209
+height = 1.64973
 
 [sub_resource type="Animation" id="Animation_pxjbv"]
 resource_name = "CharacterArmature|Defeat"
@@ -2720,6 +2725,13 @@ bones/31/scale = Vector3(1, 1, 1)
 [node name="Body" type="MeshInstance3D" parent="Root Scene/RootNode/CharacterArmature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_cc28e")
 skin = SubResource("Skin_gkava")
+
+[node name="Area3D" type="Area3D" parent="Root Scene/RootNode/CharacterArmature"]
+script = ExtResource("4_d3lb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/RootNode/CharacterArmature/Area3D"]
+transform = Transform3D(0.02, 0, 0, 0, -2.38418e-09, -0.02, 0, 0.02, -2.38418e-09, 0, 0.000491331, 0.0156824)
+shape = SubResource("CapsuleShape3D_f8jfa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Root Scene"]
 unique_name_in_owner = true
