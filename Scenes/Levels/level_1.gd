@@ -12,7 +12,7 @@ var match_rune: BaseRune
 func _ready() -> void:
 	hide()
 	Global.level = 1
-  
+
 	if not rune_config:
 		push_error("RuneConfig not assigned to Level1")
 		return

@@ -43,7 +43,7 @@ func _on_place_on_pedistal(scene_string_or_base_rune) -> void:
 		_on_place_on_pedistal_rune(scene_string_or_base_rune)
 
 
-func _on_place_on_pedistal_string(scene_string: String):
+func _on_place_on_pedistal_string(scene_string: String) -> void:
 	var _item: Node3D = load(scene_string).instantiate()
 
 	if icon_marker.get_child_count() > 0:

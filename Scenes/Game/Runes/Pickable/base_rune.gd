@@ -126,21 +126,21 @@ func _apply_hover_bobbing(state: PhysicsDirectBodyState3D) -> void:
 	_time += state.step
 
 	# Calculate the target height including bobbing with random modifiers
-	var bob_phase = bob_frequency * _bob_frequency_modifier * _time * PI * 2.0 + _bob_phase_offset
-	var bob_offset = bob_amplitude * _bob_amplitude_modifier * _bob_direction * sin(bob_phase)
-	var target_height = _initial_position.y + (hover_height * _hover_height_modifier) + bob_offset
+	var bob_phase: float = bob_frequency * _bob_frequency_modifier * _time * PI * 2.0 + _bob_phase_offset
+	var bob_offset: float = bob_amplitude * _bob_amplitude_modifier * _bob_direction * sin(bob_phase)
+	var target_height: float = _initial_position.y + (hover_height * _hover_height_modifier) + bob_offset
 
 	# Calculate spring force based on distance from target
-	var current_height = state.transform.origin.y
-	var height_diff = target_height - current_height
-	var spring_force = height_diff * spring_strength
+	var current_height: float = state.transform.origin.y
+	var height_diff: float = target_height - current_height
+	var spring_force: float = height_diff * spring_strength
 
 	# Apply spring force and damping
-	var force = Vector3.UP * spring_force
+	var force: Vector3 = Vector3.UP * spring_force
 	state.apply_central_force(force)
 
 	# Apply damping to horizontal movement (keep vertical movement for bouncing)
-	var damped_velocity = state.linear_velocity
+	var damped_velocity: Vector3 = state.linear_velocity
 	damped_velocity.x *= damping
 	damped_velocity.z *= damping
 	state.linear_velocity = damped_velocity
@@ -151,7 +151,7 @@ func _apply_hover_bobbing(state: PhysicsDirectBodyState3D) -> void:
 
 func _apply_natural_fall(state: PhysicsDirectBodyState3D) -> void:
 	# Apply damping to horizontal movement
-	var damped_velocity = state.linear_velocity
+	var damped_velocity: Vector3 = state.linear_velocity
 	damped_velocity.x *= damping
 	damped_velocity.z *= damping
 	state.linear_velocity = damped_velocity
