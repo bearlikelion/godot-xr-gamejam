@@ -92,6 +92,7 @@ mesh = ExtResource("5_enmme")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_c8rgq")
+debug_color = Color(0.803922, 0.415686, 0.0509804, 0.945098)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

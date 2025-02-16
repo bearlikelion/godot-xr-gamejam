@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dhg46efuyh1cx" path="res://Scenes/UI/credits_2d_in_3d.gd" id="7_18sgl"]
 [ext_resource type="Script" uid="uid://b70wylsa2vi34" path="res://Scripts/laser_pointer.gd" id="8_cid5o"]
 [ext_resource type="PackedScene" uid="uid://blv7evxcyv402" path="res://Scenes/UI/credits.tscn" id="9_bgmid"]
-[ext_resource type="Script" path="res://Scenes/Game/controller.gd" id="9_p3bnw"]
+[ext_resource type="Script" uid="uid://dqlguqh310qc5" path="res://Scenes/Game/controller.gd" id="9_p3bnw"]
 [ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="10_3hq7a"]
 [ext_resource type="Script" uid="uid://dvd4ua17bjrdp" path="res://Scenes/Game/fps_counter.gd" id="10_kn4b3"]
 [ext_resource type="Script" uid="uid://bhfifjrfi1p3n" path="res://Scenes/Player/hand_area.gd" id="10_n2mrn"]
@@ -121,6 +121,7 @@ metadata/_custom_type_script = "uid://bl1e26oybhu13"
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
+starting_level = "LEVEL_7"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
