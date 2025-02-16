@@ -40,3 +40,16 @@ Thanks to:
 * Everyone who play tested
 
 Assets and more listed in [CREDITS.md](./CREDITS.md)
+
+**[Git-time:](https://github.com/vmf91/git-time)**\
+**Mark (bearlikelion)**
+* 136 commits found
+* Total time spent: 61.04 hours ​
+
+**GIJaws**
+* 45 commits found
+* Total time spent: 18.18 hours ​
+
+**Cyb3rhusky**
+* 29 commits found
+* Total time spent: 12.88 hours
