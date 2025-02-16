@@ -121,6 +121,7 @@ metadata/_custom_type_script = "uid://bl1e26oybhu13"
 
 [node name="GameScene" type="Node3D"]
 script = ExtResource("1_kn4b3")
+starting_level = "LEVEL_7"
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 2, 0)
@@ -168,16 +169,16 @@ tracker = &"left_hand"
 pose = &"aim"
 script = ExtResource("9_p3bnw")
 
-[node name="HandArea" type="Area3D" parent="XROrigin3D/LeftController" groups=["player_hand"]]
+[node name="LeftPhysicsHand" parent="XROrigin3D/LeftController" instance=ExtResource("6_3hq7a")]
+
+[node name="HandArea" type="Area3D" parent="XROrigin3D/LeftController/LeftPhysicsHand" groups=["player_hand"]]
 collision_mask = 65541
 script = ExtResource("10_n2mrn")
 hand = "LEFT"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftController/HandArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftController/LeftPhysicsHand/HandArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
-
-[node name="LeftPhysicsHand" parent="XROrigin3D/LeftController/HandArea" instance=ExtResource("6_3hq7a")]
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftController" instance=ExtResource("5_yi1st")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0)
@@ -189,7 +190,6 @@ script = ExtResource("8_cid5o")
 show_laser = 0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_cid5o")
-show_target = true
 collision_mask = 5308416
 
 [node name="FunctionPoseDetector" parent="XROrigin3D/LeftController" instance=ExtResource("10_3hq7a")]
@@ -207,16 +207,16 @@ tracker = &"right_hand"
 pose = &"aim"
 script = ExtResource("9_p3bnw")
 
-[node name="HandArea" type="Area3D" parent="XROrigin3D/RightController" groups=["player_hand"]]
+[node name="RightPhysicsHand" parent="XROrigin3D/RightController" instance=ExtResource("11_cid5o")]
+
+[node name="HandArea" type="Area3D" parent="XROrigin3D/RightController/RightPhysicsHand" groups=["player_hand"]]
 collision_mask = 65541
 script = ExtResource("10_n2mrn")
 hand = "RIGHT"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightController/HandArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightController/RightPhysicsHand/HandArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.05, 0.1)
 shape = SubResource("BoxShape3D_kn4b3")
-
-[node name="RightPhysicsHand" parent="XROrigin3D/RightController/HandArea" instance=ExtResource("11_cid5o")]
 
 [node name="FunctionPickup" parent="XROrigin3D/RightController" instance=ExtResource("5_yi1st")]
 ranged_distance = 25.0
@@ -227,7 +227,6 @@ script = ExtResource("8_cid5o")
 show_laser = 0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_cid5o")
-show_target = true
 collision_mask = 5308416
 
 [node name="FunctionPoseDetector" parent="XROrigin3D/RightController" instance=ExtResource("10_3hq7a")]
@@ -258,6 +257,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="Base" parent="." instance=ExtResource("10_w6h2q")]
 
 [connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController" method="_on_button_pressed"]
-[connection signal="body_entered" from="XROrigin3D/LeftController/HandArea" to="XROrigin3D/LeftController/HandArea" method="_on_body_entered"]
+[connection signal="body_entered" from="XROrigin3D/LeftController/LeftPhysicsHand/HandArea" to="XROrigin3D/LeftController/LeftPhysicsHand/HandArea" method="_on_body_entered"]
 [connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_button_pressed"]
-[connection signal="body_entered" from="XROrigin3D/RightController/HandArea" to="XROrigin3D/RightController/HandArea" method="_on_body_entered"]
+[connection signal="body_entered" from="XROrigin3D/RightController/RightPhysicsHand/HandArea" to="XROrigin3D/RightController/RightPhysicsHand/HandArea" method="_on_body_entered"]

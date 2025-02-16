@@ -133,7 +133,12 @@ func _on_repeat_instructions() -> void:
 
 func _on_restart_level() -> void:
 	animation_player.play("RESET")
-	text = "Restarting level"
+	if Global.level == 8:
+		text = "Restarting Game"
+	else:
+		text = "Restarting level"
+
 	animation_player.play("fade")
 	await get_tree().create_timer(1.5).timeout
+	Global.level = 0
 	Events.reload_level.emit()

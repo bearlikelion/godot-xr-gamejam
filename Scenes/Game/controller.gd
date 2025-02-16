@@ -12,5 +12,4 @@ func _on_button_pressed(button_name: String) -> void:
 		Events.repeat_instructions.emit()
 
 	if button_name == "by_button":
-		if Global.level != 8:
-			Events.restart_level.emit()
+		Events.restart_level.emit()
