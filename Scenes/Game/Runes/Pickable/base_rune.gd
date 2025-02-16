@@ -76,6 +76,7 @@ var _hover_height_modifier: float = 1.0
 @onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _audio_player: AudioStreamPlayer3D = $AudioPlayer3D
+@onready var _hover_audio_player: AudioStreamPlayer3D = $HoverAudioPlayer3D
 
 # Sound randomizers
 var _activation_randomizer: AudioStreamRandomizer
@@ -96,6 +97,31 @@ func _ready() -> void:
 	_bob_amplitude_modifier = randf_range(0.5, 10.0)  # Amplitude variation
 	_bob_direction = 1.0 if randf() > 0.5 else -1.0  # Random initial direction
 	_hover_height_modifier = randf_range(0.5, 2.0)  # 50% to 200% base height variation
+
+	# Initialize audio player settings
+	if _audio_player and _hover_audio_player:
+		# Configure main audio player settings
+		_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		_audio_player.unit_size = 3.0  # Scale for distance calculations
+		_audio_player.max_db = 0.0  # Maximum volume
+		_audio_player.panning_strength = 1.0  # Full 3D panning
+
+		# Configure hover audio player settings
+		_hover_audio_player.max_distance = 20.0  # Maximum distance to hear the sound
+		_hover_audio_player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
+		_hover_audio_player.unit_size = 2.0  # Scale for distance calculations
+		_hover_audio_player.panning_strength = 1.0  # Full 3D panning
+		_hover_audio_player.stream_paused = false  # Ensure not paused
+
+		# Get cached randomizers from SoundManager
+		_activation_randomizer = RuneSoundManager.get_rune_randomizer(ACTIVATION_SOUND_TYPE)
+		_deactivation_randomizer = RuneSoundManager.get_rune_randomizer(DEACTIVATION_SOUND_TYPE)
+		_hover_randomizer = RuneSoundManager.get_rune_randomizer(HOVER_SOUND_TYPE)
+
+		if Global.testing:
+			print("[BaseRune] Audio players initialized")
+			print("[BaseRune] Hover randomizer exists: ", _hover_randomizer != null)
 
 	# Initialize audio player settings
 	if _audio_player:
@@ -203,18 +229,14 @@ func _on_highlight_updated(_pickable: Variant, enable: bool) -> void:
 		if Global.testing:
 			print("[BaseRune] Started bobbing, playing activation sound")
 		play_activation_sound()
+		# Start hover sound after a short delay
+		# await get_tree().create_timer(0.2).timeout
+		_play_hover_sound()
 	elif _was_bobbing and not _is_bobbing:
 		if Global.testing:
 			print("[BaseRune] Stopped bobbing, playing deactivation sound")
+		_stop_hover_sound()  # Stop hover sound first
 		play_deactivation_sound()
-
-	# Play hover sound when continuously bobbing
-	if _was_bobbing and _is_bobbing:
-		if Global.testing:
-			print("[BaseRune] Continuously bobbing, playing hover sound")
-		_play_hover_sound()
-	else:
-		_stop_hover_sound()
 
 	_was_bobbing = _is_bobbing
 	_set_rune_icon_material()
@@ -248,17 +270,19 @@ func play_deactivation_sound() -> void:
 			print("[BaseRune] Started playing deactivation sound")
 
 func _play_hover_sound() -> void:
-	if _audio_player and _hover_randomizer and not _audio_player.playing:
-		_audio_player.stream = _hover_randomizer
-		_audio_player.pitch_scale = randf_range(0.95, 1.05)  # Subtle pitch variation for hover
-		_audio_player.volume_db = randf_range(-5.0, -3.0)  # Quieter than activation/deactivation
-		_audio_player.play()
+	if _hover_audio_player and _hover_randomizer:
+		_hover_audio_player.stream = _hover_randomizer
+		_hover_audio_player.pitch_scale = randf_range(0.95, 1.05)  # Subtle pitch variation for hover
+		_hover_audio_player.volume_db = randf_range(-5.0, -3.0)  # Quieter than activation/deactivation
+		if not _hover_audio_player.playing:
+			_hover_audio_player.play()
+
 		if Global.testing:
 			print("[BaseRune] Started playing hover sound")
 
 func _stop_hover_sound() -> void:
-	if _audio_player and _audio_player.playing and _audio_player.stream == _hover_randomizer:
-		_audio_player.stop()
+	if _hover_audio_player and _hover_audio_player.playing and _hover_audio_player.stream == _hover_randomizer:
+		_hover_audio_player.stop()
 		if Global.testing:
 			print("[BaseRune] Stopped hover sound")
 

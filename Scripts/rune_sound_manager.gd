@@ -49,7 +49,10 @@ func _create_randomizer(sounds_dir: String) -> AudioStreamRandomizer:
 				print("[RuneSoundManager] Loading sound file: ", file_path)
 
 			var sound: AudioStream = load(file_path)
-			if sound:
+			if sound and sound is AudioStreamOggVorbis:
+				# Set loop for hover sounds
+				if sounds_dir.ends_with("Hover/"):
+					sound.loop = true
 				randomizer.add_stream(index, sound)
 				index += 1
 				if Global.testing:

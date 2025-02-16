@@ -88,6 +88,7 @@ func _place_new_runes() -> void:
 		_remaining_runes[i]._is_bobbing = true
 		rune_positions[i].add_child(_remaining_runes[i])
 		_remaining_runes[i].fade_in()
+		_remaining_runes[i]._play_hover_sound()
 
 func _on_runes_faded_out() -> void:
 	# Place new runes after old ones have faded out
